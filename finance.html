@@ -193,3 +193,181 @@
 </body>
 </html>
 
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #00203F;
+    --gold: #ECA400;
+    --white: #FFFFFF;
+    --grey: #F8FAFC;
+  }
+
+  /* RESET & CONTAINER */
+  #resource-hub {
+    width: 100%;
+    background-color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* HEADER SECTION */
+  .jump-header {
+    text-align: center;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .jump-header h2 {
+    color: var(--navy);
+    font-weight: 900;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0;
+  }
+
+  .jump-line {
+    width: 35px;
+    height: 3px;
+    background: var(--gold);
+    margin: 8px auto 4px auto; /* Reduced bottom margin to move arrow up */
+    border-radius: 2px;
+  }
+
+  /* FLAT STATIC ARROW */
+  .scroll-indicator-arrow {
+    color: var(--gold);
+    font-size: 16px; /* Slightly smaller to keep it subtle */
+    line-height: 1;
+    opacity: 0.8;
+    margin-top: 0; /* Positioned closer to the gold line */
+  }
+
+  /* BUTTON GRID */
+  .card-container {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    max-width: 1100px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* INDIVIDUAL CARD */
+  .resource-item {
+    flex: 1;
+    min-width: 250px;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  /* REFINED BUTTON STYLE */
+  .action-button {
+    background-color: var(--gold);
+    color: var(--navy);
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(236, 164, 0, 0.1);
+    margin-bottom: 12px;
+    border: 2px solid var(--gold);
+    box-sizing: border-box;
+  }
+
+  .action-button:hover {
+    background-color: var(--navy);
+    color: var(--gold);
+    border-color: var(--navy);
+    transform: translateY(-3px);
+  }
+
+  /* DESCRIPTION */
+  .card-desc {
+    color: #475569;
+    font-size: 11px;
+    line-height: 1.5;
+    font-weight: 500;
+    margin: 0;
+    padding: 0 5px;
+  }
+
+  /* PHONE OPTIMIZATION */
+  @media (max-width: 768px) {
+    .resource-item {
+      min-width: 100%;
+      padding: 5px 0;
+    }
+    .action-button {
+      padding: 11px 15px;
+      font-size: 11px;
+    }
+    .jump-header { margin-bottom: 20px; }
+    #resource-hub { padding: 5px; }
+  }
+</style>
+
+<div id="resource-hub">
+  
+  <div class="jump-header">
+    <h2>Template Resources: Download for future use!</h2>
+    <div class="jump-line"></div>
+    <div class="scroll-indicator-arrow">▾</div>
+  </div>
+
+  <div class="card-container">
+    
+    <div class="resource-item">
+      <a href="https://docs.google.com/spreadsheets/d/1g9IO-MDMvTK63IwGQB4A29gSg7YS4yv7uB15lAg5UDA/edit?gid=0#gid=0" target="_blank" class="action-button">
+        Event Budget Template
+      </a>
+      <p class="card-desc">Breakdown for Freshers' Week finances and operational spend.</p>
+    </div>
+
+    <div class="resource-item">
+      <a href="https://docs.google.com/document/d/1RYE4CE5M1jhUYOvCkDkqLjJluSH7A53t-aZ8MB_2ps0/edit?tab=t.0" target="_blank" class="action-button">
+        Discount Card Script
+      </a>
+      <p class="card-desc">Formal contract for vendor discounts and local business partnerships.</p>
+    </div>
+
+    <div class="resource-item">
+      <a href="https://docs.google.com/document/d/1kUOkdSv9QxMwZQl4qrflLKoJQRhPnlBKHVTYdbph43M/edit?tab=t.0#heading=h.trcnvy3x5hqy" target="_blank" class="action-button">
+        Sponsorship Help
+      </a>
+      <p class="card-desc">Strategic guide for SU regulations and sponsor outreach.</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function sendHeight() {
+    const container = document.getElementById('resource-hub');
+    const height = container.getBoundingClientRect().height;
+    window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height + 10 }, '*');
+  }
+  window.onload = sendHeight;
+  window.onresize = sendHeight;
+  setInterval(sendHeight, 2000);
+</script>
