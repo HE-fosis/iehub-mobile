@@ -1,1 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Nunito:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* Transparent to let the site background show through */
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden; 
+  }
+
+  /* Optimized Icon Layer */
+  .icon-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .floating-icon {
+    position: absolute;
+    fill: #d4af37;
+    opacity: 0.04;
+    animation: slowDrift 22s infinite ease-in-out alternate;
+  }
+
+  .i1 { width: 100px; top: 10%; left: 8%; }
+  .i2 { width: 85px; top: 15%; right: 15%; animation-delay: -4s; }
+  .i3 { width: 110px; bottom: 15%; left: 12%; animation-delay: -2s; }
+  .i4 { width: 90px; bottom: 10%; right: 10%; animation-delay: -6s; }
+
+  @keyframes slowDrift {
+    0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+    100% { transform: translate3d(20px, -25px, 0) rotate(5deg); }
+  }
+
+  .hero-container {
+    width: 100%;
+    max-width: 1200px;
+    /* Standardized padding to match Leadership unit exactly */
+    padding: 20px 15px 10px 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+  }
+
+  h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: clamp(2.2rem, 10vw, 5.5rem);
+    line-height: 0.95;
+    margin: 0 0 10px 0;
+    letter-spacing: -1px;
+    text-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    width: 100%;
+  }
+
+  h1 span {
+    display: block;
+  }
+
+  .swipe-zone {
+    margin: 5px 0 25px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chevron {
+    width: 12px;
+    height: 12px;
+    border-right: 3px solid #d4af37;
+    border-bottom: 3px solid #d4af37;
+    transform: rotate(45deg);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: rotate(45deg) translate(-5px, -5px); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: rotate(45deg) translate(5px, 5px); opacity: 0; }
+  }
+
+  .swipe-text {
+    color: #d4af37;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-top: 4px;
+  }
+
+  .verse-content {
+    width: 100%;
+    max-width: 850px;
+    padding-bottom: 20px;
+  }
+
+  .arabic {
+    font-size: clamp(1.1rem, 3vw, 1.6rem);
+    color: #d4af37;
+    margin-bottom: 12px;
+    display: block;
+    line-height: 1.7;
+    direction: rtl;
+  }
+
+  .translation {
+    font-family: 'Nunito', sans-serif;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+    margin: 0 auto 10px auto;
+  }
+
+  .citation {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: rgba(212, 175, 55, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-container { padding-top: 40px; }
+    h1 { letter-spacing: -2px; line-height: 0.85; margin-bottom: 20px; }
+  }
+
+  @media (max-width: 480px) {
+    .floating-icon { display: none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="icon-canvas">
+    <svg class="floating-icon i1" viewBox="0 0 24 24"><path d="M5 9.2h3V19H5V9.2zM10.6 5h2.8v14h-2.8V5zm5.6 8H19v6h-2.8v-6z"/></svg>
+    <svg class="floating-icon i2" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h10v2H7v-2zm0 4h10v2H7v-2zm0-8h10v2H7V6z"/></svg>
+    <svg class="floating-icon i3" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
+    <svg class="floating-icon i4" viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+  </div>
+
+  <div class="hero-container" id="fosis-finance-unit">
+    <h1>
+      <span>Finance</span>
+      <span>& Admin</span>
+    </h1>
+    
+    <div class="swipe-zone">
+      <div class="chevron"></div>
+      <div class="swipe-text">EXPLORE</div>
+    </div>
+
+    <div class="verse-content">
+      <span class="arabic">مَّثَلُ ٱلَّذِينَ يُنفِقُونَ أَمْوَٰلَهُمْ فِى سَبِيلِ ٱللَّهِ كَمَثَلِ حَبَّةٍ أَنۢبَتَتْ سَبْعَ سَنَابِلَ فِى كُلِّ سُنۢبُلَةٍ مِّا۟ئَةُ حَبَّةٍ ۗ وَٱللَّهُ يُضَـٰعِفُ لِمَن يَشَآءُ ۗ وَٱللَّهُ وٰسِعٌ عَلِيمٌ</span>
+      <p class="translation">"The example of those who spend their wealth in the way of Allah is like a seed of grain which grows seven spikes... And Allah multiplies [His reward] for whom He wills."</p>
+      <div class="citation">Surah Al-Baqarah 2:261</div>
+    </div>
+  </div>
+
+  <script>
+    function sendHeight() {
+      const unit = document.getElementById('fosis-finance-unit');
+      if (unit) {
+        window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: unit.offsetHeight }, '*');
+      }
+    }
+    window.onload = sendHeight;
+    window.onresize = sendHeight;
+    setTimeout(sendHeight, 1500);
+  </script>
+
+</body>
+</html>
 
