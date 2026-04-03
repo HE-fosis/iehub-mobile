@@ -5,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Nunito:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* --- 1. GLOBAL RESET (Ensures Phone Compatibility) --- */
+        /* --- 1. GLOBAL SCROLL FIX --- */
         * { box-sizing: border-box; }
         
         html, body {
             margin: 0;
             padding: 0;
             width: 100%;
-            background-color: #00203F; /* Matches your Hero Navy */
+            background-color: #00203F; 
             font-family: 'Nunito', sans-serif;
             overflow-x: hidden;
-            overflow-y: auto !important; /* FORCES SCROLL ON */
+            overflow-y: auto !important; 
             display: block; 
             -webkit-overflow-scrolling: touch;
         }
 
-        /* --- 2. HERO SECTION (Dark Top) --- */
+        /* --- 2. HERO SECTION --- */
         .hero-section {
             width: 100%;
             padding: 60px 20px 40px 20px;
@@ -31,21 +31,12 @@
             z-index: 1;
         }
 
-        .icon-canvas {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
         .hero-section h1 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
             font-size: clamp(2.2rem, 10vw, 5rem);
             text-transform: uppercase;
             line-height: 0.95;
-            letter-spacing: -1px;
             margin: 0 0 15px 0;
             text-shadow: 0 10px 25px rgba(0,0,0,0.4);
         }
@@ -59,21 +50,31 @@
             display: block;
             direction: rtl;
             line-height: 1.8;
+            padding: 0 10px;
         }
 
         .translation-text {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 10px auto;
             font-size: 0.95rem;
             color: rgba(255,255,255,0.85);
             line-height: 1.6;
         }
 
-        /* --- 3. CONTENT HUB (White Bottom) --- */
+        .citation {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.7rem;
+            color: rgba(212, 175, 55, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        /* --- 3. MASTER CONTENT CONTAINER --- */
         .master-content-container {
             width: 100%;
             background: #FFFFFF;
-            margin-top: -25px; /* Creates the overlap look */
+            margin-top: -25px; 
             border-radius: 30px 30px 0 0;
             padding: 40px 15px;
             position: relative;
@@ -86,9 +87,19 @@
             color: #00203F;
             text-transform: uppercase;
             text-align: center;
-            margin-bottom: 25px;
+            margin: 0 0 5px 0;
             font-size: clamp(1.2rem, 5vw, 1.8rem);
+        }
+
+        .sub-instruction {
+            display: block;
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #64748B;
+            text-transform: uppercase;
             letter-spacing: 1px;
+            margin-bottom: 20px;
         }
 
         /* Quick Links Grid */
@@ -97,8 +108,7 @@
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 12px;
             max-width: 1100px;
-            margin: 0 auto 50px auto;
-            justify-items: center;
+            margin: 0 auto 40px auto;
         }
 
         .resource-card {
@@ -113,14 +123,14 @@
             font-size: 0.8rem;
             display: flex;
             align-items: center;
-            width: 100%;
-            max-width: 340px;
             transition: 0.2s ease;
         }
 
         /* --- 4. THE GOLDEN CIRCLE --- */
-        .gc-section { border-top: 2px solid #F1F5F9; padding-top: 30px; }
-        .gc-layout { display: flex; flex-direction: column; align-items: center; gap: 25px; }
+        .gc-section { border-top: 2px solid #F1F5F9; padding-top: 30px; margin-top: 20px; }
+        
+        .gc-layout { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+        @media (min-width: 900px) { .gc-layout { flex-direction: row; align-items: flex-start; } }
 
         .circle-viz { width: 100%; max-width: 260px; position: relative; aspect-ratio: 1/1; }
         .circle-outer { width: 100%; height: 100%; border: 3px solid #00203F; border-radius: 50%; position: relative; }
@@ -128,13 +138,15 @@
         .circle-inner { width: 45%; height: 45%; background: #ECA400; border-radius: 50%; position: absolute; top: 27.5%; left: 27.5%; display: flex; justify-content: center; align-items: center; font-weight: 900; color: #00203F; font-family: 'Montserrat'; }
 
         /* Accordions */
-        .gc-content { width: 100%; max-width: 800px; }
+        .gc-content { width: 100%; flex: 1; }
         .acc-item { border: 1px solid #E2E8F0; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
-        .acc-header { width: 100%; padding: 18px; background: #fff; border: none; text-align: left; font-family: 'Montserrat', sans-serif; font-weight: 800; display: flex; justify-content: space-between; cursor: pointer; }
-        .acc-body { max-height: 0; overflow: hidden; transition: 0.3s ease-out; background: #f8fafc; }
+        .acc-header { width: 100%; padding: 18px; background: #fff; border: none; text-align: left; font-family: 'Montserrat', sans-serif; font-weight: 800; display: flex; justify-content: space-between; cursor: pointer; text-transform: uppercase; }
+        .acc-header.active { background: #F8FAFC; border-left: 4px solid #ECA400; }
+        
+        .acc-body { max-height: 0; overflow: hidden; transition: 0.4s ease-out; background: #f8fafc; }
         .acc-inner { padding: 20px; display: flex; align-items: center; gap: 20px; }
-        .acc-inner p { margin: 0; color: #475569; font-size: 1rem; line-height: 1.6; flex: 1; }
-        .acc-image { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 2px solid #ECA400; flex-shrink: 0; }
+        .acc-inner p { margin: 0; color: #475569; font-size: 1.05rem; line-height: 1.6; flex: 1; font-weight: 500; }
+        .acc-image { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 2px solid #ECA400; flex-shrink: 0; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
 
         @media (max-width: 500px) {
             .acc-inner { flex-direction: column; text-align: center; }
@@ -144,16 +156,17 @@
 <body>
 
     <div class="hero-section">
-        <div class="icon-canvas">
-            </div>
         <h1><span>Leadership</span><span>& Planning</span></h1>
-        <span class="arabic-verse">فَبِمَا رَحْمَةٍۢ مِّنَ ٱللَّهِ لِنتَ لَهُمْ ۖ وَلَوْ كُنتَ فَظًّا غَلِيظَ ٱلْقَلْبِ لَٱنفَضُّوا۟ مِنْ حَوْلِكَ...</span>
-        <p class="translation-text">"It is out of Allah’s mercy that you have been lenient with them... Once you make a decision, put your trust in Allah." (3:159)</p>
+        <span class="arabic-verse">فَبِمَا رَحْمَةٍۢ مِّنَ ٱللَّهِ لِنتَ لَهُمْ ۖ وَلَوْ كُنتَ فَظًّا غَلِيظَ ٱلْقَلْبِ لَٱنفَضُّوا۟ مِنْ حَوْلِكَ ۖ فَٱعْفُ عَنْهُمْ وَٱسْتَغْفِرْ لَهُمْ وَشَاوِرْهُمْ فِى ٱلْأَمْرِ ۖ فَإِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى ٱللَّهِ ۚ إِنَّ ٱللَّهَ يُحِبُّ ٱلْمُتَوكِّلِينَ</span>
+        <p class="translation-text">"It is out of Allah’s mercy that you have been lenient with them... Once you make a decision, put your trust in Allah. Surely Allah loves those who trust in Him."</p>
+        <div class="citation">Surah Ali-Imran 3:159</div>
     </div>
 
     <div class="master-content-container" id="hub-root">
         
         <h3 class="hub-title">Quick Links & Templates</h3>
+        <span class="sub-instruction">click and save as a copy!</span>
+        
         <div class="btn-grid">
             <a href="https://docs.google.com/document/d/1xcP6-OujnQzNXpePP0Q8WKLlHkrsZHgUUzmCPXaNGqQ/edit?usp=sharing" target="_blank" class="resource-card">
                 <span style="margin-right:12px; font-size:1.4rem;">📜</span> Constitution Template
@@ -167,7 +180,7 @@
         </div>
 
         <div class="gc-section">
-            <h3 class="hub-title">The Golden Circle</h3>
+            <h3 class="hub-title" style="margin-bottom: 25px;">The Golden Circle</h3>
             <div class="gc-layout">
                 <div class="circle-viz">
                     <div class="circle-outer"><div class="circle-middle"><div class="circle-inner">WHY</div></div></div>
@@ -175,8 +188,8 @@
                 
                 <div class="gc-content">
                     <div class="acc-item">
-                        <button class="acc-header" onclick="toggleAcc(this)">WHY <span class="icon">+</span></button>
-                        <div class="acc-body">
+                        <button class="acc-header active" onclick="toggleAcc(this)">WHY <span>−</span></button>
+                        <div class="acc-body" style="max-height: 500px;">
                             <div class="acc-inner">
                                 <p>The purpose. To serve & uplift Muslim students for the sake of Allah (SWT).</p>
                                 <img src="https://i.ibb.co/4wJnfjc3/IMG-20230708-WA0066.jpg" class="acc-image" alt="Why">
@@ -184,11 +197,20 @@
                         </div>
                     </div>
                     <div class="acc-item">
-                        <button class="acc-header" onclick="toggleAcc(this)">HOW <span class="icon">+</span></button>
+                        <button class="acc-header" onclick="toggleAcc(this)">HOW <span>+</span></button>
                         <div class="acc-body">
                             <div class="acc-inner">
                                 <p>The process. By planning with sincerity, teamwork, and effective communication.</p>
                                 <img src="https://i.ibb.co/DDTHY1VB/IMG-20240911-WA0039.jpg" class="acc-image" alt="How">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="acc-item">
+                        <button class="acc-header" onclick="toggleAcc(this)">WHAT <span>+</span></button>
+                        <div class="acc-body">
+                            <div class="acc-inner">
+                                <p>The proof. Through high-quality events, socials, welfare services, and dawah activities.</p>
+                                <img src="https://i.ibb.co/qMwnq8r7/Screenshot-2025-07-09-132149.png" class="acc-image" alt="What">
                             </div>
                         </div>
                     </div>
@@ -200,18 +222,24 @@
     <script>
         function toggleAcc(btn) {
             const body = btn.nextElementSibling;
-            const icon = btn.querySelector('.icon');
-            const isOpen = body.style.maxHeight !== "0px" && body.style.maxHeight !== "";
+            const span = btn.querySelector('span');
+            const isOpen = btn.classList.contains('active');
 
             // Close all others
-            document.querySelectorAll('.acc-body').forEach(b => b.style.maxHeight = "0px");
-            document.querySelectorAll('.icon').forEach(i => i.innerText = "+");
+            document.querySelectorAll('.acc-header').forEach(h => {
+                h.classList.remove('active');
+                h.nextElementSibling.style.maxHeight = "0px";
+                h.querySelector('span').innerText = "+";
+            });
 
             if (!isOpen) {
+                btn.classList.add('active');
                 body.style.maxHeight = body.scrollHeight + "px";
-                icon.innerText = "−";
+                span.innerText = "−";
             }
-            sendHeight();
+            
+            // Give the parent site time to adjust height
+            setTimeout(sendHeight, 300);
         }
 
         function sendHeight() {
@@ -220,8 +248,11 @@
                 window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height }, '*');
             }
         }
+        
         window.onload = sendHeight;
         window.onresize = sendHeight;
+        // Periodic check to ensure Google Sites stays updated
+        setInterval(sendHeight, 2000);
     </script>
 </body>
 </html>
