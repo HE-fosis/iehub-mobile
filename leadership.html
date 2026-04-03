@@ -1,197 +1,227 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Nunito:wght@500;600;700&display=swap" rel="stylesheet">
-<style>
- html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    /* We remove the fixed 'hidden' and match your homepage */
-    background-color: #00203F; 
-    font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
-    overflow-y: auto !important; 
-    display: block; /* Removed 'flex' which can sometimes glitche scrolling on mobile */
-    -webkit-overflow-scrolling: touch;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Nunito:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- 1. GLOBAL RESET (Ensures Phone Compatibility) --- */
+        * { box-sizing: border-box; }
+        
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: #00203F; /* Matches your Hero Navy */
+            font-family: 'Nunito', sans-serif;
+            overflow-x: hidden;
+            overflow-y: auto !important; /* FORCES SCROLL ON */
+            display: block; 
+            -webkit-overflow-scrolling: touch;
+        }
 
-  /* Force the containers to allow scrolling too */
-  .hero-container, .hub-unified-container {
-    width: 100%;
-    position: relative;
-    overflow: visible !important;
-    display: block !important;
-  }
-  /* --- HERO SECTION (From File 1) --- */
-  .hero-wrapper {
-    position: relative;
-    width: 100%;
-    padding: 40px 15px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #00203F; /* Ensures no white gap at top */
-  }
+        /* --- 2. HERO SECTION (Dark Top) --- */
+        .hero-section {
+            width: 100%;
+            padding: 60px 20px 40px 20px;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at center, #003056 0%, #00203F 45%);
+            color: white;
+            z-index: 1;
+        }
 
-  .icon-canvas {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 1;
-    pointer-events: none;
-    overflow: hidden;
-  }
+        .icon-canvas {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
 
-  .floating-icon { position: absolute; fill: #d4af37; opacity: 0.04; }
-  .i1 { width: 100px; top: 8%; left: 7%; }
-  .i2 { width: 70px; top: 12%; right: 12%; }
+        .hero-section h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: clamp(2.2rem, 10vw, 5rem);
+            text-transform: uppercase;
+            line-height: 0.95;
+            letter-spacing: -1px;
+            margin: 0 0 15px 0;
+            text-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
 
-  h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    color: #ffffff;
-    text-transform: uppercase;
-    font-size: clamp(2.2rem, 10vw, 5rem); 
-    line-height: 0.95;
-    margin: 0 0 20px 0;
-    z-index: 10;
-  }
+        .hero-section h1 span { display: block; }
 
-  .verse-content {
-    width: 100%;
-    max-width: 850px; 
-    z-index: 10;
-  }
+        .arabic-verse {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: #ECA400;
+            margin-bottom: 15px;
+            display: block;
+            direction: rtl;
+            line-height: 1.8;
+        }
 
-  .arabic {
-    font-size: clamp(1.1rem, 3vw, 1.6rem);
-    color: #d4af37;
-    margin-bottom: 15px;
-    display: block;
-    direction: rtl;
-  }
+        .translation-text {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.6;
+        }
 
-  .translation {
-    font-family: 'Nunito', sans-serif;
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.6;
-  }
+        /* --- 3. CONTENT HUB (White Bottom) --- */
+        .master-content-container {
+            width: 100%;
+            background: #FFFFFF;
+            margin-top: -25px; /* Creates the overlap look */
+            border-radius: 30px 30px 0 0;
+            padding: 40px 15px;
+            position: relative;
+            z-index: 5;
+        }
 
-  /* --- HUB CONTENT (From File 2) --- */
-  .hub-unified-container {
-    font-family: 'Nunito', sans-serif;
-    background: #FFFFFF;
-    color: #00203F;
-    width: 100%;
-    padding: 40px 15px;
-    border-top-left-radius: 30px; /* Nice transition from dark to light */
-    border-top-right-radius: 30px;
-    margin-top: -20px; /* Pulls it up into the hero section */
-    position: relative;
-    z-index: 20;
-  }
+        .hub-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            color: #00203F;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: clamp(1.2rem, 5vw, 1.8rem);
+            letter-spacing: 1px;
+        }
 
-  .hub-title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    text-transform: uppercase;
-    font-size: clamp(1.2rem, 5vw, 1.8rem);
-    text-align: center;
-  }
+        /* Quick Links Grid */
+        .btn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 12px;
+            max-width: 1100px;
+            margin: 0 auto 50px auto;
+            justify-items: center;
+        }
 
-  .btn-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 15px;
-    margin: 20px 0;
-  }
+        .resource-card {
+            background: #ECA400;
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #00203F;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 340px;
+            transition: 0.2s ease;
+        }
 
-  .resource-card {
-    background: #ECA400;
-    border-radius: 8px;
-    text-decoration: none;
-    color: #00203F;
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-  }
+        /* --- 4. THE GOLDEN CIRCLE --- */
+        .gc-section { border-top: 2px solid #F1F5F9; padding-top: 30px; }
+        .gc-layout { display: flex; flex-direction: column; align-items: center; gap: 25px; }
 
-  /* --- ACCORDIONS --- */
-  .gc-layout { display: flex; flex-direction: column; align-items: center; gap: 20px; }
-  .circle-viz { width: 100%; max-width: 250px; aspect-ratio: 1/1; position: relative; }
-  .circle-outer { width: 100%; height: 100%; border: 3px solid #00203F; border-radius: 50%; position: relative; }
-  .circle-middle { width: 70%; height: 70%; border: 2px solid #00203F; border-radius: 50%; position: absolute; top: 15%; left: 15%; }
-  .circle-inner { width: 40%; height: 40%; background: #ECA400; border-radius: 50%; position: absolute; top: 30%; left: 30%; display: flex; justify-content: center; align-items: center; font-weight: 800; }
+        .circle-viz { width: 100%; max-width: 260px; position: relative; aspect-ratio: 1/1; }
+        .circle-outer { width: 100%; height: 100%; border: 3px solid #00203F; border-radius: 50%; position: relative; }
+        .circle-middle { width: 70%; height: 70%; border: 2px solid #00203F; border-radius: 50%; position: absolute; top: 15%; left: 15%; }
+        .circle-inner { width: 45%; height: 45%; background: #ECA400; border-radius: 50%; position: absolute; top: 27.5%; left: 27.5%; display: flex; justify-content: center; align-items: center; font-weight: 900; color: #00203F; font-family: 'Montserrat'; }
 
-  .acc-item { border: 1px solid #E2E8F0; border-radius: 8px; margin-bottom: 10px; width: 100%; }
-  .acc-header { width: 100%; padding: 15px; background: none; border: none; text-align: left; font-family: 'Montserrat', sans-serif; font-weight: 800; cursor: pointer; display: flex; justify-content: space-between; }
-  .acc-body { max-height: 0; overflow: hidden; transition: 0.3s ease-out; background: #f9f9f9; }
-  .acc-body-inner { padding: 15px; display: flex; align-items: center; gap: 15px; }
-  .acc-image { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #ECA400; }
+        /* Accordions */
+        .gc-content { width: 100%; max-width: 800px; }
+        .acc-item { border: 1px solid #E2E8F0; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+        .acc-header { width: 100%; padding: 18px; background: #fff; border: none; text-align: left; font-family: 'Montserrat', sans-serif; font-weight: 800; display: flex; justify-content: space-between; cursor: pointer; }
+        .acc-body { max-height: 0; overflow: hidden; transition: 0.3s ease-out; background: #f8fafc; }
+        .acc-inner { padding: 20px; display: flex; align-items: center; gap: 20px; }
+        .acc-inner p { margin: 0; color: #475569; font-size: 1rem; line-height: 1.6; flex: 1; }
+        .acc-image { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 2px solid #ECA400; flex-shrink: 0; }
 
-  @media (max-width: 600px) {
-    .acc-body-inner { flex-direction: column; text-align: center; }
-  }
-</style>
+        @media (max-width: 500px) {
+            .acc-inner { flex-direction: column; text-align: center; }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="hero-wrapper">
-    <div class="icon-canvas">
-      <svg class="floating-icon i1" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-    </div>
-    <h1><span>Leadership</span><span>& Planning</span></h1>
-    <div class="verse-content">
-      <span class="arabic">فَبِمَا رَحْمَةٍۢ مِّنَ ٱللَّهِ لِنتَ لَهُمْ...</span>
-      <p class="translation">"It is out of Allah’s mercy that you have been lenient with them... Once you make a decision, put your trust in Allah."</p>
-    </div>
-  </div>
-
-  <div class="hub-unified-container">
-    <h3 class="hub-title">Quick Links</h3>
-    <div class="btn-grid">
-      <a href="https://docs.google.com/document/d/1xcP6-OujnQzNXpePP0Q8WKLlHkrsZHgUUzmCPXaNGqQ/edit?usp=sharing" target="_blank" class="resource-card">📜 Constitution Template</a>
-      <a href="https://docs.google.com/document/d/19upTZZdkEQYlGoW6HdQP0RP33dvaBEZ_/edit?usp=sharing" target="_blank" class="resource-card">⏱️ Minutes Template</a>
+    <div class="hero-section">
+        <div class="icon-canvas">
+            </div>
+        <h1><span>Leadership</span><span>& Planning</span></h1>
+        <span class="arabic-verse">فَبِمَا رَحْمَةٍۢ مِّنَ ٱللَّهِ لِنتَ لَهُمْ ۖ وَلَوْ كُنتَ فَظًّا غَلِيظَ ٱلْقَلْبِ لَٱنفَضُّوا۟ مِنْ حَوْلِكَ...</span>
+        <p class="translation-text">"It is out of Allah’s mercy that you have been lenient with them... Once you make a decision, put your trust in Allah." (3:159)</p>
     </div>
 
-    <h3 class="hub-title" style="margin-top:40px">The Golden Circle</h3>
-    <div class="gc-layout">
-      <div class="circle-viz">
-        <div class="circle-outer"><div class="circle-middle"><div class="circle-inner">WHY</div></div></div>
-      </div>
-      
-      <div style="width: 100%;">
-        <div class="acc-item">
-          <button class="acc-header" onclick="toggleAcc(this)">WHY <span>+</span></button>
-          <div class="acc-body"><div class="acc-body-inner"><p>To serve & uplift Muslim students for the sake of Allah.</p><img src="https://i.ibb.co/4wJnfjc3/IMG-20230708-WA0066.jpg" class="acc-image"></div></div>
+    <div class="master-content-container" id="hub-root">
+        
+        <h3 class="hub-title">Quick Links & Templates</h3>
+        <div class="btn-grid">
+            <a href="https://docs.google.com/document/d/1xcP6-OujnQzNXpePP0Q8WKLlHkrsZHgUUzmCPXaNGqQ/edit?usp=sharing" target="_blank" class="resource-card">
+                <span style="margin-right:12px; font-size:1.4rem;">📜</span> Constitution Template
+            </a>
+            <a href="https://docs.google.com/document/d/19upTZZdkEQYlGoW6HdQP0RP33dvaBEZ_/edit?usp=sharing" target="_blank" class="resource-card">
+                <span style="margin-right:12px; font-size:1.4rem;">⏱️</span> Minutes Template
+            </a>
+            <a href="https://docs.google.com/document/d/1Q7gdVCFR_7FenF3ZRekINJBHFGfNHGIe/edit?usp=sharing" target="_blank" class="resource-card">
+                <span style="margin-right:12px; font-size:1.4rem;">🤝</span> Handover Checklist
+            </a>
         </div>
-        <div class="acc-item">
-          <button class="acc-header" onclick="toggleAcc(this)">HOW <span>+</span></button>
-          <div class="acc-body"><div class="acc-body-inner"><p>Planning with sincerity and teamwork.</p><img src="https://i.ibb.co/DDTHY1VB/IMG-20240911-WA0039.jpg" class="acc-image"></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <script>
-    function toggleAcc(btn) {
-      const body = btn.nextElementSibling;
-      const isOpen = body.style.maxHeight !== "0px" && body.style.maxHeight !== "";
-      
-      // Close others
-      document.querySelectorAll('.acc-body').forEach(b => b.style.maxHeight = "0px");
-      
-      if (!isOpen) {
-        body.style.maxHeight = body.scrollHeight + "px";
-      }
-    }
-  </script>
+        <div class="gc-section">
+            <h3 class="hub-title">The Golden Circle</h3>
+            <div class="gc-layout">
+                <div class="circle-viz">
+                    <div class="circle-outer"><div class="circle-middle"><div class="circle-inner">WHY</div></div></div>
+                </div>
+                
+                <div class="gc-content">
+                    <div class="acc-item">
+                        <button class="acc-header" onclick="toggleAcc(this)">WHY <span class="icon">+</span></button>
+                        <div class="acc-body">
+                            <div class="acc-inner">
+                                <p>The purpose. To serve & uplift Muslim students for the sake of Allah (SWT).</p>
+                                <img src="https://i.ibb.co/4wJnfjc3/IMG-20230708-WA0066.jpg" class="acc-image" alt="Why">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="acc-item">
+                        <button class="acc-header" onclick="toggleAcc(this)">HOW <span class="icon">+</span></button>
+                        <div class="acc-body">
+                            <div class="acc-inner">
+                                <p>The process. By planning with sincerity, teamwork, and effective communication.</p>
+                                <img src="https://i.ibb.co/DDTHY1VB/IMG-20240911-WA0039.jpg" class="acc-image" alt="How">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAcc(btn) {
+            const body = btn.nextElementSibling;
+            const icon = btn.querySelector('.icon');
+            const isOpen = body.style.maxHeight !== "0px" && body.style.maxHeight !== "";
+
+            // Close all others
+            document.querySelectorAll('.acc-body').forEach(b => b.style.maxHeight = "0px");
+            document.querySelectorAll('.icon').forEach(i => i.innerText = "+");
+
+            if (!isOpen) {
+                body.style.maxHeight = body.scrollHeight + "px";
+                icon.innerText = "−";
+            }
+            sendHeight();
+        }
+
+        function sendHeight() {
+            const height = document.body.scrollHeight;
+            if (window.parent) {
+                window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height }, '*');
+            }
+        }
+        window.onload = sendHeight;
+        window.onresize = sendHeight;
+    </script>
 </body>
 </html>
