@@ -4,19 +4,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Nunito:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-  /* --- GLOBAL RESET --- */
-  * { box-sizing: border-box; }
-  
-  html, body { 
-    margin: 0; 
-    padding: 0; 
-    width: 100%; 
-    background: #00203F; /* Matching your dark hero theme */
-    overflow-x: hidden; 
-    overflow-y: auto !important; /* FORCED SCROLL */
+ html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* We remove the fixed 'hidden' and match your homepage */
+    background-color: #00203F; 
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    overflow-y: auto !important; 
+    display: block; /* Removed 'flex' which can sometimes glitche scrolling on mobile */
     -webkit-overflow-scrolling: touch;
   }
 
+  /* Force the containers to allow scrolling too */
+  .hero-container, .hub-unified-container {
+    width: 100%;
+    position: relative;
+    overflow: visible !important;
+    display: block !important;
+  }
   /* --- HERO SECTION (From File 1) --- */
   .hero-wrapper {
     position: relative;
