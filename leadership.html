@@ -53,7 +53,7 @@
         .btn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; max-width: 1100px; margin: 0 auto 40px auto; justify-items: center; }
         .resource-card { background: #ECA400; border: 2px solid #ECA400; padding: 10px 15px; border-radius: 8px; text-decoration: none; color: #00203F; font-family: 'Montserrat'; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; display: flex; align-items: center; width: 100%; max-width: 340px; transition: 0.2s; }
 
-        /* --- 4. GOLDEN CIRCLE --- */
+        /* --- GOLDEN CIRCLE --- */
         .gc-section { border-top: 2px solid #F1F5F9; padding-top: 30px; margin-top: 10px; }
         .gc-layout { display: flex; flex-direction: column; align-items: center; gap: 20px; }
         @media (min-width: 900px) { .gc-layout { flex-direction: row; gap: 40px; } }
@@ -72,18 +72,22 @@
         .acc-inner p { margin: 0; color: #475569; font-size: 1.05rem; line-height: 1.6; flex: 1; font-weight: 500; }
         .acc-image { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid #ECA400; flex-shrink: 0; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
 
-        /* --- 5. LESSONS BANNER --- */
+        /* --- ROADMAP HOOK --- */
+        .hook-section { width: 100%; background-color: #F3F3F3; display: flex; flex-direction: column; align-items: center; padding: 30px 20px; color: #00203F; position: relative; z-index: 15; border-radius: 30px 30px 0 0; margin-top: 40px; }
+        .spine-node { width: 10px; height: 10px; background: #00203F; border: 2px solid #ECA400; border-radius: 50%; animation: beaconPulse 3s infinite; }
+        @keyframes beaconPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } }
+        .guide-tag { display: inline-block; font-family: 'Montserrat'; font-size: 10px; font-weight: 800; color: #ECA400; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 6px; border-bottom: 2px solid #ECA400; padding-bottom: 4px; }
+
+        /* --- LESSONS BANNER --- */
         .lessons-bridge { width: 100%; display: flex; flex-direction: column; align-items: center; background: #fff; height: 45px; margin-top: 40px; }
         .connector-line { width: 2px; height: 100%; background: linear-gradient(to bottom, #F1F5F9, #ECA400); }
         .wave-wrapper { width: 100%; line-height: 0; position: relative; background: #fff; }
-        .wave-wrapper svg { width: 100%; height: auto; display: block; aspect-ratio: 1440 / 70; }
-        .gold-dot { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); width: 16px; height: 16px; background: #ECA400; border-radius: 50%; border: 3px solid #ffffff; box-shadow: 0 0 15px rgba(236, 164, 0, 0.4); z-index: 30; }
         .navy-banner { width: 100%; background-color: #00203F; text-align: center; padding: 30px 18px 70px; color: #fff; position: relative; z-index: 10; }
         .main-heading { font-family: 'Montserrat'; font-weight: 900; font-size: clamp(22px, 7vw, 42px); text-transform: uppercase; margin: 0; letter-spacing: 1px; line-height: 1.15; }
         .main-heading span { font-family: 'Playfair Display'; font-style: italic; font-weight: 400; text-transform: none; color: #ECA400; }
         .accent-line { width: 42px; height: 3px; background: #ECA400; margin: 16px auto 18px; border-radius: 2px; }
 
-        /* --- 6. Q&A & DROPDOWNS --- */
+        /* --- Q&A & DROPDOWNS --- */
         .qa-wrapper { background: #fff; padding: 40px 15px; position: relative; z-index: 20; }
         .qa-stack { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; max-width: 1200px; margin: 0 auto; }
         .topic-group { flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 20px; }
@@ -99,7 +103,7 @@
         .leader-body { max-height: 0; overflow: hidden; transition: 0.4s; padding: 0 25px; background: #F8FAFC; }
         .leader-body p { margin: 20px 0; color: #475569; font-family: 'Nunito'; font-size: 1rem; line-height: 1.6; font-weight: 500; }
 
-        /* --- 7. MEETING EXCELLENCE --- */
+        /* --- MEETING EXCELLENCE --- */
         .meeting-hub { width: 100%; background: #ffffff; padding-top: 20px; }
         .mtg-header { background-color: #f8fafc; padding: 50px 20px; text-align: center; }
         .mtg-header h1 { font-family: 'Montserrat'; font-weight: 900; font-size: clamp(1.8rem, 6vw, 2.8rem); color: #00203F; text-transform: uppercase; margin: 0; }
@@ -113,7 +117,7 @@
         .rule-num { background: #124A7A; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; position: absolute; top: -15px; left: 20px; }
         .strategy-box { background: #00203F; color: white; padding: 30px; border-radius: 8px; border-left: 8px solid #ECA400; margin-bottom: 20px; }
 
-        /* --- 8. COMMITTEE BUILDING --- */
+        /* --- COMMITTEE BUILDING --- */
         .committee-hero { background-color: #f8fafc; padding: 50px 20px; text-align: center; }
         .committee-logo { width: 130px; height: 130px; border-radius: 50%; border: 4px solid #fff; margin: 0 auto 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); overflow: hidden; display: flex; align-items: center; justify-content: center; }
         .committee-logo img { width: 100%; height: 100%; object-fit: cover; }
@@ -127,8 +131,7 @@
         .role-card:hover .symbol-circle { border-color: #ECA400; transform: translateY(-8px); }
         .symbol-circle svg { width: 75px; height: 75px; }
 
-        /* --- 9. COMMITTEE FAQs --- */
-        .faq-intro { text-align: center; max-width: 800px; margin: 60px auto 30px auto; }
+        /* --- COMMITTEE FAQs --- */
         .qa-grid-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; width: 100%; max-width: 1100px; margin: 0 auto; box-sizing: border-box; }
         .faq-grid-card { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 20px; cursor: pointer; transition: 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.02); display: flex; flex-direction: column; height: fit-content; }
         .faq-grid-card:hover { border-color: #00203F; box-shadow: 0 4px 12px rgba(0, 32, 63, 0.08); }
@@ -140,7 +143,7 @@
         .faq-card-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; color: #475569; font-size: 0.9rem; }
         .faq-card-body p { margin: 15px 0 0 0; padding-top: 10px; border-top: 1px solid #F1F5F9; text-align: left; }
 
-        /* --- 10. HANDOVER DOCUMENTATION (NEW) --- */
+        /* --- HANDOVER DOCUMENTATION --- */
         .handover-hero { position: relative; width: 100%; background: #f8fafc; padding: 60px 20px 40px; text-align: center; overflow: hidden; display: flex; flex-direction: column; align-items: center; margin-top: 40px; }
         .handover-hero::before { content: "RECORDS"; position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); font-size: clamp(5rem, 18vw, 12rem); font-weight: 900; color: rgba(0, 32, 63, 0.03); letter-spacing: 15px; z-index: 1; pointer-events: none; white-space: nowrap; }
         .handover-hero h2 { position: relative; z-index: 2; margin: 0; font-family: 'Montserrat'; font-weight: 900; font-size: clamp(1.8rem, 8vw, 3rem); text-transform: uppercase; line-height: 1.1; color: #00203F; }
@@ -154,11 +157,6 @@
         .handover-card h3 { color: #00203F; margin: 0 0 12px; font-size: 0.95rem; display: flex; align-items: center; gap: 10px; font-weight: 800; text-transform: uppercase; font-family: 'Montserrat'; }
         .icon-dot { width: 8px; height: 8px; background-color: #ECA400; border-radius: 50%; }
         .handover-card p { color: #475569; line-height: 1.6; font-size: 0.85rem; margin: 0; font-family: 'Montserrat'; }
-
-        /* --- 11. ROADMAP HOOK --- */
-        .hook-section { width: 100%; background-color: #F3F3F3; display: flex; flex-direction: column; align-items: center; padding: 30px 20px; color: #00203F; position: relative; z-index: 15; border-radius: 30px 30px 0 0; margin-top: 40px; }
-        .spine-node { width: 10px; height: 10px; background: #00203F; border: 2px solid #ECA400; border-radius: 50%; animation: beaconPulse 3s infinite; }
-        @keyframes beaconPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } }
 
         @media (min-width: 600px) { .handover-grid { grid-template-columns: repeat(2, 1fr); } .qa-grid-container { grid-template-columns: repeat(2, 1fr); } }
         @media (min-width: 1024px) { .handover-grid { grid-template-columns: repeat(4, 1fr); } .qa-grid-container { grid-template-columns: repeat(3, 1fr); } }
@@ -193,8 +191,8 @@
             <h3 class="hub-title">The Golden Circle</h3>
             <div class="gc-layout">
                 <div class="circle-viz">
-                    <div class="circle-outer" id="viz-what"><span class="circle-text label-what">WHAT</span>
-                        <div class="circle-middle" id="viz-how"><span class="circle-text label-how">HOW</span>
+                    <div class="circle-outer"><span class="circle-text label-what">WHAT</span>
+                        <div class="circle-middle"><span class="circle-text label-how">HOW</span>
                             <div class="circle-inner">WHY</div>
                         </div>
                     </div>
@@ -212,6 +210,22 @@
                 </div>
             </div>
         </div>
+
+        <section class="hook-section">
+            <div class="spine-node"></div>
+            <h1 style="font-family:'Montserrat'; font-weight:900; text-transform:uppercase; margin:10px 0 15px 0;">This Section Includes:</h1>
+            <div class="roadmap-list-container">
+                <div class="guide-tag">Leadership Excellence</div>
+                <p style="font-size:0.9rem; line-height:1.5; margin:0 0 15px 0; font-weight:400; color:#475569;">Equipping ISoc leaders with the spiritual foundation and practical organizational skills required to manage a successful committee and leave a lasting legacy.</p>
+                <div style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;">
+                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0, 32, 63, 0.06);">Lessons in Leadership</div>
+                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0, 32, 63, 0.06);">Meeting Excellence</div>
+                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0, 32, 63, 0.06);">Building Your Committee</div>
+                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0, 32, 63, 0.06);">Committee FAQs</div>
+                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0, 32, 63, 0.06);">Key Handover Documentation</div>
+                </div>
+            </div>
+        </section>
 
         <div class="lessons-bridge"><div class="connector-line"></div></div>
         <div class="wave-wrapper">
@@ -245,7 +259,7 @@
         <section class="meeting-hub">
             <div class="mtg-header"><h1>Meeting Excellence</h1><p style="color:#ECA400; font-family:'Montserrat'; font-weight:800; text-transform:uppercase; letter-spacing:4px; font-size:0.75rem; margin-top:10px;">Focused • Efficient • Creative</p></div>
             <div style="max-width: 1100px; margin: auto; padding: 25px 15px;">
-                <p style="text-align:center; color:#475569; margin-bottom:25px;">To make meetings efficient, the host must ensure the meeting <strong>remains focused</strong> and the <strong>agenda is being followed</strong>. However, the goal is to make meetings <span style="color: #124A7A; font-weight: 700;">enjoyable and creative</span>, as opposed to being sterile and corporate.</p>
+                <p style="text-align:center; color:#475569; margin-bottom:25px;">To make meetings efficient, the host must ensure the meeting <strong>remains focused</strong> and the <strong>agenda is being followed</strong>. However, the goal is to make meetings <span style="color:#124A7A; font-weight:700;">enjoyable and creative</span>, as opposed to being sterile and corporate.</p>
                 <div class="tab-nav">
                     <button onclick="openTab('essentials')" class="mtg-btn active" id="btn-essentials">Must-Know Tips</button>
                     <button onclick="openTab('structural')" class="mtg-btn inactive" id="btn-structure">The Big Picture</button>
@@ -328,11 +342,11 @@
                 </div>
                 <div class="faq-grid-card" onclick="toggleFaqCard(this)">
                     <div class="faq-card-header"><span class="faq-icon">2</span><h3 class="faq-grid-title">How do we prevent the committee from burning out?</h3></div>
-                    <div class="faq-card-body"><p><strong>Regular check-ins.</strong> Have the vice team check in often and rotate event leads so stress is shared. Don't burn out by doing everything yourself.</p></div>
+                    <div class="faq-card-body"><p><strong>Regular check-ins.</strong> Have the vice team check in often and rotate event leads so stress is shared.</p></div>
                 </div>
                 <div class="faq-grid-card" onclick="toggleFaqCard(this)">
                     <div class="faq-card-header"><span class="faq-icon">3</span><h3 class="faq-grid-title">What is the biggest mistake a new committee makes?</h3></div>
-                    <div class="faq-card-body"><p><strong>Imbalance.</strong> Using all energy on freshers. Ensure regular events keep the society balanced year-round.</p></div>
+                    <div class="faq-card-body"><p><strong>Imbalance.</strong> Using all energy on freshers. Ensure regular events keep society balanced year-round.</p></div>
                 </div>
                 <div class="faq-grid-card" onclick="toggleFaqCard(this)">
                     <div class="faq-card-header"><span class="faq-icon">4</span><h3 class="faq-grid-title">How should we resolve major disagreements?</h3></div>
@@ -344,7 +358,7 @@
                 </div>
                 <div class="faq-grid-card" onclick="toggleFaqCard(this)">
                     <div class="faq-card-header"><span class="faq-icon">6</span><h3 class="faq-grid-title">We struggle to keep volunteers engaged. Solution?</h3></div>
-                    <div class="faq-card-body"><p><strong>Barakah & Thanks.</strong> Remind members of spiritual rewards and always give genuine public praise.</p></div>
+                    <div class="faq-card-body"><p><strong>Barakah & Thanks.</strong> Remind members of spiritual rewards and give public praise.</p></div>
                 </div>
             </div>
         </section>
@@ -371,22 +385,6 @@
                     <div class="handover-card"><h3><span class="icon-dot"></span>SU Relations</h3><p>Key information on room bookings and relationship history.</p></div>
                     <div class="handover-card"><h3><span class="icon-dot"></span>Prayer Room Guidance</h3><p>University rules and best practices for managing the prayer room.</p></div>
                     <div class="handover-card"><h3><span class="icon-dot"></span>Inventory of Assets</h3><p>A full list of ISoc property, from banners to sports equipment.</p></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="hook-section">
-            <div class="spine-node"></div>
-            <h1 style="font-family:'Montserrat'; font-weight:900; text-transform:uppercase; margin:10px 0 15px 0;">This Section Includes:</h1>
-            <div class="roadmap-list-container">
-                <div class="guide-tag">Leadership Excellence</div>
-                <p style="font-size:0.9rem; line-height:1.5; margin:0 0 15px 0; font-weight:400; color:#475569;">Equipping ISoc leaders with the spiritual foundation and practical organizational skills required to manage a successful committee and leave a lasting legacy.</p>
-                <div style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;">
-                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0,32,63,0.06);">Your Intention Matters</div>
-                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0,32,63,0.06);">Meeting Excellence</div>
-                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0,32,63,0.06);">Building Your Committee</div>
-                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0,32,63,0.06);">Committee FAQs</div>
-                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0,32,63,0.06);">Key Handover Documentation</div>
                 </div>
             </div>
         </section>
