@@ -69,14 +69,14 @@
         .acc-body { max-height: 0; overflow: hidden; transition: 0.4s ease-out; background: #f8fafc; }
         .acc-inner { padding: 20px; display: flex; align-items: center; gap: 15px; }
         .acc-inner p { margin: 0; color: #475569; font-size: 1.05rem; line-height: 1.6; flex: 1; font-weight: 500; }
-        .acc-image { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid #ECA400; flex-shrink: 0; }
+        .acc-image { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid #ECA400; flex-shrink: 0; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
 
         /* --- LESSONS BANNER --- */
         .lessons-bridge { width: 100%; display: flex; flex-direction: column; align-items: center; background: #fff; height: 45px; margin-top: 40px; }
         .connector-line { width: 2px; height: 100%; background: linear-gradient(to bottom, #F1F5F9, #ECA400); }
         .wave-wrapper { width: 100%; line-height: 0; position: relative; background: #fff; }
         .navy-banner { width: 100%; background-color: #00203F; text-align: center; padding: 30px 18px 70px; color: #fff; position: relative; z-index: 10; }
-        .main-heading { font-family: 'Montserrat'; font-weight: 900; font-size: clamp(22px, 7vw, 42px); text-transform: uppercase; margin: 0; letter-spacing: 1px; }
+        .main-heading { font-family: 'Montserrat'; font-weight: 900; font-size: clamp(22px, 7vw, 42px); text-transform: uppercase; margin: 0; letter-spacing: 1px; line-height: 1.15; }
         .main-heading span { font-family: 'Playfair Display'; font-style: italic; font-weight: 400; text-transform: none; color: #ECA400; }
         .accent-line { width: 42px; height: 3px; background: #ECA400; margin: 16px auto 18px; border-radius: 2px; }
 
@@ -95,11 +95,13 @@
         .leader-header { padding: 20px 25px; display: flex; justify-content: space-between; align-items: center; }
         .leader-title { font-family: 'Montserrat'; font-weight: 800; font-size: 1.1rem; text-transform: uppercase; color: #00203F; margin: 0; }
         .leader-body { max-height: 0; overflow: hidden; transition: 0.4s; padding: 0 25px; background: #F8FAFC; }
+        .leader-body p { margin: 20px 0; color: #475569; font-family: 'Nunito'; font-size: 1rem; line-height: 1.6; font-weight: 500; }
 
         /* --- ROADMAP HOOK --- */
         .hook-section { width: 100%; background-color: #F3F3F3; display: flex; flex-direction: column; align-items: center; padding: 30px 20px; color: #00203F; position: relative; z-index: 15; border-radius: 30px 30px 0 0; margin-top: 40px; }
         .spine-node { width: 10px; height: 10px; background: #00203F; border: 2px solid #ECA400; border-radius: 50%; animation: beaconPulse 3s infinite; }
         @keyframes beaconPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } }
+        .guide-tag { display: inline-block; font-family: 'Montserrat'; font-size: 10px; font-weight: 800; color: #ECA400; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 6px; border-bottom: 2px solid #ECA400; padding-bottom: 4px; }
 
         /* --- MEETING EXCELLENCE --- */
         .mtg-header { background-color: #f8fafc; padding: 50px 20px; text-align: center; }
@@ -109,7 +111,6 @@
         .mtg-btn.active { background: #124A7A; color: white; }
         .mtg-btn.inactive { background: transparent; color: #124A7A; }
         .mtg-content { display: none; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .rule-card { background: #FFFFFF; border: 1px solid #C7CBC8; padding: 25px; border-radius: 8px; border-top: 6px solid #124A7A; position: relative; height: 100%; }
         .rule-num { background: #124A7A; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; position: absolute; top: -15px; left: 20px; }
         .strategy-box { background: #00203F; color: white; padding: 30px; border-radius: 8px; border-left: 8px solid #ECA400; margin-bottom: 20px; }
@@ -173,39 +174,39 @@
         <div class="navy-banner">
             <h1 class="main-heading">Lessons in <span>Leadership</span></h1>
             <div class="accent-line"></div>
-            <p class="banner-subtext">A strong leader is the cornerstone of any effective team. True leadership in an ISoc is about serving your people and the Muslim community with humility and sincerity.</p>
+            <p style="max-width:720px; margin:0 auto; color:#fff; font-size:clamp(14px, 4.2vw, 16px); line-height:1.55; opacity:0.9;">A strong leader is the cornerstone of any effective team. True leadership in an ISoc is about serving your people and the Muslim community with humility and sincerity.</p>
         </div>
 
         <div class="qa-wrapper">
             <div class="qa-stack">
                 <div class="topic-group">
                     <div class="qa-card question-card"><div class="qa-badge">QUESTION</div><h3 class="qa-text">What do you expect from your team?</h3></div>
-                    <div class="qa-card answer-card"><div class="qa-badge">ANSWER</div><p class="qa-text-body">Prompt task completion, upholding Islamic values & consistent attendance. Empowering individuals with well-defined roles streamlines work.</p></div>
+                    <div class="qa-card answer-card"><div class="qa-badge">ANSWER</div><p class="qa-text-body">Prompt task completion, upholding Islamic values & consistent attendance. Empowering individuals with well-defined roles streamlines work and builds confidence. Don't burn out by doing everything yourself.</p></div>
                 </div>
                 <div class="topic-group">
-                    <div class="qa-card question-card"><div class="qa-badge">QUESTION</div><h3 class="qa-text">How do we improve our communication?</h3></div>
-                    <div class="qa-card answer-card"><div class="qa-badge">ANSWER</div><p class="qa-text-body">With effective communication techniques from the Sunnah. Learn how to convey the message of Islam clearly & compassionately.</p></div>
+                    <div class="qa-card question-card"><div class="qa-badge">QUESTION</div><h3 class="qa-text">How do we improve our communication as Muslim leaders?</h3></div>
+                    <div class="qa-card answer-card"><div class="qa-badge">ANSWER</div><p class="qa-text-body">With effective communication techniques from the Sunnah. Learn how to convey the message of Islam clearly & compassionately, drawing inspiration from the Prophet's (SAW) methods.</p></div>
                 </div>
             </div>
             <div class="leader-drop-grid">
-                <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Lead by Example</h3><span>+</span></div><div class="leader-body"><p>Serve your people and the Muslim community with humility and sincerity. Lead with genuine care.</p></div></div>
-                <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Communicate with Clarity</h3><span>+</span></div><div class="leader-body"><p>Clear and consistent communication is vital for team cohesion. Ensure information flows freely.</p></div></div>
-                <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Defining Roles</h3><span>+</span></div><div class="leader-body"><p>Defining clear roles and reporting structures: everyone knows their responsibilities.</p></div></div>
+                <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Lead by Example</h3><span>+</span></div><div class="leader-body"><p>Serve your people and the Muslim community with <strong>humility and sincerity</strong>. Lead with <strong>genuine care</strong> and inspire through your actions, your team will naturally follow and respect your guidance.</p></div></div>
+                <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Communicate with Clarity</h3><span>+</span></div><div class="leader-body"><p>Clear and consistent communication is vital for team cohesion. Ensure information flows freely, expectations are understood, and feedback is encouraged.</p></div></div>
+                <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Defining Roles</h3><span>+</span></div><div class="leader-body"><p>Defining clear roles and reporting structures: everyone knows their responsibilities, who to report to, and where decisions are made.</p></div></div>
             </div>
         </div>
 
         <section class="hook-section">
             <div class="spine-node"></div>
-            <h1 style="font-family: 'Montserrat'; font-weight: 900; text-transform: uppercase;">This Section Includes:</h1>
+            <h1 style="font-family:'Montserrat'; font-weight:900; text-transform:uppercase; margin:10px 0 15px 0;">This Section Includes:</h1>
             <div class="roadmap-list-container">
                 <div class="guide-tag">Leadership Excellence</div>
-                <p class="intro-text">Equipping ISoc leaders with the spiritual foundation and practical organizational skills required to manage a successful committee and leave a lasting legacy.</p>
-                <div class="link-list">
-                    <div class="link-item" style="color:#00203F; font-weight:700; display:flex; align-items:center; gap:12px; border-bottom: 1px solid rgba(0,32,63,0.06); padding-bottom:10px;">Your Intention Matters</div>
-                    <div class="link-item" style="color:#00203F; font-weight:700; display:flex; align-items:center; gap:12px; border-bottom: 1px solid rgba(0,32,63,0.06); padding-bottom:10px;">Meeting Excellence</div>
-                    <div class="link-item" style="color:#00203F; font-weight:700; display:flex; align-items:center; gap:12px; border-bottom: 1px solid rgba(0,32,63,0.06); padding-bottom:10px;">Building Your Committee</div>
-                    <div class="link-item" style="color:#00203F; font-weight:700; display:flex; align-items:center; gap:12px; border-bottom: 1px solid rgba(0,32,63,0.06); padding-bottom:10px;">Committee FAQs</div>
-                    <div class="link-item" style="color:#00203F; font-weight:700; display:flex; align-items:center; gap:12px; border-bottom: 1px solid rgba(0,32,63,0.06); padding-bottom:10px;">Key Handover Documentation</div>
+                <p style="font-size:0.9rem; line-height:1.5; margin:0 0 15px 0; font-weight:400; color:#475569;">Equipping ISoc leaders with the spiritual foundation and practical organizational skills required to manage a successful committee and leave a lasting legacy.</p>
+                <div style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;">
+                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0,32,63,0.06);">Your Intention Matters</div>
+                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0,32,63,0.06);">Meeting Excellence</div>
+                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0,32,63,0.06);">Building Your Committee</div>
+                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0,32,63,0.06);">Committee FAQs</div>
+                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0,32,63,0.06);">Key Handover Documentation</div>
                 </div>
             </div>
         </section>
@@ -213,21 +214,36 @@
         <section class="meeting-hub">
             <div class="mtg-header"><h1>Meeting Excellence</h1><p style="color:#ECA400; font-family:'Montserrat'; font-weight:800; text-transform:uppercase; letter-spacing:4px; font-size:0.75rem; margin-top:10px;">Focused • Efficient • Creative</p></div>
             <div style="max-width: 1100px; margin: auto; padding: 25px 15px;">
-                <p style="text-align: center; color: #475569;">To make meetings efficient, the host must ensure the meeting <strong>remains focused</strong>. However, the goal is to make meetings <span style="color: #124A7A; font-weight: 700;">enjoyable and creative</span>.</p>
+                <p style="text-align:center; color:#475569; margin-bottom:25px;">To make meetings efficient, the host must ensure the meeting <strong>remains focused</strong> and the <strong>agenda is being followed</strong>. However, the goal is to make meetings <span style="color:#124A7A; font-weight:700;">enjoyable and creative</span>, as opposed to being sterile and corporate.</p>
                 <div class="tab-nav">
                     <button onclick="openTab('essentials')" class="mtg-btn active" id="btn-essentials">Must-Know Tips</button>
                     <button onclick="openTab('structural')" class="mtg-btn inactive" id="btn-structure">The Big Picture</button>
                 </div>
                 <div id="essentials" class="mtg-content" style="display: block;">
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-                        <div class="rule-card"><div class="rule-num">1</div><h4 style="color:#124A7A; text-transform:uppercase; margin:10px 0;">Create an Agenda</h4><p style="font-size:0.9rem; color:#475569;">Prepare ideas beforehand and send it far in advance. <br><strong>PRO TIP:</strong> Always start with an Islamic reminder.</p></div>
+                        <div class="rule-card"><div class="rule-num">1</div><h4 style="color:#124A7A; text-transform:uppercase; margin:10px 0;">Create an Agenda</h4><p style="font-size:0.9rem; color:#475569;">Prepare ideas beforehand and send the agenda out far in advance. Give a specified amount of time for each item.</p><div style="background:#F0F4F8; padding:10px; border-radius:4px; border-left:3px solid #ECA400; margin-top:10px;"><small style="font-weight:700;">PRO TIP:</small><br><small>Always start with an Islamic reminder.</small></div></div>
                         <div class="rule-card"><div class="rule-num">2</div><h4 style="color:#124A7A; text-transform:uppercase; margin:10px 0;">Time is Essence</h4><p style="font-size:0.9rem; color:#475569;">Lateness creates a <strong>culture of slack</strong>. Always start and finish on time. Allocate a timekeeper.</p></div>
-                        <div class="rule-card"><div class="rule-num">3</div><h4 style="color:#124A7A; text-transform:uppercase; margin:10px 0;">Action Points!</h4><div style="background:#FFF8E1; padding:10px; border-radius:4px; font-size:0.85rem; font-weight:700;">Never leave without knowing exactly who is responsible for what and the deadlines.</div></div>
+                        <div class="rule-card"><div class="rule-num">3</div><h4 style="color:#124A7A; text-transform:uppercase; margin:10px 0;">Action Points!</h4><p style="font-size:0.9rem; color:#475569;">First meetings are for ground rules. Close every meeting with a "Thank You."</p><div style="background:#FFF8E1; padding:10px; border-radius:4px; margin-top:10px; font-size:0.85rem; font-weight:700;">Never leave without knowing exactly who is responsible for what and the deadlines.</div></div>
                     </div>
                 </div>
                 <div id="structural" class="mtg-content">
-                    <div class="strategy-box"><h3 style="color:#ECA400; margin:0 0 10px 0;">1. RUNNING AN AGM</h3><p style="font-size:0.95rem;">Showcase accomplishments, documentation (role descriptions), and know the rules of your constitution.</p></div>
-                    <div style="background: #F2F4F5; padding: 25px; border-radius: 8px; border: 1px solid #C7CBC8;"><h3 style="color:#124A7A; margin:0 0 10px 0;">2. THE HANDOVER</h3><p style="font-size:0.9rem;">Continuity is key. Introduce successors to the Student Union, Sponsors, and Alumni.</p></div>
+                    <div class="strategy-box"><h3 style="color:#ECA400; margin-top:0;">1. RUNNING AN AGM</h3><p style="font-size:0.95rem; opacity:0.9;">Before the Annual General Meeting, preparation is key:</p>
+                        <ul style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:10px; padding-left:15px; font-size:0.9rem;">
+                            <li><strong>Showcase Accomplishments:</strong> Coverage of the year's wins.</li>
+                            <li><strong>Documentation:</strong> Role descriptions and manifestos.</li>
+                            <li><strong>Know the Rules:</strong> Study your constitution well.</li>
+                            <li><strong>Invite Stakeholders:</strong> Showcase professionalism.</li>
+                        </ul>
+                    </div>
+                    <div style="background:#F2F4F5; padding:25px; border-radius:8px; border-left:8px solid #124A7A; border:1px solid #C7CBC8;"><h3 style="color:#124A7A; margin-top:0;">2. THE HANDOVER</h3><p style="font-size:0.9rem;">Continuity is key. Put yourself in the position of your successors—what do they need to know?</p>
+                        <div style="background:white; padding:15px; border-radius:6px; border:1px solid #E0E0E0; margin-top:15px;"><strong style="color:#124A7A; text-transform:uppercase; font-size:0.8rem;">Network Introduction</strong>
+                            <div style="margin-top:8px; display:flex; gap:8px; flex-wrap:wrap;">
+                                <span style="background:#ECA400; color:#00203F; padding:3px 10px; border-radius:20px; font-size:0.75rem; font-weight:700;">Student Union</span>
+                                <span style="background:#ECA400; color:#00203F; padding:3px 10px; border-radius:20px; font-size:0.75rem; font-weight:700;">Sponsors</span>
+                                <span style="background:#ECA400; color:#00203F; padding:3px 10px; border-radius:20px; font-size:0.75rem; font-weight:700;">Alumni</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -236,7 +252,7 @@
     <script>
         function sendHeight() {
             const height = document.body.scrollHeight;
-            if (window.parent) { window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height + 50 }, '*'); }
+            if (window.parent) { window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height + 60 }, '*'); }
         }
         function toggleAcc(btn) {
             const body = btn.nextElementSibling;
