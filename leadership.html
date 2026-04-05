@@ -5,235 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Nunito:wght@400;500;600;700&family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,400;1,600&display=swap" rel="stylesheet">
     <style>
-        /* --- 1. GLOBAL SCROLL DNA --- */
         * { box-sizing: border-box; }
+        ::-webkit-scrollbar { display: none !important; }
         
         html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
+            margin: 0; padding: 0; width: 100%;
             background-color: #00203F; 
             font-family: 'Nunito', sans-serif;
             overflow-x: hidden;
             overflow-y: auto !important; 
             display: block; 
             -webkit-overflow-scrolling: touch;
+            -ms-overflow-style: none !important; scrollbar-width: none !important;
         }
 
-        /* --- 2. HERO SECTION --- */
+        /* --- HERO --- */
         .hero-section {
-            width: 100%;
-            padding: 60px 20px 40px 20px;
-            text-align: center;
-            position: relative;
-            background: radial-gradient(circle at center, #003056 0%, #00203F 45%);
-            color: white;
-            z-index: 1;
+            width: 100%; padding: 60px 20px 40px 20px; text-align: center; position: relative;
+            background: radial-gradient(circle at center, #003056 0%, #00203F 45%); color: white; z-index: 1;
         }
-
-        .icon-canvas {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
+        .icon-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; overflow: hidden; }
         .floating-icon { position: absolute; fill: #d4af37; opacity: 0.04; animation: slowDrift 20s infinite ease-in-out alternate; }
         .i1 { width: 100px; top: 8%; left: 7%; }
         .i2 { width: 70px; top: 12%; right: 12%; animation-delay: -3.5s; }
         .i3 { width: 110px; bottom: 12%; left: 10%; animation-delay: -7s; }
+        @keyframes slowDrift { 0% { transform: translate3d(0, 0, 0) rotate(0deg); } 100% { transform: translate3d(15px, -20px, 0) rotate(5deg); } }
 
-        @keyframes slowDrift {
-            0% { transform: translate3d(0, 0, 0) rotate(0deg); }
-            100% { transform: translate3d(15px, -20px, 0) rotate(5deg); }
-        }
-
-        .hero-section h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: clamp(2.2rem, 10vw, 5rem);
-            text-transform: uppercase;
-            line-height: 0.95;
-            margin: 0 0 10px 0;
-            text-shadow: 0 10px 25px rgba(0,0,0,0.4);
-        }
-
-        .hero-section h1 span { display: block; }
-
+        h1.hero-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(2.2rem, 10vw, 5.5rem); text-transform: uppercase; line-height: 0.95; margin: 0 0 10px 0; text-shadow: 0 10px 25px rgba(0,0,0,0.4); }
+        h1.hero-title span { display: block; }
+        
         .swipe-zone { margin: 5px 0 25px 0; display: flex; flex-direction: column; align-items: center; }
         .chevron { width: 12px; height: 12px; border-right: 3px solid #d4af37; border-bottom: 3px solid #d4af37; transform: rotate(45deg); animation: pulse 2s infinite; }
         @keyframes pulse { 0% { transform: rotate(45deg) translate(-5px, -5px); opacity: 0; } 50% { opacity: 1; } 100% { transform: rotate(45deg) translate(5px, 5px); opacity: 0; } }
         .swipe-text { color: #d4af37; font-family: 'Montserrat'; font-size: 9px; font-weight: 800; letter-spacing: 2px; margin-top: 4px; }
 
-        .arabic-verse {
-            font-size: clamp(1.1rem, 3vw, 1.6rem);
-            color: #ECA400;
-            margin-bottom: 15px;
-            display: block;
-            direction: rtl;
-            line-height: 1.7;
-            padding: 0 10px;
-        }
+        .arabic { font-size: clamp(1.1rem, 3vw, 1.6rem); color: #d4af37; margin-bottom: 15px; display: block; line-height: 1.7; direction: rtl; }
+        .translation { font-family: 'Nunito', sans-serif; font-size: clamp(0.9rem, 2vw, 1.2rem); color: rgba(255, 255, 255, 0.85); line-height: 1.6; margin: 0 auto 10px auto; max-width: 850px; }
+        .citation { font-family: 'Montserrat'; font-weight: 700; font-size: 0.75rem; color: rgba(212, 175, 55, 0.5); text-transform: uppercase; letter-spacing: 5px; }
 
-        .translation-text {
-            max-width: 850px;
-            margin: 0 auto 10px auto;
-            font-size: clamp(0.9rem, 2vw, 1.2rem);
-            color: rgba(255, 255, 255, 0.85);
-            line-height: 1.6;
-        }
+        /* --- CONTENT WRAPPER --- */
+        .master-content { width: 100%; background: #FFFFFF; margin-top: -25px; border-radius: 30px 30px 0 0; padding: 40px 15px; position: relative; z-index: 5; }
 
-        .citation {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 0.75rem;
-            color: rgba(212, 175, 55, 0.5);
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            text-align: center;
-        }
+        .hub-title { font-family: 'Montserrat'; font-weight: 800; color: #00203F; text-transform: uppercase; text-align: center; margin: 0 0 5px 0; font-size: clamp(1.1rem, 5vw, 1.8rem); letter-spacing: 1px; }
+        .sub-instruction { display: block; text-align: center; font-size: 0.7rem; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+        
+        .btn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; max-width: 1100px; margin: 0 auto 40px auto; justify-items: center; }
+        .resource-card { background: #ECA400; border: 2px solid #ECA400; padding: 10px 15px; border-radius: 8px; text-decoration: none; color: #00203F; font-family: 'Montserrat'; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; display: flex; align-items: center; width: 100%; max-width: 340px; transition: 0.2s; }
 
-        /* --- 3. MASTER CONTENT CONTAINER --- */
-        .master-content-container {
-            width: 100%;
-            background: #FFFFFF;
-            margin-top: -25px; 
-            border-radius: 30px 30px 0 0;
-            padding: 40px 15px;
-            position: relative;
-            z-index: 5;
-        }
-
-        .hub-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            color: #00203F;
-            text-transform: uppercase;
-            text-align: center;
-            margin: 0 0 5px 0;
-            font-size: clamp(1.1rem, 5vw, 1.8rem);
-            letter-spacing: 1px;
-        }
-
-        .sub-instruction {
-            display: block;
-            text-align: center;
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: #64748B;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-        }
-
-        .btn-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 10px;
-            max-width: 1100px;
-            margin: 0 auto 40px auto;
-            justify-items: center;
-        }
-
-        .resource-card {
-            background: #ECA400;
-            border: 2px solid #ECA400;
-            padding: 10px 15px;
-            border-radius: 8px;
-            text-decoration: none;
-            color: #00203F;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            max-width: 340px;
-            transition: 0.2s ease;
-        }
-
-        /* --- 4. THE GOLDEN CIRCLE --- */
+        /* --- GOLDEN CIRCLE --- */
         .gc-section { border-top: 2px solid #F1F5F9; padding-top: 30px; margin-top: 10px; }
         .gc-layout { display: flex; flex-direction: column; align-items: center; gap: 20px; }
         @media (min-width: 900px) { .gc-layout { flex-direction: row; gap: 40px; } }
-
-        .circle-viz { width: 100%; max-width: 280px; position: relative; aspect-ratio: 1/1; }
+        .circle-viz { flex: 1; width: 100%; max-width: 280px; position: relative; aspect-ratio: 1/1; }
         .circle-outer { width: 100%; height: 100%; border: 3px solid #00203F; border-radius: 50%; position: relative; }
         .circle-middle { width: 68%; height: 68%; border: 3px solid #00203F; border-radius: 50%; position: absolute; top: 16%; left: 16%; background: #fff; }
-        .circle-inner { width: 45%; height: 45%; background: #ECA400; border-radius: 50%; position: absolute; top: 27.5%; left: 27.5%; display: flex; justify-content: center; align-items: center; font-weight: 900; color: #00203F; font-family: 'Montserrat'; z-index: 5; }
-
-        .circle-text { font-family: 'Montserrat', sans-serif; font-weight: 800; position: absolute; font-size: 0.8rem; width: 100%; text-align: center; pointer-events: none; color: #00203F; }
+        .circle-inner { width: 45%; height: 45%; background: #ECA400; border-radius: 50%; position: absolute; top: 27.5%; left: 27.5%; display: flex; justify-content: center; align-items: center; font-weight: 900; color: #00203F; font-family: 'Montserrat'; }
+        .circle-text { font-family: 'Montserrat'; font-weight: 800; position: absolute; font-size: 0.8rem; width: 100%; text-align: center; color: #00203F; }
         .label-what { bottom: 8%; } .label-how { bottom: 12%; }
-
+        
         .acc-item { border: 1px solid #E2E8F0; border-radius: 8px; margin-bottom: 8px; overflow: hidden; width: 100%; }
-        .acc-header { width: 100%; padding: 12px; background: #fff; border: none; text-align: left; font-family: 'Montserrat', sans-serif; font-weight: 800; display: flex; justify-content: space-between; cursor: pointer; color: #00203F; text-transform: uppercase; }
+        .acc-header { width: 100%; padding: 12px; background: #fff; border: none; text-align: left; font-family: 'Montserrat'; font-weight: 800; display: flex; justify-content: space-between; cursor: pointer; color: #00203F; text-transform: uppercase; }
         .acc-header.active { background: #F8FAFC; border-left: 4px solid #ECA400; }
         .acc-body { max-height: 0; overflow: hidden; transition: 0.4s ease-out; background: #f8fafc; }
         .acc-inner { padding: 20px; display: flex; align-items: center; gap: 15px; }
         .acc-inner p { margin: 0; color: #475569; font-size: 1.05rem; line-height: 1.6; flex: 1; font-weight: 500; }
-        .acc-image { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid #ECA400; flex-shrink: 0; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
+        .acc-image { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid #ECA400; flex-shrink: 0; }
 
-        /* --- 5. LESSONS IN LEADERSHIP BANNER --- */
+        /* --- LESSONS BANNER --- */
         .lessons-bridge { width: 100%; display: flex; flex-direction: column; align-items: center; background: #fff; height: 45px; margin-top: 40px; }
-        .connector-line-top { width: 2px; height: 100%; background: linear-gradient(to bottom, #F1F5F9, #ECA400); }
+        .connector-line { width: 2px; height: 100%; background: linear-gradient(to bottom, #F1F5F9, #ECA400); }
         .wave-wrapper { width: 100%; line-height: 0; position: relative; background: #fff; }
-        .wave-wrapper svg { width: 100%; height: auto; display: block; aspect-ratio: 1440 / 70; }
-        .gold-dot { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); width: 16px; height: 16px; background: #ECA400; border-radius: 50%; border: 3px solid #ffffff; box-shadow: 0 0 15px rgba(236, 164, 0, 0.4); z-index: 30; }
-
-        .navy-banner { width: 100%; background-color: #00203F; text-align: center; padding: 30px 18px 70px; margin-top: -1px; color: #fff; position: relative; z-index: 10; }
-        .main-heading { font-family: 'Montserrat'; font-weight: 900; font-size: clamp(22px, 7vw, 42px); text-transform: uppercase; margin: 0; letter-spacing: 1px; line-height: 1.15; }
-        .main-heading span { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; text-transform: none; color: #ECA400; }
+        .navy-banner { width: 100%; background-color: #00203F; text-align: center; padding: 30px 18px 70px; color: #fff; position: relative; z-index: 10; }
+        .main-heading { font-family: 'Montserrat'; font-weight: 900; font-size: clamp(22px, 7vw, 42px); text-transform: uppercase; margin: 0; letter-spacing: 1px; }
+        .main-heading span { font-family: 'Playfair Display'; font-style: italic; font-weight: 400; text-transform: none; color: #ECA400; }
         .accent-line { width: 42px; height: 3px; background: #ECA400; margin: 16px auto 18px; border-radius: 2px; }
-        .banner-subtext { max-width: 720px; margin: 0 auto; color: #ffffff; font-size: clamp(14px, 4.2vw, 16px); line-height: 1.55; opacity: 0.9; }
 
-        /* --- 6. Q&A & DROPDOWNS --- */
-        .qa-outer-wrapper { background: #fff; padding: 40px 15px; position: relative; z-index: 20; }
+        /* --- Q&A --- */
+        .qa-wrapper { background: #fff; padding: 40px 15px; position: relative; z-index: 20; }
         .qa-stack { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; max-width: 1200px; margin: 0 auto; }
         .topic-group { flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 20px; }
-        .qa-card { width: 100%; border-radius: 12px; padding: 40px 25px; position: relative; text-align: center; box-shadow: 0 6px 15px rgba(0,0,0,0.08); }
+        .qa-card { border-radius: 12px; padding: 40px 25px; position: relative; text-align: center; box-shadow: 0 6px 15px rgba(0,0,0,0.08); }
         .question-card { background: #fff; border: 2px solid #00203F; color: #00203F; }
-        .answer-card { background: #00203F; color: #fff; border: 2px solid #00203F; flex-grow: 1; }
+        .answer-card { background: #00203F; color: #fff; border: 2px solid #00203F; }
         .qa-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: #ECA400; color: #00203F; padding: 5px 22px; border-radius: 20px; font-family: 'Montserrat'; font-weight: 800; font-size: 0.75rem; border: 2px solid #00203F; }
-        .qa-text { font-family: 'Montserrat'; font-weight: 800; font-size: 1.3rem; margin: 0; line-height: 1.3; }
-        .qa-text-body { font-weight: 600; font-size: 1rem; line-height: 1.6; margin: 0; }
-
+        
         .leader-drop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; max-width: 1100px; margin: 40px auto 0; }
         .leader-drop-card { background: #fff; border: 1px solid #C7CBC8; border-radius: 8px; cursor: pointer; transition: 0.3s; }
-        .leader-drop-card.active { border-left: 6px solid #ECA400; border-color: #ECA400; }
+        .leader-drop-card.active { border-left: 6px solid #ECA400; }
         .leader-header { padding: 20px 25px; display: flex; justify-content: space-between; align-items: center; }
         .leader-title { font-family: 'Montserrat'; font-weight: 800; font-size: 1.1rem; text-transform: uppercase; color: #00203F; margin: 0; }
-        .leader-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; padding: 0 25px; background: #F8FAFC; }
-        .leader-body p { margin: 20px 0; color: #475569; font-size: 1rem; line-height: 1.6; font-weight: 500; }
+        .leader-body { max-height: 0; overflow: hidden; transition: 0.4s; padding: 0 25px; background: #F8FAFC; }
 
-        /* --- 7. TABLE OF CONTENTS HOOK --- */
-        .hook-container { width: 100%; background-color: #F3F3F3; display: flex; flex-direction: column; align-items: center; padding: 30px 20px; color: #00203F; position: relative; z-index: 15; border-radius: 30px 30px 0 0; margin-top: 40px; }
-        .spine-node { width: 10px; height: 10px; background: #00203F; border: 2px solid #ECA400; border-radius: 50%; margin-top: -5px; z-index: 10; animation: beaconPulse 3s infinite ease-in-out; }
+        /* --- ROADMAP HOOK --- */
+        .hook-section { width: 100%; background-color: #F3F3F3; display: flex; flex-direction: column; align-items: center; padding: 30px 20px; color: #00203F; position: relative; z-index: 15; border-radius: 30px 30px 0 0; margin-top: 40px; }
+        .spine-node { width: 10px; height: 10px; background: #00203F; border: 2px solid #ECA400; border-radius: 50%; animation: beaconPulse 3s infinite; }
         @keyframes beaconPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } }
-        .hook-container h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(1.4rem, 6vw, 2rem); font-weight: 900; margin: 10px 0 15px 0; text-transform: uppercase; letter-spacing: 1px; }
-        .roadmap-list-container { max-width: 650px; width: 100%; text-align: left; }
-        .guide-tag { display: inline-block; font-family: 'Montserrat'; font-size: 10px; font-weight: 800; color: #ECA400; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 6px; border-bottom: 2px solid #ECA400; padding-bottom: 4px; }
-        .intro-text { font-size: 0.9rem; line-height: 1.5; margin: 0 0 15px 0; color: #475569; }
-        .link-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
-        .link-item { color: #00203F; font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid rgba(0, 32, 63, 0.06); }
-        .link-item::before { content: ""; width: 6px; height: 6px; background: #ECA400; border-radius: 50%; flex-shrink: 0; }
 
-        /* --- 8. MEETING EXCELLENCE HUB --- */
-        .meeting-hub-section { width: 100%; background: #ffffff; padding-top: 40px; }
-        .mtg-header { background-color: #f8fafc; padding: 50px 20px 45px 20px; text-align: center; width: 100%; }
-        .mtg-header h1 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(1.8rem, 6vw, 2.8rem); color: #00203F; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
-        .mtg-tagline { margin: 10px 0 0; color: #ECA400; font-family: 'Montserrat'; font-size: 0.75rem; letter-spacing: 4px; font-weight: 800; text-transform: uppercase; }
+        /* --- MEETING EXCELLENCE --- */
+        .mtg-header { background-color: #f8fafc; padding: 50px 20px; text-align: center; }
+        .mtg-header h1 { font-family: 'Montserrat'; font-weight: 900; font-size: clamp(1.8rem, 6vw, 2.8rem); color: #00203F; text-transform: uppercase; margin: 0; }
         .tab-nav { display: flex; flex-wrap: wrap; background: #F8FAFC; border-radius: 12px; padding: 8px; margin: 25px auto; border: 1px solid #C7CBC8; gap: 8px; max-width: 1100px; }
-        .mtg-btn { flex: 1; min-width: 180px; padding: 14px; border: none; border-radius: 8px; cursor: pointer; font-family: 'Montserrat'; font-weight: 800; transition: 0.3s; font-size: 0.85rem; text-transform: uppercase; }
+        .mtg-btn { flex: 1; min-width: 180px; padding: 14px; border: none; border-radius: 8px; cursor: pointer; font-family: 'Montserrat'; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
         .mtg-btn.active { background: #124A7A; color: white; }
         .mtg-btn.inactive { background: transparent; color: #124A7A; }
         .mtg-content { display: none; animation: fadeIn 0.5s ease; }
-        .rule-card { background: #FFFFFF; border: 1px solid #C7CBC8; padding: 25px; border-radius: 8px; border-top: 6px solid #124A7A; position: relative; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .rule-card { background: #FFFFFF; border: 1px solid #C7CBC8; padding: 25px; border-radius: 8px; border-top: 6px solid #124A7A; position: relative; height: 100%; }
         .rule-num { background: #124A7A; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; position: absolute; top: -15px; left: 20px; }
         .strategy-box { background: #00203F; color: white; padding: 30px; border-radius: 8px; border-left: 8px solid #ECA400; margin-bottom: 20px; }
 
-        @media (max-width: 600px) { .acc-inner { flex-direction: column; text-align: center; } .topic-group { min-width: 100%; } }
+        @media (max-width: 600px) { .topic-group { min-width: 100%; } .acc-inner { flex-direction: column; text-align: center; } }
     </style>
 </head>
 <body>
@@ -244,141 +125,119 @@
             <svg class="floating-icon i2" viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
             <svg class="floating-icon i3" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
         </div>
-        <h1><span>Leadership</span><span>& Planning</span></h1>
+        <h1 class="hero-title"><span>Leadership</span><span>& Planning</span></h1>
         <div class="swipe-zone"><div class="chevron"></div><div class="swipe-text">EXPLORE</div></div>
-        <span class="arabic-verse">فَبِمَا رَحْمَةٍۢ مِّنَ ٱللَّهِ لِنتَ لَهُمْ ۖ وَلَوْ كُنتَ فَظًّا غَلِيظَ ٱلْقَلْبِ لَٱنفَضُّوا۟ مِنْ حَوْلِكَ ۖ فَٱعْفُ عَنْهُمْ وَٱسْتَغْفِرْ لَهُمْ وَشَاوِرْهُمْ فِى ٱلْأَمْرِ ۖ فَإِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى ٱللَّهِ ۚ إِنَّ ٱللَّهَ يُحِبُّ ٱلْمُتَوكِّلِينَ</span>
-        <p class="translation-text">"It is out of Allah’s mercy that you have been lenient with them... Once you make a decision, put your trust in Allah. Surely Allah loves those who trust in Him."</p>
+        <span class="arabic">فَبِمَا رَحْمَةٍۢ مِّنَ ٱللَّهِ لِنتَ لَهُمْ ۖ وَلَوْ كُنتَ فَظًّا غَلِيظَ ٱلْقَلْبِ لَٱنفَضُّوا۟ مِنْ حَوْلِكَ ۖ فَٱعْفُ عَنْهُمْ وَٱسْتَغْفِرْ لَهُمْ وَشَاوِرْهُمْ فِى ٱلْأَمْرِ ۖ فَإِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى ٱللَّهِ ۚ إِنَّ ٱللَّهَ يُحِبُّ ٱلْمُتَوكِّلِينَ</span>
+        <p class="translation">"It is out of Allah’s mercy that you have been lenient with them... Once you make a decision, put your trust in Allah. Surely Allah loves those who trust in Him."</p>
         <div class="citation">Surah Ali-Imran 3:159</div>
     </div>
 
-    <div id="master-root">
-        <div class="master-content-container">
-            <h3 class="hub-title">Quick Links & Templates</h3>
-            <span class="sub-instruction">click and save as a copy!</span>
-            <div class="btn-grid">
-                <a href="https://docs.google.com/document/d/1xcP6-OujnQzNXpePP0Q8WKLlHkrsZHgUUzmCPXaNGqQ/edit?usp=sharing" target="_blank" class="resource-card"><span style="margin-right:12px; font-size:1.4rem;">📜</span> Constitution Template</a>
-                <a href="https://docs.google.com/document/d/19upTZZdkEQYlGoW6HdQP0RP33dvaBEZ_/edit?usp=sharing" target="_blank" class="resource-card"><span style="margin-right:12px; font-size:1.4rem;">⏱️</span> Minutes Template</a>
-                <a href="https://docs.google.com/document/d/1Q7gdVCFR_7FenF3ZRekINJBHFGfNHGIe/edit?usp=sharing" target="_blank" class="resource-card"><span style="margin-right:12px; font-size:1.4rem;">🤝</span> Handover Checklist</a>
-            </div>
-
-            <div class="gc-section">
-                <h3 class="hub-title">The Golden Circle</h3>
-                <div class="gc-layout">
-                    <div class="circle-viz">
-                        <div class="circle-outer" id="viz-what"><span class="circle-text label-what">WHAT</span>
-                            <div class="circle-middle" id="viz-how"><span class="circle-text label-how">HOW</span>
-                                <div class="circle-inner" id="viz-why">WHY</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gc-content">
-                        <div class="acc-item"><button class="acc-header active" onclick="toggleAcc(this)">WHY <span>−</span></button>
-                            <div class="acc-body" style="max-height: 500px;"><div class="acc-inner"><p>The purpose. To serve & uplift Muslim students for the sake of Allah (SWT).</p><img src="https://i.ibb.co/4wJnfjc3/IMG-20230708-WA0066.jpg" class="acc-image"></div></div>
-                        </div>
-                        <div class="acc-item"><button class="acc-header" onclick="toggleAcc(this)">HOW <span>+</span></button>
-                            <div class="acc-body"><div class="acc-inner"><p>The process. By planning with sincerity, teamwork, and effective communication.</p><img src="https://i.ibb.co/DDTHY1VB/IMG-20240911-WA0039.jpg" class="acc-image"></div></div>
-                        </div>
-                        <div class="acc-item"><button class="acc-header" onclick="toggleAcc(this)">WHAT <span>+</span></button>
-                            <div class="acc-body"><div class="acc-inner"><p>The proof. Through high-quality events, socials, welfare services, and dawah activities.</p><img src="https://i.ibb.co/qMwnq8r7/Screenshot-2025-07-09-132149.png" class="acc-image"></div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="lessons-bridge"><div class="connector-line-top"></div></div>
-            <div class="wave-wrapper">
-                <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 70C360 15 1080 15 1440 70V70H0Z" fill="#00203F"/><path d="M0 0H1440V70C1080 15 360 15 0 70V0Z" fill="#ffffff"/>
-                </svg>
-                <div class="gold-dot"></div>
-            </div>
-
-            <div class="navy-banner">
-                <h1 class="main-heading">Lessons in <span>Leadership</span></h1>
-                <div class="accent-line"></div>
-                <p class="banner-subtext">A strong leader is the cornerstone of any effective team. True leadership in an ISoc is about serving your people and the Muslim community with humility and sincerity.</p>
-            </div>
-
-            <div class="qa-outer-wrapper">
-                <div class="qa-stack">
-                    <div class="topic-group">
-                        <div class="qa-card question-card"><div class="qa-badge">QUESTION</div><h3 class="qa-text">What do you expect from your team?</h3></div>
-                        <div class="qa-card answer-card"><div class="qa-badge">ANSWER</div><p class="qa-text-body">Prompt task completion, upholding Islamic values & consistent attendance. Empowering individuals with well-defined roles streamlines work.</p></div>
-                    </div>
-                    <div class="topic-group">
-                        <div class="qa-card question-card"><div class="qa-badge">QUESTION</div><h3 class="qa-text">How do we improve our communication?</h3></div>
-                        <div class="qa-card answer-card"><div class="qa-badge">ANSWER</div><p class="qa-text-body">With effective communication techniques from the Sunnah. Learn how to convey the message of Islam clearly & compassionately.</p></div>
-                    </div>
-                </div>
-                <div class="leader-drop-grid">
-                    <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Lead by Example</h3><span>+</span></div><div class="leader-body"><p>Serve your people and the Muslim community with humility and sincerity.</p></div></div>
-                    <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Communicate with Clarity</h3><span>+</span></div><div class="leader-body"><p>Clear and consistent communication is vital for team cohesion.</p></div></div>
-                    <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Defining Roles</h3><span>+</span></div><div class="leader-body"><p>Defining clear roles and reporting structures: everyone knows their responsibilities.</p></div></div>
-                </div>
-            </div>
-
-            <section class="hook-container">
-                <div class="spine-node"></div>
-                <h1>This Section Includes:</h1>
-                <div class="roadmap-list-container">
-                    <div class="guide-tag">Leadership Excellence</div>
-                    <p class="intro-text">Equipping ISoc leaders with the spiritual foundation and practical organizational skills required to manage a successful committee and leave a lasting legacy.</p>
-                    <div class="link-list">
-                        <div class="link-item">Your Intention Matters</div>
-                        <div class="link-item">Meeting Excellence</div>
-                        <div class="link-item">Building Your Committee</div>
-                        <div class="link-item">Committee FAQs</div>
-                        <div class="link-item">Key Handover Documentation</div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="meeting-hub-section">
-                <div class="mtg-header">
-                    <h1>Meeting Excellence</h1>
-                    <p class="mtg-tagline">Focused • Efficient • Creative</p>
-                </div>
-
-                <div style="max-width: 1100px; margin: auto; padding: 25px 15px;">
-                    <div style="text-align: center; margin-bottom: 25px;">
-                        <p style="font-size: 1rem; color: #475569; max-width: 800px; margin: auto;">To make meetings efficient, the host must ensure the meeting <strong>remains focused</strong> and the <strong>agenda is being followed</strong>. However, the goal is to make meetings <span style="color: #124A7A; font-weight: 700;">enjoyable and creative</span>, as opposed to being sterile and corporate.</p>
-                    </div>
-
-                    <div class="tab-nav">
-                        <button onclick="openMtgTab('essentials')" class="mtg-btn active" id="btn-essentials">Must-Know Tips</button>
-                        <button onclick="openMtgTab('structural')" class="mtg-btn inactive" id="btn-structure">The Big Picture</button>
-                    </div>
-
-                    <div id="essentials" class="mtg-content" style="display: block;">
-                        <h2 style="font-family: 'Montserrat', sans-serif; color: #00203F; font-size: 1.5rem; text-align: center; margin-bottom: 25px;">3 Rules for Every Session</h2>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-                            <div class="rule-card"><div class="rule-num">1</div><h4 style="font-family: 'Montserrat'; color: #124A7A; margin: 10px 0; text-transform: uppercase;">Create an Agenda</h4><p style="font-size: 0.9rem; color: #475569;">Prepare ideas beforehand and send the agenda out far in advance.</p></div>
-                            <div class="rule-card"><div class="rule-num">2</div><h4 style="font-family: 'Montserrat'; color: #124A7A; margin: 10px 0; text-transform: uppercase;">Time is Essence</h4><p style="font-size: 0.9rem; color: #475569;">Lateness creates a <strong>culture of slack</strong>. Always start and finish on time.</p></div>
-                            <div class="rule-card"><div class="rule-num">3</div><h4 style="font-family: 'Montserrat'; color: #124A7A; margin: 10px 0; text-transform: uppercase;">Action Points!</h4><p style="font-size: 0.9rem; color: #475569;">Never leave without knowing exactly who is responsible for what.</p></div>
-                        </div>
-                    </div>
-
-                    <div id="structural" class="mtg-content">
-                        <div class="strategy-box">
-                            <h3 style="font-family: 'Montserrat'; color: #ECA400; margin-top: 0;">1. RUNNING AN AGM</h3>
-                            <p style="font-size: 0.95rem;">Showcase accomplishments, role descriptions, and manifestos.</p>
-                        </div>
-                        <div style="background: #F2F4F5; padding: 25px; border-radius: 8px; border: 1px solid #C7CBC8;">
-                            <h3 style="font-family: 'Montserrat'; color: #124A7A; margin-top: 0;">2. THE HANDOVER</h3>
-                            <p style="font-size: 0.9rem;">Continuity is key. Introduce successors to SU, Sponsors, and Alumni.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+    <div class="master-content">
+        <h3 class="hub-title">Quick Links & Templates</h3>
+        <span class="sub-instruction">click and save as a copy!</span>
+        <div class="btn-grid">
+            <a href="https://docs.google.com/document/d/1xcP6-OujnQzNXpePP0Q8WKLlHkrsZHgUUzmCPXaNGqQ/edit?usp=sharing" target="_blank" class="resource-card">📜 Constitution Template</a>
+            <a href="https://docs.google.com/document/d/19upTZZdkEQYlGoW6HdQP0RP33dvaBEZ_/edit?usp=sharing" target="_blank" class="resource-card">⏱️ Minutes Template</a>
+            <a href="https://docs.google.com/document/d/1Q7gdVCFR_7FenF3ZRekINJBHFGfNHGIe/edit?usp=sharing" target="_blank" class="resource-card">🤝 Handover Checklist</a>
         </div>
+
+        <div class="gc-section">
+            <h3 class="hub-title">The Golden Circle</h3>
+            <div class="gc-layout">
+                <div class="circle-viz">
+                    <div class="circle-outer"><span class="circle-text label-what">WHAT</span>
+                        <div class="circle-middle"><span class="circle-text label-how">HOW</span>
+                            <div class="circle-inner">WHY</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gc-content">
+                    <div class="acc-item"><button class="acc-header active" onclick="toggleAcc(this)">WHY <span>−</span></button>
+                        <div class="acc-body" style="max-height: 500px;"><div class="acc-inner"><p>The purpose. To serve & uplift Muslim students for the sake of Allah (SWT).</p><img src="https://i.ibb.co/4wJnfjc3/IMG-20230708-WA0066.jpg" class="acc-image"></div></div>
+                    </div>
+                    <div class="acc-item"><button class="acc-header" onclick="toggleAcc(this)">HOW <span>+</span></button>
+                        <div class="acc-body"><div class="acc-inner"><p>The process. By planning with sincerity, teamwork, and effective communication.</p><img src="https://i.ibb.co/DDTHY1VB/IMG-20240911-WA0039.jpg" class="acc-image"></div></div>
+                    </div>
+                    <div class="acc-item"><button class="acc-header" onclick="toggleAcc(this)">WHAT <span>+</span></button>
+                        <div class="acc-body"><div class="acc-inner"><p>The proof. Through high-quality events, socials, welfare services, and dawah activities.</p><img src="https://i.ibb.co/qMwnq8r7/Screenshot-2025-07-09-132149.png" class="acc-image"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="lessons-bridge"><div class="connector-line"></div></div>
+        <div class="wave-wrapper">
+            <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 70C360 15 1080 15 1440 70V70H0Z" fill="#00203F"/><path d="M0 0H1440V70C1080 15 360 15 0 70V0Z" fill="#ffffff"/></svg>
+            <div class="gold-dot"></div>
+        </div>
+        <div class="navy-banner">
+            <h1 class="main-heading">Lessons in <span>Leadership</span></h1>
+            <div class="accent-line"></div>
+            <p class="banner-subtext">A strong leader is the cornerstone of any effective team. True leadership in an ISoc is about serving your people and the Muslim community with humility and sincerity.</p>
+        </div>
+
+        <div class="qa-wrapper">
+            <div class="qa-stack">
+                <div class="topic-group">
+                    <div class="qa-card question-card"><div class="qa-badge">QUESTION</div><h3 class="qa-text">What do you expect from your team?</h3></div>
+                    <div class="qa-card answer-card"><div class="qa-badge">ANSWER</div><p class="qa-text-body">Prompt task completion, upholding Islamic values & consistent attendance. Empowering individuals with well-defined roles streamlines work.</p></div>
+                </div>
+                <div class="topic-group">
+                    <div class="qa-card question-card"><div class="qa-badge">QUESTION</div><h3 class="qa-text">How do we improve our communication?</h3></div>
+                    <div class="qa-card answer-card"><div class="qa-badge">ANSWER</div><p class="qa-text-body">With effective communication techniques from the Sunnah. Learn how to convey the message of Islam clearly & compassionately.</p></div>
+                </div>
+            </div>
+            <div class="leader-drop-grid">
+                <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Lead by Example</h3><span>+</span></div><div class="leader-body"><p>Serve your people and the Muslim community with humility and sincerity. Lead with genuine care.</p></div></div>
+                <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Communicate with Clarity</h3><span>+</span></div><div class="leader-body"><p>Clear and consistent communication is vital for team cohesion. Ensure information flows freely.</p></div></div>
+                <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Defining Roles</h3><span>+</span></div><div class="leader-body"><p>Defining clear roles and reporting structures: everyone knows their responsibilities.</p></div></div>
+            </div>
+        </div>
+
+        <section class="hook-section">
+            <div class="spine-node"></div>
+            <h1 style="font-family: 'Montserrat'; font-weight: 900; text-transform: uppercase;">This Section Includes:</h1>
+            <div class="roadmap-list-container">
+                <div class="guide-tag">Leadership Excellence</div>
+                <p class="intro-text">Equipping ISoc leaders with the spiritual foundation and practical organizational skills required to manage a successful committee and leave a lasting legacy.</p>
+                <div class="link-list">
+                    <div class="link-item" style="color:#00203F; font-weight:700; display:flex; align-items:center; gap:12px; border-bottom: 1px solid rgba(0,32,63,0.06); padding-bottom:10px;">Your Intention Matters</div>
+                    <div class="link-item" style="color:#00203F; font-weight:700; display:flex; align-items:center; gap:12px; border-bottom: 1px solid rgba(0,32,63,0.06); padding-bottom:10px;">Meeting Excellence</div>
+                    <div class="link-item" style="color:#00203F; font-weight:700; display:flex; align-items:center; gap:12px; border-bottom: 1px solid rgba(0,32,63,0.06); padding-bottom:10px;">Building Your Committee</div>
+                    <div class="link-item" style="color:#00203F; font-weight:700; display:flex; align-items:center; gap:12px; border-bottom: 1px solid rgba(0,32,63,0.06); padding-bottom:10px;">Committee FAQs</div>
+                    <div class="link-item" style="color:#00203F; font-weight:700; display:flex; align-items:center; gap:12px; border-bottom: 1px solid rgba(0,32,63,0.06); padding-bottom:10px;">Key Handover Documentation</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="meeting-hub">
+            <div class="mtg-header"><h1>Meeting Excellence</h1><p style="color:#ECA400; font-family:'Montserrat'; font-weight:800; text-transform:uppercase; letter-spacing:4px; font-size:0.75rem; margin-top:10px;">Focused • Efficient • Creative</p></div>
+            <div style="max-width: 1100px; margin: auto; padding: 25px 15px;">
+                <p style="text-align: center; color: #475569;">To make meetings efficient, the host must ensure the meeting <strong>remains focused</strong>. However, the goal is to make meetings <span style="color: #124A7A; font-weight: 700;">enjoyable and creative</span>.</p>
+                <div class="tab-nav">
+                    <button onclick="openTab('essentials')" class="mtg-btn active" id="btn-essentials">Must-Know Tips</button>
+                    <button onclick="openTab('structural')" class="mtg-btn inactive" id="btn-structure">The Big Picture</button>
+                </div>
+                <div id="essentials" class="mtg-content" style="display: block;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                        <div class="rule-card"><div class="rule-num">1</div><h4 style="color:#124A7A; text-transform:uppercase; margin:10px 0;">Create an Agenda</h4><p style="font-size:0.9rem; color:#475569;">Prepare ideas beforehand and send it far in advance. <br><strong>PRO TIP:</strong> Always start with an Islamic reminder.</p></div>
+                        <div class="rule-card"><div class="rule-num">2</div><h4 style="color:#124A7A; text-transform:uppercase; margin:10px 0;">Time is Essence</h4><p style="font-size:0.9rem; color:#475569;">Lateness creates a <strong>culture of slack</strong>. Always start and finish on time. Allocate a timekeeper.</p></div>
+                        <div class="rule-card"><div class="rule-num">3</div><h4 style="color:#124A7A; text-transform:uppercase; margin:10px 0;">Action Points!</h4><div style="background:#FFF8E1; padding:10px; border-radius:4px; font-size:0.85rem; font-weight:700;">Never leave without knowing exactly who is responsible for what and the deadlines.</div></div>
+                    </div>
+                </div>
+                <div id="structural" class="mtg-content">
+                    <div class="strategy-box"><h3 style="color:#ECA400; margin:0 0 10px 0;">1. RUNNING AN AGM</h3><p style="font-size:0.95rem;">Showcase accomplishments, documentation (role descriptions), and know the rules of your constitution.</p></div>
+                    <div style="background: #F2F4F5; padding: 25px; border-radius: 8px; border: 1px solid #C7CBC8;"><h3 style="color:#124A7A; margin:0 0 10px 0;">2. THE HANDOVER</h3><p style="font-size:0.9rem;">Continuity is key. Introduce successors to the Student Union, Sponsors, and Alumni.</p></div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script>
         function sendHeight() {
             const height = document.body.scrollHeight;
-            if (window.parent) { window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height + 60 }, '*'); }
+            if (window.parent) { window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height + 50 }, '*'); }
         }
-
         function toggleAcc(btn) {
             const body = btn.nextElementSibling;
             const isOpen = body.style.maxHeight !== "0px" && body.style.maxHeight !== "";
@@ -387,7 +246,6 @@
             if (!isOpen) { body.style.maxHeight = body.scrollHeight + "px"; btn.querySelector('span').innerText = "−"; }
             setTimeout(sendHeight, 300);
         }
-
         function toggleLeaderCard(card) {
             card.classList.toggle("active");
             var body = card.querySelector('.leader-body');
@@ -396,24 +254,13 @@
             icon.innerText = body.style.maxHeight ? "−" : "+";
             setTimeout(sendHeight, 400); 
         }
-
-        function openMtgTab(tabId) {
+        function openTab(tabId) {
             document.querySelectorAll('.mtg-content').forEach(c => c.style.display = 'none');
             document.getElementById(tabId).style.display = 'block';
-            const btnEss = document.getElementById('btn-essentials');
-            const btnStr = document.getElementById('btn-structure');
-            if(tabId === 'essentials') {
-                btnEss.classList.add('active'); btnEss.classList.remove('inactive');
-                btnStr.classList.add('inactive'); btnStr.classList.remove('active');
-            } else {
-                btnStr.classList.add('active'); btnStr.classList.remove('inactive');
-                btnEss.classList.add('inactive'); btnEss.classList.remove('active');
-            }
+            document.getElementById('btn-essentials').className = tabId === 'essentials' ? 'mtg-btn active' : 'mtg-btn inactive';
+            document.getElementById('btn-structure').className = tabId === 'structural' ? 'mtg-btn active' : 'mtg-btn inactive';
             setTimeout(sendHeight, 100);
         }
-
-        const observer = new ResizeObserver(sendHeight);
-        observer.observe(document.body);
         window.onload = sendHeight;
         window.onresize = sendHeight;
         setInterval(sendHeight, 2000);
