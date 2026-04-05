@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Nunito:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Nunito:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400;1,600&display=swap" rel="stylesheet">
     <style>
-        /* --- 1. GLOBAL SCROLL FIX --- */
+        /* --- 1. GLOBAL SCROLL DNA --- */
         * { box-sizing: border-box; }
         
         html, body {
@@ -68,6 +68,7 @@
             color: rgba(212, 175, 55, 0.5);
             text-transform: uppercase;
             letter-spacing: 4px;
+            text-align: center;
         }
 
         /* --- 3. MASTER CONTENT CONTAINER --- */
@@ -128,7 +129,6 @@
 
         /* --- 4. THE GOLDEN CIRCLE --- */
         .gc-section { border-top: 2px solid #F1F5F9; padding-top: 30px; margin-top: 20px; }
-        
         .gc-layout { display: flex; flex-direction: column; align-items: center; gap: 30px; }
         @media (min-width: 900px) { .gc-layout { flex-direction: row; align-items: flex-start; } }
 
@@ -137,137 +137,168 @@
         .circle-middle { width: 70%; height: 70%; border: 2px solid #00203F; border-radius: 50%; position: absolute; top: 15%; left: 15%; }
         .circle-inner { width: 45%; height: 45%; background: #ECA400; border-radius: 50%; position: absolute; top: 27.5%; left: 27.5%; display: flex; justify-content: center; align-items: center; font-weight: 900; color: #00203F; font-family: 'Montserrat'; }
 
-        /* CIRCLE TEXT COLOR ADJUSTMENT */
-        .circle-text {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            position: absolute;
-            font-size: 0.8rem;
-            width: 100%;
-            text-align: center;
-            pointer-events: none;
-            color: #00203F; /* FOSIS Navy */
-        }
-        .label-what { bottom: 8%; } 
-        .label-how { bottom: 12%; }
+        .circle-text { font-family: 'Montserrat', sans-serif; font-weight: 800; position: absolute; font-size: 0.8rem; width: 100%; text-align: center; pointer-events: none; color: #00203F; }
+        .label-what { bottom: 8%; } .label-how { bottom: 12%; }
 
-        /* Accordions */
         .gc-content { width: 100%; flex: 1; }
         .acc-item { border: 1px solid #E2E8F0; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
         .acc-header { width: 100%; padding: 18px; background: #fff; border: none; text-align: left; font-family: 'Montserrat', sans-serif; font-weight: 800; display: flex; justify-content: space-between; cursor: pointer; text-transform: uppercase; color: #00203F; }
         .acc-header.active { background: #F8FAFC; border-left: 4px solid #ECA400; }
-        
         .acc-body { max-height: 0; overflow: hidden; transition: 0.4s ease-out; background: #f8fafc; }
         .acc-inner { padding: 20px; display: flex; align-items: center; gap: 20px; }
         .acc-inner p { margin: 0; color: #475569; font-size: 1.05rem; line-height: 1.6; flex: 1; font-weight: 500; }
         .acc-image { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 2px solid #ECA400; flex-shrink: 0; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
 
-        @media (max-width: 500px) {
-            .acc-inner { flex-direction: column; text-align: center; }
-        }
+        /* --- 5. NEW: LESSONS IN LEADERSHIP SECTION --- */
+        .lessons-bridge { width: 100%; display: flex; flex-direction: column; align-items: center; background: #ffffff; height: 45px; position: relative; margin-top: 40px; }
+        .connector-line-top { width: 2px; height: 100%; background: linear-gradient(to bottom, #F1F5F9, #ECA400); }
+        
+        .wave-wrapper { width: 100%; line-height: 0; position: relative; background: #ffffff; }
+        .wave-wrapper svg { width: 100%; height: auto; display: block; }
+        .gold-dot { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); width: 16px; height: 16px; background: #ECA400; border-radius: 50%; border: 3px solid #ffffff; box-shadow: 0 0 15px rgba(236, 164, 0, 0.4); z-index: 30; }
+
+        .navy-banner { width: 100%; background-color: #00203F; text-align: center; padding: 40px 18px 80px; margin-top: -1px; position: relative; z-index: 10; }
+        .main-heading { color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: clamp(22px, 7vw, 42px); font-weight: 900; text-transform: uppercase; margin: 0; letter-spacing: 1px; }
+        .main-heading span { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; text-transform: none; color: #ECA400; }
+        .accent-line { width: 42px; height: 3px; background: #ECA400; margin: 16px auto; border-radius: 2px; }
+        .banner-subtext { max-width: 720px; margin: 0 auto; color: #ffffff; font-size: clamp(14px, 4.2vw, 16px); line-height: 1.55; opacity: 0.9; }
+
+        /* Q&A STACK */
+        .qa-outer-wrapper { background: #FFFFFF; width: 100%; padding: 60px 15px; position: relative; margin-top: -30px; border-radius: 30px 30px 0 0; z-index: 20; }
+        .qa-stack { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; max-width: 1100px; margin: 0 auto; }
+        .topic-group { flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 20px; }
+        .qa-card { width: 100%; border-radius: 12px; padding: 40px 25px; position: relative; text-align: center; box-shadow: 0 6px 15px rgba(0,0,0,0.08); }
+        .question-card { background: #FFFFFF; border: 2px solid #00203F; color: #00203F; }
+        .answer-card { background: #00203F; color: #FFFFFF; border: 2px solid #00203F; }
+        .qa-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: #ECA400; color: #00203F; padding: 5px 20px; border-radius: 20px; font-family: 'Montserrat'; font-weight: 800; font-size: 0.7rem; border: 2px solid #00203F; }
+        .qa-text { font-family: 'Montserrat'; font-weight: 800; font-size: 1.2rem; margin: 0; }
+        .qa-text-body { font-size: 1rem; line-height: 1.6; margin: 0; }
+
+        /* DROPDOWNS */
+        .leader-drop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin: 40px auto 0; }
+        .leader-drop-card { background: #FFFFFF; border: 1px solid #C7CBC8; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+        .leader-drop-card.active { border-left: 6px solid #ECA400; }
+        .leader-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .leader-title { font-family: 'Montserrat'; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; color: #00203F; margin: 0; }
+        .leader-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; padding: 0 20px; background: #F8FAFC; }
+        .leader-body p { padding: 20px 0; margin: 0; color: #475569; font-size: 0.95rem; line-height: 1.6; }
+
+        @media (max-width: 600px) { .acc-inner { flex-direction: column; text-align: center; } .topic-group { min-width: 100%; } }
     </style>
 </head>
 <body>
 
     <div class="hero-section">
         <h1><span>Leadership</span><span>& Planning</span></h1>
-        <span class="arabic-verse">فَبِمَا رَحْمَةٍۢ مِّنَ ٱللَّهِ لِنتَ لَهُمْ ۖ وَلَوْ كُنتَ فَظًّا غَلِيظَ ٱلْقَلْبِ لَٱنفَضُّوا۟ مِنْ حَوْلِكَ ۖ فَٱعْفُ عَنْهُمْ وَٱسْتَغْفِرْ لَهُمْ وَشَاوِرْهُمْ فِى ٱلْأَمْرِ ۖ فَإِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى ٱللَّهِ ۚ إِنَّ ٱللَّهَ يُحِبُّ ٱلْمُتَوكِّلِينَ</span>
-        <p class="translation-text">"It is out of Allah’s mercy that you have been lenient with them... Once you make a decision, put your trust in Allah. Surely Allah loves those who trust in Him."</p>
+        <span class="arabic-verse">فَبِمَا رَحْمَةٍۢ مِّنَ ٱللَّهِ لِنتَ لَهُمْ ۖ وَلَوْ كُنتَ فَظًّا غَلِيظَ ٱلْقَلْبِ لَٱنفَضُّوا۟ مِنْ حَوْلِكَ...</span>
+        <p class="translation-text">"It is out of Allah’s mercy that you have been lenient with them... Once you make a decision, put your trust in Allah."</p>
         <div class="citation">Surah Ali-Imran 3:159</div>
     </div>
 
     <div class="master-content-container" id="hub-root">
-        
         <h3 class="hub-title">Quick Links & Templates</h3>
         <span class="sub-instruction">click and save as a copy!</span>
-        
         <div class="btn-grid">
-            <a href="https://docs.google.com/document/d/1xcP6-OujnQzNXpePP0Q8WKLlHkrsZHgUUzmCPXaNGqQ/edit?usp=sharing" target="_blank" class="resource-card">
-                <span style="margin-right:12px; font-size:1.4rem;">📜</span> Constitution Template
-            </a>
-            <a href="https://docs.google.com/document/d/19upTZZdkEQYlGoW6HdQP0RP33dvaBEZ_/edit?usp=sharing" target="_blank" class="resource-card">
-                <span style="margin-right:12px; font-size:1.4rem;">⏱️</span> Minutes Template
-            </a>
-            <a href="https://docs.google.com/document/d/1Q7gdVCFR_7FenF3ZRekINJBHFGfNHGIe/edit?usp=sharing" target="_blank" class="resource-card">
-                <span style="margin-right:12px; font-size:1.4rem;">🤝</span> Handover Checklist
-            </a>
+            <a href="https://docs.google.com/document/d/1xcP6-OujnQzNXpePP0Q8WKLlHkrsZHgUUzmCPXaNGqQ/edit?usp=sharing" target="_blank" class="resource-card"><span style="margin-right:12px; font-size:1.4rem;">📜</span> Constitution Template</a>
+            <a href="https://docs.google.com/document/d/19upTZZdkEQYlGoW6HdQP0RP33dvaBEZ_/edit?usp=sharing" target="_blank" class="resource-card"><span style="margin-right:12px; font-size:1.4rem;">⏱️</span> Minutes Template</a>
+            <a href="https://docs.google.com/document/d/1Q7gdVCFR_7FenF3ZRekINJBHFGfNHGIe/edit?usp=sharing" target="_blank" class="resource-card"><span style="margin-right:12px; font-size:1.4rem;">🤝</span> Handover Checklist</a>
         </div>
 
         <div class="gc-section">
-            <h3 class="hub-title" style="margin-bottom: 25px;">The Golden Circle</h3>
+            <h3 class="hub-title">The Golden Circle</h3>
             <div class="gc-layout">
                 <div class="circle-viz">
-                    <div class="circle-outer" id="viz-what">
-                        <span class="circle-text label-what">WHAT</span>
-                        <div class="circle-middle" id="viz-how">
-                            <span class="circle-text label-how">HOW</span>
-                            <div class="circle-inner" id="viz-why">WHY</div>
-                        </div>
-                    </div>
+                    <div class="circle-outer"><div class="circle-middle"><div class="circle-inner">WHY</div></div></div>
                 </div>
-                
                 <div class="gc-content">
                     <div class="acc-item">
-                        <button class="acc-header active" onclick="toggleAcc(this, 'why')">WHY <span>−</span></button>
-                        <div class="acc-body" style="max-height: 500px;">
-                            <div class="acc-inner">
-                                <p>The purpose. To serve & uplift Muslim students for the sake of Allah (SWT).</p>
-                                <img src="https://i.ibb.co/4wJnfjc3/IMG-20230708-WA0066.jpg" class="acc-image" alt="Why">
-                            </div>
-                        </div>
+                        <button class="acc-header" onclick="toggleAcc(this)">WHY <span>+</span></button>
+                        <div class="acc-body"><div class="acc-inner"><p>To serve & uplift Muslim students for the sake of Allah.</p><img src="https://i.ibb.co/4wJnfjc3/IMG-20230708-WA0066.jpg" class="acc-image"></div></div>
                     </div>
                     <div class="acc-item">
-                        <button class="acc-header" onclick="toggleAcc(this, 'how')">HOW <span>+</span></button>
-                        <div class="acc-body">
-                            <div class="acc-inner">
-                                <p>The process. By planning with sincerity, teamwork, and effective communication.</p>
-                                <img src="https://i.ibb.co/DDTHY1VB/IMG-20240911-WA0039.jpg" class="acc-image" alt="How">
-                            </div>
-                        </div>
+                        <button class="acc-header" onclick="toggleAcc(this)">HOW <span>+</span></button>
+                        <div class="acc-body"><div class="acc-inner"><p>Planning with sincerity, teamwork, and communication.</p><img src="https://i.ibb.co/DDTHY1VB/IMG-20240911-WA0039.jpg" class="acc-image"></div></div>
                     </div>
                     <div class="acc-item">
-                        <button class="acc-header" onclick="toggleAcc(this, 'what')">WHAT <span>+</span></button>
-                        <div class="acc-body">
-                            <div class="acc-inner">
-                                <p>The proof. Through high-quality events, socials, welfare services, and dawah activities.</p>
-                                <img src="https://i.ibb.co/qMwnq8r7/Screenshot-2025-07-09-132149.png" class="acc-image" alt="What">
-                            </div>
-                        </div>
+                        <button class="acc-header" onclick="toggleAcc(this)">WHAT <span>+</span></button>
+                        <div class="acc-body"><div class="acc-inner"><p>Through high-quality events, socials, and dawah activities.</p><img src="https://i.ibb.co/qMwnq8r7/Screenshot-2025-07-09-132149.png" class="acc-image"></div></div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="lessons-bridge"><div class="connector-line-top"></div></div>
+        <div class="wave-wrapper">
+            <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 70C360 15 1080 15 1440 70V70H0Z" fill="#00203F"/><path d="M0 0H1440V70C1080 15 360 15 0 70V0Z" fill="#ffffff"/>
+            </svg>
+            <div class="gold-dot"></div>
+        </div>
+
+        <div class="navy-banner">
+            <h1 class="main-heading">Lessons in <span>Leadership</span></h1>
+            <div class="accent-line"></div>
+            <p class="banner-subtext">True leadership in an ISoc is about serving your people and the Muslim community with humility and sincerity.</p>
+        </div>
+
+        <div class="qa-outer-wrapper">
+            <div class="qa-stack">
+                <div class="topic-group">
+                    <div class="qa-card question-card"><div class="qa-badge">QUESTION</div><h3 class="qa-text">What do you expect from your team?</h3></div>
+                    <div class="qa-card answer-card"><div class="qa-badge">ANSWER</div><p class="qa-text-body">Prompt task completion, values & consistent attendance. Empowering individuals with well-defined roles streamlines work.</p></div>
+                </div>
+                <div class="topic-group">
+                    <div class="qa-card question-card"><div class="qa-badge">QUESTION</div><h3 class="qa-text">How do we improve communication?</h3></div>
+                    <div class="qa-card answer-card"><div class="qa-badge">ANSWER</div><p class="qa-text-body">With effective communication techniques from the Sunnah. Convey the message of Islam clearly & compassionately.</p></div>
+                </div>
+            </div>
+
+            <div class="leader-drop-grid">
+                <div class="leader-drop-card" onclick="toggleLeaderCard(this)">
+                    <div class="leader-header"><h3 class="leader-title">Lead by Example</h3><span>+</span></div>
+                    <div class="leader-body"><p>Serve with humility and sincerity. Lead with genuine care and inspire through your actions.</p></div>
+                </div>
+                <div class="leader-drop-card" onclick="toggleLeaderCard(this)">
+                    <div class="leader-header"><h3 class="leader-title">Communicate with Clarity</h3><span>+</span></div>
+                    <div class="leader-body"><p>Clear and consistent communication is vital. Ensure info flows freely and feedback is encouraged.</p></div>
+                </div>
+                <div class="leader-drop-card" onclick="toggleLeaderCard(this)">
+                    <div class="leader-header"><h3 class="leader-title">Defining Roles</h3><span>+</span></div>
+                    <div class="leader-body"><p>Defining clear roles: everyone knows their responsibilities and where decisions are made.</p></div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        function toggleAcc(btn, type) {
-            const body = btn.nextElementSibling;
-            const span = btn.querySelector('span');
-            const isOpen = btn.classList.contains('active');
-
-            // Close all others
-            document.querySelectorAll('.acc-header').forEach(h => {
-                h.classList.remove('active');
-                h.nextElementSibling.style.maxHeight = "0px";
-                h.querySelector('span').innerText = "+";
-            });
-
-            if (!isOpen) {
-                btn.classList.add('active');
-                body.style.maxHeight = body.scrollHeight + "px";
-                span.innerText = "−";
-            }
-            
-            setTimeout(sendHeight, 300);
-        }
-
         function sendHeight() {
             const height = document.body.scrollHeight;
             if (window.parent) {
-                window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height }, '*');
+                window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height + 20 }, '*');
             }
         }
-        
+
+        function toggleAcc(btn) {
+            const body = btn.nextElementSibling;
+            const isOpen = body.style.maxHeight !== "0px" && body.style.maxHeight !== "";
+            document.querySelectorAll('.acc-body').forEach(b => b.style.maxHeight = "0px");
+            document.querySelectorAll('.acc-header span').forEach(s => s.innerText = "+");
+            if (!isOpen) {
+                body.style.maxHeight = body.scrollHeight + "px";
+                btn.querySelector('span').innerText = "−";
+            }
+            setTimeout(sendHeight, 300);
+        }
+
+        function toggleLeaderCard(card) {
+            card.classList.toggle("active");
+            var body = card.querySelector('.leader-body');
+            var icon = card.querySelector('span');
+            body.style.maxHeight = body.style.maxHeight ? null : body.scrollHeight + "px";
+            icon.innerText = body.style.maxHeight ? "−" : "+";
+            setTimeout(sendHeight, 400); 
+        }
+
         window.onload = sendHeight;
         window.onresize = sendHeight;
         setInterval(sendHeight, 2000);
