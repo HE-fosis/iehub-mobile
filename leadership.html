@@ -137,10 +137,24 @@
         .circle-middle { width: 70%; height: 70%; border: 2px solid #00203F; border-radius: 50%; position: absolute; top: 15%; left: 15%; }
         .circle-inner { width: 45%; height: 45%; background: #ECA400; border-radius: 50%; position: absolute; top: 27.5%; left: 27.5%; display: flex; justify-content: center; align-items: center; font-weight: 900; color: #00203F; font-family: 'Montserrat'; }
 
+        /* CIRCLE TEXT COLOR ADJUSTMENT */
+        .circle-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            position: absolute;
+            font-size: 0.8rem;
+            width: 100%;
+            text-align: center;
+            pointer-events: none;
+            color: #00203F; /* FOSIS Navy */
+        }
+        .label-what { bottom: 8%; } 
+        .label-how { bottom: 12%; }
+
         /* Accordions */
         .gc-content { width: 100%; flex: 1; }
         .acc-item { border: 1px solid #E2E8F0; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
-        .acc-header { width: 100%; padding: 18px; background: #fff; border: none; text-align: left; font-family: 'Montserrat', sans-serif; font-weight: 800; display: flex; justify-content: space-between; cursor: pointer; text-transform: uppercase; }
+        .acc-header { width: 100%; padding: 18px; background: #fff; border: none; text-align: left; font-family: 'Montserrat', sans-serif; font-weight: 800; display: flex; justify-content: space-between; cursor: pointer; text-transform: uppercase; color: #00203F; }
         .acc-header.active { background: #F8FAFC; border-left: 4px solid #ECA400; }
         
         .acc-body { max-height: 0; overflow: hidden; transition: 0.4s ease-out; background: #f8fafc; }
@@ -183,12 +197,18 @@
             <h3 class="hub-title" style="margin-bottom: 25px;">The Golden Circle</h3>
             <div class="gc-layout">
                 <div class="circle-viz">
-                    <div class="circle-outer"><div class="circle-middle"><div class="circle-inner">WHY</div></div></div>
+                    <div class="circle-outer" id="viz-what">
+                        <span class="circle-text label-what">WHAT</span>
+                        <div class="circle-middle" id="viz-how">
+                            <span class="circle-text label-how">HOW</span>
+                            <div class="circle-inner" id="viz-why">WHY</div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="gc-content">
                     <div class="acc-item">
-                        <button class="acc-header active" onclick="toggleAcc(this)">WHY <span>−</span></button>
+                        <button class="acc-header active" onclick="toggleAcc(this, 'why')">WHY <span>−</span></button>
                         <div class="acc-body" style="max-height: 500px;">
                             <div class="acc-inner">
                                 <p>The purpose. To serve & uplift Muslim students for the sake of Allah (SWT).</p>
@@ -197,7 +217,7 @@
                         </div>
                     </div>
                     <div class="acc-item">
-                        <button class="acc-header" onclick="toggleAcc(this)">HOW <span>+</span></button>
+                        <button class="acc-header" onclick="toggleAcc(this, 'how')">HOW <span>+</span></button>
                         <div class="acc-body">
                             <div class="acc-inner">
                                 <p>The process. By planning with sincerity, teamwork, and effective communication.</p>
@@ -206,7 +226,7 @@
                         </div>
                     </div>
                     <div class="acc-item">
-                        <button class="acc-header" onclick="toggleAcc(this)">WHAT <span>+</span></button>
+                        <button class="acc-header" onclick="toggleAcc(this, 'what')">WHAT <span>+</span></button>
                         <div class="acc-body">
                             <div class="acc-inner">
                                 <p>The proof. Through high-quality events, socials, welfare services, and dawah activities.</p>
@@ -220,7 +240,7 @@
     </div>
 
     <script>
-        function toggleAcc(btn) {
+        function toggleAcc(btn, type) {
             const body = btn.nextElementSibling;
             const span = btn.querySelector('span');
             const isOpen = btn.classList.contains('active');
@@ -238,7 +258,6 @@
                 span.innerText = "−";
             }
             
-            // Give the parent site time to adjust height
             setTimeout(sendHeight, 300);
         }
 
@@ -251,7 +270,6 @@
         
         window.onload = sendHeight;
         window.onresize = sendHeight;
-        // Periodic check to ensure Google Sites stays updated
         setInterval(sendHeight, 2000);
     </script>
 </body>
