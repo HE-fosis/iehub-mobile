@@ -20,7 +20,7 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        /* --- 2. HERO SECTION (RESTORED ORIGINAL) --- */
+        /* --- 2. HERO SECTION --- */
         .hero-section {
             width: 100%;
             padding: 60px 20px 40px 20px;
@@ -80,7 +80,7 @@
             max-width: 850px;
             margin: 0 auto 10px auto;
             font-size: clamp(0.9rem, 2vw, 1.2rem);
-            color: rgba(255,255,255,0.85);
+            color: rgba(255, 255, 255, 0.85);
             line-height: 1.6;
         }
 
@@ -188,19 +188,7 @@
         .accent-line { width: 42px; height: 3px; background: #ECA400; margin: 16px auto 18px; border-radius: 2px; }
         .banner-subtext { max-width: 720px; margin: 0 auto; color: #ffffff; font-size: clamp(14px, 4.2vw, 16px); line-height: 1.55; opacity: 0.9; }
 
-        /* --- 6. TABLE OF CONTENTS HOOK (RESTORED) --- */
-        .hook-container { width: 100%; background-color: #F3F3F3; display: flex; flex-direction: column; align-items: center; padding: 10px 20px 10px 20px; color: #00203F; position: relative; z-index: 15; border-radius: 30px 30px 0 0; margin-top: -30px; }
-        .spine-node { width: 10px; height: 10px; background: #00203F; border: 2px solid #ECA400; border-radius: 50%; margin-top: -5px; z-index: 10; animation: beaconPulse 3s infinite ease-in-out; }
-        @keyframes beaconPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } }
-        .hook-container h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(1.4rem, 6vw, 2rem); font-weight: 900; margin: 5px 0 10px 0; text-transform: uppercase; letter-spacing: 1px; }
-        .roadmap-list-container { max-width: 650px; width: 100%; text-align: left; }
-        .guide-tag { display: inline-block; font-family: 'Montserrat'; font-size: 10px; font-weight: 800; color: #ECA400; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 6px; border-bottom: 2px solid #ECA400; padding-bottom: 4px; }
-        .intro-text { font-size: 0.9rem; line-height: 1.5; margin: 0 0 15px 0; color: #475569; }
-        .link-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
-        .link-item { color: #00203F; font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid rgba(0, 32, 63, 0.06); }
-        .link-item::before { content: ""; width: 6px; height: 6px; background: #ECA400; border-radius: 50%; flex-shrink: 0; }
-
-        /* --- 7. Q&A & DROPDOWNS --- */
+        /* --- 6. Q&A & DROPDOWNS --- */
         .qa-outer-wrapper { background: #fff; padding: 40px 15px; position: relative; z-index: 20; }
         .qa-stack { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; max-width: 1200px; margin: 0 auto; }
         .topic-group { flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 20px; }
@@ -218,6 +206,18 @@
         .leader-title { font-family: 'Montserrat'; font-weight: 800; font-size: 1.1rem; text-transform: uppercase; color: #00203F; margin: 0; }
         .leader-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; padding: 0 25px; background: #F8FAFC; }
         .leader-body p { margin: 20px 0; color: #475569; font-size: 1rem; line-height: 1.6; font-weight: 500; }
+
+        /* --- 7. THE FINAL ROADMAP HOOK (NOW AT THE BOTTOM) --- */
+        .hook-container { width: 100%; background-color: #F3F3F3; display: flex; flex-direction: column; align-items: center; padding: 30px 20px; color: #00203F; position: relative; z-index: 15; border-radius: 30px 30px 0 0; margin-top: 40px; }
+        .spine-node { width: 10px; height: 10px; background: #00203F; border: 2px solid #ECA400; border-radius: 50%; margin-top: -5px; z-index: 10; animation: beaconPulse 3s infinite ease-in-out; }
+        @keyframes beaconPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } }
+        .hook-container h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(1.4rem, 6vw, 2rem); font-weight: 900; margin: 10px 0 15px 0; text-transform: uppercase; letter-spacing: 1px; }
+        .roadmap-list-container { max-width: 650px; width: 100%; text-align: left; }
+        .guide-tag { display: inline-block; font-family: 'Montserrat'; font-size: 10px; font-weight: 800; color: #ECA400; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 6px; border-bottom: 2px solid #ECA400; padding-bottom: 4px; }
+        .intro-text { font-size: 0.9rem; line-height: 1.5; margin: 0 0 15px 0; color: #475569; }
+        .link-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+        .link-item { color: #00203F; font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid rgba(0, 32, 63, 0.06); }
+        .link-item::before { content: ""; width: 6px; height: 6px; background: #ECA400; border-radius: 50%; flex-shrink: 0; }
 
         @media (max-width: 600px) { .acc-inner { flex-direction: column; text-align: center; } .topic-group { min-width: 100%; } }
     </style>
@@ -277,15 +277,34 @@
             </svg>
             <div class="gold-dot"></div>
         </div>
+
         <div class="navy-banner">
             <h1 class="main-heading">Lessons in <span>Leadership</span></h1>
             <div class="accent-line"></div>
             <p class="banner-subtext">A strong leader is the cornerstone of any effective team. True leadership in an ISoc is about serving your people and the Muslim community with humility and sincerity.</p>
         </div>
 
+        <div class="qa-outer-wrapper">
+            <div class="qa-stack">
+                <div class="topic-group">
+                    <div class="qa-card question-card"><div class="qa-badge">QUESTION</div><h3 class="qa-text">What do you expect from your team?</h3></div>
+                    <div class="qa-card answer-card"><div class="qa-badge">ANSWER</div><p class="qa-text-body">Prompt task completion, upholding Islamic values & consistent attendance. Empowering individuals with well-defined roles streamlines work.</p></div>
+                </div>
+                <div class="topic-group">
+                    <div class="qa-card question-card"><div class="qa-badge">QUESTION</div><h3 class="qa-text">How do we improve our communication?</h3></div>
+                    <div class="qa-card answer-card"><div class="qa-badge">ANSWER</div><p class="qa-text-body">With effective communication techniques from the Sunnah. Learn how to convey the message of Islam clearly & compassionately.</p></div>
+                </div>
+            </div>
+            <div class="leader-drop-grid">
+                <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Lead by Example</h3><span>+</span></div><div class="leader-body"><p>Serve your people and the Muslim community with humility and sincerity.</p></div></div>
+                <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Communicate with Clarity</h3><span>+</span></div><div class="leader-body"><p>Clear and consistent communication is vital for team cohesion.</p></div></div>
+                <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Defining Roles</h3><span>+</span></div><div class="leader-body"><p>Defining clear roles and reporting structures: everyone knows their responsibilities.</p></div></div>
+            </div>
+        </div>
+
         <section class="hook-container">
             <div class="spine-node"></div>
-            <h2>This Section Includes:</h2>
+            <h1>This Section Includes:</h1>
             <div class="roadmap-list-container">
                 <div class="guide-tag">Leadership Excellence</div>
                 <p class="intro-text">Equipping ISoc leaders with the spiritual foundation and practical organizational skills required to manage a successful committee and leave a lasting legacy.</p>
@@ -298,24 +317,6 @@
                 </div>
             </div>
         </section>
-
-        <div class="qa-outer-wrapper">
-            <div class="qa-stack">
-                <div class="topic-group">
-                    <div class="qa-card question-card"><div class="qa-badge">QUESTION</div><h3 class="qa-text">What do you expect from your team?</h3></div>
-                    <div class="qa-card answer-card"><div class="qa-badge">ANSWER</div><p class="qa-text-body">Prompt task completion, upholding Islamic values & consistent attendance. Empowering individuals with well-defined roles streamlines work and builds confidence.</p></div>
-                </div>
-                <div class="topic-group">
-                    <div class="qa-card question-card"><div class="qa-badge">QUESTION</div><h3 class="qa-text">How do we improve our communication as Muslim leaders?</h3></div>
-                    <div class="qa-card answer-card"><div class="qa-badge">ANSWER</div><p class="qa-text-body">With effective communication techniques from the Sunnah. Learn how to convey the message of Islam clearly & compassionately.</p></div>
-                </div>
-            </div>
-            <div class="leader-drop-grid">
-                <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Lead by Example</h3><span>+</span></div><div class="leader-body"><p>Serve your people and the Muslim community with humility and sincerity.</p></div></div>
-                <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Communicate with Clarity</h3><span>+</span></div><div class="leader-body"><p>Clear and consistent communication is vital for team cohesion.</p></div></div>
-                <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Defining Roles</h3><span>+</span></div><div class="leader-body"><p>Defining clear roles and reporting structures: everyone knows their responsibilities.</p></div></div>
-            </div>
-        </div>
     </div>
 
     <script>
