@@ -60,7 +60,7 @@
         .circle-viz { flex: 1; width: 100%; max-width: 280px; position: relative; aspect-ratio: 1/1; }
         .circle-outer { width: 100%; height: 100%; border: 3px solid #00203F; border-radius: 50%; position: relative; }
         .circle-middle { width: 68%; height: 68%; border: 3px solid #00203F; border-radius: 50%; position: absolute; top: 16%; left: 16%; background: #fff; }
-        .circle-inner { width: 45%; height: 45%; background: #ECA400; border-radius: 50%; position: absolute; top: 27.5%; left: 27.5%; display: flex; justify-content: center; align-items: center; font-weight: 900; color: #00203F; font-family: 'Montserrat'; }
+        .circle-inner { width: 45%; height: 45%; background: #ECA400; border-radius: 50%; position: absolute; top: 27.5%; left: 27.5%; display: flex; justify-content: center; align-items: center; font-weight: 900; color: #00203F; font-family: 'Montserrat'; z-index: 5; }
         .circle-text { font-family: 'Montserrat'; font-weight: 800; position: absolute; font-size: 0.8rem; width: 100%; text-align: center; color: #00203F; }
         .label-what { bottom: 8%; } .label-how { bottom: 12%; }
         
@@ -83,7 +83,7 @@
         .main-heading span { font-family: 'Playfair Display'; font-style: italic; font-weight: 400; text-transform: none; color: #ECA400; }
         .accent-line { width: 42px; height: 3px; background: #ECA400; margin: 16px auto 18px; border-radius: 2px; }
 
-        /* --- Q&A & DROPDOWNS --- */
+        /* --- 6. Q&A & DROPDOWNS --- */
         .qa-wrapper { background: #fff; padding: 40px 15px; position: relative; z-index: 20; }
         .qa-stack { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; max-width: 1200px; margin: 0 auto; }
         .topic-group { flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 20px; }
@@ -99,13 +99,7 @@
         .leader-body { max-height: 0; overflow: hidden; transition: 0.4s; padding: 0 25px; background: #F8FAFC; }
         .leader-body p { margin: 20px 0; color: #475569; font-family: 'Nunito'; font-size: 1rem; line-height: 1.6; font-weight: 500; }
 
-        /* --- ROADMAP HOOK --- */
-        .hook-section { width: 100%; background-color: #F3F3F3; display: flex; flex-direction: column; align-items: center; padding: 30px 20px; color: #00203F; position: relative; z-index: 15; border-radius: 30px 30px 0 0; margin-top: 40px; }
-        .spine-node { width: 10px; height: 10px; background: #00203F; border: 2px solid #ECA400; border-radius: 50%; animation: beaconPulse 3s infinite; }
-        @keyframes beaconPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } }
-        .guide-tag { display: inline-block; font-family: 'Montserrat'; font-size: 10px; font-weight: 800; color: #ECA400; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 6px; border-bottom: 2px solid #ECA400; padding-bottom: 4px; }
-
-        /* --- MEETING EXCELLENCE --- */
+        /* --- 7. MEETING EXCELLENCE --- */
         .meeting-hub { width: 100%; background: #ffffff; padding-top: 20px; }
         .mtg-header { background-color: #f8fafc; padding: 50px 20px; text-align: center; }
         .mtg-header h1 { font-family: 'Montserrat'; font-weight: 900; font-size: clamp(1.8rem, 6vw, 2.8rem); color: #00203F; text-transform: uppercase; margin: 0; }
@@ -119,7 +113,7 @@
         .rule-num { background: #124A7A; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; position: absolute; top: -15px; left: 20px; }
         .strategy-box { background: #00203F; color: white; padding: 30px; border-radius: 8px; border-left: 8px solid #ECA400; margin-bottom: 20px; }
 
-        /* --- COMMITTEE BUILDING --- */
+        /* --- 8. COMMITTEE BUILDING --- */
         .committee-hero { background-color: #f8fafc; padding: 50px 20px; text-align: center; }
         .committee-logo { width: 130px; height: 130px; border-radius: 50%; border: 4px solid #fff; margin: 0 auto 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); overflow: hidden; display: flex; align-items: center; justify-content: center; }
         .committee-logo img { width: 100%; height: 100%; object-fit: cover; }
@@ -133,7 +127,8 @@
         .role-card:hover .symbol-circle { border-color: #ECA400; transform: translateY(-8px); }
         .symbol-circle svg { width: 75px; height: 75px; }
 
-        /* --- COMMITTEE FAQs --- */
+        /* --- 9. COMMITTEE FAQs --- */
+        .faq-intro { text-align: center; max-width: 800px; margin: 60px auto 30px auto; }
         .qa-grid-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; width: 100%; max-width: 1100px; margin: 0 auto; box-sizing: border-box; }
         .faq-grid-card { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 20px; cursor: pointer; transition: 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.02); display: flex; flex-direction: column; height: fit-content; }
         .faq-grid-card:hover { border-color: #00203F; box-shadow: 0 4px 12px rgba(0, 32, 63, 0.08); }
@@ -145,8 +140,29 @@
         .faq-card-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; color: #475569; font-size: 0.9rem; }
         .faq-card-body p { margin: 15px 0 0 0; padding-top: 10px; border-top: 1px solid #F1F5F9; text-align: left; }
 
-        @media (max-width: 900px) { .qa-grid-container { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { .topic-group { min-width: 100%; } .acc-inner { flex-direction: column; text-align: center; } .divider-title::after { display: none; } .divider-title { justify-content: center; } .qa-grid-container { grid-template-columns: 1fr; } }
+        /* --- 10. HANDOVER DOCUMENTATION (NEW) --- */
+        .handover-hero { position: relative; width: 100%; background: #f8fafc; padding: 60px 20px 40px; text-align: center; overflow: hidden; display: flex; flex-direction: column; align-items: center; margin-top: 40px; }
+        .handover-hero::before { content: "RECORDS"; position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); font-size: clamp(5rem, 18vw, 12rem); font-weight: 900; color: rgba(0, 32, 63, 0.03); letter-spacing: 15px; z-index: 1; pointer-events: none; white-space: nowrap; }
+        .handover-hero h2 { position: relative; z-index: 2; margin: 0; font-family: 'Montserrat'; font-weight: 900; font-size: clamp(1.8rem, 8vw, 3rem); text-transform: uppercase; line-height: 1.1; color: #00203F; }
+        .handover-accent { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 15px; position: relative; z-index: 2; }
+        .h-line { width: 30px; height: 2px; background: #ECA400; border-radius: 2px; }
+        .h-subtitle { color: #ECA400; font-weight: 800; font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; font-family: 'Montserrat'; }
+        .handover-grid-section { padding: 40px 20px 80px; max-width: 1300px; width: 100%; margin: 0 auto; box-sizing: border-box; }
+        .handover-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        .handover-card { background: #fff; border: 1px solid #e2e8f0; padding: 25px; border-radius: 15px; transition: 0.4s; text-align: left; }
+        .handover-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,32,63,0.06); border-color: #ECA400; }
+        .handover-card h3 { color: #00203F; margin: 0 0 12px; font-size: 0.95rem; display: flex; align-items: center; gap: 10px; font-weight: 800; text-transform: uppercase; font-family: 'Montserrat'; }
+        .icon-dot { width: 8px; height: 8px; background-color: #ECA400; border-radius: 50%; }
+        .handover-card p { color: #475569; line-height: 1.6; font-size: 0.85rem; margin: 0; font-family: 'Montserrat'; }
+
+        /* --- 11. ROADMAP HOOK --- */
+        .hook-section { width: 100%; background-color: #F3F3F3; display: flex; flex-direction: column; align-items: center; padding: 30px 20px; color: #00203F; position: relative; z-index: 15; border-radius: 30px 30px 0 0; margin-top: 40px; }
+        .spine-node { width: 10px; height: 10px; background: #00203F; border: 2px solid #ECA400; border-radius: 50%; animation: beaconPulse 3s infinite; }
+        @keyframes beaconPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } }
+
+        @media (min-width: 600px) { .handover-grid { grid-template-columns: repeat(2, 1fr); } .qa-grid-container { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .handover-grid { grid-template-columns: repeat(4, 1fr); } .qa-grid-container { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 600px) { .topic-group { min-width: 100%; } .acc-inner { flex-direction: column; text-align: center; } .divider-title::after { display: none; } .divider-title { justify-content: center; } .qa-grid-container { grid-template-columns: 1fr; } .handover-hero::before { letter-spacing: 8px; font-size: 5.5rem; } }
     </style>
 </head>
 <body>
@@ -177,8 +193,8 @@
             <h3 class="hub-title">The Golden Circle</h3>
             <div class="gc-layout">
                 <div class="circle-viz">
-                    <div class="circle-outer"><span class="circle-text label-what">WHAT</span>
-                        <div class="circle-middle"><span class="circle-text label-how">HOW</span>
+                    <div class="circle-outer" id="viz-what"><span class="circle-text label-what">WHAT</span>
+                        <div class="circle-middle" id="viz-how"><span class="circle-text label-how">HOW</span>
                             <div class="circle-inner">WHY</div>
                         </div>
                     </div>
@@ -226,26 +242,10 @@
             </div>
         </div>
 
-        <section class="hook-section">
-            <div class="spine-node"></div>
-            <h1 style="font-family:'Montserrat'; font-weight:900; text-transform:uppercase; margin:10px 0 15px 0;">This Section Includes:</h1>
-            <div class="roadmap-list-container">
-                <div class="guide-tag">Leadership Excellence</div>
-                <p style="font-size:0.9rem; line-height:1.5; margin:0 0 15px 0; font-weight:400; color:#475569;">Equipping ISoc leaders with the spiritual foundation and practical organizational skills required to manage a successful committee and leave a lasting legacy.</p>
-                <div style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;">
-                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0, 32, 63, 0.06);">Your Intention Matters</div>
-                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0, 32, 63, 0.06);">Meeting Excellence</div>
-                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0, 32, 63, 0.06);">Building Your Committee</div>
-                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0, 32, 63, 0.06);">Committee FAQs</div>
-                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0, 32, 63, 0.06);">Key Handover Documentation</div>
-                </div>
-            </div>
-        </section>
-
         <section class="meeting-hub">
             <div class="mtg-header"><h1>Meeting Excellence</h1><p style="color:#ECA400; font-family:'Montserrat'; font-weight:800; text-transform:uppercase; letter-spacing:4px; font-size:0.75rem; margin-top:10px;">Focused • Efficient • Creative</p></div>
             <div style="max-width: 1100px; margin: auto; padding: 25px 15px;">
-                <p style="text-align:center; color:#475569; margin-bottom:25px;">To make meetings efficient, the host must ensure the meeting <strong>remains focused</strong> and the <strong>agenda is being followed</strong>. However, the goal is to make meetings <span style="color:#124A7A; font-weight:700;">enjoyable and creative</span>, as opposed to being sterile and corporate.</p>
+                <p style="text-align:center; color:#475569; margin-bottom:25px;">To make meetings efficient, the host must ensure the meeting <strong>remains focused</strong> and the <strong>agenda is being followed</strong>. However, the goal is to make meetings <span style="color: #124A7A; font-weight: 700;">enjoyable and creative</span>, as opposed to being sterile and corporate.</p>
                 <div class="tab-nav">
                     <button onclick="openTab('essentials')" class="mtg-btn active" id="btn-essentials">Must-Know Tips</button>
                     <button onclick="openTab('structural')" class="mtg-btn inactive" id="btn-structure">The Big Picture</button>
@@ -253,7 +253,7 @@
                 <div id="essentials" class="mtg-content" style="display: block;">
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
                         <div class="rule-card"><div class="rule-num">1</div><h4 style="color:#124A7A; text-transform:uppercase; margin:10px 0;">Create an Agenda</h4><p style="font-size:0.9rem; color:#475569;">Prepare ideas beforehand and send the agenda out far in advance. Give a specified amount of time for each item.</p><div style="background:#F0F4F8; padding:10px; border-radius:4px; border-left:3px solid #ECA400; margin-top:10px;"><small style="font-weight:700;">PRO TIP:</small><br><small>Always start with an Islamic reminder.</small></div></div>
-                        <div class="rule-card"><div class="rule-num">2</div><h4 style="color:#124A7A; text-transform:uppercase; margin:10px 0;">Time is Essence</h4><p style="font-size:0.9rem; color:#475569;">Lateness creates a <strong>culture of slack</strong>. Always start and finish on time. Allocate a timekeeper.</p></div>
+                        <div class="rule-card"><div class="rule-num">2</div><h4 style="color:#124A7A; text-transform:uppercase; margin:10px 0;">Time is Essence</h4><p style="font-size:0.9rem; color:#475569;">Lateness creates a <strong>culture of slack</strong>. Always start and finish on time. Allocate a timekeeper.</p><ul style="font-size: 0.85rem; padding-left: 15px; color: #475569;"><li>Decide on monthly or biweekly meetings.</li><li>Regularity increases commitment.</li></ul></div>
                         <div class="rule-card"><div class="rule-num">3</div><h4 style="color:#124A7A; text-transform:uppercase; margin:10px 0;">Action Points!</h4><p style="font-size:0.9rem; color:#475569;">First meetings are for ground rules. Close every meeting with a "Thank You."</p><div style="background:#FFF8E1; padding:10px; border-radius:4px; margin-top:10px; font-size:0.85rem; font-weight:700;">Never leave without knowing exactly who is responsible for what and the deadlines.</div></div>
                     </div>
                 </div>
@@ -285,38 +285,38 @@
                 <h1 style="font-family:'Montserrat'; font-weight:900; text-transform:uppercase; margin:0; font-size:clamp(1.6rem, 6vw, 2.8rem); color:#00203F;">Building your committee</h1>
             </header>
             <div class="intro-area">
-                <p style="font-size:1rem; line-height:1.6; color:#334155; max-width:900px; margin:0 auto 15px;">Knowing your role directly affects how well the society functions day to day. When roles are clear, tasks don’t get missed and decisions are made faster.</p>
-                <p style="font-size:1rem; line-height:1.6; color:#334155;">For in-depth information, download our <a href="https://drive.google.com/file/d/1QYBPAiTtlof7X31rbhe_IxKiR1fdpNi2/view" target="_blank" style="font-weight:700; color:#00203F; text-decoration:none; border-bottom:2px solid #ECA400;">guide</a>!</p>
+                <p style="font-size:1rem; line-height:1.6; color:#334155; max-width:900px; margin:0 auto 15px;">Knowing your role directly affects how well the society functions day to day. When roles are clear, tasks don’t get missed and decisions are made faster. It helps committee members know what they are responsible for, who to go to for support or approval, and when to step in or step back.</p>
+                <p style="font-size:1rem; line-height:1.6; color:#334155;">For in-depth information about each role, download our <a href="https://drive.google.com/file/d/1QYBPAiTtlof7X31rbhe_IxKiR1fdpNi2/view" target="_blank" style="font-weight:700; color:#00203F; text-decoration:none; border-bottom:2px solid #ECA400;">guide</a>!</p>
             </div>
             <div class="divider-title">The Big Three</div>
             <div class="roles-grid">
                 <div class="role-card">
                     <div class="symbol-circle"><svg viewBox="0 0 100 100"><rect x="25" y="15" width="6" height="65" rx="1" fill="#00203F" /><path d="M31 20 L75 35 L31 50 Z" fill="#00203F" /><rect x="20" y="75" width="16" height="5" rx="1" fill="#ECA400" /></svg></div>
-                    <h2>President</h2><p class="description">Overall responsibility for the society. vision, chairs meetings, oversees the committee.</p>
+                    <h2>President</h2><p class="description">Overall responsibility for the society. Provides vision, chairs meetings, oversees the committee, and serves as the primary contact for the Students' Union.</p>
                 </div>
                 <div class="role-card">
                     <div class="symbol-circle"><svg viewBox="0 0 100 100"><rect x="30" y="30" width="40" height="50" rx="2" stroke="#00203F" stroke-width="3" fill="none"/><path d="M35 40H65M35 50H65M35 60H55" stroke="#ECA400" stroke-width="3"/><rect x="45" y="25" width="10" height="8" rx="1" fill="#00203F"/></svg></div>
-                    <h2>Secretary</h2><p class="description">Administrative lead. Bookings, communication, minutes and organization.</p>
+                    <h2>Secretary</h2><p class="description">The administrative lead. Manages bookings, communication, and membership lists. Responsible for taking minutes and keeping the ISoc organized.</p>
                 </div>
                 <div class="role-card">
                     <div class="symbol-circle"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" stroke="#00203F" stroke-width="4" fill="none"/><text x="50" y="62" font-family="Montserrat" font-weight="800" font-size="35" text-anchor="middle" fill="#ECA400">£</text></svg></div>
-                    <h2>Treasurer</h2><p class="description">Financial guardian. Budgeting, reimbursements, transparency and SU grants.</p>
+                    <h2>Treasurer</h2><p class="description">Financial guardian. Oversees the budget, manages reimbursements, ensures financial transparency, and handles fundraising and SU grant applications.</p>
                 </div>
             </div>
             <div class="divider-title">Supporting Roles</div>
             <div class="roles-grid">
                 <div class="role-card">
                     <div class="symbol-circle"><svg viewBox="0 0 100 100"><path d="M20 40 L60 25 L60 75 L20 60 Z" fill="#00203F" /><path d="M60 40 L80 35 L80 65 L60 60 Z" fill="#ECA400" opacity="0.8" /><rect x="15" y="45" width="10" height="10" fill="#00203F" /></svg></div>
-                    <h2>Media & Marketing</h2><p class="description">External image. Branding, social media, and promotional campaigns.</p>
+                    <h2>Media & Marketing</h2><p class="description">Manages the ISoc's external image. Responsible for branding, social media content, and promotional campaigns to engage the student body.</p>
                 </div>
                 <div class="role-card">
                     <div class="symbol-circle"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" fill="none" stroke="#00203F" stroke-width="3" /><path d="M50 20 L60 50 L50 80 L40 50 Z" fill="#00203F" /><path d="M20 50 L50 40 L80 50 L50 60 Z" fill="#00203F" opacity="0.5" /><circle cx="50" cy="50" r="6" fill="#ECA400" /></svg></div>
-                    <h2>Events Lead</h2><p class="description">Logistics, speaker requests, and society activity calendar.</p>
+                    <h2>Events Lead</h2><p class="description">Delivers the ISoc's activity calendar. Manages event logistics, speaker requests, and ensures all activities provide value to the student body.</p>
                 </div>
             </div>
 
-            <div style="text-align: center; max-width: 800px; margin: 60px auto 30px auto;">
-                <h2 style="font-family: 'Montserrat'; font-size: clamp(1.2rem, 4vw, 1.8rem); font-weight: 800; color: #00203F; text-transform: uppercase;">Committee FAQs</h2>
+            <div class="faq-intro">
+                <h2 style="font-family: 'Montserrat'; font-size: clamp(1.2rem, 4vw, 1.8rem); font-weight: 800; color: #00203F; text-transform: uppercase; margin: 0;">Committee FAQs</h2>
                 <svg style="margin: 10px auto 0; width: 30px; height: 30px; color: #ECA400; display: block;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
                 <p style="margin: 10px 0 0; color: #475569; font-size: 0.9rem;">Click on a card to reveal the answer.</p>
             </div>
@@ -324,15 +324,15 @@
             <div class="qa-grid-container" style="padding: 0 20px 60px 20px;">
                 <div class="faq-grid-card" onclick="toggleFaqCard(this)">
                     <div class="faq-card-header"><span class="faq-icon">1</span><h3 class="faq-grid-title">What is the single most important principle we must uphold?</h3></div>
-                    <div class="faq-card-body"><p><strong>Sincerity of Intention (Ikhlas).</strong> All actions should be done for Allah's pleasure, turning work into worship.</p></div>
+                    <div class="faq-card-body"><p><strong>Sincerity of Intention (Ikhlas).</strong> All actions should be done with pure intention for Allah's pleasure, turning work into worship.</p></div>
                 </div>
                 <div class="faq-grid-card" onclick="toggleFaqCard(this)">
                     <div class="faq-card-header"><span class="faq-icon">2</span><h3 class="faq-grid-title">How do we prevent the committee from burning out?</h3></div>
-                    <div class="faq-card-body"><p><strong>Regular check-ins.</strong> Have the vice team check in often and rotate leads so stress is shared.</p></div>
+                    <div class="faq-card-body"><p><strong>Regular check-ins.</strong> Have the vice team check in often and rotate event leads so stress is shared. Don't burn out by doing everything yourself.</p></div>
                 </div>
                 <div class="faq-grid-card" onclick="toggleFaqCard(this)">
                     <div class="faq-card-header"><span class="faq-icon">3</span><h3 class="faq-grid-title">What is the biggest mistake a new committee makes?</h3></div>
-                    <div class="faq-card-body"><p><strong>Imbalance.</strong> Using all energy on freshers. Ensure regular events keep society balanced year-round.</p></div>
+                    <div class="faq-card-body"><p><strong>Imbalance.</strong> Using all energy on freshers. Ensure regular events keep the society balanced year-round.</p></div>
                 </div>
                 <div class="faq-grid-card" onclick="toggleFaqCard(this)">
                     <div class="faq-card-header"><span class="faq-icon">4</span><h3 class="faq-grid-title">How should we resolve major disagreements?</h3></div>
@@ -344,7 +344,49 @@
                 </div>
                 <div class="faq-grid-card" onclick="toggleFaqCard(this)">
                     <div class="faq-card-header"><span class="faq-icon">6</span><h3 class="faq-grid-title">We struggle to keep volunteers engaged. Solution?</h3></div>
-                    <div class="faq-card-body"><p><strong>Barakah & Thanks.</strong> Remind members of spiritual rewards and give public praise.</p></div>
+                    <div class="faq-card-body"><p><strong>Barakah & Thanks.</strong> Remind members of spiritual rewards and always give genuine public praise.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="handover-section">
+            <div class="handover-hero">
+                <h2>Key Handover<br>Documentation</h2>
+                <div class="handover-accent">
+                    <div class="h-line"></div>
+                    <div class="h-subtitle">The Final Transition</div>
+                    <div class="h-line"></div>
+                </div>
+                <svg style="margin: 25px auto 0; width: 28px; height: 28px; color: #00203F; opacity: 0.2; display: block;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </div>
+            <div class="handover-grid-section">
+                <div class="handover-grid">
+                    <div class="handover-card"><h3><span class="icon-dot"></span>Annual Report</h3><p>A summary of the year's accomplishments and activities.</p></div>
+                    <div class="handover-card"><h3><span class="icon-dot"></span>Constitution</h3><p>The formal governing document explaining how the ISoc runs.</p></div>
+                    <div class="handover-card"><h3><span class="icon-dot"></span>Meeting Minutes</h3><p>An archive of all previous meeting minutes and key decisions.</p></div>
+                    <div class="handover-card"><h3><span class="icon-dot"></span>Access & Passwords</h3><p>Securely hand over email, social media, and website credentials.</p></div>
+                    <div class="handover-card"><h3><span class="icon-dot"></span>Finance & Accounts</h3><p>Budgets, sponsor info, and comprehensive financial reports.</p></div>
+                    <div class="handover-card"><h3><span class="icon-dot"></span>SU Relations</h3><p>Key information on room bookings and relationship history.</p></div>
+                    <div class="handover-card"><h3><span class="icon-dot"></span>Prayer Room Guidance</h3><p>University rules and best practices for managing the prayer room.</p></div>
+                    <div class="handover-card"><h3><span class="icon-dot"></span>Inventory of Assets</h3><p>A full list of ISoc property, from banners to sports equipment.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="hook-section">
+            <div class="spine-node"></div>
+            <h1 style="font-family:'Montserrat'; font-weight:900; text-transform:uppercase; margin:10px 0 15px 0;">This Section Includes:</h1>
+            <div class="roadmap-list-container">
+                <div class="guide-tag">Leadership Excellence</div>
+                <p style="font-size:0.9rem; line-height:1.5; margin:0 0 15px 0; font-weight:400; color:#475569;">Equipping ISoc leaders with the spiritual foundation and practical organizational skills required to manage a successful committee and leave a lasting legacy.</p>
+                <div style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;">
+                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0,32,63,0.06);">Your Intention Matters</div>
+                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0,32,63,0.06);">Meeting Excellence</div>
+                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0,32,63,0.06);">Building Your Committee</div>
+                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0,32,63,0.06);">Committee FAQs</div>
+                    <div style="color:#00203F; font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid rgba(0,32,63,0.06);">Key Handover Documentation</div>
                 </div>
             </div>
         </section>
