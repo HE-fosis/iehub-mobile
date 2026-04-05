@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Nunito:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Nunito:wght@400;500;600;700&family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,400;1,600&display=swap" rel="stylesheet">
     <style>
         /* --- 1. GLOBAL SCROLL DNA --- */
         * { box-sizing: border-box; }
@@ -77,111 +77,59 @@
             background: #FFFFFF;
             margin-top: -25px; 
             border-radius: 30px 30px 0 0;
-            padding: 40px 15px;
+            padding: 20px 15px 40px 15px;
             position: relative;
             z-index: 5;
         }
 
-        .hub-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            color: #00203F;
-            text-transform: uppercase;
-            text-align: center;
-            margin: 0 0 5px 0;
-            font-size: clamp(1.2rem, 5vw, 1.8rem);
-        }
+        /* --- 4. "THIS SECTION INCLUDES" LIST --- */
+        .spine-top { width: 100%; height: 40px; display: flex; flex-direction: column; align-items: center; background: #fff; }
+        .spine-line { width: 2px; height: 100%; background: linear-gradient(to bottom, transparent, #00203F); opacity: 0.15; }
+        .spine-node { width: 10px; height: 10px; background: #00203F; border: 2px solid #ECA400; border-radius: 50%; margin-top: -5px; z-index: 10; box-shadow: 0 0 8px rgba(236, 164, 0, 0.3); }
 
-        .sub-instruction {
-            display: block;
-            text-align: center;
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: #64748B;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-        }
+        .section-roadmap { background-color: #fff; width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 10px 20px 30px 20px; color: #00203F; }
+        .section-roadmap h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(1.4rem, 6vw, 2rem); font-weight: 900; margin: 5px 0 10px 0; text-transform: uppercase; }
+        .roadmap-list-container { max-width: 650px; width: 100%; text-align: left; }
+        .guide-tag { display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 800; color: #ECA400; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 6px; border-bottom: 2px solid #ECA400; padding-bottom: 4px; }
+        .intro-text { font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px; color: #475569; }
+        .link-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+        .link-item { color: #00203F; font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid rgba(0, 32, 63, 0.06); }
+        .link-item::before { content: ""; width: 6px; height: 6px; background: #ECA400; border-radius: 50%; flex-shrink: 0; }
 
-        /* Quick Links Grid */
-        .btn-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 12px;
-            max-width: 1100px;
-            margin: 0 auto 40px auto;
-        }
+        /* --- 5. QUICK LINKS GRID --- */
+        .hub-title { font-family: 'Montserrat', sans-serif; font-weight: 800; color: #00203F; text-transform: uppercase; text-align: center; margin: 40px 0 5px 0; font-size: clamp(1.2rem, 5vw, 1.8rem); }
+        .sub-instruction { display: block; text-align: center; font-size: 0.7rem; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+        .btn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; max-width: 1100px; margin: 0 auto; }
+        .resource-card { background: #ECA400; padding: 15px; border-radius: 10px; text-decoration: none; color: #00203F; font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; display: flex; align-items: center; transition: 0.2s ease; }
 
-        .resource-card {
-            background: #ECA400;
-            padding: 15px;
-            border-radius: 10px;
-            text-decoration: none;
-            color: #00203F;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            transition: 0.2s ease;
-        }
-
-        /* --- 4. THE GOLDEN CIRCLE --- */
-        .gc-section { border-top: 2px solid #F1F5F9; padding-top: 30px; margin-top: 20px; }
+        /* --- 6. GOLDEN CIRCLE --- */
+        .gc-section { border-top: 2px solid #F1F5F9; padding-top: 30px; margin-top: 40px; }
         .gc-layout { display: flex; flex-direction: column; align-items: center; gap: 30px; }
         @media (min-width: 900px) { .gc-layout { flex-direction: row; align-items: flex-start; } }
-
         .circle-viz { width: 100%; max-width: 260px; position: relative; aspect-ratio: 1/1; }
         .circle-outer { width: 100%; height: 100%; border: 3px solid #00203F; border-radius: 50%; position: relative; }
         .circle-middle { width: 70%; height: 70%; border: 2px solid #00203F; border-radius: 50%; position: absolute; top: 15%; left: 15%; }
         .circle-inner { width: 45%; height: 45%; background: #ECA400; border-radius: 50%; position: absolute; top: 27.5%; left: 27.5%; display: flex; justify-content: center; align-items: center; font-weight: 900; color: #00203F; font-family: 'Montserrat'; }
-
-        .circle-text { font-family: 'Montserrat', sans-serif; font-weight: 800; position: absolute; font-size: 0.8rem; width: 100%; text-align: center; pointer-events: none; color: #00203F; }
-        .label-what { bottom: 8%; } .label-how { bottom: 12%; }
-
-        .gc-content { width: 100%; flex: 1; }
-        .acc-item { border: 1px solid #E2E8F0; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
-        .acc-header { width: 100%; padding: 18px; background: #fff; border: none; text-align: left; font-family: 'Montserrat', sans-serif; font-weight: 800; display: flex; justify-content: space-between; cursor: pointer; text-transform: uppercase; color: #00203F; }
-        .acc-header.active { background: #F8FAFC; border-left: 4px solid #ECA400; }
+        
+        .acc-item { border: 1px solid #E2E8F0; border-radius: 10px; margin-bottom: 10px; overflow: hidden; width: 100%; }
+        .acc-header { width: 100%; padding: 18px; background: #fff; border: none; text-align: left; font-family: 'Montserrat', sans-serif; font-weight: 800; display: flex; justify-content: space-between; cursor: pointer; color: #00203F; text-transform: uppercase; }
         .acc-body { max-height: 0; overflow: hidden; transition: 0.4s ease-out; background: #f8fafc; }
         .acc-inner { padding: 20px; display: flex; align-items: center; gap: 20px; }
-        .acc-inner p { margin: 0; color: #475569; font-size: 1.05rem; line-height: 1.6; flex: 1; font-weight: 500; }
-        .acc-image { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 2px solid #ECA400; flex-shrink: 0; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
+        .acc-image { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 2px solid #ECA400; flex-shrink: 0; }
 
-        /* --- 5. NEW: LESSONS IN LEADERSHIP SECTION --- */
-        .lessons-bridge { width: 100%; display: flex; flex-direction: column; align-items: center; background: #ffffff; height: 45px; position: relative; margin-top: 40px; }
-        .connector-line-top { width: 2px; height: 100%; background: linear-gradient(to bottom, #F1F5F9, #ECA400); }
-        
-        .wave-wrapper { width: 100%; line-height: 0; position: relative; background: #ffffff; }
-        .wave-wrapper svg { width: 100%; height: auto; display: block; }
-        .gold-dot { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); width: 16px; height: 16px; background: #ECA400; border-radius: 50%; border: 3px solid #ffffff; box-shadow: 0 0 15px rgba(236, 164, 0, 0.4); z-index: 30; }
-
-        .navy-banner { width: 100%; background-color: #00203F; text-align: center; padding: 40px 18px 80px; margin-top: -1px; position: relative; z-index: 10; }
-        .main-heading { color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: clamp(22px, 7vw, 42px); font-weight: 900; text-transform: uppercase; margin: 0; letter-spacing: 1px; }
+        /* --- 7. LESSONS IN LEADERSHIP --- */
+        .lessons-bridge { width: 100%; display: flex; flex-direction: column; align-items: center; background: #fff; height: 45px; margin-top: 40px; }
+        .wave-wrapper { width: 100%; line-height: 0; position: relative; background: #fff; }
+        .navy-banner { width: 100%; background-color: #00203F; text-align: center; padding: 40px 18px 80px; margin-top: -1px; color: #fff; position: relative; }
+        .main-heading { font-family: 'Montserrat'; font-weight: 900; font-size: clamp(22px, 7vw, 42px); text-transform: uppercase; margin: 0; }
         .main-heading span { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; text-transform: none; color: #ECA400; }
-        .accent-line { width: 42px; height: 3px; background: #ECA400; margin: 16px auto; border-radius: 2px; }
-        .banner-subtext { max-width: 720px; margin: 0 auto; color: #ffffff; font-size: clamp(14px, 4.2vw, 16px); line-height: 1.55; opacity: 0.9; }
-
-        /* Q&A STACK */
-        .qa-outer-wrapper { background: #FFFFFF; width: 100%; padding: 60px 15px; position: relative; margin-top: -30px; border-radius: 30px 30px 0 0; z-index: 20; }
+        .qa-outer-wrapper { background: #fff; padding: 60px 15px; margin-top: -30px; border-radius: 30px 30px 0 0; position: relative; z-index: 20; }
         .qa-stack { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; max-width: 1100px; margin: 0 auto; }
         .topic-group { flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 20px; }
         .qa-card { width: 100%; border-radius: 12px; padding: 40px 25px; position: relative; text-align: center; box-shadow: 0 6px 15px rgba(0,0,0,0.08); }
-        .question-card { background: #FFFFFF; border: 2px solid #00203F; color: #00203F; }
-        .answer-card { background: #00203F; color: #FFFFFF; border: 2px solid #00203F; }
+        .question-card { background: #fff; border: 2px solid #00203F; color: #00203F; }
+        .answer-card { background: #00203F; color: #fff; border: 2px solid #00203F; }
         .qa-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: #ECA400; color: #00203F; padding: 5px 20px; border-radius: 20px; font-family: 'Montserrat'; font-weight: 800; font-size: 0.7rem; border: 2px solid #00203F; }
-        .qa-text { font-family: 'Montserrat'; font-weight: 800; font-size: 1.2rem; margin: 0; }
-        .qa-text-body { font-size: 1rem; line-height: 1.6; margin: 0; }
-
-        /* DROPDOWNS */
-        .leader-drop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin: 40px auto 0; }
-        .leader-drop-card { background: #FFFFFF; border: 1px solid #C7CBC8; border-radius: 8px; cursor: pointer; transition: 0.3s; }
-        .leader-drop-card.active { border-left: 6px solid #ECA400; }
-        .leader-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; }
-        .leader-title { font-family: 'Montserrat'; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; color: #00203F; margin: 0; }
-        .leader-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; padding: 0 20px; background: #F8FAFC; }
-        .leader-body p { padding: 20px 0; margin: 0; color: #475569; font-size: 0.95rem; line-height: 1.6; }
 
         @media (max-width: 600px) { .acc-inner { flex-direction: column; text-align: center; } .topic-group { min-width: 100%; } }
     </style>
@@ -191,11 +139,28 @@
     <div class="hero-section">
         <h1><span>Leadership</span><span>& Planning</span></h1>
         <span class="arabic-verse">فَبِمَا رَحْمَةٍۢ مِّنَ ٱللَّهِ لِنتَ لَهُمْ ۖ وَلَوْ كُنتَ فَظًّا غَلِيظَ ٱلْقَلْبِ لَٱنفَضُّوا۟ مِنْ حَوْلِكَ...</span>
-        <p class="translation-text">"It is out of Allah’s mercy that you have been lenient with them... Once you make a decision, put your trust in Allah."</p>
+        <p class="translation-text">"It is out of Allah’s mercy that you have been lenient with them..."</p>
         <div class="citation">Surah Ali-Imran 3:159</div>
     </div>
 
-    <div class="master-content-container" id="hub-root">
+    <div class="master-content-container" id="leadership-root">
+        
+        <div class="spine-top"><div class="spine-line"></div><div class="spine-node"></div></div>
+        <section class="section-roadmap">
+            <h2>This Section Includes:</h2>
+            <div class="roadmap-list-container">
+                <div class="guide-tag">Leadership Excellence</div>
+                <p class="intro-text">Equipping ISoc leaders with the spiritual foundation and practical organizational skills.</p>
+                <div class="link-list">
+                    <div class="link-item">Your Intention Matters</div>
+                    <div class="link-item">Meeting Excellence</div>
+                    <div class="link-item">Building Your Committee</div>
+                    <div class="link-item">Committee FAQs</div>
+                    <div class="link-item">Key Handover Documentation</div>
+                </div>
+            </div>
+        </section>
+
         <h3 class="hub-title">Quick Links & Templates</h3>
         <span class="sub-instruction">click and save as a copy!</span>
         <div class="btn-grid">
@@ -238,7 +203,7 @@
         <div class="navy-banner">
             <h1 class="main-heading">Lessons in <span>Leadership</span></h1>
             <div class="accent-line"></div>
-            <p class="banner-subtext">True leadership in an ISoc is about serving your people and the Muslim community with humility and sincerity.</p>
+            <p class="banner-subtext">Leadership is about serving your people with humility and sincerity.</p>
         </div>
 
         <div class="qa-outer-wrapper">
@@ -246,25 +211,6 @@
                 <div class="topic-group">
                     <div class="qa-card question-card"><div class="qa-badge">QUESTION</div><h3 class="qa-text">What do you expect from your team?</h3></div>
                     <div class="qa-card answer-card"><div class="qa-badge">ANSWER</div><p class="qa-text-body">Prompt task completion, values & consistent attendance. Empowering individuals with well-defined roles streamlines work.</p></div>
-                </div>
-                <div class="topic-group">
-                    <div class="qa-card question-card"><div class="qa-badge">QUESTION</div><h3 class="qa-text">How do we improve communication?</h3></div>
-                    <div class="qa-card answer-card"><div class="qa-badge">ANSWER</div><p class="qa-text-body">With effective communication techniques from the Sunnah. Convey the message of Islam clearly & compassionately.</p></div>
-                </div>
-            </div>
-
-            <div class="leader-drop-grid">
-                <div class="leader-drop-card" onclick="toggleLeaderCard(this)">
-                    <div class="leader-header"><h3 class="leader-title">Lead by Example</h3><span>+</span></div>
-                    <div class="leader-body"><p>Serve with humility and sincerity. Lead with genuine care and inspire through your actions.</p></div>
-                </div>
-                <div class="leader-drop-card" onclick="toggleLeaderCard(this)">
-                    <div class="leader-header"><h3 class="leader-title">Communicate with Clarity</h3><span>+</span></div>
-                    <div class="leader-body"><p>Clear and consistent communication is vital. Ensure info flows freely and feedback is encouraged.</p></div>
-                </div>
-                <div class="leader-drop-card" onclick="toggleLeaderCard(this)">
-                    <div class="leader-header"><h3 class="leader-title">Defining Roles</h3><span>+</span></div>
-                    <div class="leader-body"><p>Defining clear roles: everyone knows their responsibilities and where decisions are made.</p></div>
                 </div>
             </div>
         </div>
@@ -288,15 +234,6 @@
                 btn.querySelector('span').innerText = "−";
             }
             setTimeout(sendHeight, 300);
-        }
-
-        function toggleLeaderCard(card) {
-            card.classList.toggle("active");
-            var body = card.querySelector('.leader-body');
-            var icon = card.querySelector('span');
-            body.style.maxHeight = body.style.maxHeight ? null : body.scrollHeight + "px";
-            icon.innerText = body.style.maxHeight ? "−" : "+";
-            setTimeout(sendHeight, 400); 
         }
 
         window.onload = sendHeight;
