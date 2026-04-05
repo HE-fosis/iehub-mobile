@@ -207,7 +207,7 @@
         .leader-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; padding: 0 25px; background: #F8FAFC; }
         .leader-body p { margin: 20px 0; color: #475569; font-size: 1rem; line-height: 1.6; font-weight: 500; }
 
-        /* --- 7. THE FINAL ROADMAP HOOK (NOW AT THE BOTTOM) --- */
+        /* --- 7. TABLE OF CONTENTS HOOK --- */
         .hook-container { width: 100%; background-color: #F3F3F3; display: flex; flex-direction: column; align-items: center; padding: 30px 20px; color: #00203F; position: relative; z-index: 15; border-radius: 30px 30px 0 0; margin-top: 40px; }
         .spine-node { width: 10px; height: 10px; background: #00203F; border: 2px solid #ECA400; border-radius: 50%; margin-top: -5px; z-index: 10; animation: beaconPulse 3s infinite ease-in-out; }
         @keyframes beaconPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } }
@@ -218,6 +218,20 @@
         .link-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
         .link-item { color: #00203F; font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid rgba(0, 32, 63, 0.06); }
         .link-item::before { content: ""; width: 6px; height: 6px; background: #ECA400; border-radius: 50%; flex-shrink: 0; }
+
+        /* --- 8. MEETING EXCELLENCE HUB --- */
+        .meeting-hub-section { width: 100%; background: #ffffff; padding-top: 40px; }
+        .mtg-header { background-color: #f8fafc; padding: 50px 20px 45px 20px; text-align: center; width: 100%; }
+        .mtg-header h1 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(1.8rem, 6vw, 2.8rem); color: #00203F; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+        .mtg-tagline { margin: 10px 0 0; color: #ECA400; font-family: 'Montserrat'; font-size: 0.75rem; letter-spacing: 4px; font-weight: 800; text-transform: uppercase; }
+        .tab-nav { display: flex; flex-wrap: wrap; background: #F8FAFC; border-radius: 12px; padding: 8px; margin: 25px auto; border: 1px solid #C7CBC8; gap: 8px; max-width: 1100px; }
+        .mtg-btn { flex: 1; min-width: 180px; padding: 14px; border: none; border-radius: 8px; cursor: pointer; font-family: 'Montserrat'; font-weight: 800; transition: 0.3s; font-size: 0.85rem; text-transform: uppercase; }
+        .mtg-btn.active { background: #124A7A; color: white; }
+        .mtg-btn.inactive { background: transparent; color: #124A7A; }
+        .mtg-content { display: none; animation: fadeIn 0.5s ease; }
+        .rule-card { background: #FFFFFF; border: 1px solid #C7CBC8; padding: 25px; border-radius: 8px; border-top: 6px solid #124A7A; position: relative; }
+        .rule-num { background: #124A7A; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; position: absolute; top: -15px; left: 20px; }
+        .strategy-box { background: #00203F; color: white; padding: 30px; border-radius: 8px; border-left: 8px solid #ECA400; margin-bottom: 20px; }
 
         @media (max-width: 600px) { .acc-inner { flex-direction: column; text-align: center; } .topic-group { min-width: 100%; } }
     </style>
@@ -237,93 +251,134 @@
         <div class="citation">Surah Ali-Imran 3:159</div>
     </div>
 
-    <div class="master-content-container">
-        <h3 class="hub-title">Quick Links & Templates</h3>
-        <span class="sub-instruction">click and save as a copy!</span>
-        <div class="btn-grid">
-            <a href="https://docs.google.com/document/d/1xcP6-OujnQzNXpePP0Q8WKLlHkrsZHgUUzmCPXaNGqQ/edit?usp=sharing" target="_blank" class="resource-card"><span style="margin-right:12px; font-size:1.4rem;">📜</span> Constitution Template</a>
-            <a href="https://docs.google.com/document/d/19upTZZdkEQYlGoW6HdQP0RP33dvaBEZ_/edit?usp=sharing" target="_blank" class="resource-card"><span style="margin-right:12px; font-size:1.4rem;">⏱️</span> Minutes Template</a>
-            <a href="https://docs.google.com/document/d/1Q7gdVCFR_7FenF3ZRekINJBHFGfNHGIe/edit?usp=sharing" target="_blank" class="resource-card"><span style="margin-right:12px; font-size:1.4rem;">🤝</span> Handover Checklist</a>
-        </div>
+    <div id="master-root">
+        <div class="master-content-container">
+            <h3 class="hub-title">Quick Links & Templates</h3>
+            <span class="sub-instruction">click and save as a copy!</span>
+            <div class="btn-grid">
+                <a href="https://docs.google.com/document/d/1xcP6-OujnQzNXpePP0Q8WKLlHkrsZHgUUzmCPXaNGqQ/edit?usp=sharing" target="_blank" class="resource-card"><span style="margin-right:12px; font-size:1.4rem;">📜</span> Constitution Template</a>
+                <a href="https://docs.google.com/document/d/19upTZZdkEQYlGoW6HdQP0RP33dvaBEZ_/edit?usp=sharing" target="_blank" class="resource-card"><span style="margin-right:12px; font-size:1.4rem;">⏱️</span> Minutes Template</a>
+                <a href="https://docs.google.com/document/d/1Q7gdVCFR_7FenF3ZRekINJBHFGfNHGIe/edit?usp=sharing" target="_blank" class="resource-card"><span style="margin-right:12px; font-size:1.4rem;">🤝</span> Handover Checklist</a>
+            </div>
 
-        <div class="gc-section">
-            <h3 class="hub-title">The Golden Circle</h3>
-            <div class="gc-layout">
-                <div class="circle-viz">
-                    <div class="circle-outer" id="viz-what"><span class="circle-text label-what">WHAT</span>
-                        <div class="circle-middle" id="viz-how"><span class="circle-text label-how">HOW</span>
-                            <div class="circle-inner" id="viz-why">WHY</div>
+            <div class="gc-section">
+                <h3 class="hub-title">The Golden Circle</h3>
+                <div class="gc-layout">
+                    <div class="circle-viz">
+                        <div class="circle-outer" id="viz-what"><span class="circle-text label-what">WHAT</span>
+                            <div class="circle-middle" id="viz-how"><span class="circle-text label-how">HOW</span>
+                                <div class="circle-inner" id="viz-why">WHY</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gc-content">
+                        <div class="acc-item"><button class="acc-header active" onclick="toggleAcc(this)">WHY <span>−</span></button>
+                            <div class="acc-body" style="max-height: 500px;"><div class="acc-inner"><p>The purpose. To serve & uplift Muslim students for the sake of Allah (SWT).</p><img src="https://i.ibb.co/4wJnfjc3/IMG-20230708-WA0066.jpg" class="acc-image"></div></div>
+                        </div>
+                        <div class="acc-item"><button class="acc-header" onclick="toggleAcc(this)">HOW <span>+</span></button>
+                            <div class="acc-body"><div class="acc-inner"><p>The process. By planning with sincerity, teamwork, and effective communication.</p><img src="https://i.ibb.co/DDTHY1VB/IMG-20240911-WA0039.jpg" class="acc-image"></div></div>
+                        </div>
+                        <div class="acc-item"><button class="acc-header" onclick="toggleAcc(this)">WHAT <span>+</span></button>
+                            <div class="acc-body"><div class="acc-inner"><p>The proof. Through high-quality events, socials, welfare services, and dawah activities.</p><img src="https://i.ibb.co/qMwnq8r7/Screenshot-2025-07-09-132149.png" class="acc-image"></div></div>
                         </div>
                     </div>
                 </div>
-                <div class="gc-content">
-                    <div class="acc-item"><button class="acc-header active" onclick="toggleAcc(this)">WHY <span>−</span></button>
-                        <div class="acc-body" style="max-height: 500px;"><div class="acc-inner"><p>The purpose. To serve & uplift Muslim students for the sake of Allah (SWT).</p><img src="https://i.ibb.co/4wJnfjc3/IMG-20230708-WA0066.jpg" class="acc-image"></div></div>
+            </div>
+
+            <div class="lessons-bridge"><div class="connector-line-top"></div></div>
+            <div class="wave-wrapper">
+                <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 70C360 15 1080 15 1440 70V70H0Z" fill="#00203F"/><path d="M0 0H1440V70C1080 15 360 15 0 70V0Z" fill="#ffffff"/>
+                </svg>
+                <div class="gold-dot"></div>
+            </div>
+
+            <div class="navy-banner">
+                <h1 class="main-heading">Lessons in <span>Leadership</span></h1>
+                <div class="accent-line"></div>
+                <p class="banner-subtext">A strong leader is the cornerstone of any effective team. True leadership in an ISoc is about serving your people and the Muslim community with humility and sincerity.</p>
+            </div>
+
+            <div class="qa-outer-wrapper">
+                <div class="qa-stack">
+                    <div class="topic-group">
+                        <div class="qa-card question-card"><div class="qa-badge">QUESTION</div><h3 class="qa-text">What do you expect from your team?</h3></div>
+                        <div class="qa-card answer-card"><div class="qa-badge">ANSWER</div><p class="qa-text-body">Prompt task completion, upholding Islamic values & consistent attendance. Empowering individuals with well-defined roles streamlines work.</p></div>
                     </div>
-                    <div class="acc-item"><button class="acc-header" onclick="toggleAcc(this)">HOW <span>+</span></button>
-                        <div class="acc-body"><div class="acc-inner"><p>The process. By planning with sincerity, teamwork, and effective communication.</p><img src="https://i.ibb.co/DDTHY1VB/IMG-20240911-WA0039.jpg" class="acc-image"></div></div>
-                    </div>
-                    <div class="acc-item"><button class="acc-header" onclick="toggleAcc(this)">WHAT <span>+</span></button>
-                        <div class="acc-body"><div class="acc-inner"><p>The proof. Through high-quality events, socials, welfare services, and dawah activities.</p><img src="https://i.ibb.co/qMwnq8r7/Screenshot-2025-07-09-132149.png" class="acc-image"></div></div>
+                    <div class="topic-group">
+                        <div class="qa-card question-card"><div class="qa-badge">QUESTION</div><h3 class="qa-text">How do we improve our communication?</h3></div>
+                        <div class="qa-card answer-card"><div class="qa-badge">ANSWER</div><p class="qa-text-body">With effective communication techniques from the Sunnah. Learn how to convey the message of Islam clearly & compassionately.</p></div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="lessons-bridge"><div class="connector-line-top"></div></div>
-        <div class="wave-wrapper">
-            <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 70C360 15 1080 15 1440 70V70H0Z" fill="#00203F"/><path d="M0 0H1440V70C1080 15 360 15 0 70V0Z" fill="#ffffff"/>
-            </svg>
-            <div class="gold-dot"></div>
-        </div>
-
-        <div class="navy-banner">
-            <h1 class="main-heading">Lessons in <span>Leadership</span></h1>
-            <div class="accent-line"></div>
-            <p class="banner-subtext">A strong leader is the cornerstone of any effective team. True leadership in an ISoc is about serving your people and the Muslim community with humility and sincerity.</p>
-        </div>
-
-        <div class="qa-outer-wrapper">
-            <div class="qa-stack">
-                <div class="topic-group">
-                    <div class="qa-card question-card"><div class="qa-badge">QUESTION</div><h3 class="qa-text">What do you expect from your team?</h3></div>
-                    <div class="qa-card answer-card"><div class="qa-badge">ANSWER</div><p class="qa-text-body">Prompt task completion, upholding Islamic values & consistent attendance. Empowering individuals with well-defined roles streamlines work.</p></div>
-                </div>
-                <div class="topic-group">
-                    <div class="qa-card question-card"><div class="qa-badge">QUESTION</div><h3 class="qa-text">How do we improve our communication?</h3></div>
-                    <div class="qa-card answer-card"><div class="qa-badge">ANSWER</div><p class="qa-text-body">With effective communication techniques from the Sunnah. Learn how to convey the message of Islam clearly & compassionately.</p></div>
+                <div class="leader-drop-grid">
+                    <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Lead by Example</h3><span>+</span></div><div class="leader-body"><p>Serve your people and the Muslim community with humility and sincerity.</p></div></div>
+                    <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Communicate with Clarity</h3><span>+</span></div><div class="leader-body"><p>Clear and consistent communication is vital for team cohesion.</p></div></div>
+                    <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Defining Roles</h3><span>+</span></div><div class="leader-body"><p>Defining clear roles and reporting structures: everyone knows their responsibilities.</p></div></div>
                 </div>
             </div>
-            <div class="leader-drop-grid">
-                <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Lead by Example</h3><span>+</span></div><div class="leader-body"><p>Serve your people and the Muslim community with humility and sincerity.</p></div></div>
-                <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Communicate with Clarity</h3><span>+</span></div><div class="leader-body"><p>Clear and consistent communication is vital for team cohesion.</p></div></div>
-                <div class="leader-drop-card" onclick="toggleLeaderCard(this)"><div class="leader-header"><h3 class="leader-title">Defining Roles</h3><span>+</span></div><div class="leader-body"><p>Defining clear roles and reporting structures: everyone knows their responsibilities.</p></div></div>
-            </div>
-        </div>
 
-        <section class="hook-container">
-            <div class="spine-node"></div>
-            <h1>This Section Includes:</h1>
-            <div class="roadmap-list-container">
-                <div class="guide-tag">Leadership Excellence</div>
-                <p class="intro-text">Equipping ISoc leaders with the spiritual foundation and practical organizational skills required to manage a successful committee and leave a lasting legacy.</p>
-                <div class="link-list">
-                    <div class="link-item">Your Intention Matters</div>
-                    <div class="link-item">Meeting Excellence</div>
-                    <div class="link-item">Building Your Committee</div>
-                    <div class="link-item">Committee FAQs</div>
-                    <div class="link-item">Key Handover Documentation</div>
+            <section class="hook-container">
+                <div class="spine-node"></div>
+                <h1>This Section Includes:</h1>
+                <div class="roadmap-list-container">
+                    <div class="guide-tag">Leadership Excellence</div>
+                    <p class="intro-text">Equipping ISoc leaders with the spiritual foundation and practical organizational skills required to manage a successful committee and leave a lasting legacy.</p>
+                    <div class="link-list">
+                        <div class="link-item">Your Intention Matters</div>
+                        <div class="link-item">Meeting Excellence</div>
+                        <div class="link-item">Building Your Committee</div>
+                        <div class="link-item">Committee FAQs</div>
+                        <div class="link-item">Key Handover Documentation</div>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+            <section class="meeting-hub-section">
+                <div class="mtg-header">
+                    <h1>Meeting Excellence</h1>
+                    <p class="mtg-tagline">Focused • Efficient • Creative</p>
+                </div>
+
+                <div style="max-width: 1100px; margin: auto; padding: 25px 15px;">
+                    <div style="text-align: center; margin-bottom: 25px;">
+                        <p style="font-size: 1rem; color: #475569; max-width: 800px; margin: auto;">To make meetings efficient, the host must ensure the meeting <strong>remains focused</strong> and the <strong>agenda is being followed</strong>. However, the goal is to make meetings <span style="color: #124A7A; font-weight: 700;">enjoyable and creative</span>, as opposed to being sterile and corporate.</p>
+                    </div>
+
+                    <div class="tab-nav">
+                        <button onclick="openMtgTab('essentials')" class="mtg-btn active" id="btn-essentials">Must-Know Tips</button>
+                        <button onclick="openMtgTab('structural')" class="mtg-btn inactive" id="btn-structure">The Big Picture</button>
+                    </div>
+
+                    <div id="essentials" class="mtg-content" style="display: block;">
+                        <h2 style="font-family: 'Montserrat', sans-serif; color: #00203F; font-size: 1.5rem; text-align: center; margin-bottom: 25px;">3 Rules for Every Session</h2>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                            <div class="rule-card"><div class="rule-num">1</div><h4 style="font-family: 'Montserrat'; color: #124A7A; margin: 10px 0; text-transform: uppercase;">Create an Agenda</h4><p style="font-size: 0.9rem; color: #475569;">Prepare ideas beforehand and send the agenda out far in advance.</p></div>
+                            <div class="rule-card"><div class="rule-num">2</div><h4 style="font-family: 'Montserrat'; color: #124A7A; margin: 10px 0; text-transform: uppercase;">Time is Essence</h4><p style="font-size: 0.9rem; color: #475569;">Lateness creates a <strong>culture of slack</strong>. Always start and finish on time.</p></div>
+                            <div class="rule-card"><div class="rule-num">3</div><h4 style="font-family: 'Montserrat'; color: #124A7A; margin: 10px 0; text-transform: uppercase;">Action Points!</h4><p style="font-size: 0.9rem; color: #475569;">Never leave without knowing exactly who is responsible for what.</p></div>
+                        </div>
+                    </div>
+
+                    <div id="structural" class="mtg-content">
+                        <div class="strategy-box">
+                            <h3 style="font-family: 'Montserrat'; color: #ECA400; margin-top: 0;">1. RUNNING AN AGM</h3>
+                            <p style="font-size: 0.95rem;">Showcase accomplishments, role descriptions, and manifestos.</p>
+                        </div>
+                        <div style="background: #F2F4F5; padding: 25px; border-radius: 8px; border: 1px solid #C7CBC8;">
+                            <h3 style="font-family: 'Montserrat'; color: #124A7A; margin-top: 0;">2. THE HANDOVER</h3>
+                            <p style="font-size: 0.9rem;">Continuity is key. Introduce successors to SU, Sponsors, and Alumni.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </div>
 
     <script>
         function sendHeight() {
             const height = document.body.scrollHeight;
-            if (window.parent) { window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height + 40 }, '*'); }
+            if (window.parent) { window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height + 60 }, '*'); }
         }
+
         function toggleAcc(btn) {
             const body = btn.nextElementSibling;
             const isOpen = body.style.maxHeight !== "0px" && body.style.maxHeight !== "";
@@ -332,6 +387,7 @@
             if (!isOpen) { body.style.maxHeight = body.scrollHeight + "px"; btn.querySelector('span').innerText = "−"; }
             setTimeout(sendHeight, 300);
         }
+
         function toggleLeaderCard(card) {
             card.classList.toggle("active");
             var body = card.querySelector('.leader-body');
@@ -340,6 +396,24 @@
             icon.innerText = body.style.maxHeight ? "−" : "+";
             setTimeout(sendHeight, 400); 
         }
+
+        function openMtgTab(tabId) {
+            document.querySelectorAll('.mtg-content').forEach(c => c.style.display = 'none');
+            document.getElementById(tabId).style.display = 'block';
+            const btnEss = document.getElementById('btn-essentials');
+            const btnStr = document.getElementById('btn-structure');
+            if(tabId === 'essentials') {
+                btnEss.classList.add('active'); btnEss.classList.remove('inactive');
+                btnStr.classList.add('inactive'); btnStr.classList.remove('active');
+            } else {
+                btnStr.classList.add('active'); btnStr.classList.remove('inactive');
+                btnEss.classList.add('inactive'); btnEss.classList.remove('active');
+            }
+            setTimeout(sendHeight, 100);
+        }
+
+        const observer = new ResizeObserver(sendHeight);
+        observer.observe(document.body);
         window.onload = sendHeight;
         window.onresize = sendHeight;
         setInterval(sendHeight, 2000);
