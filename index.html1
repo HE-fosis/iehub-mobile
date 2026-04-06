@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FOSIS | ISoc Essentials Hub</title>
+    <script type="text/javascript">
+        function redirectUser() {
+            // Define your two destinations
+            const mobileSite = "https://sites.google.com/fosis.org.uk/iehub-mobile/soon-alumni-community";
+            const desktopSite = "https://sites.google.com/fosis.org.uk/isocessentials/tarbiyyah-wellness";
+
+            // Check screen width (768px is the standard cutoff for tablets/phones)
+            if (window.innerWidth <= 768) {
+                window.location.replace(mobileSite);
+            } else {
+                window.location.replace(desktopSite);
+            }
+        }
+
+        // Run the check immediately
+        redirectUser();
+    </script>
+    
+    <style>
+        body { 
+            background: #00203F; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+            font-family: sans-serif;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center;">
+        <p>Loading the IE Hub Experience...</p>
+    </div>
+</body>
+</html>
