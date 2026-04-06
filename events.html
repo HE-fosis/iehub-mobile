@@ -1,1 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Nunito:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
 
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* Standardized height logic to prevent scrolling */
+    height: 100vh;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden; 
+    position: relative;
+  }
+
+  /* Optimized Icon Layer */
+  .icon-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .floating-icon {
+    position: absolute;
+    fill: #ECA400; 
+    opacity: 0.05;
+    animation: slowDrift 20s infinite ease-in-out alternate;
+  }
+
+  .i1 { width: 90px; top: 10%; left: 8%; } 
+  .i2 { width: 70px; top: 15%; right: 10%; animation-delay: -4s; } 
+  .i3 { width: 100px; bottom: 15%; left: 12%; animation-delay: -8s; }
+
+  @keyframes slowDrift {
+    0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+    100% { transform: translate3d(20px, -25px, 0) rotate(8deg); }
+  }
+
+  .hero-container {
+    width: 100%;
+    max-width: 1200px; 
+    /* Standardized padding to match Leadership, Finance, and Tarbiyyah */
+    padding: 20px 15px 10px 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+  }
+
+  h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: clamp(2.2rem, 10vw, 5.5rem); 
+    line-height: 0.95;
+    margin: 0 0 10px 0;
+    letter-spacing: -1px;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    width: 100%;
+  }
+
+  h1 span {
+    display: block;
+  }
+
+  .swipe-zone {
+    margin: 5px 0 25px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chevron {
+    width: 12px;
+    height: 12px;
+    border-right: 3px solid #ECA400; 
+    border-bottom: 3px solid #ECA400;
+    transform: rotate(45deg);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: rotate(45deg) translate(-5px, -5px); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: rotate(45deg) translate(5px, 5px); opacity: 0; }
+  }
+
+  .swipe-text {
+    color: #ECA400; 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-top: 4px;
+  }
+
+  .verse-content {
+    width: 100%;
+    max-width: 850px; 
+    padding-bottom: 20px;
+    margin-top: 10px;
+  }
+
+  .arabic {
+    font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+    color: #ECA400; 
+    margin-bottom: 12px;
+    display: block;
+    line-height: 1.8;
+    direction: rtl;
+    text-shadow: 0 0 15px rgba(234, 164, 0, 0.2);
+  }
+
+  .translation {
+    font-family: 'Nunito', sans-serif;
+    font-size: clamp(0.95rem, 2.2vw, 1.25rem);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+    margin: 0 auto 10px auto;
+  }
+
+  .citation {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: rgba(234, 164, 0, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-container { padding-top: 40px; }
+    h1 { letter-spacing: -3px; line-height: 0.85; margin-bottom: 20px; }
+    .swipe-zone { margin-top: 20px; }
+  }
+
+  @media (max-width: 480px) {
+    .floating-icon { display: none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="icon-canvas">
+    <svg class="floating-icon i1" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+    <svg class="floating-icon i2" viewBox="0 0 24 24"><path d="M11 5h2v14h-2zm-8 4h2v6H3zm16 0h2v6h-2zM7 9h2v6H7zm8 0h2v6h-2z"/></svg>
+    <svg class="floating-icon i3" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+  </div>
+
+  <div class="hero-container" id="fosis-events-unit">
+    <h1>
+      <span>Events</span>
+      <span>& Campaigns</span>
+    </h1>
+    
+    <div class="swipe-zone">
+      <div class="chevron"></div>
+      <div class="swipe-text">EXPLORE</div>
+    </div>
+
+    <div class="verse-content">
+      <span class="arabic">كُنْتُمْ خَيْرَ أُمَّةٍ أُخْرِجَتْ لِلنَّاسِ تَأْمُرُونَ بِالْمَعْرُوفِ وَتَنْهَوْنَ عَنِ الْمُنْكَرِ وَتُؤْمِنُونَ بِاللَّهِ</span>
+      <p class="translation">"You are the best community raised up for mankind, enjoining what is right and forbidding what is wrong, and believing in Allah."</p>
+      <div class="citation">Surah Al-Imran 3:110</div>
+    </div>
+  </div>
+
+  <script>
+    function sendHeight() {
+      const unit = document.getElementById('fosis-events-unit');
+      if (unit) {
+        window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: unit.offsetHeight }, '*');
+      }
+    }
+    window.onload = sendHeight;
+    window.onresize = sendHeight;
+    setTimeout(sendHeight, 1500);
+  </script>
+
+</body>
+</html>
