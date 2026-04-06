@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Nunito:wght@400;500;600;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- APP SHELL DNA --- */
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        ::-webkit-scrollbar { display: none !important; }
+        
+        html, body {
+            margin: 0; padding: 0; width: 100%;
+            background-color: #00203F; 
+            font-family: 'Nunito', sans-serif;
+            overflow-x: hidden;
+            overflow-y: auto !important; 
+            display: block; 
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* STICKY NAV SWITCHER */
+        .app-nav {
+            position: sticky; top: 0; left: 0; width: 100%;
+            background: #00203F; padding: 12px;
+            display: flex; gap: 8px; z-index: 9999;
+            border-bottom: 2px solid #ECA400;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .nav-btn {
+            flex: 1; padding: 10px; border-radius: 6px; border: none;
+            font-family: 'Montserrat'; font-weight: 800; font-size: 0.65rem;
+            text-transform: uppercase; cursor: pointer; transition: 0.2s;
+            background: rgba(255,255,255,0.1); color: white;
+            letter-spacing: 1px;
+        }
+        .nav-btn.active { background: #ECA400; color: #00203F; }
+
+        /* VIEW LOGIC */
+        .page-view { display: none; width: 100%; min-height: 100vh; background: #fff; }
+        .page-view.active { display: block; animation: pageIn 0.3s ease-out; }
+        @keyframes pageIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- RESTORED CSS FOR SECTIONS --- */
+        .dark-hero { background: radial-gradient(circle at center, #003056 0%, #00203F 45%); color: #fff; text-align: center; padding: 50px 20px; }
+        .white-content { background: #fff; border-radius: 30px 30px 0 0; margin-top: -25px; padding: 30px 15px; position: relative; z-index: 5; }
+        
+        /* Resource Cards Styling */
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin: 20px 0; }
+        .app-card { background: #ECA400; padding: 15px; border-radius: 10px; text-decoration: none; color: #00203F; font-family: 'Montserrat'; font-weight: 800; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; text-align: center; }
+
+        /* Restoring your Leadership specific styles */
+        .arabic { font-size: 1.4rem; color: #ECA400; direction: rtl; line-height: 1.8; margin: 15px 0; }
+        .acc-item { border: 1px solid #E2E8F0; border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+        .acc-header { width: 100%; padding: 15px; background: #fff; border: none; text-align: left; font-family: 'Montserrat'; font-weight: 800; color: #00203F; display: flex; justify-content: space-between; }
+        .acc-body { max-height: 0; overflow: hidden; transition: 0.4s; background: #f8fafc; }
+        .acc-inner { padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px; }
+        .acc-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid #ECA400; }
+    </style>
+</head>
+<body>
+
+    <nav class="app-nav">
+        <button class="nav-btn active" onclick="showPage('home', this)">Home</button>
+        <button class="nav-btn" onclick="showPage('leadership', this)">Leadership</button>
+        <button class="nav-btn" onclick="showPage('events', this)">Events</button>
+    </nav>
+
+    <div id="page-home" class="page-view active">
+        <div class="dark-hero">
+            <h1 style="font-family: 'Montserrat'; font-weight: 900; font-size: 2.5rem; margin: 0;">IE HUB</h1>
+            <p style="color: #ECA400; letter-spacing: 5px; font-weight: 800; font-size: 0.7rem;">THE NATIONAL STANDARD</p>
+        </div>
+        <div class="white-content">
+            <h3 style="text-align: center; color: #00203F; font-family: 'Montserrat';">DASHBOARD</h3>
+            <div class="card-grid">
+                <a href="javascript:void(0)" onclick="showPage('leadership')" class="app-card">🏛️ Leadership & Planning</a>
+                <a href="#" class="app-card">📅 Events & Campaigns</a>
+                <a href="#" class="app-card">💰 Finance & Admin</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-leadership" class="page-view" style="background: #00203F;">
+        <div class="dark-hero">
+            <h1 style="font-family: 'Montserrat'; font-weight: 900; text-transform: uppercase;">Leadership</h1>
+            <div class="arabic">فَبِمَا رَحْمَةٍۢ مِّنَ ٱللَّهِ لِنتَ لَهُمْ...</div>
+        </div>
+        <div class="white-content">
+            <h3 style="text-align: center; color: #00203F; font-family: 'Montserrat';">THE GOLDEN CIRCLE</h3>
+            <div class="acc-item">
+                <button class="acc-header" onclick="toggleAcc(this)">WHY <span>+</span></button>
+                <div class="acc-body"><div class="acc-inner"><p>To serve & uplift Muslim students for the sake of Allah.</p><img src="https://i.ibb.co/4wJnfjc3/IMG-20230708-WA0066.jpg" class="acc-img"></div></div>
+            </div>
+            <div class="acc-item">
+                <button class="acc-header" onclick="toggleAcc(this)">HOW <span>+</span></button>
+                <div class="acc-body"><div class="acc-inner"><p>By planning with sincerity and teamwork.</p><img src="https://i.ibb.co/DDTHY1VB/IMG-20240911-WA0039.jpg" class="acc-img"></div></div>
+            </div>
+            </div>
+    </div>
+
+    <script>
+        // NAVIGATION LOGIC
+        function showPage(pageId, btn) {
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-' + pageId).classList.add('active');
+            
+            if(btn) {
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            } else {
+                // If clicked from a card, update the top nav button
+                document.querySelectorAll('.nav-btn').forEach(b => {
+                    b.classList.remove('active');
+                    if(b.innerText.toLowerCase().includes(pageId)) b.classList.add('active');
+                });
+            }
+            window.scrollTo({top: 0, behavior: 'smooth'});
+            syncHeight();
+        }
+
+        // ACCORDION LOGIC
+        function toggleAcc(btn) {
+            const body = btn.nextElementSibling;
+            const isOpen = body.style.maxHeight !== "0px" && body.style.maxHeight !== "";
+            document.querySelectorAll('.acc-body').forEach(b => b.style.maxHeight = "0px");
+            document.querySelectorAll('.acc-header span').forEach(s => s.innerText = "+");
+            if (!isOpen) {
+                body.style.maxHeight = body.scrollHeight + "px";
+                btn.querySelector('span').innerText = "−";
+            }
+            setTimeout(syncHeight, 300);
+        }
+
+        // HEIGHT SYNC FOR GOOGLE SITES
+        function syncHeight() {
+            const height = document.body.scrollHeight;
+            if (window.parent) {
+                window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height + 50 }, '*');
+            }
+        }
+
+        window.onload = syncHeight;
+        window.onresize = syncHeight;
+        setInterval(syncHeight, 2000);
+    </script>
+</body>
+</html>
