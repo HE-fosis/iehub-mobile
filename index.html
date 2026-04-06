@@ -6,17 +6,17 @@
     <title>FOSIS | ISoc Essentials Hub</title>
     <script type="text/javascript">
         function smartRedirect() {
-            // THE CORRECT HOME PAGES
+            // THE DESTINATIONS
             const mobileSite = "https://sites.google.com/fosis.org.uk/iehub-mobile";
-            const desktopSite = "https://sites.google.com/fosis.org.uk/isocessentials/";
+            const desktopSite = "https://sites.google.com/fosis.org.uk/isocessentials";
 
-            // 1. Check for Mobile Device Identity
+            // 1. Detect if it's a mobile device via User Agent
             const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-            // 2. Check for Small Screens (Most phones are under 768px in 'logic pixels')
-            const isSmallScreen = window.innerWidth <= 768;
+            // 2. Detect via screen width (Standard for high-res phones)
+            const isSmallScreen = window.innerWidth <= 1024;
 
-            // Decision Logic
+            // 3. Execute Redirect
             if (isMobileUA || isSmallScreen) {
                 window.location.replace(mobileSite);
             } else {
@@ -24,37 +24,19 @@
             }
         }
 
-        // Execute immediately
+        // Run immediately
         smartRedirect();
     </script>
-    
     <style>
-        body { 
-            background: #00203F; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            margin: 0; 
-            color: white; 
-            font-family: sans-serif; 
-        }
-        .loader {
-            border: 3px solid rgba(255,255,255,0.1);
-            border-top: 3px solid #ECA400;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin-bottom: 15px;
-        }
+        body { background: #00203F; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; color: white; font-family: sans-serif; }
+        .loader { border: 3px solid rgba(255,255,255,0.1); border-top: 3px solid #ECA400; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
-    <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
-        <div class="loader"></div>
-        <p style="letter-spacing: 2px; font-size: 12px; font-weight: bold; text-transform: uppercase;">Opening IE Hub...</p>
+    <div style="text-align: center;">
+        <div class="loader" style="margin: 0 auto 15px;"></div>
+        <p style="letter-spacing: 2px; font-size: 10px; font-weight: bold; text-transform: uppercase; opacity: 0.8;">Loading Hub Experience...</p>
     </div>
 </body>
 </html>
