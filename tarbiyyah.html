@@ -1,196 +1,495 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Nunito:wght@500;700&display=swap" rel="stylesheet">
-<style>
-  * { box-sizing: border-box; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Spiritual Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;700;800;900&family=Nunito:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,700;1,900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* GLOBAL RESET & VARIABLES */
+        :root {
+            --fosis-navy: #001026;
+            --asr-blue: #00203F; /* New requested color */
+            --fosis-gold: #ECA400;
+            --soft-grey: #C7CBC8;
+            --flat-white: #ffffff;
+            --border-light: #f1f5f9;
+            --accent-gold-soft: #fffdf5;
+        }
 
-  html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    /* Standardized height logic to prevent scrolling */
-    height: 100vh;
-    background: transparent;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    -webkit-font-smoothing: antialiased;
-    overflow: hidden; 
-  }
+        * { box-sizing: border-box; }
+        ::-webkit-scrollbar { display: none !important; }
+        
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            -webkit-font-smoothing: antialiased;
+            -ms-overflow-style: none !important; 
+            scrollbar-width: none !important;
+            overflow-x: hidden;
+            background: transparent;
+        }
 
-  /* Optimized Icon Layer */
-  .icon-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-    overflow: hidden;
-  }
+        /* ========================================= */
+        /* GRAPHIC 1: TARBIYYAH & WELLNESS (NAVY)    */
+        /* ========================================= */
+        #fosis-tarbiyyah-unit {
+            position: relative;
+            width: 100%;
+            background: var(--fosis-navy);
+            min-height: 70vh; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 15px; 
+            overflow: hidden;
+        }
 
-  .floating-icon {
-    position: absolute;
-    fill: #ECA400;
-    opacity: 0.05;
-    animation: slowDrift 22s infinite ease-in-out alternate;
-  }
+        .icon-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
 
-  .i1 { width: 100px; top: 10%; left: 10%; } 
-  .i2 { width: 80px; top: 15%; right: 12%; animation-delay: -4s; } 
-  .i3 { width: 100px; bottom: 18%; left: 8%; animation-delay: -7s; } 
-  .i4 { width: 90px; bottom: 12%; right: 10%; animation-delay: -2s; }
+        .floating-icon {
+            position: absolute;
+            fill: var(--fosis-gold);
+            opacity: 0.05;
+            animation: slowDrift 22s infinite ease-in-out alternate;
+        }
 
-  @keyframes slowDrift {
-    0% { transform: translate3d(0, 0, 0) rotate(0deg); }
-    100% { transform: translate3d(20px, -25px, 0) rotate(8deg); }
-  }
+        .i1 { width: 100px; top: 10%; left: 10%; } 
+        .i2 { width: 80px; top: 15%; right: 12%; animation-delay: -4s; } 
+        .i3 { width: 100px; bottom: 18%; left: 8%; animation-delay: -7s; } 
+        .i4 { width: 90px; bottom: 12%; right: 10%; animation-delay: -2s; }
 
-  .hero-container {
-    width: 100%;
-    max-width: 1200px;
-    /* Standardized padding to match Leadership and Finance */
-    padding: 20px 15px 10px 15px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 10;
-  }
+        @keyframes slowDrift {
+            0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+            100% { transform: translate3d(20px, -25px, 0) rotate(8deg); }
+        }
 
-  h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    color: #ffffff;
-    text-transform: uppercase;
-    font-size: clamp(2rem, 10vw, 5.5rem); 
-    line-height: 0.95;
-    margin: 0 0 10px 0;
-    letter-spacing: -1px;
-    text-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    width: 100%;
-  }
+        .hero-container-content {
+            z-index: 10;
+            max-width: 1200px;
+            width: 100%;
+        }
 
-  h1 span {
-    display: block;
-  }
+        h1.tarbiyyah-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            color: #ffffff;
+            text-transform: uppercase;
+            font-size: clamp(2.2rem, 10vw, 5.5rem); 
+            line-height: 0.95;
+            margin: 0 0 15px 0;
+            letter-spacing: -1px;
+            text-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
 
-  .swipe-zone {
-    margin: 5px 0 25px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+        h1.tarbiyyah-title span { display: block; }
 
-  .chevron {
-    width: 12px;
-    height: 12px;
-    border-right: 3px solid #ECA400;
-    border-bottom: 3px solid #ECA400;
-    transform: rotate(45deg);
-    animation: pulse 2s infinite;
-  }
+        .swipe-zone {
+            margin: 10px 0 30px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-  @keyframes pulse {
-    0% { transform: rotate(45deg) translate(-5px, -5px); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: rotate(45deg) translate(5px, 5px); opacity: 0; }
-  }
+        .chevron {
+            width: 12px;
+            height: 12px;
+            border-right: 3px solid var(--fosis-gold);
+            border-bottom: 3px solid var(--fosis-gold);
+            transform: rotate(45deg);
+            animation: pulse 2s infinite;
+        }
 
-  .swipe-text {
-    color: #ECA400;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    margin-top: 4px;
-  }
+        @keyframes pulse {
+            0% { transform: rotate(45deg) translate(-5px, -5px); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: rotate(45deg) translate(5px, 5px); opacity: 0; }
+        }
 
-  .verse-content {
-    width: 100%;
-    max-width: 800px;
-    padding-bottom: 20px;
-  }
+        .swipe-text {
+            color: var(--fosis-gold);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-top: 4px;
+        }
 
-  .arabic {
-    font-size: clamp(1.1rem, 3vw, 1.6rem);
-    color: #ECA400;
-    margin-bottom: 12px;
-    display: block;
-    line-height: 1.7;
-    direction: rtl;
-  }
+        /* ========================================= */
+        /* GRAPHIC 2: SURAH AL-ASR (UPDATED BLUE)    */
+        /* ========================================= */
+        #asr-spiritual-intro {
+            background: var(--asr-blue); /* Updated Background */
+            color: #ffffff; 
+            font-family: 'Montserrat', sans-serif; 
+            padding: 100px 20px; 
+            text-align: center; 
+            border-top: 2px solid rgba(236, 164, 0, 0.2); 
+            min-height: auto; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center;
+            width: 100%;
+        }
 
-  .translation {
-    font-family: 'Nunito', sans-serif;
-    font-size: clamp(0.9rem, 2vw, 1.2rem);
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.6;
-    margin: 0 auto 10px auto;
-  }
+        .verse-unit {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s ease;
+            margin-bottom: 80px;
+        }
 
-  .citation {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 0.75rem;
-    color: rgba(234, 164, 0, 0.5);
-    text-transform: uppercase;
-    letter-spacing: 5px;
-  }
+        .arabic-text {
+            font-family: 'Amiri', serif; 
+            font-size: clamp(32px, 12vw, 64px) !important; 
+            margin-bottom: 20px; 
+            color: var(--fosis-gold); 
+            text-shadow: 0 0 20px rgba(236,164,0,0.3);
+            direction: rtl;
+        }
 
-  @media (min-width: 1024px) {
-    .hero-container { padding-top: 40px; }
-    h1 { letter-spacing: -3px; line-height: 0.85; margin-bottom: 20px; }
-    .swipe-zone { margin-top: 20px; }
-  }
+        /* ========================================= */
+        /* GRAPHIC 3: TARBIYYAH HUB (WHITE)          */
+        /* ========================================= */
+        #tarbiyyah-definition-graphic {
+            background-color: var(--flat-white);
+            color: var(--soft-grey);
+            font-family: 'Nunito', sans-serif;
+            border-top: 10px solid var(--fosis-gold); 
+            border-bottom: 10px solid var(--fosis-gold); 
+            width: 100%;
+            overflow-x: hidden;
+        }
 
-  @media (max-width: 480px) {
-    .floating-icon { display: none; }
-  }
-</style>
+        .tarbiyyah-hub {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hub-hero-container h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            color: var(--fosis-navy);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 11px;
+            margin: 0 0 5px 0;
+            opacity: 0.6;
+        }
+
+        .hub-highlight-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 900;
+            font-size: clamp(45px, 15vw, 85px);
+            color: var(--fosis-gold);
+            display: inline-block;
+            line-height: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .hub-sub-heading {
+            max-width: 600px;
+            margin: 15px auto 40px;
+            color: var(--soft-grey);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .hub-sub-heading b { color: var(--fosis-navy); font-weight: 700; }
+
+        .pillar-nav {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .nav-card {
+            background: var(--flat-white);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 25px 10px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        #akhlaq-card {
+            border: 2px solid var(--fosis-navy);
+            background: var(--accent-gold-soft);
+            box-shadow: 0 4px 15px rgba(236, 164, 0, 0.15);
+        }
+
+        .nav-card .icon { font-size: 28px; transition: 0.3s ease; }
+        .nav-card .label {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--fosis-navy);
+            opacity: 0.5;
+        }
+
+        .nav-card:hover { border-color: var(--fosis-gold); transform: translateY(-3px); }
+        
+        .nav-card.active {
+            border: 3px solid var(--fosis-gold) !important;
+            background: var(--flat-white) !important;
+        }
+
+        .nav-card.active .label { opacity: 1; font-weight: 900; }
+
+        .focus-stage {
+            background: var(--flat-white);
+            border-radius: 30px;
+            padding: 40px;
+            min-height: auto;
+            border: 1px solid var(--border-light);
+            text-align: left;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .pane {
+            display: none;
+            width: 100%;
+            animation: paneFade 0.5s ease forwards;
+        }
+
+        .pane.active { display: block; }
+
+        .pane.featured-pillar {
+            border-left: 4px solid var(--fosis-gold);
+            padding-left: 20px;
+        }
+        
+        .pane.featured-pillar h3 { color: var(--fosis-gold); font-size: 24px; }
+
+        @keyframes paneFade {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .pane h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 20px;
+            color: var(--fosis-navy);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .pane h3::after {
+            content: '';
+            height: 2px;
+            flex-grow: 1;
+            background: var(--fosis-gold);
+            opacity: 0.2;
+        }
+
+        .pane p { font-size: 16px; line-height: 1.7; color: var(--soft-grey); margin: 0; }
+        .pane b { color: var(--fosis-navy); font-weight: 700; }
+
+        .phase-tag {
+            display: inline-block;
+            margin-top: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--fosis-gold);
+            background: #fffcf0;
+            padding: 5px 15px;
+            border: 1px solid rgba(236, 164, 0, 0.2);
+            border-radius: 50px;
+        }
+
+        /* ========================================= */
+        /* GLOBAL RESPONSIVE MEDIA QUERIES           */
+        /* ========================================= */
+        @media (max-width: 768px) {
+            .pillar-nav { grid-template-columns: repeat(2, 1fr); }
+            .focus-stage { padding: 30px 20px; border-radius: 20px; }
+            #fosis-tarbiyyah-unit, #asr-spiritual-intro, .tarbiyyah-hub { padding-top: 60px; padding-bottom: 60px; }
+        }
+
+        @media (max-width: 480px) {
+            .floating-icon { display: none; }
+            .verse-unit { margin-bottom: 60px; }
+            .tarbiyyah-hub { padding: 50px 15px; }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="icon-canvas">
-    <svg class="floating-icon i3" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-    <svg class="floating-icon i2" viewBox="0 0 24 24"><path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.5h-2v3h2V1zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.75l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zm-6.24 4.34h2v-3h-2v3zM11 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm8 3.5h3v2h-3v-2zM5.84 15.14l-1.79 1.79 1.41 1.41 1.79-1.79-1.41-1.41z"/></svg>
-    <svg class="floating-icon i4" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-    <svg class="floating-icon i1" viewBox="0 0 24 24"><path d="M12 22c-5.52 0-10-4.48-10-10 0-4.75 3.31-8.72 7.75-9.74.81-.19 1.62-.26 2.25-.26 3.86 0 7 3.14 7 7 0 2.28-1.09 4.31-2.78 5.6l-1.71 1.3c-.33.25-.51.64-.51 1.05V22h-2v-5.05c0-.41-.18-.8-.51-1.05l-1.71-1.3C10.09 13.31 9 11.28 9 9c0-3.86 3.14-7 7-7 .63 0 1.44.07 2.25.26 4.44 1.02 7.75 4.99 7.75 9.74 0 5.52-4.48 10-10 10z"/></svg>
-  </div>
+    <div id="fosis-tarbiyyah-unit">
+        <div class="icon-canvas">
+            <svg class="floating-icon i3" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <svg class="floating-icon i2" viewBox="0 0 24 24"><path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.5h-2v3h2V1zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.75l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zm-6.24 4.34h2v-3h-2v3zM11 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm8 3.5h3v2h-3v-2zM5.84 15.14l-1.79 1.79 1.41 1.41 1.79-1.79-1.41-1.41z"/></svg>
+            <svg class="floating-icon i4" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg class="floating-icon i1" viewBox="0 0 24 24"><path d="M12 22c-5.52 0-10-4.48-10-10 0-4.75 3.31-8.72 7.75-9.74.81-.19 1.62-.26 2.25-.26 3.86 0 7 3.14 7 7 0 2.28-1.09 4.31-2.78 5.6l-1.71 1.3c-.33.25-.51.64-.51 1.05V22h-2v-5.05c0-.41-.18-.8-.51-1.05l-1.71-1.3C10.09 13.31 9 11.28 9 9c0-3.86 3.14-7 7-7 .63 0 1.44.07 2.25.26 4.44 1.02 7.75 4.99 7.75 9.74 0 5.52-4.48 10-10 10z"/></svg>
+        </div>
+        <div class="hero-container-content">
+            <h1 class="tarbiyyah-title">
+                <span>Tarbiyyah</span>
+                <span>& Wellness</span>
+            </h1>
+            <div class="swipe-zone">
+                <div class="chevron"></div>
+                <div class="swipe-text">EXPLORE</div>
+            </div>
+            <div class="verse-content" style="max-width: 800px; margin: 0 auto; padding: 0 10px;">
+                <span class="arabic-text" style="font-size: clamp(1.4rem, 4vw, 2rem) !important; display: block; margin-bottom: 10px;">قَدْ أَفْلَحَ مَن زَكَّاهَا وَقَدْ خَابَ مَن دَسَّاهَا</span>
+                <p style="font-family: 'Nunito', sans-serif; font-size: clamp(1rem, 2.5vw, 1.3rem); color: rgba(255, 255, 255, 0.9); line-height: 1.5; margin-bottom: 10px;">"He has certainly succeeded who purifies his soul, and he has certainly failed who corrupts it."</p>
+                <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.7rem; color: rgba(234, 164, 0, 0.6); text-transform: uppercase; letter-spacing: 4px;">Surah Ash-Shams 91:9-10</div>
+            </div>
+        </div>
+    </div>
 
-  <div class="hero-container" id="fosis-tarbiyyah-unit">
-    <h1>
-      <span>Tarbiyyah</span>
-      <span>& Wellness</span>
-    </h1>
+    <div id="asr-spiritual-intro">
+        <div class="verse-unit">
+            <h1 style="font-size: 10px; letter-spacing: 8px; color: var(--fosis-gold); text-transform: uppercase; font-weight: 900; margin-bottom: 15px; opacity: 0.8;">The Sacred Trust of Time</h1>
+            <h2 style="font-weight: 900; margin: 0; letter-spacing: -1.5px; text-transform: uppercase; font-size: 38px;">Sūrah Al-’Asr</h2>
+            <div style="width: 40px; height: 2px; background: rgba(236,164,0,0.4); margin: 25px auto;"></div>
+        </div>
+
+        <div class="verse-unit">
+            <p class="arabic-text">وَالْعَصْرِ</p>
+            <div style="max-width: 600px; margin: 0 auto;">
+                <p style="font-size: 14px; font-weight: 700; letter-spacing: 2px; color: #94a3b8; text-transform: uppercase;">Wal-’asri</p>
+                <p style="font-size: 22px; font-weight: 400; line-height: 1.6; font-family: 'Amiri', serif; font-style: italic;">"By the declining day,"</p>
+            </div>
+        </div>
+
+        <div class="verse-unit">
+            <p class="arabic-text">إِنَّ الْإِنسَانَ لَفِي خُسْرٍ</p>
+            <div style="max-width: 600px; margin: 0 auto;">
+                <p style="font-size: 14px; font-weight: 700; letter-spacing: 2px; color: #94a3b8; text-transform: uppercase;">Inna-l-insāna la-fī khusr</p>
+                <p style="font-size: 22px; font-weight: 400; line-height: 1.6; font-family: 'Amiri', serif; font-style: italic;">"Indeed, mankind is in loss,"</p>
+            </div>
+        </div>
+
+        <div class="verse-unit">
+            <p class="arabic-text" style="line-height: 1.4 !important;">إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ وَتَواصَوْا بِالْحَقِّ وَتَواصَوْا بِالصَّبْرِ</p>
+            <div style="max-width: 700px; margin: 0 auto;">
+                <p style="font-size: 14px; font-weight: 700; letter-spacing: 1px; color: #94a3b8; text-transform: uppercase; line-height: 1.8;">'illa-lladhīna āmanū wa-’amilu-ṣ-ṣāliḥāti wa-tawāṣaw bi-l-ḥaqqi wa-tawāṣaw bi-ṣ-ṣabr</p>
+                <p style="font-size: 20px; font-weight: 400; line-height: 1.8; font-family: 'Amiri', serif; font-style: italic; margin-top: 20px;">"Except for those who have believed and done righteous deeds and advised each other to truth and advised each other to patience."</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="tarbiyyah-definition-graphic">
+        <div class="tarbiyyah-hub">
+            <div class="hub-hero-container">
+                <h1>WHAT IS</h1>
+                <span class="hub-highlight-text">Tarbiyyah?</span>
+            </div>
     
-    <div class="swipe-zone">
-      <div class="chevron"></div>
-      <div class="swipe-text">EXPLORE</div>
+            <p class="hub-sub-heading">
+                Rooted in the Prophetic legacy, <b>Tarbiyyah</b> is the intentional cultivation of the self to achieve <b>excellence in character.</b>
+            </p>
+    
+            <div class="pillar-nav">
+                <div class="nav-card active" onclick="showPane(0, this)">
+                    <span class="icon">📖</span>
+                    <span class="label">Knowledge</span>
+                </div>
+                <div class="nav-card" onclick="showPane(1, this)">
+                    <span class="icon">⚖️</span>
+                    <span class="label">Iman</span>
+                </div>
+                <div id="akhlaq-card" class="nav-card" onclick="showPane(2, this)">
+                    <span class="icon">💎</span>
+                    <span class="label">Akhlaq</span>
+                </div>
+                <div class="nav-card" onclick="showPane(3, this)">
+                    <span class="icon">🌙</span>
+                    <span class="label">Discipline</span>
+                </div>
+            </div>
+    
+            <div class="focus-stage">
+                <div class="pane active">
+                    <h3>Knowledge</h3>
+                    <p>Building a resilient intellectual foundation through the study of the <b>Qur’an and Sunnah.</b></p>
+                    <span class="phase-tag">Foundational Stage</span>
+                </div>
+    
+                <div class="pane">
+                    <h3>Iman & Taqwa</h3>
+                    <p>Strengthening <b>spiritual resilience</b> and mindfulness to remain grounded under pressure.</p>
+                    <span class="phase-tag">Internalisation Stage</span>
+                </div>
+    
+                <div class="pane featured-pillar">
+                    <h3>Akhlaq (Character)</h3>
+                    <p>Developing <b>prophetic manners</b> (Adab) in every interaction. This is the heart of Tarbiyyah and the proof of internal refinement.</p>
+                    <span class="phase-tag" style="background: var(--fosis-gold); color: white;">The Core Pillar</span>
+                </div>
+    
+                <div class="pane">
+                    <h3>Discipline</h3>
+                    <p>Building consistency through <b>Salah and Self-reflection</b> to stay aligned with your purpose.</p>
+                    <span class="phase-tag">Consistency Stage</span>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="verse-content">
-      <span class="arabic">قَدْ أَفْلَحَ مَن زَكَّاهَا وَقَدْ خَابَ مَن دَسَّاهَا</span>
-      <p class="translation">"He has certainly succeeded who purifies his soul, and he has certainly failed who corrupts it."</p>
-      <div class="citation">Surah Ash-Shams 91:9-10</div>
-    </div>
-  </div>
+    <script>
+        function showPane(idx, btn) {
+            document.querySelectorAll('.nav-card').forEach(c => c.classList.remove('active'));
+            btn.classList.add('active');
+            const panes = document.querySelectorAll('.pane');
+            panes.forEach(p => p.classList.remove('active'));
+            panes[idx].classList.add('active');
+            setTimeout(syncHeight, 100); 
+        }
 
-  <script>
-    function sendHeight() {
-      const unit = document.getElementById('fosis-tarbiyyah-unit');
-      if (unit) {
-        window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: unit.offsetHeight }, '*');
-      }
-    }
-    window.onload = sendHeight;
-    window.onresize = sendHeight;
-    setTimeout(sendHeight, 1500);
-  </script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, { threshold: 0.1 });
 
+        document.querySelectorAll('.verse-unit').forEach(unit => observer.observe(unit));
+
+        function syncHeight() {
+            const height = document.documentElement.scrollHeight || document.body.scrollHeight;
+            window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height }, '*');
+        }
+        
+        window.onload = syncHeight;
+        window.onresize = syncHeight;
+        setInterval(syncHeight, 1500); 
+    </script>
 </body>
 </html>
