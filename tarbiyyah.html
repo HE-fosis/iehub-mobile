@@ -328,50 +328,67 @@
             border: 1px solid rgba(236, 164, 0, 0.2);
             border-radius: 50px;
         }
-#rh-ramadan-wrapper {
-    background: #ffffff; /* This ensures the area around the bubble is white */
-    padding: 60px 0;
-    width: 100%;
-}
+<div style="background-color: #ffffff; width: 100%; padding: 40px 0; display: block;">
 
-.rh-spotlight-bubble {
-    max-width: 1150px;
-    margin: 0 auto;
-    background: linear-gradient(135deg, #00203F 0%, #124A7A 50%, #00203F 100%);
-    border: 2px solid #ECA400;
-    border-radius: 45px;
-    padding: 60px 30px;
-    color: #ffffff;
-    box-shadow: 0 20px 50px rgba(0,32,63,0.3);
-}
+    <div class="spotlight-bubble" id="hub-root">
+        <nav class="hub-navigation">
+            <button class="cat-btn active" onclick="switchPane(event, 'spotlight')">Spotlight</button>
+            <button class="cat-btn" onclick="switchPane(event, 'faq')">Ramadan FAQs</button>
+            <button class="cat-btn" onclick="switchPane(event, 'tips')">Iftar Dinners</button>
+            <button class="cat-btn" onclick="switchPane(event, 'health')">Health Benefits</button>
+        </nav>
 
-.rh-navigation { display: flex; justify-content: center; gap: 12px; margin-bottom: 40px; }
+        <div class="hub-viewport">
+            <div id="spotlight" class="view-pane active">
+                <div class="spot-header">
+                    <h2>RAMADAN HUB</h2>
+                    <div class="hero-sub">RAMADAN KAREEM</div>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+                    <div>
+                        <div style="font-size: 2.2rem; color: var(--fosis-gold); direction: rtl; line-height: 1.8; text-align: center; margin-bottom: 20px;">يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الصِّيَامُ...</div>
+                        <p>Ramadan is a month of <b>productive stillness</b>. To ISocs, Ramadan means ensuring no student breaks their fast alone...</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 35px; border-radius: 35px; border: 1px solid var(--fosis-gold); text-align: center;">
+                        <span style="font-weight: 800; color: var(--fosis-gold); font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase;">Hijri Date</span>
+                        <div id="hijri-display" style="font-size: 1.8rem; font-weight: 900; margin: 15px 0;">Loading...</div>
+                        <button id="copy-btn" class="cat-btn" style="width: 100%; background: var(--fosis-gold); color: var(--fosis-navy);" onclick="copyDate()">Copy Date</button>
+                    </div>
+                </div>
+            </div>
 
-.rh-cat-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 12px 25px;
-    border-radius: 50px;
-    color: white;
-    cursor: pointer;
-    font-weight: 800;
-    text-transform: uppercase;
-    font-size: 10px;
-}
+            <div id="faq" class="view-pane">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <h3 style="font-family: Montserrat; font-weight: 800; text-transform: uppercase; color: var(--fosis-gold);">Toolkit & FAQ's</h3>
+                    <button class="cat-btn" style="background: var(--fosis-white); color: var(--fosis-navy);" onclick="generatePDF()">Download FAQ Toolkit (PDF)</button>
+                </div>
+                <div class="faq-grid">
+                    <div class="faq-card" onclick="this.classList.toggle('flipped')"><div class="faq-inner">
+                        <div class="faq-front"><h3 class="q-text">WHAT IS RAMADAN?</h3></div>
+                        <div class="faq-back"><div class="a-text"><p>Ramadan is the ninth month of the Islamic calendar...</p></div></div>
+                    </div></div>
+                </div>
+            </div>
 
-.rh-cat-btn.active { background: #ECA400; color: #00203F; }
+            <div id="tips" class="view-pane">
+                <div class="virtues-card">
+                    <div class="virtues-text">
+                        <h2>Virtues of Feeding People</h2>
+                        <div style="font-style: italic; line-height: 1.6;">“From the ‘ibadah of providing food for people stem many other acts of worship...”</div>
+                    </div>
+                    <img src="https://i.ibb.co/4nCS2jFp/14af871c-f839-4ac1-ab27-6752ec9e653d.jpg" class="virtues-img" alt="Iftar">
+                </div>
+                </div>
 
-.rh-view-pane { display: none; animation: fadeIn 0.5s ease; }
-.rh-view-pane.active { display: block; }
-
-/* FAQ Flip Logic */
-.rh-faq-card { height: 300px; perspective: 1000px; cursor: pointer; }
-.rh-faq-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; }
-.rh-faq-card.flipped .rh-faq-inner { transform: rotateY(180deg); }
-.rh-faq-front, .rh-faq-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; padding: 20px; }
-.rh-faq-front { background: white; color: #00203F; display: flex; align-items: center; justify-content: center; text-align: center; }
-.rh-faq-back { background: #124A7A; transform: rotateY(180deg); }
-
+            <div id="health" class="view-pane">
+                <div class="benefit-grid">
+                    <div class="benefit-card"><h3>Metabolic Control</h3><p>Fasting improves insulin sensitivity...</p></div>
+                    <div class="benefit-card"><h3>Cellular Repair</h3><p>Fasting triggers autophagy...</p></div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         /* ========================================= */
         /* GLOBAL RESPONSIVE MEDIA QUERIES           */
