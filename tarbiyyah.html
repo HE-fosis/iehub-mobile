@@ -460,7 +460,45 @@
             </div>
         </div>
     </div>
+<section id="rh-ramadan-wrapper">
+    <div class="rh-spotlight-bubble" id="rh-hub-root">
+        <nav class="rh-navigation">
+            <button class="rh-cat-btn active" onclick="switchRhPane(event, 'rh-spotlight')">Spotlight</button>
+            <button class="rh-cat-btn" onclick="switchRhPane(event, 'rh-faq')">Ramadan FAQs</button>
+            <button class="rh-cat-btn" onclick="switchRhPane(event, 'rh-tips')">Iftar Dinners</button>
+            <button class="rh-cat-btn" onclick="switchRhPane(event, 'rh-health')">Health Benefits</button>
+        </nav>
 
+        <div class="rh-viewport">
+            <div id="rh-spotlight" class="rh-view-pane active">
+                <div class="rh-spot-header">
+                    <h2>RAMADAN HUB</h2>
+                    <div class="rh-hero-sub">RAMADAN KAREEM</div>
+                </div>
+                <div class="rh-split-grid">
+                    <div class="rh-arabic-quote">يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الصِّيَامُ...</div>
+                    <div class="rh-date-card">
+                        <span class="rh-date-label">Hijri Date</span>
+                        <div id="rh-hijri-display">Loading...</div>
+                        <button class="rh-cat-btn rh-gold-btn" onclick="copyRhDate()">Copy Date</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="rh-faq" class="rh-view-pane">
+                <div class="rh-faq-grid">
+                    <div class="rh-faq-card" onclick="this.classList.toggle('flipped')">
+                        <div class="rh-faq-inner">
+                            <div class="rh-faq-front"><h3>What is Ramadan?</h3></div>
+                            <div class="rh-faq-back"><p>Ramadan is the ninth month of the Islamic calendar, dedicated to fasting and spiritual growth.</p></div>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+            
+            </div>
+    </div>
+</section>
     <script>
         function showPane(idx, btn) {
             document.querySelectorAll('.nav-card').forEach(c => c.classList.remove('active'));
