@@ -328,7 +328,51 @@
             border: 1px solid rgba(236, 164, 0, 0.2);
             border-radius: 50px;
         }
+#rh-ramadan-wrapper {
+    background: #ffffff; /* This ensures the area around the bubble is white */
+    padding: 60px 0;
+    width: 100%;
+}
 
+.rh-spotlight-bubble {
+    max-width: 1150px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #00203F 0%, #124A7A 50%, #00203F 100%);
+    border: 2px solid #ECA400;
+    border-radius: 45px;
+    padding: 60px 30px;
+    color: #ffffff;
+    box-shadow: 0 20px 50px rgba(0,32,63,0.3);
+}
+
+.rh-navigation { display: flex; justify-content: center; gap: 12px; margin-bottom: 40px; }
+
+.rh-cat-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 25px;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
+.rh-cat-btn.active { background: #ECA400; color: #00203F; }
+
+.rh-view-pane { display: none; animation: fadeIn 0.5s ease; }
+.rh-view-pane.active { display: block; }
+
+/* FAQ Flip Logic */
+.rh-faq-card { height: 300px; perspective: 1000px; cursor: pointer; }
+.rh-faq-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; }
+.rh-faq-card.flipped .rh-faq-inner { transform: rotateY(180deg); }
+.rh-faq-front, .rh-faq-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; padding: 20px; }
+.rh-faq-front { background: white; color: #00203F; display: flex; align-items: center; justify-content: center; text-align: center; }
+.rh-faq-back { background: #124A7A; transform: rotateY(180deg); }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         /* ========================================= */
         /* GLOBAL RESPONSIVE MEDIA QUERIES           */
         /* ========================================= */
@@ -528,6 +572,29 @@
         window.onload = syncHeight;
         window.onresize = syncHeight;
         setInterval(syncHeight, 1500); 
+        function switchRhPane(e, id) {
+    document.querySelectorAll('.rh-view-pane').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.rh-cat-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    if(e) e.currentTarget.classList.add('active');
+    // Trigger height sync for Google Sites
+    if (typeof syncHeight === "function") syncHeight();
+}
+
+function copyRhDate() {
+    const dateText = document.getElementById('rh-hijri-display').innerText;
+    navigator.clipboard.writeText(dateText).then(() => {
+        alert("Date copied!");
+    });
+}
+
+// Update the Hijri date on load
+window.addEventListener('DOMContentLoaded', () => {
+    const d = new Date();
+    const formatted = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura-nu-latn', {day:'numeric', month:'long', year:'numeric'}).format(d);
+    const display = document.getElementById('rh-hijri-display');
+    if(display) display.innerText = formatted;
+});
     </script>
 </body>
 </html>
