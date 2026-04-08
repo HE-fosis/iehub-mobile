@@ -662,5 +662,362 @@
         window.onresize = syncHeight;
         setInterval(syncHeight, 1500); 
     </script>
+    <style>
+  :root {
+    --fosis-navy: #1a365d;
+    --fosis-orange: #ECA400; 
+    --fosis-red: #ef4444;
+    --fosis-bg: #ffffff;
+  }
+
+  /* HIDE SCROLLBARS */
+  ::-webkit-scrollbar { display: none !important; }
+  * { -ms-overflow-style: none !important; scrollbar-width: none !important; box-sizing: border-box; }
+
+  #tarbiyyah-full-hub {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 15px 15px 15px;
+    font-family: 'Nunito', sans-serif;
+    color: var(--fosis-navy);
+  }
+
+  .hub-divider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  .hub-divider.spaced { margin: 20px 0; }
+
+  .hub-divider-line {
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, var(--fosis-orange), transparent);
+  }
+  
+  .hub-divider-line.top-fade {
+    background: linear-gradient(to bottom, transparent, var(--fosis-orange));
+  }
+
+  .hub-divider-node {
+    width: 10px;
+    height: 10px;
+    background: var(--fosis-navy);
+    border: 2px solid var(--fosis-orange);
+    border-radius: 50%;
+    margin-top: -5px;
+    z-index: 2;
+  }
+
+  .hub-divider.middle .hub-divider-node {
+    margin-top: -22px;
+  }
+
+  .hub-header { text-align: center; margin-top: 25px; margin-bottom: 5px; }
+  .hub-header h1 { 
+    font-family: 'Montserrat'; 
+    font-size: 0.65rem; 
+    font-weight: 800; 
+    letter-spacing: 3px; 
+    color: var(--fosis-orange); 
+    text-transform: uppercase; 
+    margin-bottom: 8px; 
+  }
+  .hub-header h2 { 
+    font-family: 'Montserrat'; 
+    font-size: clamp(1.4rem, 6vw, 2.2rem); 
+    font-weight: 900; 
+    margin: 0; 
+    color: var(--fosis-navy); 
+    line-height: 1.1;
+  }
+
+  .click-instruction {
+    text-align: center;
+    font-family: 'Montserrat';
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: var(--fosis-orange);
+    letter-spacing: 1px;
+    margin: 15px 0 20px 0;
+    text-transform: uppercase;
+  }
+
+  .expandable-card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #f1f5f9;
+    padding: 18px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(26, 54, 93, 0.05);
+    position: relative;
+    overflow: hidden;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .card-arrow {
+    position: absolute;
+    right: 15px;
+    top: 20px;
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: var(--fosis-orange);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.4s ease;
+  }
+
+  .expandable-card.is-open .card-arrow { 
+    transform: rotate(180deg); 
+    stroke: var(--fosis-navy);
+  }
+
+  .level-tag { 
+    font-family: 'Montserrat'; 
+    font-weight: 800; 
+    font-size: 9px; 
+    letter-spacing: 1px; 
+    color: var(--fosis-orange); 
+    text-transform: uppercase; 
+  }
+
+  .card-title { 
+    font-family: 'Montserrat'; 
+    font-weight: 800; 
+    font-size: 1.15rem; 
+    margin: 4px 0; 
+    color: var(--fosis-navy); 
+    padding-right: 25px; 
+  }
+
+  .card-intro {
+    margin: 5px 0 0 0; 
+    color: #64748b; 
+    font-size: 13px; 
+    line-height: 1.4;
+  }
+
+  .expand-content { 
+    max-height: 0; 
+    opacity: 0; 
+    overflow: hidden; 
+    transition: max-height 0.5s ease-in-out, opacity 0.3s ease; 
+  }
+
+  .expandable-card.is-open .expand-content { 
+    max-height: 2000px; 
+    opacity: 1; 
+    margin-top: 15px; 
+    padding-top: 15px; 
+    border-top: 1px solid #f1f5f9; 
+  }
+
+  .info-grid { display: flex; flex-direction: column; gap: 15px; }
+  .inner-section-title { 
+    font-family: 'Montserrat'; font-weight: 800; font-size: 0.75rem; 
+    text-transform: uppercase; margin-bottom: 10px; display: block; 
+    color: var(--fosis-navy); 
+  }
+  
+  .reflection-sub-box { 
+    background: #fffcf4; padding: 15px; border-radius: 12px; 
+    border-left: 3px solid var(--fosis-orange); 
+  }
+
+  .reflection-item { margin-bottom: 12px; }
+  .reflection-item b { font-family: 'Montserrat'; font-size: 0.8rem; color: var(--fosis-navy); display: block; }
+  .reflection-item p { font-size: 0.8rem; margin: 2px 0 0 0; color: #475569; line-height: 1.4; }
+
+  .focus-box { background: var(--fosis-navy); color: white; padding: 20px; border-radius: 12px; }
+  .focus-box h4 { color: var(--fosis-orange); margin-top: 0; font-family: 'Montserrat'; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+  
+  .detail-item { display: flex; align-items: flex-start; margin-bottom: 12px; }
+  .detail-item span { color: var(--fosis-orange); margin-right: 8px; font-weight: 900; }
+  .detail-item strong { font-family: 'Montserrat'; font-size: 0.75rem; display: block; margin-bottom: 1px; }
+  .detail-item p { font-size: 0.75rem; margin: 0; opacity: 0.8; line-height: 1.3; }
+
+  .gov-container { 
+    background: #ffffff; 
+    border: 1.5px solid var(--fosis-navy); 
+    border-radius: 16px; 
+    padding: 20px; 
+    margin-bottom: 40px;
+  }
+
+  .gov-grid { display: flex; flex-direction: column; gap: 20px; }
+  .gov-column h4 { font-family: 'Montserrat'; border-bottom: 2px solid var(--fosis-orange); padding-bottom: 8px; margin: 0 0 10px 0; font-size: 0.9rem; }
+  .najwa-box { border: 1px dashed var(--fosis-red); padding: 10px; border-radius: 8px; margin-top: 12px; background: #fffafa; }
+  .salah-banner { background: var(--fosis-navy); color: var(--fosis-orange); padding: 10px; border-radius: 6px; text-align: center; font-weight: 800; font-size: 10px; margin-top: 12px; letter-spacing: 0.5px; }
+
+  @media (min-width: 850px) {
+    #tarbiyyah-full-hub { padding: 0 20px 40px 20px; }
+    .hub-header h2 { font-size: 38px; }
+    .expandable-card { padding: 30px 35px; }
+    .card-arrow { top: 45px; right: 35px; width: 24px; height: 24px; }
+    .card-title { font-size: 24px; }
+    .info-grid { flex-direction: row; display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; }
+    .gov-grid { flex-direction: row; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .gov-container { padding: 40px; border-radius: 30px; }
+  }
+</style>
+
+<div class="hub-divider">
+  <div class="hub-divider-line top-fade"></div>
+  <div class="hub-divider-node"></div>
+</div>
+
+<div id="tarbiyyah-full-hub">
+  <div class="hub-header">
+    <h1>Amanah & Excellence</h1>
+    <h2>TARBIYYAH MODULE HUB</h2>
+  </div>
+
+  <div class="click-instruction">
+    Click the boxes below to learn more
+  </div>
+
+  <div class="expandable-card" onclick="toggleCard(this)" tabindex="0" role="button" aria-expanded="false">
+    <svg class="card-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    <span class="level-tag">Level 01</span>
+    <h3 class="card-title">Seeking Knowledge (Ilm)</h3>
+    <p class="card-intro">The first step of tarbiyyah is seeking knowledge that nourishes the soul and transforms how we think and act.</p>
+    <div class="expand-content">
+      <div class="info-grid">
+        <div>
+          <span class="inner-section-title">What to Reflect On:</span>
+          <div class="reflection-sub-box">
+            <div class="reflection-item"><b>The Pillars:</b><p>Revisit the foundations of belief and action — the 5 pillars of Islam and 6 pillars of Imaan.</p></div>
+            <div class="reflection-item"><b>Time as an Amanah:</b><p>Reflect on Surah Al-ʿAsr. Every minute is a trust. Avoid procrastination.</p></div>
+            <div class="reflection-item"><b>Prophetic Leadership:</b><p>Study the empathy and humility of the Prophet ﷺ — essential for responsibility.</p></div>
+          </div>
+        </div>
+        <div class="focus-box">
+          <h4>Foundation Snapshots</h4>
+          <div class="detail-item"><span>•</span><div><strong>Creed & Purpose</strong><p>Surah al-Asr: Time as an Amanat and the cure for procrastination.</p></div></div>
+          <div class="detail-item"><span>•</span><div><strong>Daily Practise</strong><p>Refining the fundamentals: Wudhu, Salah, and the 5 Pillars.</p></div></div>
+          <div class="detail-item"><span>•</span><div><strong>Prophetic Character</strong><p>Empathy, Honesty (integrity in ISoc), and Justice (fair feedback).</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="expandable-card" onclick="toggleCard(this)" tabindex="0" role="button" aria-expanded="false">
+    <svg class="card-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    <span class="level-tag">Level 02</span>
+    <h3 class="card-title">The Heart (Tazkiyah)</h3>
+    <p class="card-intro">Character is built by aligning intentions to please Allah, allowing hearts to find true rest.</p>
+    <div class="expand-content">
+      <div class="info-grid">
+        <div>
+          <span class="inner-section-title">What to Reflect On:</span>
+          <div class="reflection-sub-box">
+            <div class="reflection-item"><b>Tawakkul:</b><p>True trust is taking courageous action while accepting Allah’s decree.</p></div>
+            <div class="reflection-item"><b>Ihsaan:</b><p>Strive for excellence (worshipping Allah as though you see Him) without falling into guilt.</p></div>
+            <div class="reflection-item"><b>Niyyah (Intention):</b><p>Every email or event is an act of worship if done solely for Allah’s sake.</p></div>
+          </div>
+        </div>
+        <div class="focus-box">
+          <h4>Purification Principles</h4>
+          <div class="detail-item"><span>•</span><div><strong>Antidote to Anxiety</strong><p>Practising Tawakkul: Reliance on Allah is courageous action.</p></div></div>
+          <div class="detail-item"><span>•</span><div><strong>Combating Perfectionism</strong><p>Pursuing Ihsan while avoiding Arrogance and guilt.</p></div></div>
+          <div class="detail-item"><span>•</span><div><strong>Intention Setting</strong><p>Renewing Niyyah: "My intention is for the sake of Allah".</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="expandable-card" onclick="toggleCard(this)" tabindex="0" role="button" aria-expanded="false">
+    <svg class="card-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    <span class="level-tag">Level 03</span>
+    <h3 class="card-title">Practice (Khidmah)</h3>
+    <p class="card-intro">Putting knowledge into sincere action. Leading through compassion and servant leadership.</p>
+    <div class="expand-content">
+      <div class="info-grid">
+        <div>
+          <span class="inner-section-title">What to Reflect On:</span>
+          <div class="reflection-sub-box">
+            <div class="reflection-item"><b>Service as Worship:</b><p>Admin is ibadah. Use your degree as Sadaqah Jariyah.</p></div>
+            <div class="reflection-item"><b>Accountability:</b><p>Reflect daily: "Did I serve with sincerity today?"</p></div>
+            <div class="reflection-item"><b>Community:</b><p>Seek opportunities to serve through FOSIS or student projects.</p></div>
+          </div>
+        </div>
+        <div class="focus-box">
+          <h4>The Implementation</h4>
+          <div class="detail-item"><span>✓</span><div><strong>Skills as Sadaqah</strong><p>Using your university degree to serve.</p></div></div>
+          <div class="detail-item"><span>✓</span><div><strong>Trackers</strong><p>Weekly habit trackers for Ibadah to maintain health.</p></div></div>
+          <div class="detail-item"><span>✓</span><div><strong>Servant Leadership</strong><p>Managing conflict with Shura (consultation).</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hub-divider middle spaced">
+    <div class="hub-divider-line"></div>
+    <div class="hub-divider-node"></div>
+  </div>
+
+  <div class="gov-container">
+    <h3 style="text-align: center; font-family: 'Montserrat'; margin-bottom: 20px; letter-spacing: 1px; font-size: 1.1rem; color: var(--fosis-navy);">COMMITTEE GOVERNANCE</h3>
+    <div class="gov-grid">
+      <div class="gov-column">
+        <h4>Conduct</h4>
+        <p style="font-size: 13px; color: #475569; line-height: 1.5;">Modesty in gender interactions and polite language are required. Professionalism is its own form of Da'wah.</p>
+        <div class="najwa-box">
+          <strong style="color: var(--fosis-red); font-size: 11px; display: block;">WARNING: NAJWA</strong>
+          <p style="font-size: 11px; margin: 3px 0 0 0; color: #64748b;">Secret cliques breed suspicion. Transparency is non-negotiable.</p>
+        </div>
+      </div>
+      <div class="gov-column">
+        <h4>Barakah</h4>
+        <ul style="padding-left: 18px; font-size: 13px; color: #475569; line-height: 1.6; margin-top: 5px;">
+          <li>Start with Qur'an and Du'a.</li>
+          <li>Maintain minutes and agendas.</li>
+          <li>Rotate Jumu'ah reminders.</li>
+          <li>Wellbeing Officers.</li>
+        </ul>
+      </div>
+      <div class="gov-column">
+        <h4>Sustainability</h4>
+        <p style="font-size: 13px; color: #475569; line-height: 1.5;">When service harms your relationship with Allah, it is a warning. Delegation is a form of Tawakkul.</p>
+        <div class="salah-banner">SALAH OVER MEETINGS — NO EXCEPTIONS</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleCard(card) {
+    const allCards = document.querySelectorAll('.expandable-card');
+    const isOpen = card.classList.contains('is-open');
+    
+    allCards.forEach(c => {
+      c.classList.remove('is-open');
+      c.setAttribute('aria-expanded', 'false');
+    });
+
+    if (!isOpen) {
+      card.classList.add('is-open');
+      card.setAttribute('aria-expanded', 'true');
+    }
+    
+    setTimeout(() => {
+        const height = document.body.scrollHeight;
+        window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height }, '*');
+    }, 100);
+  }
+
+  window.addEventListener('load', function() {
+    const height = document.body.scrollHeight;
+    window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height }, '*');
+  });
+</script>
 </body>
 </html>
