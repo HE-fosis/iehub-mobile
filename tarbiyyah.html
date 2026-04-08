@@ -4,18 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Spiritual Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;700;800;900&family=Nunito:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;700;800;900&family=Nunito:wght@400;500;600;700&family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@1,700;1,900&display=swap" rel="stylesheet">
     
     <style>
         /* GLOBAL RESET & VARIABLES */
         :root {
             --fosis-navy: #001026;
-            --asr-blue: #00203F; /* New requested color */
+            --asr-blue: #00203F; /* Serves as the navy for the bottom graphic too */
             --fosis-gold: #ECA400;
             --soft-grey: #64748b;
             --flat-white: #ffffff;
             --border-light: #f1f5f9;
             --accent-gold-soft: #fffdf5;
+            /* Added from new graphic */
+            --fosis-grey: #F3F3F3;
+            --white: #FFFFFF;
+            --slate: #475569;
         }
 
         * { box-sizing: border-box; }
@@ -131,7 +135,7 @@
         /* GRAPHIC 2: SURAH AL-ASR (UPDATED BLUE)    */
         /* ========================================= */
         #asr-spiritual-intro {
-            background: var(--asr-blue); /* Updated Background */
+            background: var(--asr-blue); 
             color: #ffffff; 
             font-family: 'Montserrat', sans-serif; 
             padding: 100px 20px; 
@@ -330,12 +334,149 @@
         }
 
         /* ========================================= */
+        /* GRAPHIC 4: ADDED SECTION                  */
+        /* ========================================= */
+        #tarbiyyah-root {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--fosis-grey);
+            width: 100%;
+        }
+
+        /* SEAMLESS TOP TRANSITION */
+        .spine-top {
+            width: 100%;
+            height: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: var(--fosis-grey);
+        }
+
+        .spine-line {
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--asr-blue));
+            opacity: 0.15;
+        }
+
+        .spine-node {
+            width: 10px;
+            height: 10px;
+            background: var(--asr-blue);
+            border: 2px solid var(--fosis-gold);
+            border-radius: 50%;
+            margin-top: -5px;
+            z-index: 10;
+            box-shadow: 0 0 8px rgba(236, 164, 0, 0.3);
+            animation: beaconPulse 3s infinite ease-in-out;
+        }
+
+        .hero-banner {
+            background-color: var(--fosis-grey);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 10px 20px 10px 20px;
+            color: var(--asr-blue);
+        }
+
+        .hero-banner h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.4rem, 6vw, 2rem);
+            font-weight: 900;
+            margin: 5px 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .section-list-container {
+            max-width: 650px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .guide-tag {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            font-weight: 800;
+            color: var(--fosis-gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 6px;
+            border-bottom: 2px solid var(--fosis-gold);
+            padding-bottom: 4px;
+        }
+
+        .intro-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 0 0 15px 0;
+            font-weight: 400;
+            color: var(--slate);
+        }
+
+        .link-list {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .link-item {
+            color: var(--asr-blue);
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 32, 63, 0.06); 
+        }
+
+        .link-item::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            background: var(--fosis-gold);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .link-item:last-child { border-bottom: none; }
+
+        /* COMPACT BOTTOM TRANSITION */
+        .spine-bottom {
+            width: 100%;
+            height: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: var(--fosis-grey);
+        }
+
+        @keyframes beaconPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+        }
+
+        /* ========================================= */
         /* GLOBAL RESPONSIVE MEDIA QUERIES           */
         /* ========================================= */
         @media (max-width: 768px) {
             .pillar-nav { grid-template-columns: repeat(2, 1fr); }
             .focus-stage { padding: 30px 20px; border-radius: 20px; }
             #fosis-tarbiyyah-unit, #asr-spiritual-intro, .tarbiyyah-hub { padding-top: 60px; padding-bottom: 60px; }
+        }
+
+        @media (max-width: 600px) {
+            .hero-banner { padding: 5px 15px 10px 15px; }
+            .link-item { font-size: 0.9rem; }
         }
 
         @media (max-width: 480px) {
@@ -459,6 +600,36 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div id="tarbiyyah-root">
+      <div class="spine-top">
+        <div class="spine-line"></div>
+        <div class="spine-node"></div>
+      </div>
+
+      <section class="hero-banner">
+        <h1>This Section Includes:</h1>
+
+        <div class="section-list-container">
+            <div class="guide-tag">Tarbiyyah & Wellness</div>
+            <p class="intro-text">
+                Nurturing the heart and mind of the activator. This section provides spiritual frameworks and practical tools to ensure your service is sustainable, sincere, and balanced.
+            </p>
+
+            <div class="link-list">
+                <div class="link-item">Tarbiyyah Module Hub</div>
+                <div class="link-item">The Leadership Studio</div>
+                <div class="link-item">Navigating Burnout</div>
+                <div class="link-item">Practical Toolkit</div>
+                <div class="link-item">Khateeb and Jumu'ah Portal</div>
+            </div>
+        </div>
+      </section>
+
+      <div class="spine-bottom">
+        <div class="spine-node"></div>
+      </div>
     </div>
 
     <script>
