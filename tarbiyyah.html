@@ -495,6 +495,241 @@
             .verse-unit { margin-bottom: 60px; }
             .tarbiyyah-hub { padding: 50px 15px; }
         }
+
+        /* Scoped to prevent interference with other master code elements */
+  .burnout-section-wrapper {
+    width: 100%;
+    padding-bottom: 20px;
+  }
+
+  .burnout-section-wrapper .title-area {
+    text-align: center;
+    max-width: 1100px;
+    margin: 40px auto 20px auto;
+    padding: 0 15px;
+  }
+
+  .burnout-section-wrapper .pill-tag {
+    display: inline-block;
+    background: var(--asr-blue);
+    color: var(--flat-white);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+
+  .burnout-section-wrapper .title-area h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.8rem, 7vw, 2.8rem);
+    margin: 0;
+    text-transform: uppercase;
+    line-height: 1.0;
+    color: var(--asr-blue);
+  }
+
+  .burnout-section-wrapper .content-grid {
+    display: flex;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 30px;
+    padding: 0 20px 20px 20px;
+  }
+
+  .burnout-section-wrapper .sidebar-col {
+    flex: 0 0 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center:
+  }
+
+  .burnout-section-wrapper .tab-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .burnout-section-wrapper .sidebar-image-box {
+    margin-top: 20px;
+    width: 260px;
+    height: 260px;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .burnout-section-wrapper .sidebar-img {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+  }
+
+  .burnout-section-wrapper .sidebar-img.active { opacity: 1; }
+
+  .burnout-section-wrapper .nav-item {
+    background: var(--flat-white);
+    border: 1px solid var(--border-light);
+    padding: 18px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #124A7A; /* Specific accent blue */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .burnout-section-wrapper .nav-item.active {
+    background: var(--asr-blue);
+    color: var(--flat-white);
+    border-color: var(--asr-blue);
+    box-shadow: 0 8px 15px rgba(0,32,63,0.1);
+  }
+
+  .burnout-section-wrapper .display-panel {
+    flex: 1;
+    background: #F8FAFC;
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid var(--border-light);
+  }
+
+  .burnout-section-wrapper .pane {
+    display: none;
+    animation: burnoutSlideUp 0.4s ease-out forwards;
+    color: var(--asr-blue);
+  }
+
+  @keyframes burnoutSlideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .burnout-section-wrapper .pane-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    border-bottom: 4px solid var(--fosis-gold);
+    display: inline-block;
+  }
+
+  .burnout-section-wrapper .callout-box {
+    background: var(--asr-blue);
+    color: var(--flat-white) !important;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 20px 0;
+    border-left: 5px solid var(--fosis-gold);
+  }
+    .burnout-section-wrapper .callout-box b {
+    color: var(--fosis-grey) !important;
+    }
+        
+  .burnout-section-wrapper .seerah-card {
+    background: var(--flat-white);
+    border: 1px solid var(--border-light);
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+  }
+
+  .burnout-section-wrapper .spiritual-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: #124A7A;
+    margin: 30px 0;
+    text-align: center;
+    line-height: 1.7;
+    padding: 0 10%;
+  }
+
+  .burnout-section-wrapper .wow-moment {
+    background: linear-gradient(135deg, var(--asr-blue) 0%, #124A7A 100%);
+    color: var(--fosis-gold);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 25px 0;
+  }
+
+@media (max-width: 850px) {
+    .content-grid { 
+      display: flex;
+      flex-direction: column; 
+      padding: 0 15px 20px 15px; 
+      align-items: center;
+    }
+
+    .sidebar-col {
+      flex: none;
+      width: 100%;
+      align-items: center; 
+      order: 2;
+    }
+
+    .tab-nav { 
+      flex-direction: row; 
+      overflow-x: auto; 
+      padding-bottom: 15px; 
+      gap: 10px;
+      /* Smooth scrolling for the pill menu */
+      -webkit-overflow-scrolling: touch; 
+      order: 1;
+    }
+
+    .nav-item { 
+      flex: 0 0 auto; 
+      min-width: 140px; 
+      padding: 12px; 
+      justify-content: center; 
+      font-size: 9px;
+    }
+
+    .nav-item span { display: none; }
+
+    /* The Fix: Re-integrating the image box clearly */
+    .sidebar-image-box { 
+      display: block !important; 
+      width: 100%; 
+      height: 220px; /* Adjust height as you like */
+      margin: 0 0 20px 0; 
+      position: relative; /* Keeps images trapped inside this box */
+      border-radius: 15px;
+      z-index: 1; /* Ensures it stays above the background */
+    }
+
+    .display-panel { 
+      padding: 25px 20px; 
+      border-radius: 15px; 
+      width: 100%;
+        order: 3;
+    }
+  }
+        
     </style>
 </head>
 <body>
@@ -692,6 +927,64 @@
         .virtues-img { width: 110px; height: 110px; }
     }
 </style>
+    
+    <div id="tarbiyyah-definition-graphic">
+        <div class="tarbiyyah-hub">
+            <div class="hub-hero-container">
+                <h1>WHAT IS</h1>
+                <span class="hub-highlight-text">Tarbiyyah?</span>
+            </div>
+    
+            <p class="hub-sub-heading">
+                Rooted in the Prophetic legacy, <b>Tarbiyyah</b> is the intentional cultivation of the self to achieve <b>excellence in character.</b>
+            </p>
+    
+            <div class="pillar-nav">
+                <div class="nav-card active" onclick="showPane(0, this)">
+                    <span class="icon">📖</span>
+                    <span class="label">Knowledge</span>
+                </div>
+                <div class="nav-card" onclick="showPane(1, this)">
+                    <span class="icon">⚖️</span>
+                    <span class="label">Iman</span>
+                </div>
+                <div id="akhlaq-card" class="nav-card" onclick="showPane(2, this)">
+                    <span class="icon">💎</span>
+                    <span class="label">Akhlaq</span>
+                </div>
+                <div class="nav-card" onclick="showPane(3, this)">
+                    <span class="icon">🌙</span>
+                    <span class="label">Discipline</span>
+                </div>
+            </div>
+    
+            <div class="focus-stage">
+                <div class="pane active">
+                    <h3>Knowledge</h3>
+                    <p>Building a resilient intellectual foundation through the study of the <b>Qur’an and Sunnah.</b></p>
+                    <span class="phase-tag">Foundational Stage</span>
+                </div>
+    
+                <div class="pane">
+                    <h3>Iman & Taqwa</h3>
+                    <p>Strengthening <b>spiritual resilience</b> and mindfulness to remain grounded under pressure.</p>
+                    <span class="phase-tag">Internalisation Stage</span>
+                </div>
+    
+                <div class="pane featured-pillar">
+                    <h3>Akhlaq (Character)</h3>
+                    <p>Developing <b>prophetic manners</b> (Adab) in every interaction. This is the heart of Tarbiyyah and the proof of internal refinement.</p>
+                    <span class="phase-tag" style="background: var(--fosis-gold); color: white;">The Core Pillar</span>
+                </div>
+    
+                <div class="pane">
+                    <h3>Discipline</h3>
+                    <p>Building consistency through <b>Salah and Self-reflection</b> to stay aligned with your purpose.</p>
+                    <span class="phase-tag">Consistency Stage</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <div class="spotlight-bubble" id="hub-root">
     <nav class="hub-navigation">
@@ -904,6 +1197,7 @@
             document.getSelection().removeAllRanges();
             document.getSelection().addRange(selected);
         }
+        window.onload = upd;
     }
 
     function generatePDF() {
@@ -951,66 +1245,9 @@
 
     window.onload = () => { upd(); updHeight(); };
     window.onresize = updHeight;
+    window.onload = upd;
 </script>
     
-    <div id="tarbiyyah-definition-graphic">
-        <div class="tarbiyyah-hub">
-            <div class="hub-hero-container">
-                <h1>WHAT IS</h1>
-                <span class="hub-highlight-text">Tarbiyyah?</span>
-            </div>
-    
-            <p class="hub-sub-heading">
-                Rooted in the Prophetic legacy, <b>Tarbiyyah</b> is the intentional cultivation of the self to achieve <b>excellence in character.</b>
-            </p>
-    
-            <div class="pillar-nav">
-                <div class="nav-card active" onclick="showPane(0, this)">
-                    <span class="icon">📖</span>
-                    <span class="label">Knowledge</span>
-                </div>
-                <div class="nav-card" onclick="showPane(1, this)">
-                    <span class="icon">⚖️</span>
-                    <span class="label">Iman</span>
-                </div>
-                <div id="akhlaq-card" class="nav-card" onclick="showPane(2, this)">
-                    <span class="icon">💎</span>
-                    <span class="label">Akhlaq</span>
-                </div>
-                <div class="nav-card" onclick="showPane(3, this)">
-                    <span class="icon">🌙</span>
-                    <span class="label">Discipline</span>
-                </div>
-            </div>
-    
-            <div class="focus-stage">
-                <div class="pane active">
-                    <h3>Knowledge</h3>
-                    <p>Building a resilient intellectual foundation through the study of the <b>Qur’an and Sunnah.</b></p>
-                    <span class="phase-tag">Foundational Stage</span>
-                </div>
-    
-                <div class="pane">
-                    <h3>Iman & Taqwa</h3>
-                    <p>Strengthening <b>spiritual resilience</b> and mindfulness to remain grounded under pressure.</p>
-                    <span class="phase-tag">Internalisation Stage</span>
-                </div>
-    
-                <div class="pane featured-pillar">
-                    <h3>Akhlaq (Character)</h3>
-                    <p>Developing <b>prophetic manners</b> (Adab) in every interaction. This is the heart of Tarbiyyah and the proof of internal refinement.</p>
-                    <span class="phase-tag" style="background: var(--fosis-gold); color: white;">The Core Pillar</span>
-                </div>
-    
-                <div class="pane">
-                    <h3>Discipline</h3>
-                    <p>Building consistency through <b>Salah and Self-reflection</b> to stay aligned with your purpose.</p>
-                    <span class="phase-tag">Consistency Stage</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div id="tarbiyyah-root">
       <div class="spine-top">
         <div class="spine-line"></div>
@@ -1705,5 +1942,130 @@
     setInterval(syncStudioHeight, 2000);
 </script>
 
+<div class="burnout-section-wrapper" id="burnout-container">
+  <div class="title-area">
+    <div class="pill-tag">Empathetic Leadership</div>
+    <h1>Navigating Burnout</h1>
+  </div>
+
+  <div class="content-grid">
+    <div class="sidebar-col">
+      <nav class="tab-nav">
+        <div class="nav-item burnout-nav active" onclick="switchBurnoutPane(this, 'diagnosis', 0)">
+          1. Spiritual Diagnosis <span>→</span>
+        </div>
+        <div class="nav-item burnout-nav" onclick="switchBurnoutPane(this, 'strategy', 1)">
+          2. The Mindset Shift <span>→</span>
+        </div>
+        <div class="nav-item burnout-nav" onclick="switchBurnoutPane(this, 'stories', 2)">
+          3. Seerah Context <span>→</span>
+        </div>
+        <div class="nav-item burnout-nav" onclick="switchBurnoutPane(this, 'toolkit', 3)">
+          4. Practical Habits <span>→</span>
+        </div>
+      </nav>
+
+      <div class="sidebar-image-box">
+        <img src="https://i.ibb.co/M3SJnwF/Screenshot-2026-02-15-171932.png" id="burnout-img-0" class="sidebar-img active" alt="">
+        <img src="https://i.ibb.co/7JrrmtRZ/8f495812-4c44-4b89-aa25-d54fe195dab7.jpg" id="burnout-img-1" class="sidebar-img" alt="">
+        <img src="https://i.ibb.co/BV3csQGR/Screenshot-2026-02-15-171223.png" id="burnout-img-2" class="sidebar-img" alt="">
+        <img src="https://i.ibb.co/prf7bW8m/IMG-20250728-WA0049.jpg" id="burnout-img-3" class="sidebar-img" alt="">
+      </div>
+    </div>
+
+    <main class="display-panel">
+      <div id="diagnosis" class="pane" style="display: block;">
+        <h2 class="pane-header">The Internal Battle</h2>
+        <p>Procrastination is often used as a <b>maladaptive coping mechanism</b> to avoid difficult feelings. It is the result of a structural conflict between the Limbic System (Emotional Hub) and the Prefrontal Cortex (Rational Planner).</p>
+        <div class="callout-box">
+          <b>The Shaytan's Tactic:</b> Procrastination is viewed as a spiritual trial—a way to induce <i>Ghafla</i> (heedlessness) and detach us from our purpose through self-guilt.
+        </div>
+        <p><b>Roots of Avoidance:</b></p>
+        <ul style="color: var(--soft-grey); font-weight: 600;">
+          <li><b>Tul al-Amal:</b> The delusion that we have many years to live.</li>
+          <li><b>Perfectionism:</b> The fear that "imperfect" work is a failure.</li>
+          <li><b>Fatigue:</b> Being tired is the #1 biological accelerator of delay.</li>
+        </ul>
+      </div>
+
+      <div id="strategy" class="pane">
+        <h2 class="pane-header">Reframing the Load</h2>
+        <p>Overwhelming stress is often caused by trying to control an uncertain future. The solution is <b>Tawakkul</b> (complete reliance) combined with intentional effort.</p>
+        <div class="wow-moment">"Your faith is proven by your effort, not your perfect outcome."</div>
+        <p><b>The Mindset Shift:</b></p>
+        <ul style="line-height: 1.8;">
+          <li><b>Amanah:</b> Recognize your time, health, and youth as sacred trusts.</li>
+          <li><b>Ihsaan:</b> Striving with excellence in the <i>present moment</i>, not just the finish line.</li>
+          <li><b>Halal Leisure:</b> Rest is not a waste; it is a tool to make the soul stronger for the truth.</li>
+        </ul>
+      </div>
+
+      <div id="stories" class="pane">
+        <h2 class="pane-header">Lessons from the Seerah</h2>
+        <div class="seerah-card">
+          <b style="color: var(--fosis-gold); text-transform: uppercase; font-size: 11px;">Ka’b ibn Malik (RA)</b>
+          <p style="font-size: 14px; margin-bottom: 0;">The profound danger of "just one more day." His story teaches us the weight of procrastination in the face of duty, but more importantly, the power of sincere return and action.</p>
+        </div>
+        <div class="seerah-card">
+          <b style="color: var(--fosis-gold); text-transform: uppercase; font-size: 11px;">Post-Uhud Resilience</b>
+          <p style="font-size: 14px; margin-bottom: 0;">The Prophet ﷺ and the Sahaba faced extreme emotional and physical fatigue. Their ability to move forward despite trauma was rooted in <b>Tawakkul</b> and a collective sense of purpose.</p>
+        </div>
+        <div class="spiritual-quote">"I give my soul some relaxation with permissible enjoyment, so that it may be stronger upon the truth." — Abu Darda (RA)</div>
+      </div>
+
+      <div id="toolkit" class="pane">
+        <h2 class="pane-header">Practical Action</h2>
+        <p>Move from a state of delay to one of action with these "Micro-habits":</p>
+        <ul style="color: var(--soft-grey); font-size: 14px; line-height: 1.8;">
+          <li><b>The 5-Minute Rule:</b> Commit for 5 minutes just to build momentum.</li>
+          <li><b>The Life Audit:</b> Write down 3 habits causing your biggest blocks.</li>
+          <li><b>Salah-Centric Planning:</b> Schedule deep work blocks centering around prayer times.</li>
+          <li><b>IF-THEN Planning:</b> "If I have my coffee, then I start the task."</li>
+          <li><b>Digital Fasting:</b> Eliminate one specific distraction for a week as a spiritual exercise.</li>
+        </ul>
+        <div class="callout-box" style="background: #124A7A; border-left-color: var(--fosis-gold);">
+          <b>Reflective Moment:</b> Always start with <i>Bismillah</i>. Seek refuge from laziness daily using the Prophetic Du'a.
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+  function switchBurnoutPane(btn, paneId, imgIndex) {
+    const wrapper = document.getElementById('burnout-container');
+    const panes = wrapper.getElementsByClassName("pane");
+    for (let i = 0; i < panes.length; i++) { panes[i].style.display = "none"; }
+    
+    const navs = wrapper.getElementsByClassName("burnout-nav");
+    for (let i = 0; i < navs.length; i++) { navs[i].classList.remove("active"); }
+    
+    const imgs = wrapper.getElementsByClassName("sidebar-img");
+    for (let i = 0; i < imgs.length; i++) { imgs[i].classList.remove("active"); }
+
+    document.getElementById(paneId).style.display = "block";
+    btn.classList.add("active");
+    document.getElementById("burnout-img-" + imgIndex).classList.add("active");
+    
+    if (window.innerWidth < 850) { 
+      btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }); 
+    }
+    
+    syncBurnout();
+  }
+
+  function syncBurnout() {
+    const root = document.getElementById('burnout-container');
+    if (root) {
+        const height = root.scrollHeight;
+        window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height }, '*');
+    }
+  }
+
+  window.addEventListener('load', syncBurnout);
+  window.addEventListener('resize', syncBurnout);
+  setInterval(syncBurnout, 2000);
+</script>
+    
 </body>
 </html>
