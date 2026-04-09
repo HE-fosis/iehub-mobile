@@ -608,6 +608,394 @@
         <div class="spine-node"></div>
       </div>
 
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Encode+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    
+<style>
+    :root {
+        --fosis-navy: #00203F;
+        --fosis-gold: #ECA400;
+        --fosis-white: #FFFFFF;
+        --navy-light: #124A7A;
+        --shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    /* SCROLLBAR REMOVAL */
+    ::-webkit-scrollbar { display: none; }
+    * { scrollbar-width: none; -ms-overflow-style: none; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    body, html {
+        margin: 0; padding: 0;
+        background: #ffffff; /* Removed grey background */
+        font-family: 'Encode Sans', sans-serif;
+    }
+
+    .spotlight-bubble {
+        max-width: 1150px;
+        margin: 20px auto;
+        /* Illuminated Gradient */
+        background: linear-gradient(135deg, var(--fosis-navy) 0%, var(--navy-light) 50%, var(--fosis-navy) 100%);
+        border: 2px solid var(--fosis-gold);
+        border-radius: 45px;
+        padding: 60px 30px; 
+        position: relative;
+        color: var(--fosis-white);
+        /* Illuminated Glow Shadow */
+        box-shadow: 0 0 30px rgba(236, 164, 0, 0.2), 0 20px 50px rgba(0,32,63,0.3);
+        overflow: hidden; 
+    }
+
+    .hub-navigation {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 40px;
+        position: relative;
+        z-index: 20;
+    }
+
+    .cat-btn {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 12px 25px;
+        border-radius: 50px;
+        color: var(--fosis-white);
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .cat-btn:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
+    .cat-btn.active { background: var(--fosis-gold); color: var(--fosis-navy); border-color: white; }
+
+    .view-pane { display: none; animation: fadeIn 0.5s ease forwards; }
+    .view-pane.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }
+
+    .spot-header { text-align: center; margin-bottom: 40px; position: relative; z-index: 10; }
+    .spot-header h2 { font-family: 'Montserrat'; font-weight: 900; font-size: clamp(2.2rem, 10vw, 4.5rem); margin: 0; line-height: 1; }
+    .hero-sub { color: var(--fosis-gold); font-family: 'Montserrat'; font-weight: 700; letter-spacing: 12px; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 15px; }
+    .header-icon { width: 30px; height: 30px; fill: var(--fosis-gold); filter: drop-shadow(0 0 8px var(--fosis-gold)); }
+
+    .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+    .faq-card { height: 320px; perspective: 1000px; cursor: pointer; }
+    .faq-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; border-radius: 20px; }
+    .faq-card.flipped .faq-inner { transform: rotateY(180deg); }
+    .faq-front, .faq-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; padding: 25px; display: flex; flex-direction: column; justify-content: center; }
+    .faq-front { background: white; color: var(--fosis-navy); text-align: center; border-bottom: 6px solid var(--fosis-navy); }
+    .faq-front h3 { font-family: 'Montserrat'; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; margin: 0; }
+    .flip-hint { position: absolute; bottom: 15px; width: 100%; left: 0; font-size: 0.6rem; color: #aaa; text-transform: uppercase; letter-spacing: 1px; }
+    .faq-back { background: var(--navy-light); color: white; transform: rotateY(180deg); overflow-y: auto; text-align: left; border-bottom: 6px solid var(--fosis-gold); }
+    .faq-back p { font-size: 0.8rem; line-height: 1.5; margin-bottom: 10px; }
+    .hadith-box { border-left: 3px solid var(--fosis-gold); padding: 10px; font-style: italic; font-size: 0.7rem; background: rgba(255,255,255,0.1); }
+
+    .virtues-card { 
+        background: rgba(255,255,255,0.05); 
+        padding: 30px; 
+        border-radius: 20px; 
+        border-top: 5px solid var(--fosis-gold); 
+        margin-bottom: 40px; 
+        box-shadow: var(--shadow);
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+    .virtues-card h2 { color: var(--fosis-gold); font-family: 'Montserrat'; font-size: 1.1rem; text-transform: uppercase; font-weight: 800; margin-top: 0; }
+    .virtues-text { flex: 1; }
+    
+    .virtues-img {
+        flex-shrink: 0;
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid var(--fosis-gold);
+        box-shadow: 0 0 15px rgba(236, 164, 0, 0.4);
+    }
+
+    .timeline-container { position: relative; padding-left: 50px; border-left: 4px solid var(--fosis-gold); margin-left: 20px; }
+    .timeline-item { position: relative; margin-bottom: 25px; }
+    .timeline-item::before { content: ''; position: absolute; left: -59px; top: 22px; width: 14px; height: 14px; background: var(--fosis-navy); border: 4px solid var(--fosis-gold); border-radius: 50%; z-index: 2; transition: background 0.3s; }
+
+    details { background: rgba(255,255,255,0.08); border-radius: 15px; overflow: hidden; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1); }
+    summary { padding: 20px 25px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Montserrat'; font-weight: 800; color: var(--fosis-gold); text-transform: uppercase; font-size: 0.85rem; }
+    summary::after { content: '+'; font-size: 1.5rem; color: var(--fosis-gold); }
+    details[open] summary::after { content: '−'; }
+    
+    .content { padding: 0 25px 25px 25px; font-size: 0.9rem; line-height: 1.7; color: #eee; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+    .quote-block { margin-top: 15px; padding: 15px; background: rgba(255,255,255,0.1); border-left: 4px solid var(--fosis-gold); font-style: italic; color: #fff; }
+    .cite { display: block; margin-top: 10px; font-weight: 800; font-style: normal; font-size: 0.75rem; color: var(--fosis-gold); }
+
+    .benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .benefit-card { background: rgba(255,255,255,0.05); padding: 25px; border-radius: 20px; border-left: 4px solid var(--fosis-gold); transition: transform 0.3s ease; }
+    .benefit-card h3 { color: var(--fosis-gold); font-family: 'Montserrat'; font-weight: 800; text-transform: uppercase; font-size: 1rem; margin: 0 0 10px 0; display: flex; align-items: center; gap: 15px; }
+    .benefit-card p { font-size: 0.9rem; line-height: 1.6; margin: 0; color: #e0e6ed; }
+
+    @media (max-width: 850px) { 
+        .spotlight-bubble { padding: 40px 15px; border-radius: 30px; } 
+        .hero-sub { letter-spacing: 4px; } 
+        .timeline-container { padding-left: 35px; margin-left: 10px; } 
+        .timeline-item::before { left: -44px; } 
+        .spot-header h2 { font-size: 2.2rem; }
+        .virtues-card { flex-direction: column-reverse; text-align: center; }
+        .virtues-img { width: 110px; height: 110px; }
+    }
+</style>
+
+<div class="spotlight-bubble" id="hub-root">
+    <nav class="hub-navigation">
+        <button class="cat-btn active" onclick="switchPane(event, 'spotlight')">Spotlight</button>
+        <button class="cat-btn" onclick="switchPane(event, 'faq')">Ramadan FAQs</button>
+        <button class="cat-btn" onclick="switchPane(event, 'tips')">Iftar Dinners</button>
+        <button class="cat-btn" onclick="switchPane(event, 'health')">Health Benefits</button>
+    </nav>
+
+    <div class="hub-viewport">
+        <div id="spotlight" class="view-pane active">
+            <div class="spot-header">
+                <h2>RAMADAN HUB</h2>
+                <div class="hero-sub">
+                    <svg class="header-icon" viewBox="0 0 24 24"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg>
+                    RAMADAN KAREEM
+                    <svg class="header-icon" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.45,4 12.89,4.04 13.32,4.12C11.34,5.33 10,7.5 10,10C10,13.87 13.13,17 17,17C18.13,17 19.18,16.73 20.08,16.25C19.04,18.5 16.7,20 14,20C13.34,20 12.67,19.93 12,19.79"/></svg>
+                </div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+                <div>
+                    <div style="font-size: 2.2rem; color: var(--fosis-gold); direction: rtl; line-height: 1.8; text-align: center; margin-bottom: 20px;">يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الصِّيَامُ كَمَا كُتِبَ عَلَى الَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَّتَّقُونَ</div>
+                    <p>Ramadan is a month of <b>productive stillness</b>. To ISocs, Ramadan means ensuring no student breaks their fast alone, building a community that prays, eats, and grows together. It is about spiritual conditioning and achieving Taqwa.</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); padding: 35px; border-radius: 35px; border: 1px solid var(--fosis-gold); text-align: center;">
+                    <span style="font-weight: 800; color: var(--fosis-gold); font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase;">Hijri Date</span>
+                    <div id="hijri-display" style="font-size: 1.8rem; font-weight: 900; margin: 15px 0;">Loading...</div>
+                    <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 15px;">
+                        <button onclick="adjustDate(-1)" class="cat-btn" style="padding: 5px 15px; font-size: 0.6rem;">- 1 Day</button>
+                        <button onclick="adjustDate(1)" class="cat-btn" style="padding: 5px 15px; font-size: 0.6rem;">+ 1 Day</button>
+                    </div>
+                    <button id="copy-btn" class="cat-btn" style="width: 100%; background: var(--fosis-gold); color: var(--fosis-navy);" onclick="copyDate()">Copy Date</button>
+                    <div id="greg-display" style="margin-top:15px; opacity: 0.5; font-size: 0.8rem;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="faq" class="view-pane">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h3 style="font-family: Montserrat; font-weight: 800; text-transform: uppercase; color: var(--fosis-gold);">Toolkit & FAQ's</h3>
+                <button class="cat-btn" style="background: var(--fosis-white); color: var(--fosis-navy); margin-top: 10px;" onclick="generatePDF()">Download FAQ Toolkit (PDF)</button>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-card" onclick="this.classList.toggle('flipped')"><div class="faq-inner">
+                    <div class="faq-front"><h3 class="q-text">WHAT IS RAMADAN?</h3><div class="flip-hint">Tap to flip</div></div>
+                    <div class="faq-back"><div class="a-text"><p>Ramadan is the ninth month of the Islamic calendar. It is a month of fasting and one of the five pillars of Islam. It is a time of spiritual growth, marking the month of the Qur'an's divine revelation.</p></div></div>
+                </div></div>
+                <div class="faq-card" onclick="this.classList.toggle('flipped')"><div class="faq-inner">
+                    <div class="faq-front"><h3 class="q-text">WHAT HAPPENS DURING RAMADAN?</h3><div class="flip-hint">Tap to flip</div></div>
+                    <div class="faq-back"><div class="a-text"><p>We wake up before dawn for a meal called <strong>Suhoor</strong> and fast and abstain from impulses to focus on reflection. At sunset, we break it at <strong>Iftar</strong> with water and dates as that is the sunnah of the Prophet (SAW).</p></div></div>
+                </div></div>
+                <div class="faq-card" onclick="this.classList.toggle('flipped')"><div class="faq-inner">
+                    <div class="faq-front"><h3 class="q-text">IS IT JUST NO FOOD AND WATER?</h3><div class="flip-hint">Tap to flip</div></div>
+                    <div class="faq-back"><div class="a-text"><p>No, it is a <strong>spiritual reset</strong>. Beyond food and water, we work on controlling our desires and nafs (self) - avoiding gossip and anger to connect deeper with Allah (SWT).</p></div></div>
+                </div></div>
+                <div class="faq-card" onclick="this.classList.toggle('flipped')"><div class="faq-inner">
+                    <div class="faq-front"><h3 class="q-text">WHAT IF WE EAT IN FRONT OF YOU?</h3><div class="flip-hint">Tap to flip</div></div>
+                    <div class="faq-back"><div class="a-text"><p>There is actually a special reward for us when others eat in our presence:</p><div class="hadith-box">Umm 'Umarah bint Ka'b reported: The Prophet (SAW) said "Verily, angels send blessings upon a fasting person when others eat in their presence until they finish." <br>— Tirmidhi 785</div></div></div>
+                </div></div>
+                <div class="faq-card" onclick="this.classList.toggle('flipped')"><div class="faq-inner">
+                    <div class="faq-front"><h3 class="q-text">WHY DO YOU FAST?</h3><div class="flip-hint">Tap to flip</div></div>
+                    <div class="faq-back"><div class="a-text"><p>Fasting is about obeying Allah's command and aiming to achieve <strong>Taqwa</strong> (God-consciousness). It builds self-discipline and spiritual growth. It is a purification of the soul through increased prayer.</p></div></div>
+                </div></div>
+                <div class="faq-card" onclick="this.classList.toggle('flipped')"><div class="faq-inner">
+                    <div class="faq-front"><h3 class="q-text">HOW TO SUPPORT?</h3><div class="flip-hint">Tap to flip</div></div>
+                    <div class="faq-back"><div class="a-text"><p>A simple "Ramadan Kareem" means a lot and everyone is welcome to join us for Iftar! Showing understanding, flexibility, and respect helps keep us motivated.</p></div></div>
+                </div></div>
+            </div>
+        </div>
+
+        <div id="tips" class="view-pane">
+            <div class="virtues-card">
+                <div class="virtues-text">
+                    <h2>Virtues of Feeding People</h2>
+                    <div style="font-style: italic; line-height: 1.6; font-size: 0.95rem;">
+                        “From the ‘ibadah of providing food for people stem many other acts of worship such as creating love and friendship... as the Prophet ﷺ said: “You will not enter Paradise until you truly believe, and you will not truly believe until you love one another.” (Muslim, 54).
+                    </div>
+                </div>
+                <img src="https://i.ibb.co/4nCS2jFp/14af871c-f839-4ac1-ab27-6752ec9e653d.jpg" class="virtues-img" alt="Iftar Dinner">
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <details><summary>Renew and Realign Intentions</summary>
+                        <div class="content">Aligning the heart and mind is the foundation of service. Remind your team that providing food is a profound act of 'ibadah.
+                            <div class="quote-block">“Whoever gives iftar to one who is fasting will have a reward like his...” <span class="cite">— Tirmidhi, 807</span></div>
+                        </div>
+                    </details>
+                </div>
+                <div class="timeline-item">
+                    <details><summary>Pre-Iftar Logistics & Practical Essentials</summary>
+                        <div class="content">
+                            <ul>
+                                <li><strong>Plan a menu:</strong> Accommodate for GF, Vegetarian, Vegan, and Nut-free options.</li>
+                                <li><strong>Waste Management:</strong> Set up a clear system for food waste and recycling.</li>
+                                <li><strong>Space:</strong> Dedicated spot for dates and water.</li>
+                                <li><strong>Prayer Space Prep:</strong> Use plastic sheets to transition quickly.</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+                <div class="timeline-item">
+                    <details><summary>Budgeting & Resource Management</summary>
+                        <div class="content">
+                            <ul>
+                                <li><strong>Track Expenses:</strong> Maintain a live spreadsheet.</li>
+                                <li><strong>Sponsorships:</strong> Partner with local businesses.</li>
+                                <li><strong>Bulk Purchasing:</strong> Buy dates and water in bulk.</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+                <div class="timeline-item">
+                    <details><summary>Financial Inclusivity</summary>
+                        <div class="content">Provide free iftars to support students under hardship.
+                            <div class="quote-block">“Whoever relieves a believer of some worldly distress, Allah will relieve him...” <span class="cite">— Ibn Majah, 225</span></div>
+                        </div>
+                    </details>
+                </div>
+                <div class="timeline-item">
+                    <details><summary>Dawah Outreach</summary>
+                        <div class="content">Invite non-Muslims to experience hospitality.
+                            <div class="quote-block">“And who is better in speech than one who invites to Allah...” <span class="cite">— Quran 41:33</span></div>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+
+        <div id="health" class="view-pane">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h3 style="font-family: Montserrat; font-weight: 800; text-transform: uppercase; color: var(--fosis-gold);">Physical Benefits of Fasting</h3>
+            </div>
+            <div class="benefit-grid">
+                <div class="benefit-card"><h3>Metabolic Control</h3><p>Fasting improves <b>insulin sensitivity</b> and helps regulate <b>blood sugar levels</b>.</p></div>
+                <div class="benefit-card"><h3>Cellular Repair</h3><p>Fasting triggers <b>autophagy</b>, where cells "clean house" and trigger regeneration.</p></div>
+                <div class="benefit-card"><h3>Heart Health</h3><p>Improves cholesterol levels and lowers blood pressure.</p></div>
+                <div class="benefit-card"><h3>Inflammation</h3><p>Decreases markers of <b>chronic inflammation</b>.</p></div>
+                <div class="benefit-card"><h3>Cognitive</h3><p>Boosts brain function and supports mental clarity.</p></div>
+                <div class="benefit-card"><h3>Gut Health</h3><p>Promotes <b>hormonal balance</b> and improves digestive rest.</p></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let dateOffset = 0;
+    function adjustDate(amt) { dateOffset += amt; upd(); }
+    
+    function switchPane(e, id) {
+        document.querySelectorAll('.view-pane').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        if(e) e.currentTarget.classList.add('active');
+        setTimeout(updHeight, 100);
+    }
+
+    function upd() {
+        const d = new Date(); d.setDate(d.getDate() + dateOffset);
+        const mArr = ["Muharram", "Safar", "Rabi' al-Awwal", "Rabi' al-Thani", "Jumada al-Ula", "Jumada al-Akhirah", "Rajab", "Sha'ban", "Ramadan", "Shawwal", "Dhu al-Qi'dah", "Dhu al-Hijjah"];
+        try {
+            const parts = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura-nu-latn', {day:'numeric', month:'numeric', year:'numeric'}).formatToParts(d);
+            const day = parts.find(p => p.type === 'day').value;
+            const mIdx = parseInt(parts.find(p => p.type === 'month').value) - 1;
+            const year = parts.find(p => p.type === 'year').value;
+            document.getElementById('hijri-display').innerText = `${day} ${mArr[mIdx]} ${year}`;
+        } catch(e) { document.getElementById('hijri-display').innerText = "Ramadan 1447"; }
+        document.getElementById('greg-display').innerText = d.toDateString();
+    }
+
+    function copyDate() {
+        const dateText = document.getElementById('hijri-display').innerText;
+        const btn = document.getElementById('copy-btn');
+        const showSuccess = () => {
+            const oldText = btn.innerText;
+            btn.innerText = "COPIED!";
+            btn.style.backgroundColor = "#FFFFFF";
+            btn.style.color = "#00203F";
+            setTimeout(() => {
+                btn.innerText = oldText;
+                btn.style.backgroundColor = "var(--fosis-gold)";
+                btn.style.color = "var(--fosis-navy)";
+            }, 2000);
+        };
+        const el = document.createElement('textarea');
+        el.value = dateText;
+        el.setAttribute('readonly', '');
+        el.style.position = 'absolute';
+        el.style.left = '0';
+        el.style.opacity = '0';
+        document.body.appendChild(el);
+        const selected = document.getSelection().rangeCount > 0 ? document.getSelection().getRangeAt(0) : false;
+        el.select();
+        try {
+            const successful = document.execCommand('copy');
+            if (successful) showSuccess();
+        } catch (err) { console.error('Copying failed', err); }
+        document.body.removeChild(el);
+        if (selected) {
+            document.getSelection().removeAllRanges();
+            document.getSelection().addRange(selected);
+        }
+    }
+
+    function generatePDF() {
+        const container = document.createElement('div');
+        container.style.padding = '40px'; 
+        container.style.background = 'white'; 
+        container.style.fontFamily = "'Montserrat', sans-serif";
+        
+        let htmlContent = `<h1 style="color:#00203F; text-align:center; border-bottom:4px solid #ECA400; padding-bottom:10px; margin-bottom:30px; font-weight:900;">RAMADAN FAQ TOOLKIT</h1>`;
+        
+        document.querySelectorAll('.faq-card').forEach(card => {
+            const q = card.querySelector('.q-text').innerText;
+            const a = card.querySelector('.a-text').innerHTML;
+            htmlContent += `
+                <div style="margin:20px 0; padding:25px; background:#00203F; color:white; border-radius:12px; border-bottom:6px solid #ECA400; page-break-inside: avoid;">
+                    <h2 style="color:#ECA400; font-size:16px; margin:0 0 12px 0; font-weight:800; text-transform:uppercase;">${q}</h2>
+                    <div style="font-size:13px; line-height:1.6;">${a}</div>
+                </div>`;
+        });
+
+        htmlContent += `
+            <div style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; text-align: center; font-size: 11px; color: #666;">
+                <p>For more student resources and support, visit the FOSIS website:</p>
+                <a href="https://www.fosis.org.uk" style="color: #00203F; font-weight: 800; text-decoration: none;">www.fosis.org.uk</a>
+            </div>
+        `;
+
+        container.innerHTML = htmlContent;
+        
+        const opt = {
+            margin:       [0.5, 0.5, 0.5, 0.5],
+            filename:     'Ramadan_FAQ_Toolkit.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2, useCORS: true },
+            jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+        };
+
+        html2pdf().set(opt).from(container).save();
+    }
+
+    function updHeight() {
+        const height = document.getElementById('hub-root').scrollHeight;
+        window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height + 40 }, '*');
+    }
+
+    window.onload = () => { upd(); updHeight(); };
+    window.onresize = updHeight;
+</script>
+        
       <section class="hero-banner">
         <h1>This Section Includes:</h1>
 
