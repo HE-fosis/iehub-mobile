@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Tarbiyyah & Wellness</title>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;700;800;900&family=Nunito:wght@400;500;600;700&family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;700;800;900&family=Nunito:wght@400;500;600;700&family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@1,700;1,900&family=Encode+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         /* GLOBAL RESET & VARIABLES */
@@ -317,7 +318,14 @@
             opacity: 0.2;
         }
 
-        .pane p { font-size: 16px; line-height: 1.7; color: var(--soft-grey); margin: 0; }
+        .pane p { font-size: 16px; line-height: 1.7; color: var(--soft-grey); margin: 0; 
+                 display: block;           /* Ensures it's not fighting flex layout */
+                 width: 100%;             /* Occupies the full width of the pane */
+                 white-space: normal;      /* Prevents text from being forced into a column */
+                 word-break: keep-all;     /* Prevents breaking words into single letters */
+                 overflow-wrap: break-word; /* Allows normal wrapping at the end of a line */
+                 text-align: left;         
+                }
         .pane b { color: var(--light-fosis-blue); font-weight: 700; }
 
         .phase-tag {
@@ -545,7 +553,7 @@
     flex: 0 0 260px;
     display: flex;
     flex-direction: column;
-    align-items: center:
+    align-items: center;
   }
 
   .burnout-section-wrapper .tab-nav {
@@ -1006,9 +1014,23 @@
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
                 <div>
-                    <div style="font-size: 2.2rem; color: var(--fosis-gold); direction: rtl; line-height: 1.8; text-align: center; margin-bottom: 20px;">يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الصِّيَامُ كَمَا كُتِبَ عَلَى الَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَّتَّقُونَ</div>
-                    <p>Ramadan is a month of <b>productive stillness</b>. To ISocs, Ramadan means ensuring no student breaks their fast alone, building a community that prays, eats, and grows together. It is about spiritual conditioning and achieving Taqwa.</p>
-                </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 30px; width: 100%;">
+    
+                        <div style="font-size: 2.2rem; color: var(--fosis-gold); direction: rtl; line-height: 1.6; margin-bottom: 15px; width: 100%;">
+                            يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الصِّيَامُ كَمَا كُتِبَ عَلَى الَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَّتَّقُونَ
+                        </div>
+                        <div style="font-size: 1.3rem; color: #c7cbc8; direction: ltr; line-height: 1.5; max-width: 800px;">
+                            "O you who have believed, decreed upon you is fasting as it was decreed upon those before you that you may become righteous."
+                            <br>
+                            <span style="font-size: 1rem; opacity: 0.8; display: block; margin-top: 8px;">- Quran 2:183</span>
+                            </p>
+                            
+                            <p style="color: #ffffff; font-size: 1.1rem; line-height: 1.7; margin: 0;">
+                            Ramadan is a month of <b>productive stillness</b>. To ISocs, Ramadan means ensuring no student breaks their fast alone, building a community that prays, eats, and grows together. It is about spiritual conditioning and achieving Taqwa.
+                            </p>
+                        </div>
+                    </div>
+                    
                 <div style="background: rgba(255,255,255,0.05); padding: 35px; border-radius: 35px; border: 1px solid var(--fosis-gold); text-align: center;">
                     <span style="font-weight: 800; color: var(--fosis-gold); font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase;">Hijri Date</span>
                     <div id="hijri-display" style="font-size: 1.8rem; font-weight: 900; margin: 15px 0;">Loading...</div>
@@ -2032,39 +2054,322 @@
 </div>
 
 <script>
-  function switchBurnoutPane(btn, paneId, imgIndex) {
+    function switchBurnoutPane(btn, paneId, imgIndex) {
     const wrapper = document.getElementById('burnout-container');
+    
+    // 1. Hide all panes
     const panes = wrapper.getElementsByClassName("pane");
-    for (let i = 0; i < panes.length; i++) { panes[i].style.display = "none"; }
+    for (let i = 0; i < panes.length; i++) { 
+        panes[i].style.display = "none"; 
+        panes[i].classList.remove("active");
+    }
     
+    // 2. Deactivate all nav buttons
     const navs = wrapper.getElementsByClassName("burnout-nav");
-    for (let i = 0; i < navs.length; i++) { navs[i].classList.remove("active"); }
+    for (let i = 0; i < navs.length; i++) { 
+        navs[i].classList.remove("active"); 
+    }
     
+    // 3. Deactivate all images
     const imgs = wrapper.getElementsByClassName("sidebar-img");
-    for (let i = 0; i < imgs.length; i++) { imgs[i].classList.remove("active"); }
+    for (let i = 0; i < imgs.length; i++) { 
+        imgs[i].classList.remove("active"); 
+    }
 
-    document.getElementById(paneId).style.display = "block";
+    // 4. Activate the selected items
+    const targetPane = document.getElementById(paneId);
+    targetPane.style.display = "block";
+    targetPane.classList.add("active");
+    
     btn.classList.add("active");
     document.getElementById("burnout-img-" + imgIndex).classList.add("active");
     
-    if (window.innerWidth < 850) { 
-      btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }); 
-    }
-    
-    syncBurnout();
-  }
+    // Optional: Only call syncBurnout if it is defined
+    if (typeof syncBurnout === "function") syncBurnout();
+}
+</script>
 
-  function syncBurnout() {
-    const root = document.getElementById('burnout-container');
-    if (root) {
-        const height = root.scrollHeight;
-        window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height }, '*');
+<style>
+    /* Scoped Styles for Productivity Toolkit */
+    .prod-wrapper {
+        background-color: var(--flat-white);
+        font-family: 'Encode Sans', sans-serif;
+        color: var(--fosis-navy);
+        overflow-x: hidden;
+        width: 100%;
     }
-  }
 
-  window.addEventListener('load', syncBurnout);
-  window.addEventListener('resize', syncBurnout);
-  setInterval(syncBurnout, 2000);
+    .prod-top-transition {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 20px;
+    }
+
+    .prod-transition-line {
+        width: 2px;
+        height: 40px;
+        background: linear-gradient(to bottom, transparent, var(--fosis-gold));
+        opacity: 0.6;
+    }
+
+    .prod-transition-node {
+        width: 12px; height: 12px;
+        background: var(--fosis-navy);
+        border: 2px solid var(--fosis-gold);
+        border-radius: 50%;
+        margin-top: -6px;
+        box-shadow: 0 0 10px rgba(236, 164, 0, 0.4);
+    }
+
+    .prod-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 20px 60px 20px;
+        text-align: center;
+    }
+
+    .prod-header-box { margin-bottom: 40px; }
+    .prod-header-box h1 {
+        font-family: 'Montserrat', sans-serif; 
+        font-weight: 900;
+        text-transform: uppercase; 
+        letter-spacing: -1px;
+        font-size: clamp(1.8rem, 8vw, 3.2rem); 
+        margin: 0;
+        line-height: 1; 
+        color: var(--fosis-navy);
+    }
+    .prod-header-box .prod-sub-line {
+        color: var(--fosis-gold); 
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800; 
+        font-size: 0.8rem; 
+        text-transform: uppercase;
+        letter-spacing: 4px; 
+        margin-top: 15px; 
+        display: block;
+    }
+
+    .prod-static-arrow {
+        margin: 15px auto 0;
+        width: 30px; height: 30px;
+        color: var(--fosis-gold);
+        display: block;
+    }
+
+    .prod-diagnosis-card {
+        background: #f8fafc; /* Specific light grey for this card */
+        border-radius: 30px;
+        padding: 40px;
+        margin-bottom: 40px;
+        border: 1px solid var(--border-light);
+        text-align: left;
+        position: relative;
+        overflow: hidden;
+    }
+    .prod-diagnosis-card::before {
+        content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%;
+        background: var(--fosis-gold);
+    }
+    .prod-diagnosis-card h3 {
+        font-family: 'Montserrat', sans-serif; 
+        font-weight: 800; 
+        text-transform: uppercase;
+        font-size: 1.1rem; 
+        color: var(--fosis-navy); 
+        margin-top: 0;
+    }
+    .prod-diagnosis-card p { 
+        font-size: 1.05rem; 
+        line-height: 1.7; 
+        color: var(--slate); 
+        max-width: 850px; 
+        margin-bottom: 0;
+    }
+
+    .prod-tools-title {
+        font-family: 'Montserrat', sans-serif; 
+        font-weight: 900; 
+        text-transform: uppercase;
+        color: var(--fosis-navy); 
+        font-size: 1.4rem; 
+        margin: 40px 0 30px 0;
+        text-align: left; 
+        border-left: 5px solid var(--fosis-gold); 
+        padding-left: 15px;
+    }
+
+    .prod-tool-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+    }
+
+    .prod-tool-card {
+        background: var(--flat-white);
+        border: 1px solid var(--border-light);
+        border-radius: 20px;
+        padding: 25px 20px;
+        text-align: left;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .prod-image-card {
+        grid-column: 4;
+        grid-row: 1 / span 2;
+        padding: 0;
+        overflow: hidden;
+        border: none;
+        background: transparent;
+    }
+
+    .prod-image-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 20px;
+        transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    /* HOVER EFFECTS */
+    .prod-tool-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--fosis-gold);
+        box-shadow: 0 10px 20px rgba(0,32,63,0.05);
+    }
+
+    .prod-image-card:hover img {
+        transform: scale(1.03);
+    }
+
+    .prod-tool-card .prod-icon-label {
+        color: var(--fosis-gold); 
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900; 
+        font-size: 0.6rem; 
+        text-transform: uppercase;
+        letter-spacing: 1.5px; 
+        margin-bottom: 8px;
+    }
+
+    .prod-tool-card h4 {
+        font-family: 'Montserrat', sans-serif; 
+        font-weight: 800; 
+        font-size: 0.95rem;
+        margin: 0 0 10px 0; 
+        color: var(--fosis-navy);
+    }
+
+    .prod-tool-card p {
+        font-size: 0.85rem; 
+        line-height: 1.6; 
+        color: var(--slate); 
+        margin: 0;
+    }
+
+    /* RESPONSIVE BREAKPOINTS */
+    @media (max-width: 1100px) {
+        .prod-tool-grid { grid-template-columns: repeat(2, 1fr); }
+        .prod-image-card { grid-column: auto; grid-row: auto; min-height: 300px; }
+    }
+
+    @media (max-width: 600px) {
+        .prod-tool-grid { grid-template-columns: 1fr; }
+        .prod-image-card { 
+            order: -1; 
+            height: auto;
+            min-height: unset;
+        }
+        .prod-image-card img {
+            object-fit: contain; 
+            border: 1px solid var(--border-light);
+        }
+    }
+</style>
+
+<div class="prod-wrapper" id="prod-master-root">
+    <div class="prod-top-transition">
+        <div class="prod-transition-line"></div>
+        <div class="prod-transition-node"></div>
+    </div>
+
+    <div class="prod-container">
+        <div class="prod-header-box">
+            <h1>PRACTICAL TOOLKIT</h1>
+            <span class="prod-sub-line">Overcoming Procrastination</span>
+            <svg class="prod-static-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </div>
+
+        <div class="prod-diagnosis-card">
+            <h3>The Spiritual Diagnosis</h3>
+            <p>Procrastination is often more than just a time management issue; it is a <b>spiritual hurdle</b>. It is a tactic used to distance us from our purpose and the excellence (Ihsaan) we are called to. Overcoming it requires a shift in how we view <b>Time as an Amanah (Trust)</b>.</p>
+        </div>
+
+        <h2 class="prod-tools-title">Leader Execution Tools</h2>
+
+        <div class="prod-tool-grid">
+            <div class="prod-tool-card">
+                <span class="prod-icon-label">Audit Tool</span>
+                <h4>The Life Audit</h4>
+                <p>Write down the one habit causing your biggest procrastination block. Address the smallest possible component of that task today to break the cycle.</p>
+            </div>
+
+            <div class="prod-tool-card">
+                <span class="prod-icon-label">Action Tool</span>
+                <h4>The 5-Minute Rule</h4>
+                <p>Commit to any task for just five minutes. This small window is often enough to break the mental barrier of starting and build sustained momentum.</p>
+            </div>
+
+            <div class="prod-tool-card">
+                <span class="prod-icon-label">Sacred Trust</span>
+                <h4>Time as Amanah</h4>
+                <p>Recognise every hour as a sacred trust. Identify your top three daily "Barakah-killers" (distractions) and eliminate one for a full week.</p>
+            </div>
+
+            <div class="prod-tool-card prod-image-card">
+                <img src="https://i.ibb.co/vvhcm67Y/Screenshot-2026-02-14-134746.png" alt="Leader Productivity">
+            </div>
+
+            <div class="prod-tool-card">
+                <span class="prod-icon-label">Structure</span>
+                <h4>Salah Stacking</h4>
+                <p>Structure your most demanding tasks around your <b>Salah</b> times. Use these natural breaks as spiritual resets to refocus your intentions.</p>
+            </div>
+
+            <div class="prod-tool-card">
+                <span class="prod-icon-label">Mindset Shift</span>
+                <h4>Ihsaan vs Perfection</h4>
+                <p>Perfectionism leads to paralysis. Reframe excellence as the quality of your <b>effort</b> in the current moment, rather than the perfect final result.</p>
+            </div>
+
+            <div class="prod-tool-card">
+                <span class="prod-icon-label">Priority Tool</span>
+                <h4>Glass vs Plastic</h4>
+                <p>Identify "Glass Balls" (Salah, Health, Family) that cannot be dropped, and "Plastic Balls" (Minor errands) that can bounce or wait if needed.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function syncProductivityHeight() {
+        const root = document.getElementById('prod-master-root');
+        if (root) {
+            const height = root.scrollHeight;
+            window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height }, '*');
+        }
+    }
+    window.addEventListener('load', syncProductivityHeight); 
+    window.addEventListener('resize', syncProductivityHeight); 
+    setInterval(syncProductivityHeight, 2000);
 </script>
     
 </body>
