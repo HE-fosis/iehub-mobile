@@ -43,7 +43,9 @@
             -webkit-tap-highlight-color: transparent; 
         }
         
-        ::-webkit-scrollbar { display: none !important; }
+        ::-webkit-scrollbar { 
+            display: none !important; 
+        }
         
         html, body {
             margin: 0;
@@ -72,8 +74,23 @@
             overflow: hidden;
         }
 
-        .icon-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
-        .floating-icon { position: absolute; fill: var(--fosis-gold); opacity: 0.05; animation: slowDrift 22s infinite ease-in-out alternate; }
+        .icon-canvas { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            z-index: 1; 
+            pointer-events: none; 
+        }
+
+        .floating-icon { 
+            position: absolute; 
+            fill: var(--fosis-gold); 
+            opacity: 0.05; 
+            animation: slowDrift 22s infinite ease-in-out alternate; 
+        }
+
         .i1 { width: 100px; top: 10%; left: 10%; } 
         .i2 { width: 80px; top: 15%; right: 12%; animation-delay: -4s; } 
         .i3 { width: 100px; bottom: 18%; left: 8%; animation-delay: -7s; } 
@@ -84,291 +101,1910 @@
             100% { transform: translate3d(20px, -25px, 0) rotate(8deg); }
         }
 
-        .hero-container-content { z-index: 10; max-width: 1200px; width: 100%; }
+        .hero-container-content { 
+            z-index: 10; 
+            max-width: 1200px; 
+            width: 100%; 
+        }
+
         h1.tarbiyyah-title {
-            font-family: 'Montserrat', sans-serif; font-weight: 800; color: #ffffff; text-transform: uppercase;
-            font-size: clamp(2.2rem, 10vw, 5.5rem); line-height: 0.95; margin: 0 0 15px 0; letter-spacing: -1px;
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 800; 
+            color: #ffffff; 
+            text-transform: uppercase;
+            font-size: clamp(2.2rem, 10vw, 5.5rem); 
+            line-height: 0.95; 
+            margin: 0 0 15px 0; 
+            letter-spacing: -1px;
             text-shadow: 0 10px 25px rgba(0,0,0,0.4);
         }
-        h1.tarbiyyah-title span { display: block; }
-        
-        .swipe-zone { margin: 10px 0 30px 0; display: flex; flex-direction: column; align-items: center; }
-        .chevron {
-            width: 12px; height: 12px; border-right: 3px solid var(--fosis-gold); border-bottom: 3px solid var(--fosis-gold);
-            transform: rotate(45deg); animation: pulse 2s infinite;
+
+        h1.tarbiyyah-title span { 
+            display: block; 
         }
+        
+        .swipe-zone { 
+            margin: 10px 0 30px 0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+
+        .chevron {
+            width: 12px; 
+            height: 12px; 
+            border-right: 3px solid var(--fosis-gold); 
+            border-bottom: 3px solid var(--fosis-gold);
+            transform: rotate(45deg); 
+            animation: pulse 2s infinite;
+        }
+
         @keyframes pulse {
             0% { transform: rotate(45deg) translate(-5px, -5px); opacity: 0; }
             50% { opacity: 1; }
             100% { transform: rotate(45deg) translate(5px, 5px); opacity: 0; }
         }
-        .swipe-text { color: var(--fosis-gold); font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 800; letter-spacing: 2px; margin-top: 4px; }
+
+        .swipe-text { 
+            color: var(--fosis-gold); 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: 9px; 
+            font-weight: 800; 
+            letter-spacing: 2px; 
+            margin-top: 4px; 
+        }
 
         /* ========================================= */
         /* GRAPHIC 2: SURAH AL-ASR                   */
         /* ========================================= */
         #asr-spiritual-intro {
-            background: var(--fosis-navy); color: #ffffff; font-family: 'Montserrat', sans-serif; padding: 100px 20px; 
-            text-align: center; border-top: 2px solid rgba(236, 164, 0, 0.2); min-height: auto; 
-            display: flex; flex-direction: column; justify-content: center; width: 100%;
+            background: var(--fosis-navy); 
+            color: #ffffff; 
+            font-family: 'Montserrat', sans-serif; 
+            padding: 100px 20px; 
+            text-align: center; 
+            border-top: 2px solid rgba(236, 164, 0, 0.2); 
+            min-height: auto; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            width: 100%;
         }
-        .verse-unit { opacity: 0; transform: translateY(30px); transition: all 1.2s ease; margin-bottom: 80px; }
+
+        .verse-unit { 
+            opacity: 0; 
+            transform: translateY(30px); 
+            transition: all 1.2s ease; 
+            margin-bottom: 80px; 
+        }
+
         .arabic-text {
-            font-family: 'Amiri', serif; font-size: clamp(32px, 12vw, 64px) !important; margin-bottom: 20px; 
-            color: var(--fosis-gold); text-shadow: 0 0 20px rgba(236,164,0,0.3); direction: rtl;
+            font-family: 'Amiri', serif; 
+            font-size: clamp(32px, 12vw, 64px) !important; 
+            margin-bottom: 20px; 
+            color: var(--fosis-gold); 
+            text-shadow: 0 0 20px rgba(236,164,0,0.3); 
+            direction: rtl;
         }
 
         /* ========================================= */
         /* GRAPHIC 3: TARBIYYAH HUB                  */
         /* ========================================= */
         #tarbiyyah-definition-graphic {
-            background-color: var(--white); color: var(--soft-grey); font-family: 'Nunito', sans-serif;
-            border-top: 10px solid var(--fosis-gold); border-bottom: 10px solid var(--fosis-gold); width: 100%; overflow-x: hidden;
+            background-color: var(--white); 
+            color: var(--soft-grey); 
+            font-family: 'Nunito', sans-serif;
+            border-top: 10px solid var(--fosis-gold); 
+            border-bottom: 10px solid var(--fosis-gold); 
+            width: 100%; 
+            overflow-x: hidden;
         }
-        .tarbiyyah-hub { max-width: 1000px; margin: 0 auto; padding: 80px 20px; text-align: center; }
-        .hub-hero-container h1 { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--light-fosis-blue); text-transform: uppercase; letter-spacing: 5px; font-size: 11px; margin: 0 0 5px 0; opacity: 0.6; }
-        .hub-highlight-text { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 900; font-size: clamp(45px, 15vw, 85px); color: var(--fosis-gold); display: inline-block; line-height: 0.9; margin-bottom: 15px; }
-        .hub-sub-heading { max-width: 600px; margin: 15px auto 40px; color: var(--soft-grey); font-size: 16px; line-height: 1.7; }
-        .hub-sub-heading b { color: var(--light-fosis-blue); font-weight: 700; }
-        .pillar-nav { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 40px; }
-        .nav-card { background: var(--white); border: 1px solid var(--border-light); border-radius: 20px; padding: 25px 10px; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; align-items: center; gap: 12px; }
-        #akhlaq-card { border: 2px solid var(--light-fosis-blue); background: var(--accent-gold-soft); box-shadow: 0 4px 15px rgba(236, 164, 0, 0.15); }
-        .nav-card .icon { font-size: 28px; transition: 0.3s ease; }
-        .nav-card .label { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--light-fosis-blue); opacity: 0.5; }
-        .nav-card:hover { border-color: var(--fosis-gold); transform: translateY(-3px); }
-        .nav-card.active { border: 3px solid var(--fosis-gold) !important; background: var(--white) !important; }
-        .nav-card.active .label { opacity: 1; font-weight: 900; }
-        .focus-stage { background: var(--white); border-radius: 30px; padding: 40px; border: 1px solid var(--border-light); text-align: left; display: flex; align-items: center; position: relative; }
-        .pane { display: none; width: 100%; animation: paneFade 0.5s ease forwards; }
-        .pane.active { display: block; }
-        .pane.featured-pillar { border-left: 4px solid var(--fosis-gold); padding-left: 20px; }
-        .pane.featured-pillar h3 { color: var(--fosis-gold); font-size: 24px; }
-        @keyframes paneFade { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-        .pane h3 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 20px; color: var(--light-fosis-blue); text-transform: uppercase; letter-spacing: 1px; margin: 0 0 12px 0; display: flex; align-items: center; gap: 15px; }
-        .pane h3::after { content: ''; height: 2px; flex-grow: 1; background: var(--fosis-gold); opacity: 0.2; }
-        .pane p { font-size: 16px; line-height: 1.7; color: var(--soft-grey); margin: 0; display: block; width: 100%; white-space: normal; word-break: keep-all; overflow-wrap: break-word; text-align: left; }
-        .pane b { color: var(--light-fosis-blue); font-weight: 700; }
-        .phase-tag { display: inline-block; margin-top: 20px; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: var(--fosis-gold); background: #fffcf0; padding: 5px 15px; border: 1px solid rgba(236, 164, 0, 0.2); border-radius: 50px; }
+
+        .tarbiyyah-hub { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            padding: 80px 20px; 
+            text-align: center; 
+        }
+
+        .hub-hero-container h1 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 800; 
+            color: var(--light-fosis-blue); 
+            text-transform: uppercase; 
+            letter-spacing: 5px; 
+            font-size: 11px; 
+            margin: 0 0 5px 0; 
+            opacity: 0.6; 
+        }
+
+        .hub-highlight-text { 
+            font-family: 'Playfair Display', serif; 
+            font-style: italic; 
+            font-weight: 900; 
+            font-size: clamp(45px, 15vw, 85px); 
+            color: var(--fosis-gold); 
+            display: inline-block; 
+            line-height: 0.9; 
+            margin-bottom: 15px; 
+        }
+
+        .hub-sub-heading { 
+            max-width: 600px; 
+            margin: 15px auto 40px; 
+            color: var(--soft-grey); 
+            font-size: 16px; 
+            line-height: 1.7; 
+        }
+
+        .hub-sub-heading b { 
+            color: var(--light-fosis-blue); 
+            font-weight: 700; 
+        }
+
+        .pillar-nav { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 15px; 
+            margin-bottom: 40px; 
+        }
+
+        .nav-card { 
+            background: var(--white); 
+            border: 1px solid var(--border-light); 
+            border-radius: 20px; 
+            padding: 25px 10px; 
+            cursor: pointer; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 12px; 
+        }
+
+        #akhlaq-card { 
+            border: 2px solid var(--light-fosis-blue); 
+            background: var(--accent-gold-soft); 
+            box-shadow: 0 4px 15px rgba(236, 164, 0, 0.15); 
+        }
+
+        .nav-card .icon { 
+            font-size: 28px; 
+            transition: 0.3s ease; 
+        }
+
+        .nav-card .label { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 900; 
+            font-size: 10px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            color: var(--light-fosis-blue); 
+            opacity: 0.5; 
+        }
+
+        .nav-card:hover { 
+            border-color: var(--fosis-gold); 
+            transform: translateY(-3px); 
+        }
+
+        .nav-card.active { 
+            border: 3px solid var(--fosis-gold) !important; 
+            background: var(--white) !important; 
+        }
+
+        .nav-card.active .label { 
+            opacity: 1; 
+            font-weight: 900; 
+        }
+
+        .focus-stage { 
+            background: var(--white); 
+            border-radius: 30px; 
+            padding: 40px; 
+            border: 1px solid var(--border-light); 
+            text-align: left; 
+            display: flex; 
+            align-items: center; 
+            position: relative; 
+        }
+
+        .pane { 
+            display: none; 
+            width: 100%; 
+            animation: paneFade 0.5s ease forwards; 
+        }
+
+        .pane.active { 
+            display: block; 
+        }
+
+        .pane.featured-pillar { 
+            border-left: 4px solid var(--fosis-gold); 
+            padding-left: 20px; 
+        }
+
+        .pane.featured-pillar h3 { 
+            color: var(--fosis-gold); 
+            font-size: 24px; 
+        }
+
+        @keyframes paneFade { 
+            from { opacity: 0; transform: translateY(5px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+
+        .pane h3 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 900; 
+            font-size: 20px; 
+            color: var(--light-fosis-blue); 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin: 0 0 12px 0; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+        }
+
+        .pane h3::after { 
+            content: ''; 
+            height: 2px; 
+            flex-grow: 1; 
+            background: var(--fosis-gold); 
+            opacity: 0.2; 
+        }
+
+        .pane p { 
+            font-size: 16px; 
+            line-height: 1.7; 
+            color: var(--soft-grey); 
+            margin: 0; 
+            display: block; 
+            width: 100%; 
+            white-space: normal; 
+            word-break: keep-all; 
+            overflow-wrap: break-word; 
+            text-align: left; 
+        }
+
+        .pane b { 
+            color: var(--light-fosis-blue); 
+            font-weight: 700; 
+        }
+
+        .phase-tag { 
+            display: inline-block; 
+            margin-top: 20px; 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 900; 
+            font-size: 9px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            color: var(--fosis-gold); 
+            background: #fffcf0; 
+            padding: 5px 15px; 
+            border: 1px solid rgba(236, 164, 0, 0.2); 
+            border-radius: 50px; 
+        }
 
         /* ========================================= */
         /* RAMADAN HUB (SPOTLIGHT BUBBLE)            */
         /* ========================================= */
         .spotlight-bubble {
-            max-width: 1150px; margin: 20px auto;
+            max-width: 1150px; 
+            margin: 20px auto;
             background: linear-gradient(135deg, var(--fosis-navy) 0%, var(--navy-light) 50%, var(--fosis-navy) 100%);
-            border: 2px solid var(--fosis-gold); border-radius: 45px; padding: 60px 30px; position: relative; color: var(--white);
-            box-shadow: 0 0 30px rgba(236, 164, 0, 0.2), 0 20px 50px rgba(0,32,63,0.3); overflow: hidden; 
+            border: 2px solid var(--fosis-gold); 
+            border-radius: 45px; 
+            padding: 60px 30px; 
+            position: relative; 
+            color: var(--white);
+            box-shadow: 0 0 30px rgba(236, 164, 0, 0.2), 0 20px 50px rgba(0,32,63,0.3); 
+            overflow: hidden; 
         }
-        .hub-navigation { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; position: relative; z-index: 20; }
-        .cat-btn { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2); padding: 12px 25px; border-radius: 50px; color: var(--white); font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; }
-        .cat-btn:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
-        .cat-btn.active { background: var(--fosis-gold); color: var(--fosis-navy); border-color: white; }
-        .view-pane { display: none; animation: fadeIn 0.5s ease forwards; }
-        .view-pane.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }
-        .spot-header { text-align: center; margin-bottom: 40px; position: relative; z-index: 10; }
-        .spot-header h2 { font-family: 'Montserrat'; font-weight: 900; font-size: clamp(2.2rem, 10vw, 4.5rem); margin: 0; line-height: 1; }
-        .hero-sub { color: var(--fosis-gold); font-family: 'Montserrat'; font-weight: 700; letter-spacing: 12px; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 15px; }
-        .header-icon { width: 30px; height: 30px; fill: var(--fosis-gold); filter: drop-shadow(0 0 8px var(--fosis-gold)); }
-        .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
-        .faq-card { height: 320px; perspective: 1000px; cursor: pointer; }
-        .faq-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; border-radius: 20px; }
-        .faq-card.flipped .faq-inner { transform: rotateY(180deg); }
-        .faq-front, .faq-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; padding: 25px; display: flex; flex-direction: column; justify-content: center; }
-        .faq-front { background: white; color: var(--fosis-navy); text-align: center; border-bottom: 6px solid var(--fosis-navy); }
-        .faq-front h3 { font-family: 'Montserrat'; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; margin: 0; }
-        .flip-hint { position: absolute; bottom: 15px; width: 100%; left: 0; font-size: 0.6rem; color: #aaa; text-transform: uppercase; letter-spacing: 1px; }
-        .faq-back { background: var(--navy-light); color: white; transform: rotateY(180deg); overflow-y: auto; text-align: left; border-bottom: 6px solid var(--fosis-gold); }
-        .faq-back p { font-size: 0.8rem; line-height: 1.5; margin-bottom: 10px; }
-        .hadith-box { border-left: 3px solid var(--fosis-gold); padding: 10px; font-style: italic; font-size: 0.7rem; background: rgba(255,255,255,0.1); }
-        .virtues-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; border-top: 5px solid var(--fosis-gold); margin-bottom: 40px; box-shadow: var(--shadow); display: flex; align-items: center; gap: 30px; }
-        .virtues-card h2 { color: var(--fosis-gold); font-family: 'Montserrat'; font-size: 1.1rem; text-transform: uppercase; font-weight: 800; margin-top: 0; }
-        .virtues-text { flex: 1; }
-        .virtues-img { flex-shrink: 0; width: 140px; height: 140px; object-fit: cover; border-radius: 50%; border: 4px solid var(--fosis-gold); box-shadow: 0 0 15px rgba(236, 164, 0, 0.4); }
-        .timeline-container { position: relative; padding-left: 50px; border-left: 4px solid var(--fosis-gold); margin-left: 20px; }
-        .timeline-item { position: relative; margin-bottom: 25px; }
-        .timeline-item::before { content: ''; position: absolute; left: -59px; top: 22px; width: 14px; height: 14px; background: var(--fosis-navy); border: 4px solid var(--fosis-gold); border-radius: 50%; z-index: 2; transition: background 0.3s; }
-        details { background: rgba(255,255,255,0.08); border-radius: 15px; overflow: hidden; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1); }
-        summary { padding: 20px 25px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'Montserrat'; font-weight: 800; color: var(--fosis-gold); text-transform: uppercase; font-size: 0.85rem; }
-        summary::after { content: '+'; font-size: 1.5rem; color: var(--fosis-gold); }
-        details[open] summary::after { content: '−'; }
-        .content { padding: 0 25px 25px 25px; font-size: 0.9rem; line-height: 1.7; color: #eee; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
-        .quote-block { margin-top: 15px; padding: 15px; background: rgba(255,255,255,0.1); border-left: 4px solid var(--fosis-gold); font-style: italic; color: #fff; }
-        .cite { display: block; margin-top: 10px; font-weight: 800; font-style: normal; font-size: 0.75rem; color: var(--fosis-gold); }
-        .benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .benefit-card { background: rgba(255,255,255,0.05); padding: 25px; border-radius: 20px; border-left: 4px solid var(--fosis-gold); transition: transform 0.3s ease; }
-        .benefit-card h3 { color: var(--fosis-gold); font-family: 'Montserrat'; font-weight: 800; text-transform: uppercase; font-size: 1rem; margin: 0 0 10px 0; display: flex; align-items: center; gap: 15px; }
-        .benefit-card p { font-size: 0.9rem; line-height: 1.6; margin: 0; color: #e0e6ed; }
+
+        .hub-navigation { 
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            gap: 12px; 
+            margin-bottom: 40px; 
+            position: relative; 
+            z-index: 20; 
+        }
+
+        .cat-btn { 
+            background: rgba(255, 255, 255, 0.05); 
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+            padding: 12px 25px; 
+            border-radius: 50px; 
+            color: var(--white); 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 800; 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+        }
+
+        .cat-btn:hover { 
+            background: rgba(255, 255, 255, 0.2); 
+            transform: translateY(-2px); 
+        }
+
+        .cat-btn.active { 
+            background: var(--fosis-gold); 
+            color: var(--fosis-navy); 
+            border-color: white; 
+        }
+
+        .view-pane { 
+            display: none; 
+            animation: fadeIn 0.5s ease forwards; 
+        }
+
+        .view-pane.active { 
+            display: block; 
+        }
+
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(10px); } 
+            to { opacity: 1; } 
+        }
+
+        .spot-header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            position: relative; 
+            z-index: 10; 
+        }
+
+        .spot-header h2 { 
+            font-family: 'Montserrat'; 
+            font-weight: 900; 
+            font-size: clamp(2.2rem, 10vw, 4.5rem); 
+            margin: 0; 
+            line-height: 1; 
+        }
+
+        .hero-sub { 
+            color: var(--fosis-gold); 
+            font-family: 'Montserrat'; 
+            font-weight: 700; 
+            letter-spacing: 12px; 
+            margin-top: 10px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 15px; 
+        }
+
+        .header-icon { 
+            width: 30px; 
+            height: 30px; 
+            fill: var(--fosis-gold); 
+            filter: drop-shadow(0 0 8px var(--fosis-gold)); 
+        }
+
+        .faq-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 20px; 
+        }
+
+        .faq-card { 
+            height: 320px; 
+            perspective: 1000px; 
+            cursor: pointer; 
+        }
+
+        .faq-inner { 
+            position: relative; 
+            width: 100%; 
+            height: 100%; 
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); 
+            transform-style: preserve-3d; 
+            border-radius: 20px; 
+        }
+
+        .faq-card.flipped .faq-inner { 
+            transform: rotateY(180deg); 
+        }
+
+        .faq-front, .faq-back { 
+            position: absolute; 
+            width: 100%; 
+            height: 100%; 
+            backface-visibility: hidden; 
+            border-radius: 20px; 
+            padding: 25px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+        }
+
+        .faq-front { 
+            background: white; 
+            color: var(--fosis-navy); 
+            text-align: center; 
+            border-bottom: 6px solid var(--fosis-navy); 
+        }
+
+        .faq-front h3 { 
+            font-family: 'Montserrat'; 
+            font-weight: 800; 
+            font-size: 0.9rem; 
+            text-transform: uppercase; 
+            margin: 0; 
+        }
+
+        .flip-hint { 
+            position: absolute; 
+            bottom: 15px; 
+            width: 100%; 
+            left: 0; 
+            font-size: 0.6rem; 
+            color: #aaa; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+        }
+
+        .faq-back { 
+            background: var(--navy-light); 
+            color: white; 
+            transform: rotateY(180deg); 
+            overflow-y: auto; 
+            text-align: left; 
+            border-bottom: 6px solid var(--fosis-gold); 
+        }
+
+        .faq-back p { 
+            font-size: 0.8rem; 
+            line-height: 1.5; 
+            margin-bottom: 10px; 
+        }
+
+        .hadith-box { 
+            border-left: 3px solid var(--fosis-gold); 
+            padding: 10px; 
+            font-style: italic; 
+            font-size: 0.7rem; 
+            background: rgba(255,255,255,0.1); 
+        }
+
+        .virtues-card { 
+            background: rgba(255,255,255,0.05); 
+            padding: 30px; 
+            border-radius: 20px; 
+            border-top: 5px solid var(--fosis-gold); 
+            margin-bottom: 40px; 
+            box-shadow: var(--shadow); 
+            display: flex; 
+            align-items: center; 
+            gap: 30px; 
+        }
+
+        .virtues-card h2 { 
+            color: var(--fosis-gold); 
+            font-family: 'Montserrat'; 
+            font-size: 1.1rem; 
+            text-transform: uppercase; 
+            font-weight: 800; 
+            margin-top: 0; 
+        }
+
+        .virtues-text { 
+            flex: 1; 
+        }
+
+        .virtues-img { 
+            flex-shrink: 0; 
+            width: 140px; 
+            height: 140px; 
+            object-fit: cover; 
+            border-radius: 50%; 
+            border: 4px solid var(--fosis-gold); 
+            box-shadow: 0 0 15px rgba(236, 164, 0, 0.4); 
+        }
+
+        .timeline-container { 
+            position: relative; 
+            padding-left: 50px; 
+            border-left: 4px solid var(--fosis-gold); 
+            margin-left: 20px; 
+        }
+
+        .timeline-item { 
+            position: relative; 
+            margin-bottom: 25px; 
+        }
+
+        .timeline-item::before { 
+            content: ''; 
+            position: absolute; 
+            left: -59px; 
+            top: 22px; 
+            width: 14px; 
+            height: 14px; 
+            background: var(--fosis-navy); 
+            border: 4px solid var(--fosis-gold); 
+            border-radius: 50%; 
+            z-index: 2; 
+            transition: background 0.3s; 
+        }
+
+        details { 
+            background: rgba(255,255,255,0.08); 
+            border-radius: 15px; 
+            overflow: hidden; 
+            transition: all 0.3s ease; 
+            border: 1px solid rgba(255,255,255,0.1); 
+        }
+
+        summary { 
+            padding: 20px 25px; 
+            cursor: pointer; 
+            list-style: none; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            font-family: 'Montserrat'; 
+            font-weight: 800; 
+            color: var(--fosis-gold); 
+            text-transform: uppercase; 
+            font-size: 0.85rem; 
+        }
+
+        summary::after { 
+            content: '+'; 
+            font-size: 1.5rem; 
+            color: var(--fosis-gold); 
+        }
+
+        details[open] summary::after { 
+            content: '−'; 
+        }
+
+        .content { 
+            padding: 0 25px 25px 25px; 
+            font-size: 0.9rem; 
+            line-height: 1.7; 
+            color: #eee; 
+            border-top: 1px solid rgba(255,255,255,0.1); 
+            padding-top: 20px; 
+        }
+
+        .quote-block { 
+            margin-top: 15px; 
+            padding: 15px; 
+            background: rgba(255,255,255,0.1); 
+            border-left: 4px solid var(--fosis-gold); 
+            font-style: italic; 
+            color: #fff; 
+        }
+
+        .cite { 
+            display: block; 
+            margin-top: 10px; 
+            font-weight: 800; 
+            font-style: normal; 
+            font-size: 0.75rem; 
+            color: var(--fosis-gold); 
+        }
+
+        .benefit-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 20px; 
+        }
+
+        .benefit-card { 
+            background: rgba(255,255,255,0.05); 
+            padding: 25px; 
+            border-radius: 20px; 
+            border-left: 4px solid var(--fosis-gold); 
+            transition: transform 0.3s ease; 
+        }
+
+        .benefit-card h3 { 
+            color: var(--fosis-gold); 
+            font-family: 'Montserrat'; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            font-size: 1rem; 
+            margin: 0 0 10px 0; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+        }
+
+        .benefit-card p { 
+            font-size: 0.9rem; 
+            line-height: 1.6; 
+            margin: 0; 
+            color: #e0e6ed; 
+        }
 
         /* ========================================= */
         /* ADDED SECTION (THIS SECTION INCLUDES)     */
         /* ========================================= */
-        #tarbiyyah-root { font-family: 'Outfit', sans-serif; background-color: var(--fosis-grey); width: 100%; }
-        .spine-top { width: 100%; height: 40px; display: flex; flex-direction: column; align-items: center; background: var(--fosis-grey); }
-        .spine-line { width: 2px; height: 100%; background: linear-gradient(to bottom, transparent, var(--fosis-navy)); opacity: 0.15; }
-        .spine-node { width: 10px; height: 10px; background: var(--fosis-navy); border: 2px solid var(--fosis-gold); border-radius: 50%; margin-top: -5px; z-index: 10; box-shadow: 0 0 8px rgba(236, 164, 0, 0.3); animation: beaconPulse 3s infinite ease-in-out; }
-        .hero-banner { background-color: var(--fosis-grey); width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 10px 20px; color: var(--fosis-navy); }
-        .hero-banner h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(1.4rem, 6vw, 2rem); font-weight: 900; margin: 5px 0 10px 0; text-transform: uppercase; letter-spacing: 1px; line-height: 1.2; }
-        .section-list-container { max-width: 650px; width: 100%; text-align: left; }
-        .guide-tag { display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 800; color: var(--fosis-gold); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 6px; border-bottom: 2px solid var(--fosis-gold); padding-bottom: 4px; }
-        .intro-text { font-size: 0.9rem; line-height: 1.5; margin: 0 0 15px 0; font-weight: 400; color: var(--slate); }
-        .link-list { padding: 0; margin: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
-        .link-item { color: var(--fosis-navy); font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid rgba(0, 32, 63, 0.06); }
-        .link-item::before { content: ""; width: 6px; height: 6px; background: var(--fosis-gold); border-radius: 50%; flex-shrink: 0; }
-        .link-item:last-child { border-bottom: none; }
-        .spine-bottom { width: 100%; height: 15px; display: flex; flex-direction: column; align-items: center; background: var(--fosis-grey); }
-        @keyframes beaconPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } }
+        #tarbiyyah-root { 
+            font-family: 'Outfit', sans-serif; 
+            background-color: var(--fosis-grey); 
+            width: 100%; 
+        }
+
+        .spine-top { 
+            width: 100%; 
+            height: 40px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            background: var(--fosis-grey); 
+        }
+
+        .spine-line { 
+            width: 2px; 
+            height: 100%; 
+            background: linear-gradient(to bottom, transparent, var(--fosis-navy)); 
+            opacity: 0.15; 
+        }
+
+        .spine-node { 
+            width: 10px; 
+            height: 10px; 
+            background: var(--fosis-navy); 
+            border: 2px solid var(--fosis-gold); 
+            border-radius: 50%; 
+            margin-top: -5px; 
+            z-index: 10; 
+            box-shadow: 0 0 8px rgba(236, 164, 0, 0.3); 
+            animation: beaconPulse 3s infinite ease-in-out; 
+        }
+
+        .hero-banner { 
+            background-color: var(--fosis-grey); 
+            width: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            text-align: center; 
+            padding: 10px 20px; 
+            color: var(--fosis-navy); 
+        }
+
+        .hero-banner h1 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: clamp(1.4rem, 6vw, 2rem); 
+            font-weight: 900; 
+            margin: 5px 0 10px 0; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            line-height: 1.2; 
+        }
+
+        .section-list-container { 
+            max-width: 650px; 
+            width: 100%; 
+            text-align: left; 
+        }
+
+        .guide-tag { 
+            display: inline-block; 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: 10px; 
+            font-weight: 800; 
+            color: var(--fosis-gold); 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            margin-bottom: 6px; 
+            border-bottom: 2px solid var(--fosis-gold); 
+            padding-bottom: 4px; 
+        }
+
+        .intro-text { 
+            font-size: 0.9rem; 
+            line-height: 1.5; 
+            margin: 0 0 15px 0; 
+            font-weight: 400; 
+            color: var(--slate); 
+        }
+
+        .link-list { 
+            padding: 0; 
+            margin: 0; 
+            list-style: none; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+        }
+
+        .link-item { 
+            color: var(--fosis-navy); 
+            font-weight: 700; 
+            font-size: 0.95rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            padding-bottom: 10px; 
+            border-bottom: 1px solid rgba(0, 32, 63, 0.06); 
+        }
+
+        .link-item::before { 
+            content: ""; 
+            width: 6px; 
+            height: 6px; 
+            background: var(--fosis-gold); 
+            border-radius: 50%; 
+            flex-shrink: 0; 
+        }
+
+        .link-item:last-child { 
+            border-bottom: none; 
+        }
+
+        .spine-bottom { 
+            width: 100%; 
+            height: 15px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            background: var(--fosis-grey); 
+        }
+
+        @keyframes beaconPulse { 
+            0%, 100% { transform: scale(1); opacity: 1; } 
+            50% { transform: scale(1.1); opacity: 0.7; } 
+        }
 
         /* ========================================= */
         /* TARBIYYAH FULL HUB (EXPANDABLE CARDS)     */
         /* ========================================= */
-        #tarbiyyah-full-hub { max-width: 1100px; margin: 0 auto; padding: 0 15px 15px 15px; font-family: 'Nunito', sans-serif; color: var(--fosis-navy); }
-        .hub-divider { display: flex; flex-direction: column; align-items: center; margin: 0; opacity: 0.8; }
-        .hub-divider.spaced { margin: 20px 0; }
-        .hub-divider-line { width: 2px; height: 40px; background: linear-gradient(to bottom, transparent, var(--fosis-gold), transparent); }
-        .hub-divider-line.top-fade { background: linear-gradient(to bottom, transparent, var(--fosis-gold)); }
-        .hub-divider-node { width: 10px; height: 10px; background: var(--fosis-navy); border: 2px solid var(--fosis-gold); border-radius: 50%; margin-top: -5px; z-index: 2; }
-        .hub-divider.middle .hub-divider-node { margin-top: -22px; }
-        .hub-header { text-align: center; margin-top: 25px; margin-bottom: 5px; }
-        .hub-header h1 { font-family: 'Montserrat'; font-size: 0.65rem; font-weight: 800; letter-spacing: 3px; color: var(--fosis-gold); text-transform: uppercase; margin-bottom: 8px; }
-        .hub-header h2 { font-family: 'Montserrat'; font-size: clamp(1.4rem, 6vw, 2.2rem); font-weight: 900; margin: 0; color: var(--fosis-navy); line-height: 1.1; }
-        .click-instruction { text-align: center; font-family: 'Montserrat'; font-size: 0.6rem; font-weight: 700; color: var(--fosis-gold); letter-spacing: 1px; margin: 15px 0 20px 0; text-transform: uppercase; }
-        .expandable-card { background: var(--white); border-radius: 16px; border: 1px solid #f1f5f9; padding: 18px; margin-bottom: 12px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(26, 54, 93, 0.05); position: relative; overflow: hidden; outline: none; }
-        .card-arrow { position: absolute; right: 15px; top: 20px; width: 18px; height: 18px; fill: none; stroke: var(--fosis-gold); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.4s ease; }
-        .expandable-card.is-open .card-arrow { transform: rotate(180deg); stroke: var(--fosis-navy); }
-        .level-tag { font-family: 'Montserrat'; font-weight: 800; font-size: 9px; letter-spacing: 1px; color: var(--fosis-gold); text-transform: uppercase; }
-        .card-title { font-family: 'Montserrat'; font-weight: 800; font-size: 1.15rem; margin: 4px 0; color: var(--fosis-navy); padding-right: 25px; }
-        .card-intro { margin: 5px 0 0 0; color: var(--soft-grey); font-size: 13px; line-height: 1.4; }
-        .expand-content { max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.5s ease-in-out, opacity 0.3s ease; }
-        .expandable-card.is-open .expand-content { max-height: 2000px; opacity: 1; margin-top: 15px; padding-top: 15px; border-top: 1px solid #f1f5f9; }
-        .info-grid { display: flex; flex-direction: column; gap: 15px; }
-        .inner-section-title { font-family: 'Montserrat'; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 10px; display: block; color: var(--fosis-navy); }
-        .reflection-sub-box { background: #fffcf4; padding: 15px; border-radius: 12px; border-left: 3px solid var(--fosis-gold); }
-        .reflection-item { margin-bottom: 12px; }
-        .reflection-item b { font-family: 'Montserrat'; font-size: 0.8rem; color: var(--fosis-navy); display: block; }
-        .reflection-item p { font-size: 0.8rem; margin: 2px 0 0 0; color: var(--slate); line-height: 1.4; }
-        .focus-box { background: var(--fosis-navy); color: white; padding: 20px; border-radius: 12px; }
-        .focus-box h4 { color: var(--fosis-gold); margin-top: 0; font-family: 'Montserrat'; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-        .detail-item { display: flex; align-items: flex-start; margin-bottom: 12px; }
-        .detail-item span { color: var(--fosis-gold); margin-right: 8px; font-weight: 900; }
-        .detail-item strong { font-family: 'Montserrat'; font-size: 0.75rem; display: block; margin-bottom: 1px; }
-        .detail-item p { font-size: 0.75rem; margin: 0; opacity: 0.8; line-height: 1.3; }
-        .gov-container { background: var(--white); border: 1.5px solid var(--fosis-navy); border-radius: 16px; padding: 20px; margin-bottom: 40px; }
-        .gov-grid { display: flex; flex-direction: column; gap: 20px; }
-        .gov-column h4 { font-family: 'Montserrat'; border-bottom: 2px solid var(--fosis-gold); padding-bottom: 8px; margin: 0 0 10px 0; font-size: 0.9rem; }
-        .najwa-box { border: 1px dashed var(--fosis-red); padding: 10px; border-radius: 8px; margin-top: 12px; background: #fffafa; }
-        .salah-banner { background: var(--fosis-navy); color: var(--fosis-gold); padding: 10px; border-radius: 6px; text-align: center; font-weight: 800; font-size: 10px; margin-top: 12px; letter-spacing: 0.5px; }
+        #tarbiyyah-full-hub { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 15px 15px 15px; 
+            font-family: 'Nunito', sans-serif; 
+            color: var(--fosis-navy); 
+        }
+
+        .hub-divider { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            margin: 0; 
+            opacity: 0.8; 
+        }
+
+        .hub-divider.spaced { 
+            margin: 20px 0; 
+        }
+
+        .hub-divider-line { 
+            width: 2px; 
+            height: 40px; 
+            background: linear-gradient(to bottom, transparent, var(--fosis-gold), transparent); 
+        }
+
+        .hub-divider-line.top-fade { 
+            background: linear-gradient(to bottom, transparent, var(--fosis-gold)); 
+        }
+
+        .hub-divider-node { 
+            width: 10px; 
+            height: 10px; 
+            background: var(--fosis-navy); 
+            border: 2px solid var(--fosis-gold); 
+            border-radius: 50%; 
+            margin-top: -5px; 
+            z-index: 2; 
+        }
+
+        .hub-divider.middle .hub-divider-node { 
+            margin-top: -22px; 
+        }
+
+        .hub-header { 
+            text-align: center; 
+            margin-top: 25px; 
+            margin-bottom: 5px; 
+        }
+
+        .hub-header h1 { 
+            font-family: 'Montserrat'; 
+            font-size: 0.65rem; 
+            font-weight: 800; 
+            letter-spacing: 3px; 
+            color: var(--fosis-gold); 
+            text-transform: uppercase; 
+            margin-bottom: 8px; 
+        }
+
+        .hub-header h2 { 
+            font-family: 'Montserrat'; 
+            font-size: clamp(1.4rem, 6vw, 2.2rem); 
+            font-weight: 900; 
+            margin: 0; 
+            color: var(--fosis-navy); 
+            line-height: 1.1; 
+        }
+
+        .click-instruction { 
+            text-align: center; 
+            font-family: 'Montserrat'; 
+            font-size: 0.6rem; 
+            font-weight: 700; 
+            color: var(--fosis-gold); 
+            letter-spacing: 1px; 
+            margin: 15px 0 20px 0; 
+            text-transform: uppercase; 
+        }
+
+        .expandable-card { 
+            background: var(--white); 
+            border-radius: 16px; 
+            border: 1px solid #f1f5f9; 
+            padding: 18px; 
+            margin-bottom: 12px; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 12px rgba(26, 54, 93, 0.05); 
+            position: relative; 
+            overflow: hidden; 
+            outline: none; 
+        }
+
+        .card-arrow { 
+            position: absolute; 
+            right: 15px; 
+            top: 20px; 
+            width: 18px; 
+            height: 18px; 
+            fill: none; 
+            stroke: var(--fosis-gold); 
+            stroke-width: 3; 
+            stroke-linecap: round; 
+            stroke-linejoin: round; 
+            transition: transform 0.4s ease; 
+        }
+
+        .expandable-card.is-open .card-arrow { 
+            transform: rotate(180deg); 
+            stroke: var(--fosis-navy); 
+        }
+
+        .level-tag { 
+            font-family: 'Montserrat'; 
+            font-weight: 800; 
+            font-size: 9px; 
+            letter-spacing: 1px; 
+            color: var(--fosis-gold); 
+            text-transform: uppercase; 
+        }
+
+        .card-title { 
+            font-family: 'Montserrat'; 
+            font-weight: 800; 
+            font-size: 1.15rem; 
+            margin: 4px 0; 
+            color: var(--fosis-navy); 
+            padding-right: 25px; 
+        }
+
+        .card-intro { 
+            margin: 5px 0 0 0; 
+            color: var(--soft-grey); 
+            font-size: 13px; 
+            line-height: 1.4; 
+        }
+
+        .expand-content { 
+            max-height: 0; 
+            opacity: 0; 
+            overflow: hidden; 
+            transition: max-height 0.5s ease-in-out, opacity 0.3s ease; 
+        }
+
+        .expandable-card.is-open .expand-content { 
+            max-height: 2000px; 
+            opacity: 1; 
+            margin-top: 15px; 
+            padding-top: 15px; 
+            border-top: 1px solid #f1f5f9; 
+        }
+
+        .info-grid { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+        }
+
+        .inner-section-title { 
+            font-family: 'Montserrat'; 
+            font-weight: 800; 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            margin-bottom: 10px; 
+            display: block; 
+            color: var(--fosis-navy); 
+        }
+
+        .reflection-sub-box { 
+            background: #fffcf4; 
+            padding: 15px; 
+            border-radius: 12px; 
+            border-left: 3px solid var(--fosis-gold); 
+        }
+
+        .reflection-item { 
+            margin-bottom: 12px; 
+        }
+
+        .reflection-item b { 
+            font-family: 'Montserrat'; 
+            font-size: 0.8rem; 
+            color: var(--fosis-navy); 
+            display: block; 
+        }
+
+        .reflection-item p { 
+            font-size: 0.8rem; 
+            margin: 2px 0 0 0; 
+            color: var(--slate); 
+            line-height: 1.4; 
+        }
+
+        .focus-box { 
+            background: var(--fosis-navy); 
+            color: white; 
+            padding: 20px; 
+            border-radius: 12px; 
+        }
+
+        .focus-box h4 { 
+            color: var(--fosis-gold); 
+            margin-top: 0; 
+            font-family: 'Montserrat'; 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-bottom: 12px; 
+        }
+
+        .detail-item { 
+            display: flex; 
+            align-items: flex-start; 
+            margin-bottom: 12px; 
+        }
+
+        .detail-item span { 
+            color: var(--fosis-gold); 
+            margin-right: 8px; 
+            font-weight: 900; 
+        }
+
+        .detail-item strong { 
+            font-family: 'Montserrat'; 
+            font-size: 0.75rem; 
+            display: block; 
+            margin-bottom: 1px; 
+        }
+
+        .detail-item p { 
+            font-size: 0.75rem; 
+            margin: 0; 
+            opacity: 0.8; 
+            line-height: 1.3; 
+        }
+
+        .gov-container { 
+            background: var(--white); 
+            border: 1.5px solid var(--fosis-navy); 
+            border-radius: 16px; 
+            padding: 20px; 
+            margin-bottom: 40px; 
+        }
+
+        .gov-grid { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+        }
+
+        .gov-column h4 { 
+            font-family: 'Montserrat'; 
+            border-bottom: 2px solid var(--fosis-gold); 
+            padding-bottom: 8px; 
+            margin: 0 0 10px 0; 
+            font-size: 0.9rem; 
+        }
+
+        .najwa-box { 
+            border: 1px dashed var(--fosis-red); 
+            padding: 10px; 
+            border-radius: 8px; 
+            margin-top: 12px; 
+            background: #fffafa; 
+        }
+
+        .salah-banner { 
+            background: var(--fosis-navy); 
+            color: var(--fosis-gold); 
+            padding: 10px; 
+            border-radius: 6px; 
+            text-align: center; 
+            font-weight: 800; 
+            font-size: 10px; 
+            margin-top: 12px; 
+            letter-spacing: 0.5px; 
+        }
 
         /* ========================================= */
         /* WELLNESS GALLERY (LEADERSHIP STUDIO)      */
         /* ========================================= */
-        .tarbiyyah-wellness-gallery { max-width: 1100px; margin: 0 auto; padding: 60px 20px; font-family: 'Montserrat', sans-serif; background: radial-gradient(circle at center, var(--navy-accent) 0%, var(--fosis-navy) 100%); position: relative; overflow: hidden; }
-        .gallery-header { text-align: center; margin-bottom: 50px; position: relative; z-index: 2; }
-        .gallery-header h2 { color: #FFFFFF; font-size: clamp(24px, 7vw, 34px); font-weight: 900; margin: 0; letter-spacing: 2px; text-transform: uppercase; }
-        .gallery-header p { color: var(--fosis-gold); font-size: 10px; margin-top: 12px; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .video-grid { display: grid; grid-template-columns: 1fr; gap: 40px; position: relative; z-index: 2; }
-        .video-card { background: var(--glass-white); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-radius: 28px; overflow: hidden; border: 1px solid rgba(236, 164, 0, 0.15); display: flex; flex-direction: column; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        .video-card:hover { transform: translateY(-10px); border-color: var(--fosis-gold); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4); }
-        .video-container { position: relative; padding-top: 56.25%; background: #000; width: 100%; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-        .card-content { padding: 35px 30px; flex-grow: 1; display: flex; flex-direction: column; text-align: center; }
-        .card-tag { font-family: 'Playfair Display', serif; font-style: italic; color: var(--fosis-gold); font-size: 1.1rem; margin-bottom: 10px; }
-        .video-card .card-title { color: #FFFFFF; font-size: 20px; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; }
-        .card-text { color: rgba(255,255,255,0.7); font-size: 14px; line-height: 1.8; margin-bottom: 30px; }
-        .focus-btn { width: 100%; background: var(--fosis-gold); color: var(--fosis-navy); border: none; padding: 18px; border-radius: 14px; font-size: 12px; font-weight: 900; cursor: pointer; letter-spacing: 1.5px; text-transform: uppercase; transition: 0.3s; display: flex; align-items: center; justify-content: center; }
-        .focus-btn:hover { background: #FFFFFF; transform: scale(1.02); }
-        #videoLightbox { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 5, 10, 0.98); z-index: 10000; justify-content: center; align-items: center; padding: 0; }
-        .lightbox-container { width: 95%; max-width: 1400px; height: 80vh; position: relative; box-shadow: 0 0 100px rgba(0, 0, 0, 1), 0 0 30px rgba(236, 164, 0, 0.1); border-radius: 12px; }
-        .close-btn { position: absolute; top: -50px; right: 0; background: var(--fosis-gold); border: none; color: var(--fosis-navy); font-size: 20px; cursor: pointer; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 900; z-index: 10001; }
-        .cinema-hint { position: absolute; bottom: -40px; width: 100%; text-align: center; color: var(--fosis-gold); font-weight: 800; letter-spacing: 3px; font-size: 10px; text-transform: uppercase; opacity: 0.7; }
+        .tarbiyyah-wellness-gallery { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 60px 20px; 
+            font-family: 'Montserrat', sans-serif; 
+            background: radial-gradient(circle at center, var(--navy-accent) 0%, var(--fosis-navy) 100%); 
+            position: relative; 
+            overflow: hidden; 
+        }
+
+        .gallery-header { 
+            text-align: center; 
+            margin-bottom: 50px; 
+            position: relative; 
+            z-index: 2; 
+        }
+
+        .gallery-header h2 { 
+            color: #FFFFFF; 
+            font-size: clamp(24px, 7vw, 34px); 
+            font-weight: 900; 
+            margin: 0; 
+            letter-spacing: 2px; 
+            text-transform: uppercase; 
+        }
+
+        .gallery-header p { 
+            color: var(--fosis-gold); 
+            font-size: 10px; 
+            margin-top: 12px; 
+            font-weight: 800; 
+            letter-spacing: 4px; 
+            text-transform: uppercase; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 8px; 
+        }
+
+        .video-grid { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 40px; 
+            position: relative; 
+            z-index: 2; 
+        }
+
+        .video-card { 
+            background: var(--glass-white); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px); 
+            border-radius: 28px; 
+            overflow: hidden; 
+            border: 1px solid rgba(236, 164, 0, 0.15); 
+            display: flex; 
+            flex-direction: column; 
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
+        }
+
+        .video-card:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--fosis-gold); 
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4); 
+        }
+
+        .video-container { 
+            position: relative; 
+            padding-top: 56.25%; 
+            background: #000; 
+            width: 100%; 
+        }
+
+        .video-container iframe { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            border: 0; 
+        }
+
+        .card-content { 
+            padding: 35px 30px; 
+            flex-grow: 1; 
+            display: flex; 
+            flex-direction: column; 
+            text-align: center; 
+        }
+
+        .card-tag { 
+            font-family: 'Playfair Display', serif; 
+            font-style: italic; 
+            color: var(--fosis-gold); 
+            font-size: 1.1rem; 
+            margin-bottom: 10px; 
+        }
+
+        .video-card .card-title { 
+            color: #FFFFFF; 
+            font-size: 20px; 
+            font-weight: 900; 
+            margin: 0 0 15px 0; 
+            text-transform: uppercase; 
+        }
+
+        .card-text { 
+            color: rgba(255,255,255,0.7); 
+            font-size: 14px; 
+            line-height: 1.8; 
+            margin-bottom: 30px; 
+        }
+
+        .focus-btn { 
+            width: 100%; 
+            background: var(--fosis-gold); 
+            color: var(--fosis-navy); 
+            border: none; 
+            padding: 18px; 
+            border-radius: 14px; 
+            font-size: 12px; 
+            font-weight: 900; 
+            cursor: pointer; 
+            letter-spacing: 1.5px; 
+            text-transform: uppercase; 
+            transition: 0.3s; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+
+        .focus-btn:hover { 
+            background: #FFFFFF; 
+            transform: scale(1.02); 
+        }
+
+        #videoLightbox { 
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh; 
+            background: rgba(0, 5, 10, 0.98); 
+            z-index: 10000; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 0; 
+        }
+
+        .lightbox-container { 
+            width: 95%; 
+            max-width: 1400px; 
+            height: 80vh; 
+            position: relative; 
+            box-shadow: 0 0 100px rgba(0, 0, 0, 1), 0 0 30px rgba(236, 164, 0, 0.1); 
+            border-radius: 12px; 
+        }
+
+        .close-btn { 
+            position: absolute; 
+            top: -50px; 
+            right: 0; 
+            background: var(--fosis-gold); 
+            border: none; 
+            color: var(--fosis-navy); 
+            font-size: 20px; 
+            cursor: pointer; 
+            border-radius: 50%; 
+            width: 40px; 
+            height: 40px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-weight: 900; 
+            z-index: 10001; 
+        }
+
+        .cinema-hint { 
+            position: absolute; 
+            bottom: -40px; 
+            width: 100%; 
+            text-align: center; 
+            color: var(--fosis-gold); 
+            font-weight: 800; 
+            letter-spacing: 3px; 
+            font-size: 10px; 
+            text-transform: uppercase; 
+            opacity: 0.7; 
+        }
 
         /* ========================================= */
         /* BURNOUT SECTION                           */
         /* ========================================= */
-        .burnout-section-wrapper { width: 100%; padding-bottom: 20px; }
-        .burnout-section-wrapper .title-area { text-align: center; max-width: 1100px; margin: 40px auto 20px auto; padding: 0 15px; }
-        .burnout-section-wrapper .pill-tag { display: inline-block; background: var(--fosis-navy); color: var(--white); padding: 6px 16px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 9px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
-        .burnout-section-wrapper .title-area h1 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(1.8rem, 7vw, 2.8rem); margin: 0; text-transform: uppercase; line-height: 1.0; color: var(--fosis-navy); }
-        .burnout-section-wrapper .content-grid { display: flex; max-width: 1100px; margin: 0 auto; gap: 30px; padding: 0 20px 20px 20px; }
-        .burnout-section-wrapper .sidebar-col { flex: 0 0 260px; display: flex; flex-direction: column; align-items: center; }
-        .burnout-section-wrapper .tab-nav { display: flex; flex-direction: column; gap: 12px; }
-        .burnout-section-wrapper .sidebar-image-box { margin-top: 20px; width: 260px; height: 260px; position: relative; border-radius: 15px; overflow: hidden; border: 1px solid var(--border-light); box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: flex; justify-content: center; align-items: center; }
-        .burnout-section-wrapper .sidebar-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.4s ease-in-out; }
-        .burnout-section-wrapper .sidebar-img.active { opacity: 1; }
-        .burnout-section-wrapper .nav-item { background: var(--white); border: 1px solid var(--border-light); padding: 18px 20px; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; text-align: left; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--navy-light); display: flex; justify-content: space-between; align-items: center; }
-        .burnout-section-wrapper .nav-item.active { background: var(--fosis-navy); color: var(--white); border-color: var(--fosis-navy); box-shadow: 0 8px 15px rgba(0,32,63,0.1); }
-        .burnout-section-wrapper .display-panel { flex: 1; background: #F8FAFC; border-radius: 20px; padding: 40px; border: 1px solid var(--border-light); }
-        .burnout-section-wrapper .pane { display: none; animation: burnoutSlideUp 0.4s ease-out forwards; color: var(--fosis-navy); }
-        @keyframes burnoutSlideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .burnout-section-wrapper .pane-header { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.4rem; margin-bottom: 25px; text-transform: uppercase; border-bottom: 4px solid var(--fosis-gold); display: inline-block; }
-        .burnout-section-wrapper .callout-box { background: var(--fosis-navy); color: var(--white) !important; padding: 20px; border-radius: 12px; margin: 20px 0; border-left: 5px solid var(--fosis-gold); }
-        .burnout-section-wrapper .callout-box b { color: var(--fosis-grey) !important; }
-        .burnout-section-wrapper .seerah-card { background: var(--white); border: 1px solid var(--border-light); padding: 20px; border-radius: 15px; margin-top: 20px; }
-        .burnout-section-wrapper .spiritual-quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.15rem; color: var(--navy-light); margin: 30px 0; text-align: center; line-height: 1.7; padding: 0 10%; }
-        .burnout-section-wrapper .wow-moment { background: linear-gradient(135deg, var(--fosis-navy) 0%, var(--navy-light) 100%); color: var(--fosis-gold); padding: 25px; border-radius: 15px; text-align: center; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin: 25px 0; }
+        .burnout-section-wrapper { 
+            width: 100%; 
+            padding-bottom: 20px; 
+        }
+
+        .burnout-section-wrapper .title-area { 
+            text-align: center; 
+            max-width: 1100px; 
+            margin: 40px auto 20px auto; 
+            padding: 0 15px; 
+        }
+
+        .burnout-section-wrapper .pill-tag { 
+            display: inline-block; 
+            background: var(--fosis-navy); 
+            color: var(--white); 
+            padding: 6px 16px; 
+            border-radius: 50px; 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 800; 
+            font-size: 9px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            margin-bottom: 12px; 
+        }
+
+        .burnout-section-wrapper .title-area h1 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 900; 
+            font-size: clamp(1.8rem, 7vw, 2.8rem); 
+            margin: 0; 
+            text-transform: uppercase; 
+            line-height: 1.0; 
+            color: var(--fosis-navy); 
+        }
+
+        .burnout-section-wrapper .content-grid { 
+            display: flex; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            gap: 30px; 
+            padding: 0 20px 20px 20px; 
+        }
+
+        .burnout-section-wrapper .sidebar-col { 
+            flex: 0 0 260px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+
+        .burnout-section-wrapper .tab-nav { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 12px; 
+        }
+
+        .burnout-section-wrapper .sidebar-image-box { 
+            margin-top: 20px; 
+            width: 260px; 
+            height: 260px; 
+            position: relative; 
+            border-radius: 15px; 
+            overflow: hidden; 
+            border: 1px solid var(--border-light); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+        }
+
+        .burnout-section-wrapper .sidebar-img { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            opacity: 0; 
+            transition: opacity 0.4s ease-in-out; 
+        }
+
+        .burnout-section-wrapper .sidebar-img.active { 
+            opacity: 1; 
+        }
+
+        .burnout-section-wrapper .nav-item { 
+            background: var(--white); 
+            border: 1px solid var(--border-light); 
+            padding: 18px 20px; 
+            border-radius: 12px; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            text-align: left; 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 800; 
+            font-size: 10px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            color: var(--navy-light); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .burnout-section-wrapper .nav-item.active { 
+            background: var(--fosis-navy); 
+            color: var(--white); 
+            border-color: var(--fosis-navy); 
+            box-shadow: 0 8px 15px rgba(0,32,63,0.1); 
+        }
+
+        .burnout-section-wrapper .display-panel { 
+            flex: 1; 
+            background: #F8FAFC; 
+            border-radius: 20px; 
+            padding: 40px; 
+            border: 1px solid var(--border-light); 
+        }
+
+        .burnout-section-wrapper .pane { 
+            display: none; 
+            animation: burnoutSlideUp 0.4s ease-out forwards; 
+            color: var(--fosis-navy); 
+        }
+
+        @keyframes burnoutSlideUp { 
+            from { opacity: 0; transform: translateY(10px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+
+        .burnout-section-wrapper .pane-header { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 900; 
+            font-size: 1.4rem; 
+            margin-bottom: 25px; 
+            text-transform: uppercase; 
+            border-bottom: 4px solid var(--fosis-gold); 
+            display: inline-block; 
+        }
+
+        .burnout-section-wrapper .callout-box { 
+            background: var(--fosis-navy); 
+            color: var(--white) !important; 
+            padding: 20px; 
+            border-radius: 12px; 
+            margin: 20px 0; 
+            border-left: 5px solid var(--fosis-gold); 
+        }
+
+        .burnout-section-wrapper .callout-box b { 
+            color: var(--fosis-grey) !important; 
+        }
+
+        .burnout-section-wrapper .seerah-card { 
+            background: var(--white); 
+            border: 1px solid var(--border-light); 
+            padding: 20px; 
+            border-radius: 15px; 
+            margin-top: 20px; 
+        }
+
+        .burnout-section-wrapper .spiritual-quote { 
+            font-family: 'Playfair Display', serif; 
+            font-style: italic; 
+            font-size: 1.15rem; 
+            color: var(--navy-light); 
+            margin: 30px 0; 
+            text-align: center; 
+            line-height: 1.7; 
+            padding: 0 10%; 
+        }
+
+        .burnout-section-wrapper .wow-moment { 
+            background: linear-gradient(135deg, var(--fosis-navy) 0%, var(--navy-light) 100%); 
+            color: var(--fosis-gold); 
+            padding: 25px; 
+            border-radius: 15px; 
+            text-align: center; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin: 25px 0; 
+        }
 
         /* ========================================= */
         /* PRACTICAL TOOLKIT                         */
         /* ========================================= */
-        .prod-wrapper { background-color: var(--white); font-family: 'Encode Sans', sans-serif; color: var(--fosis-navy); overflow-x: hidden; width: 100%; }
-        .prod-top-transition { width: 100%; display: flex; flex-direction: column; align-items: center; padding-bottom: 20px; }
-        .prod-transition-line { width: 2px; height: 40px; background: linear-gradient(to bottom, transparent, var(--fosis-gold)); opacity: 0.6; }
-        .prod-transition-node { width: 12px; height: 12px; background: var(--fosis-navy); border: 2px solid var(--fosis-gold); border-radius: 50%; margin-top: -6px; box-shadow: 0 0 10px rgba(236, 164, 0, 0.4); }
-        .prod-container { max-width: 1200px; margin: 0 auto; padding: 20px 20px 60px 20px; text-align: center; }
-        .prod-header-box { margin-bottom: 40px; }
-        .prod-header-box h1 { font-family: 'Montserrat', sans-serif; font-weight: 900; text-transform: uppercase; letter-spacing: -1px; font-size: clamp(1.8rem, 8vw, 3.2rem); margin: 0; line-height: 1; color: var(--fosis-navy); }
-        .prod-header-box .prod-sub-line { color: var(--fosis-gold); font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 4px; margin-top: 15px; display: block; }
-        .prod-static-arrow { margin: 15px auto 0; width: 30px; height: 30px; color: var(--fosis-gold); display: block; }
-        .prod-diagnosis-card { background: #f8fafc; border-radius: 30px; padding: 40px; margin-bottom: 40px; border: 1px solid var(--border-light); text-align: left; position: relative; overflow: hidden; }
-        .prod-diagnosis-card::before { content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: var(--fosis-gold); }
-        .prod-diagnosis-card h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase; font-size: 1.1rem; color: var(--fosis-navy); margin-top: 0; }
-        .prod-diagnosis-card p { font-size: 1.05rem; line-height: 1.7; color: var(--slate); max-width: 850px; margin-bottom: 0; }
-        .prod-tools-title { font-family: 'Montserrat', sans-serif; font-weight: 900; text-transform: uppercase; color: var(--fosis-navy); font-size: 1.4rem; margin: 40px 0 30px 0; text-align: left; border-left: 5px solid var(--fosis-gold); padding-left: 15px; }
-        .prod-tool-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-        .prod-tool-card { background: var(--white); border: 1px solid var(--border-light); border-radius: 20px; padding: 25px 20px; text-align: left; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); display: flex; flex-direction: column; justify-content: flex-start; }
-        .prod-image-card { grid-column: 4; grid-row: 1 / span 2; padding: 0; overflow: hidden; border: none; background: transparent; }
-        .prod-image-card img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 20px; transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        .prod-tool-card:hover { transform: translateY(-5px); border-color: var(--fosis-gold); box-shadow: 0 10px 20px rgba(0,32,63,0.05); }
-        .prod-image-card:hover img { transform: scale(1.03); }
-        .prod-tool-card .prod-icon-label { color: var(--fosis-gold); font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
-        .prod-tool-card h4 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.95rem; margin: 0 0 10px 0; color: var(--fosis-navy); }
-        .prod-tool-card p { font-size: 0.85rem; line-height: 1.6; color: var(--slate); margin: 0; }
+        .prod-wrapper { 
+            background-color: var(--white); 
+            font-family: 'Encode Sans', sans-serif; 
+            color: var(--fosis-navy); 
+            overflow-x: hidden; 
+            width: 100%; 
+        }
+
+        .prod-top-transition { 
+            width: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            padding-bottom: 20px; 
+        }
+
+        .prod-transition-line { 
+            width: 2px; 
+            height: 40px; 
+            background: linear-gradient(to bottom, transparent, var(--fosis-gold)); 
+            opacity: 0.6; 
+        }
+
+        .prod-transition-node { 
+            width: 12px; 
+            height: 12px; 
+            background: var(--fosis-navy); 
+            border: 2px solid var(--fosis-gold); 
+            border-radius: 50%; 
+            margin-top: -6px; 
+            box-shadow: 0 0 10px rgba(236, 164, 0, 0.4); 
+        }
+
+        .prod-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 20px 20px 60px 20px; 
+            text-align: center; 
+        }
+
+        .prod-header-box { 
+            margin-bottom: 40px; 
+        }
+
+        .prod-header-box h1 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            letter-spacing: -1px; 
+            font-size: clamp(1.8rem, 8vw, 3.2rem); 
+            margin: 0; 
+            line-height: 1; 
+            color: var(--fosis-navy); 
+        }
+
+        .prod-header-box .prod-sub-line { 
+            color: var(--fosis-gold); 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 800; 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 4px; 
+            margin-top: 15px; 
+            display: block; 
+        }
+
+        .prod-static-arrow { 
+            margin: 15px auto 0; 
+            width: 30px; 
+            height: 30px; 
+            color: var(--fosis-gold); 
+            display: block; 
+        }
+
+        .prod-diagnosis-card { 
+            background: #f8fafc; 
+            border-radius: 30px; 
+            padding: 40px; 
+            margin-bottom: 40px; 
+            border: 1px solid var(--border-light); 
+            text-align: left; 
+            position: relative; 
+            overflow: hidden; 
+        }
+
+        .prod-diagnosis-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 6px; 
+            height: 100%; 
+            background: var(--fosis-gold); 
+        }
+
+        .prod-diagnosis-card h3 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            font-size: 1.1rem; 
+            color: var(--fosis-navy); 
+            margin-top: 0; 
+        }
+
+        .prod-diagnosis-card p { 
+            font-size: 1.05rem; 
+            line-height: 1.7; 
+            color: var(--slate); 
+            max-width: 850px; 
+            margin-bottom: 0; 
+        }
+
+        .prod-tools-title { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            color: var(--fosis-navy); 
+            font-size: 1.4rem; 
+            margin: 40px 0 30px 0; 
+            text-align: left; 
+            border-left: 5px solid var(--fosis-gold); 
+            padding-left: 15px; 
+        }
+
+        .prod-tool-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 15px; 
+        }
+
+        .prod-tool-card { 
+            background: var(--white); 
+            border: 1px solid var(--border-light); 
+            border-radius: 20px; 
+            padding: 25px 20px; 
+            text-align: left; 
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-start; 
+        }
+
+        .prod-image-card { 
+            grid-column: 4; 
+            grid-row: 1 / span 2; 
+            padding: 0; 
+            overflow: hidden; 
+            border: none; 
+            background: transparent; 
+        }
+
+        .prod-image-card img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block; 
+            border-radius: 20px; 
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); 
+        }
+
+        .prod-tool-card:hover { 
+            transform: translateY(-5px); 
+            border-color: var(--fosis-gold); 
+            box-shadow: 0 10px 20px rgba(0,32,63,0.05); 
+        }
+
+        .prod-image-card:hover img { 
+            transform: scale(1.03); 
+        }
+
+        .prod-tool-card .prod-icon-label { 
+            color: var(--fosis-gold); 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 900; 
+            font-size: 0.6rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            margin-bottom: 8px; 
+        }
+
+        .prod-tool-card h4 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 800; 
+            font-size: 0.95rem; 
+            margin: 0 0 10px 0; 
+            color: var(--fosis-navy); 
+        }
+
+        .prod-tool-card p { 
+            font-size: 0.85rem; 
+            line-height: 1.6; 
+            color: var(--slate); 
+            margin: 0; 
+        }
 
         /* ========================================= */
         /* KHATEEB & JUMU'AH PORTAL                  */
         /* ========================================= */
-        .khateeb-wrapper { background: var(--white); font-family: 'Nunito', sans-serif; color: var(--fosis-navy); line-height: 1.6; overflow-x: hidden; width: 100%; }
-        .khateeb-top-transition { width: 100%; display: flex; justify-content: center; align-items: center; padding: 30px 0 10px 0; }
-        .khateeb-divider-line { flex-grow: 1; height: 1px; background: linear-gradient(to right, transparent, #e2e8f0); }
-        .khateeb-divider-line.right { background: linear-gradient(to left, transparent, #e2e8f0); }
-        .khateeb-divider-accent { width: 60px; height: 3px; background: var(--fosis-gold); margin: 0 20px; border-radius: 50px; box-shadow: 0 0 10px rgba(236, 164, 0, 0.2); }
-        .khateeb-container { max-width: 1200px; margin: 0 auto; padding: 0 5% 40px 5%; }
-        .khateeb-reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        .khateeb-reveal.active { opacity: 1; transform: translateY(0); }
-        .khateeb-gateway-header { text-align: center; margin-bottom: 20px; margin-top: 10px; }
-        .khateeb-gateway-header h2 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(1.8rem, 5.5vw, 2.6rem); text-transform: uppercase; letter-spacing: -1px; margin: 0; line-height: 0.9; color: var(--fosis-navy); }
-        .khateeb-sub-heading { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.75rem; color: var(--fosis-gold); margin-top: 8px; text-transform: uppercase; letter-spacing: 3px; }
-        .khateeb-scroll-arrow { margin: 15px auto 25px; width: 28px; height: 28px; color: var(--fosis-gold); animation: khateebBounce 2s infinite; }
-        @keyframes khateebBounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-6px);} 60% {transform: translateY(-3px);} }
-        .khateeb-spotlight-feature { margin-bottom: 50px; background: #f8fafc; border-radius: 35px; display: flex; flex-wrap: wrap; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08); position: relative; }
-        .khateeb-spotlight-feature::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at top right, rgba(236, 164, 0, 0.05), transparent 70%); pointer-events: none; }
-        .khateeb-feature-image { flex: 1; min-width: 300px; background: #e2e8f0; display: flex; align-items: center; justify-content: center; padding: 30px; position: relative; }
-        .khateeb-feature-image img { width: 100%; max-width: 400px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0, 32, 63, 0.15); border: 3px solid white; transition: 0.5s ease; }
-        .khateeb-spotlight-feature:hover .khateeb-feature-image img { transform: rotate(-1deg) scale(1.02); }
-        .khateeb-feature-content { flex: 1.2; min-width: 320px; padding: 50px; display: flex; flex-direction: column; justify-content: center; z-index: 2; }
-        .khateeb-feature-content h3 { font-family: 'Montserrat', sans-serif; font-weight: 900; text-transform: uppercase; color: var(--fosis-navy); margin: 0 0 15px 0; font-size: 1.6rem; letter-spacing: -0.5px; }
-        .khateeb-feature-content p { font-size: 1rem; color: var(--slate); margin-bottom: 30px; line-height: 1.7; }
-        .khateeb-premium-btn { display: inline-flex; align-items: center; justify-content: center; background: var(--fosis-gold); color: var(--fosis-navy); text-decoration: none; padding: 18px 30px; border-radius: 15px; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; box-shadow: 0 10px 20px rgba(236, 164, 0, 0.2); }
-        .khateeb-premium-btn:hover { background: var(--fosis-navy); color: white; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0, 32, 63, 0.2); }
-        .khateeb-gateway-grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
-        .khateeb-portal-card { background: var(--white); border-radius: 24px; padding: 35px 25px; border: 1px solid var(--border); transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); display: flex; flex-direction: column; box-shadow: 0 8px 25px rgba(0,32,63,0.05); }
-        .khateeb-portal-card:hover { transform: translateY(-10px); border-color: var(--fosis-gold); box-shadow: 0 15px 40px rgba(0,32,63,0.1); }
-        .khateeb-portal-card .khateeb-icon-box { width: 45px; height: 45px; background: var(--soft-grey); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 20px; }
-        .khateeb-portal-card h3 { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; margin: 0 0 12px 0; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.3; font-weight: 900; color: var(--fosis-navy); }
-        .khateeb-portal-card p { font-size: 0.82rem; color: #64748b; margin-bottom: 25px; flex-grow: 1; }
-        .khateeb-badge { position: absolute; top: 15px; right: 15px; background: var(--fosis-gold); color: var(--fosis-navy); font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 0.55rem; padding: 4px 10px; border-radius: 50px; text-transform: uppercase; }
-        .khateeb-signpost-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--fosis-navy); color: white; text-decoration: none; padding: 14px 12px; border-radius: 10px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px; transition: 0.3s; width: 100%; justify-content: center; }
-        .khateeb-signpost-btn:hover { background: var(--fosis-gold); color: var(--fosis-navy); }
+        .khateeb-wrapper { 
+            background: var(--white); 
+            font-family: 'Nunito', sans-serif; 
+            color: var(--fosis-navy); 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+            width: 100%; 
+        }
+
+        .khateeb-top-transition { 
+            width: 100%; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 30px 0 10px 0; 
+        }
+
+        .khateeb-divider-line { 
+            flex-grow: 1; 
+            height: 1px; 
+            background: linear-gradient(to right, transparent, #e2e8f0); 
+        }
+
+        .khateeb-divider-line.right { 
+            background: linear-gradient(to left, transparent, #e2e8f0); 
+        }
+
+        .khateeb-divider-accent { 
+            width: 60px; 
+            height: 3px; 
+            background: var(--fosis-gold); 
+            margin: 0 20px; 
+            border-radius: 50px; 
+            box-shadow: 0 0 10px rgba(236, 164, 0, 0.2); 
+        }
+
+        .khateeb-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 5% 40px 5%; 
+        }
+
+        .khateeb-reveal { 
+            opacity: 0; 
+            transform: translateY(20px); 
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); 
+        }
+
+        .khateeb-reveal.active { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+
+        .khateeb-gateway-header { 
+            text-align: center; 
+            margin-bottom: 20px; 
+            margin-top: 10px; 
+        }
+
+        .khateeb-gateway-header h2 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 900; 
+            font-size: clamp(1.8rem, 5.5vw, 2.6rem); 
+            text-transform: uppercase; 
+            letter-spacing: -1px; 
+            margin: 0; 
+            line-height: 0.9; 
+            color: var(--fosis-navy); 
+        }
+
+        .khateeb-sub-heading { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 800; 
+            font-size: 0.75rem; 
+            color: var(--fosis-gold); 
+            margin-top: 8px; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+        }
+
+        .khateeb-scroll-arrow { 
+            margin: 15px auto 25px; 
+            width: 28px; 
+            height: 28px; 
+            color: var(--fosis-gold); 
+            animation: khateebBounce 2s infinite; 
+        }
+
+        @keyframes khateebBounce { 
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
+            40% {transform: translateY(-6px);} 
+            60% {transform: translateY(-3px);} 
+        }
+
+        .khateeb-spotlight-feature { 
+            margin-bottom: 50px; 
+            background: #f8fafc; 
+            border-radius: 35px; 
+            display: flex; 
+            flex-wrap: wrap; 
+            overflow: hidden; 
+            border: 1px solid #e2e8f0; 
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08); 
+            position: relative; 
+        }
+
+        .khateeb-spotlight-feature::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: radial-gradient(circle at top right, rgba(236, 164, 0, 0.05), transparent 70%); 
+            pointer-events: none; 
+        }
+
+        .khateeb-feature-image { 
+            flex: 1; 
+            min-width: 300px; 
+            background: #e2e8f0; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 30px; 
+            position: relative; 
+        }
+
+        .khateeb-feature-image img { 
+            width: 100%; 
+            max-width: 400px; 
+            border-radius: 20px; 
+            box-shadow: 0 20px 40px rgba(0, 32, 63, 0.15); 
+            border: 3px solid white; 
+            transition: 0.5s ease; 
+        }
+
+        .khateeb-spotlight-feature:hover .khateeb-feature-image img { 
+            transform: rotate(-1deg) scale(1.02); 
+        }
+
+        .khateeb-feature-content { 
+            flex: 1.2; 
+            min-width: 320px; 
+            padding: 50px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            z-index: 2; 
+        }
+
+        .khateeb-feature-content h3 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            color: var(--fosis-navy); 
+            margin: 0 0 15px 0; 
+            font-size: 1.6rem; 
+            letter-spacing: -0.5px; 
+        }
+
+        .khateeb-feature-content p { 
+            font-size: 1rem; 
+            color: var(--slate); 
+            margin-bottom: 30px; 
+            line-height: 1.7; 
+        }
+
+        .khateeb-premium-btn { 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: var(--fosis-gold); 
+            color: var(--fosis-navy); 
+            text-decoration: none; 
+            padding: 18px 30px; 
+            border-radius: 15px; 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 900; 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            transition: 0.3s; 
+            box-shadow: 0 10px 20px rgba(236, 164, 0, 0.2); 
+        }
+
+        .khateeb-premium-btn:hover { 
+            background: var(--fosis-navy); 
+            color: white; 
+            transform: translateY(-3px); 
+            box-shadow: 0 15px 30px rgba(0, 32, 63, 0.2); 
+        }
+
+        .khateeb-gateway-grid { 
+            display: grid; 
+            gap: 20px; 
+            grid-template-columns: 1fr; 
+        }
+
+        .khateeb-portal-card { 
+            background: var(--white); 
+            border-radius: 24px; 
+            padding: 35px 25px; 
+            border: 1px solid var(--border); 
+            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
+            display: flex; 
+            flex-direction: column; 
+            box-shadow: 0 8px 25px rgba(0,32,63,0.05); 
+        }
+
+        .khateeb-portal-card:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--fosis-gold); 
+            box-shadow: 0 15px 40px rgba(0,32,63,0.1); 
+        }
+
+        .khateeb-portal-card .khateeb-icon-box { 
+            width: 45px; 
+            height: 45px; 
+            background: var(--soft-grey); 
+            border-radius: 12px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 1.4rem; 
+            margin-bottom: 20px; 
+        }
+
+        .khateeb-portal-card h3 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: 0.9rem; 
+            margin: 0 0 12px 0; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+            line-height: 1.3; 
+            font-weight: 900; 
+            color: var(--fosis-navy); 
+        }
+
+        .khateeb-portal-card p { 
+            font-size: 0.82rem; 
+            color: #64748b; 
+            margin-bottom: 25px; 
+            flex-grow: 1; 
+        }
+
+        .khateeb-badge { 
+            position: absolute; 
+            top: 15px; 
+            right: 15px; 
+            background: var(--fosis-gold); 
+            color: var(--fosis-navy); 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 900; 
+            font-size: 0.55rem; 
+            padding: 4px 10px; 
+            border-radius: 50px; 
+            text-transform: uppercase; 
+        }
+
+        .khateeb-signpost-btn { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            background: var(--fosis-navy); 
+            color: white; 
+            text-decoration: none; 
+            padding: 14px 12px; 
+            border-radius: 10px; 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 800; 
+            font-size: 0.7rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1.2px; 
+            transition: 0.3s; 
+            width: 100%; 
+            justify-content: center; 
+        }
+
+        .khateeb-signpost-btn:hover { 
+            background: var(--fosis-gold); 
+            color: var(--fosis-navy); 
+        }
 
         /* ========================================= */
         /* MASTER FOOTER                             */
@@ -534,8 +2170,15 @@
 
         /* GLOBAL RESPONSIVE MEDIA QUERIES           */
         /* ========================================= */
-        @media (min-width: 650px) { .khateeb-gateway-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (min-width: 768px) { .video-grid { grid-template-columns: repeat(2, 1fr); } .card-content { text-align: left; } }
+        @media (min-width: 650px) { 
+            .khateeb-gateway-grid { grid-template-columns: repeat(3, 1fr); } 
+        }
+
+        @media (min-width: 768px) { 
+            .video-grid { grid-template-columns: repeat(2, 1fr); } 
+            .card-content { text-align: left; } 
+        }
+
         @media (min-width: 850px) {
             #tarbiyyah-full-hub { padding: 0 20px 40px 20px; }
             .hub-header h2 { font-size: 38px; }
@@ -546,10 +2189,12 @@
             .gov-grid { flex-direction: row; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
             .gov-container { padding: 40px; border-radius: 30px; }
         }
+
         @media (max-width: 1100px) {
             .prod-tool-grid { grid-template-columns: repeat(2, 1fr); }
             .prod-image-card { grid-column: auto; grid-row: auto; min-height: 300px; }
         }
+
         @media (max-width: 850px) {
             .spotlight-bubble { padding: 40px 15px; border-radius: 30px; } 
             .hero-sub { letter-spacing: 4px; } 
@@ -566,7 +2211,36 @@
             .sidebar-image-box { display: block !important; width: 100%; height: 220px; margin: 0 0 20px 0; position: relative; border-radius: 15px; z-index: 1; }
             .display-panel { padding: 25px 20px; border-radius: 15px; width: 100%; order: 3; }
         }
+
         @media (max-width: 768px) {
+            .faq-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 15px !important;
+                align-items: center;
+            }
+
+            .faq-card {
+                width: 100% !important; 
+                max-width: 100% !important;
+                min-height: 180px; 
+                margin: 0 auto;
+            }
+
+            .faq-inner {
+                width: 100% !important;
+            }
+
+            .q-text {
+                font-size: 1rem !important;
+                padding: 10px;
+            }
+
+            .a-text p {
+                font-size: 0.9rem !important;
+                line-height: 1.4;
+            }
+
             .pillar-nav { grid-template-columns: repeat(2, 1fr); }
             .focus-stage { padding: 30px 20px; border-radius: 20px; }
             #fosis-tarbiyyah-unit, #asr-spiritual-intro, .tarbiyyah-hub { padding-top: 60px; padding-bottom: 60px; }
@@ -580,6 +2254,7 @@
             }
             .fosis-footer-col { align-items: center; }
         }
+
         @media (max-width: 600px) {
             .hero-banner { padding: 5px 15px 10px 15px; }
             .link-item { font-size: 0.9rem; }
@@ -589,10 +2264,37 @@
             .prod-image-card { order: -1; height: auto; min-height: unset; }
             .prod-image-card img { object-fit: contain; border: 1px solid var(--border-light); }
         }
+
         @media (max-width: 480px) {
             .floating-icon { display: none; }
             .verse-unit { margin-bottom: 60px; }
             .tarbiyyah-hub { padding: 50px 15px; }
+        }
+
+        @media screen and (max-width: 768px) {
+            #hub-root {
+                width: 92% !important; 
+                margin-left: auto !important;
+                margin-right: auto !important;
+                margin-top: 20px !important;
+                margin-bottom: 20px !important;
+                border-radius: 25px; 
+                padding: 15px !important; 
+                box-sizing: border-box;
+            }
+
+            .hub-navigation {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+                padding: 10px 5px !important;
+            }
+
+            .cat-btn {
+                font-size: 0.8rem !important; 
+                padding: 8px 12px !important;
+            }
         }
     </style>
 </head>
@@ -756,30 +2458,47 @@
                     <button class="cat-btn" style="background: var(--white); color: var(--fosis-navy); margin-top: 10px;" onclick="generatePDF()">Download FAQ Toolkit (PDF)</button>
                 </div>
                 <div class="faq-grid">
-                    <div class="faq-card" onclick="this.classList.toggle('flipped')"><div class="faq-inner">
-                        <div class="faq-front"><h3 class="q-text">WHAT IS RAMADAN?</h3><div class="flip-hint">Tap to flip</div></div>
-                        <div class="faq-back"><div class="a-text"><p>Ramadan is the ninth month of the Islamic calendar. It is a month of fasting and one of the five pillars of Islam. It is a time of spiritual growth, marking the month of the Qur'an's divine revelation.</p></div></div>
-                    </div></div>
-                    <div class="faq-card" onclick="this.classList.toggle('flipped')"><div class="faq-inner">
-                        <div class="faq-front"><h3 class="q-text">WHAT HAPPENS DURING RAMADAN?</h3><div class="flip-hint">Tap to flip</div></div>
-                        <div class="faq-back"><div class="a-text"><p>We wake up before dawn for a meal called <strong>Suhoor</strong> and fast and abstain from impulses to focus on reflection. At sunset, we break it at <strong>Iftar</strong> with water and dates as that is the sunnah of the Prophet ﷺ .</p></div></div>
-                    </div></div>
-                    <div class="faq-card" onclick="this.classList.toggle('flipped')"><div class="faq-inner">
-                        <div class="faq-front"><h3 class="q-text">IS IT JUST NO FOOD AND WATER?</h3><div class="flip-hint">Tap to flip</div></div>
-                        <div class="faq-back"><div class="a-text"><p>No, it is a <strong>spiritual reset</strong>. Beyond food and water, we work on controlling our desires and nafs (self) - avoiding gossip and anger to connect deeper with Allah (SWT).</p></div></div>
-                    </div></div>
-                    <div class="faq-card" onclick="this.classList.toggle('flipped')"><div class="faq-inner">
-                        <div class="faq-front"><h3 class="q-text">WHAT IF WE EAT IN FRONT OF YOU?</h3><div class="flip-hint">Tap to flip</div></div>
-                        <div class="faq-back"><div class="a-text"><p>There is actually a special reward for us when others eat in our presence:</p><div class="hadith-box">Umm 'Umarah bint Ka'b reported: The Prophet ﷺ said "Verily, angels send blessings upon a fasting person when others eat in their presence until they finish." <br>— Tirmidhi 785</div></div></div>
-                    </div></div>
-                    <div class="faq-card" onclick="this.classList.toggle('flipped')"><div class="faq-inner">
-                        <div class="faq-front"><h3 class="q-text">WHY DO YOU FAST?</h3><div class="flip-hint">Tap to flip</div></div>
-                        <div class="faq-back"><div class="a-text"><p>Fasting is about obeying Allah's command and aiming to achieve <strong>Taqwa</strong> (God-consciousness). It builds self-discipline and spiritual growth. It is a purification of the soul through increased prayer.</p></div></div>
-                    </div></div>
-                    <div class="faq-card" onclick="this.classList.toggle('flipped')"><div class="faq-inner">
-                        <div class="faq-front"><h3 class="q-text">HOW TO SUPPORT?</h3><div class="flip-hint">Tap to flip</div></div>
-                        <div class="faq-back"><div class="a-text"><p>A simple "Ramadan Mubarak" means a lot and everyone is welcome to join us for Iftar! Showing understanding, flexibility, and respect helps keep us motivated.</p></div></div>
-                    </div></div>
+                    <div class="faq-card" onclick="this.classList.toggle('flipped')">
+                        <div class="faq-inner">
+                            <div class="faq-front"><h3 class="q-text">WHAT IS RAMADAN?</h3><div class="flip-hint">Tap to flip</div></div>
+                            <div class="faq-back"><div class="a-text"><p>Ramadan is the ninth month of the Islamic calendar. It is a month of fasting and one of the five pillars of Islam. It is a time of spiritual growth, marking the month of the Qur'an's divine revelation.</p></div></div>
+                        </div>
+                    </div>
+                    <div class="faq-card" onclick="this.classList.toggle('flipped')">
+                        <div class="faq-inner">
+                            <div class="faq-front"><h3 class="q-text">WHAT HAPPENS DURING RAMADAN?</h3><div class="flip-hint">Tap to flip</div></div>
+                            <div class="faq-back"><div class="a-text"><p>We wake up before dawn for a meal called <strong>Suhoor</strong> and fast and abstain from impulses to focus on reflection. At sunset, we break it at <strong>Iftar</strong> with water and dates as that is the sunnah of the Prophet ﷺ .</p></div></div>
+                        </div>
+                    </div>
+                    <div class="faq-card" onclick="this.classList.toggle('flipped')">
+                        <div class="faq-inner">
+                            <div class="faq-front"><h3 class="q-text">IS IT JUST NO FOOD AND WATER?</h3><div class="flip-hint">Tap to flip</div></div>
+                            <div class="faq-back"><div class="a-text"><p>No, it is a <strong>spiritual reset</strong>. Beyond food and water, we work on controlling our desires and nafs (self) - avoiding gossip and anger to connect deeper with Allah (SWT).</p></div></div>
+                        </div>
+                    </div>
+                    <div class="faq-card" onclick="this.classList.toggle('flipped')">
+                        <div class="faq-inner">
+                            <div class="faq-front"><h3 class="q-text">WHAT IF WE EAT IN FRONT OF YOU?</h3><div class="flip-hint">Tap to flip</div></div>
+                            <div class="faq-back">
+                                <div class="a-text">
+                                    <p>There is actually a special reward for us when others eat in our presence:</p>
+                                    <div class="hadith-box">Umm 'Umarah bint Ka'b reported: The Prophet ﷺ said "Verily, angels send blessings upon a fasting person when others eat in their presence until they finish." <br>— Tirmidhi 785</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-card" onclick="this.classList.toggle('flipped')">
+                        <div class="faq-inner">
+                            <div class="faq-front"><h3 class="q-text">WHY DO YOU FAST?</h3><div class="flip-hint">Tap to flip</div></div>
+                            <div class="faq-back"><div class="a-text"><p>Fasting is about obeying Allah's command and aiming to achieve <strong>Taqwa</strong> (God-consciousness). It builds self-discipline and spiritual growth. It is a purification of the soul through increased prayer.</p></div></div>
+                        </div>
+                    </div>
+                    <div class="faq-card" onclick="this.classList.toggle('flipped')">
+                        <div class="faq-inner">
+                            <div class="faq-front"><h3 class="q-text">HOW TO SUPPORT?</h3><div class="flip-hint">Tap to flip</div></div>
+                            <div class="faq-back"><div class="a-text"><p>A simple "Ramadan Mubarak" means a lot and everyone is welcome to join us for Iftar! Showing understanding, flexibility, and respect helps keep us motivated.</p></div></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -796,14 +2515,16 @@
 
                 <div class="timeline-container">
                     <div class="timeline-item">
-                        <details><summary>Renew and Realign Intentions</summary>
+                        <details>
+                            <summary>Renew and Realign Intentions</summary>
                             <div class="content">Aligning the heart and mind is the foundation of service. Remind your team that providing food is a profound act of 'ibadah with immense spiritual weight.
                                 <div class="quote-block">“Whoever gives iftar to one who is fasting will have a reward like his, without that detracting from the reward of the fasting person in the slightest.” <span class="cite">— Narrated by al-Tirmidhi, 807; Ibn Majah, 1746.</span></div>
                             </div>
                         </details>
                     </div>
                     <div class="timeline-item">
-                        <details><summary>Pre-Iftar Logistics & Practical Essentials</summary>
+                        <details>
+                            <summary>Pre-Iftar Logistics & Practical Essentials</summary>
                             <div class="content">
                                 <ul>
                                     <li><strong>Plan a menu:</strong> Accommodate for GF, Vegetarian, Vegan, and Nut-free options.</li>
@@ -815,7 +2536,8 @@
                         </details>
                     </div>
                     <div class="timeline-item">
-                        <details><summary>Budgeting & Resource Management</summary>
+                        <details>
+                            <summary>Budgeting & Resource Management</summary>
                             <div class="content">
                                 <ul>
                                     <li><strong>Track Expenses:</strong> Maintain a live spreadsheet.</li>
@@ -826,14 +2548,16 @@
                         </details>
                     </div>
                     <div class="timeline-item">
-                        <details><summary>Financial Inclusivity</summary>
+                        <details>
+                            <summary>Financial Inclusivity</summary>
                             <div class="content">University life can be financially difficult. By providing free iftars, you can support students under hardship and build a sanctuary where everyone is welcome regardless of their situation. Ensure no student is left behind.
                                 <div class="quote-block">“Whoever relieves a believer of some worldly distress, Allah will relieve him of some of the distress of the Day of Resurrection.” <span class="cite">— Ibn Majah, 225</span></div>
                             </div>
                         </details>
                     </div>
                     <div class="timeline-item">
-                        <details><summary>Dawah Outreach</summary>
+                        <details>
+                            <summary>Dawah Outreach</summary>
                             <div class="content">The iftar table is a beautiful opportunity for outreach. Invite non-Muslims to experience the spirituality of eating and praying together, allowing them to witness the unity and hospitality of the Muslim community first-hand.
                                 <div class="quote-block">“And who is better in speech than one who invites to Allah...” <span class="cite">— Quran 41:33</span></div>
                             </div>
@@ -846,8 +2570,6 @@
                                 Dedicate specific nights to charity. Organize fundraising iftars or ticketed iftars to support local or global causes, strengthening the community’s commitment to giving.
                             </div>
                         </details>
-                    </div>
-
                     </div>
                 </div>
             </div>
@@ -869,293 +2591,293 @@
     </div>
 
     <div id="tarbiyyah-root">
-      <div class="spine-top">
-        <div class="spine-line"></div>
-        <div class="spine-node"></div>
-      </div>
-
-      <section class="hero-banner">
-        <h1>This Section Includes:</h1>
-
-        <div class="section-list-container">
-            <div class="guide-tag">Tarbiyyah & Wellness</div>
-            <p class="intro-text">
-                Nurturing the heart and mind of the activator. This section provides spiritual frameworks and practical tools to ensure your service is sustainable, sincere, and balanced.
-            </p>
-
-            <div class="link-list">
-                <div class="link-item">Tarbiyyah Module Hub</div>
-                <div class="link-item">The Leadership Studio</div>
-                <div class="link-item">Navigating Burnout</div>
-                <div class="link-item">Practical Toolkit</div>
-                <div class="link-item">Khateeb and Jumu'ah Portal</div>
-            </div>
+        <div class="spine-top">
+            <div class="spine-line"></div>
+            <div class="spine-node"></div>
         </div>
-      </section>
 
-      <div class="spine-bottom">
-        <div class="spine-node"></div>
-      </div>
+        <section class="hero-banner">
+            <h1>This Section Includes:</h1>
+
+            <div class="section-list-container">
+                <div class="guide-tag">Tarbiyyah & Wellness</div>
+                <p class="intro-text">
+                    Nurturing the heart and mind of the activator. This section provides spiritual frameworks and practical tools to ensure your service is sustainable, sincere, and balanced.
+                </p>
+
+                <div class="link-list">
+                    <div class="link-item">Tarbiyyah Module Hub</div>
+                    <div class="link-item">The Leadership Studio</div>
+                    <div class="link-item">Navigating Burnout</div>
+                    <div class="link-item">Practical Toolkit</div>
+                    <div class="link-item">Khateeb and Jumu'ah Portal</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="spine-bottom">
+            <div class="spine-node"></div>
+        </div>
     </div>
 
     <div class="hub-divider">
-      <div class="hub-divider-line top-fade"></div>
-      <div class="hub-divider-node"></div>
+        <div class="hub-divider-line top-fade"></div>
+        <div class="hub-divider-node"></div>
     </div>
 
     <div id="tarbiyyah-full-hub">
-      <div class="hub-header">
-        <h1>Amanah & Excellence</h1>
-        <h2>TARBIYYAH MODULE HUB</h2>
-      </div>
-
-      <div class="click-instruction">
-        Click the boxes below to learn more
-      </div>
-
-      <div class="expandable-card" onclick="toggleCard(this)" tabindex="0" role="button" aria-expanded="false">
-        <svg class="card-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        <span class="level-tag">Level 01</span>
-              <h3 class="card-title">Seeking Knowledge (Ilm)</h3>
-              <p class="card-intro">The first step of tarbiyyah is seeking knowledge that nourishes the soul and transforms how we think and act.</p>
-              <div class="expand-content">
-                  <div class="info-grid">
-                      <div>
-                          <span class="inner-section-title">What to Reflect On:</span>
-                          <div class="reflection-sub-box">
-                              <div class="reflection-item"><b>The Pillars:</b><p>Revisit the foundations of belief and action — the 5 pillars of Islam and 6 pillars of Imaan.</p></div>
-                              <div class="reflection-item"><b>Time as an Amanah:</b><p>Reflect on Surah Al-ʿAsr. Every minute is a trust. Avoid procrastination.</p></div>
-                              <div class="reflection-item"><b>Prophetic Leadership:</b><p>Study the empathy and humility of the Prophet ﷺ — essential for responsibility.</p></div>
-                          </div>
-                      </div>
-                      <div class="focus-box">
-                          <h4>Foundation Snapshots</h4>
-                          <div class="detail-item"><span>•</span><div><strong>Creed & Purpose</strong><p>Surah al-Asr: Time as an Amanat and the cure for procrastination.</p></div></div>
-                          <div class="detail-item"><span>•</span><div><strong>Daily Practise</strong><p>Refining the fundamentals: Wudhu, Salah, and the 5 Pillars.</p></div></div>
-                          <div class="detail-item"><span>•</span><div><strong>Prophetic Character</strong><p>Empathy, Honesty (integrity in ISoc), and Justice (fair feedback).</p></div></div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-
-      <div class="expandable-card" onclick="toggleCard(this)" tabindex="0" role="button" aria-expanded="false">
-        <svg class="card-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        <span class="level-tag">Level 02</span>
-        <h3 class="card-title">The Heart (Tazkiyah)</h3>
-        <p class="card-intro">Character is built by aligning intentions to please Allah, allowing hearts to find true rest.</p>
-        <div class="expand-content">
-          <div class="info-grid">
-            <div>
-              <span class="inner-section-title">What to Reflect On:</span>
-              <div class="reflection-sub-box">
-                <div class="reflection-item"><b>Tawakkul:</b><p>True trust is taking courageous action while accepting Allah’s decree.</p></div>
-                <div class="reflection-item"><b>Ihsaan:</b><p>Strive for excellence (worshipping Allah as though you see Him) without falling into guilt.</p></div>
-                <div class="reflection-item"><b>Niyyah (Intention):</b><p>Every email or event is an act of worship if done solely for Allah’s sake.</p></div>
-              </div>
-            </div>
-            <div class="focus-box">
-              <h4>Purification Principles</h4>
-              <div class="detail-item"><span>•</span><div><strong>Antidote to Anxiety</strong><p>Practising Tawakkul: Reliance on Allah is courageous action.</p></div></div>
-              <div class="detail-item"><span>•</span><div><strong>Combating Perfectionism</strong><p>Pursuing Ihsan while avoiding Arrogance and guilt.</p></div></div>
-              <div class="detail-item"><span>•</span><div><strong>Intention Setting</strong><p>Renewing Niyyah: "My intention is for the sake of Allah".</p></div></div>
-            </div>
-          </div>
+        <div class="hub-header">
+            <h1>Amanah & Excellence</h1>
+            <h2>TARBIYYAH MODULE HUB</h2>
         </div>
-      </div>
 
-      <div class="expandable-card" onclick="toggleCard(this)" tabindex="0" role="button" aria-expanded="false">
-        <svg class="card-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        <span class="level-tag">Level 03</span>
-        <h3 class="card-title">Practice (Khidmah)</h3>
-        <p class="card-intro">Putting knowledge into sincere action. Leading through compassion and servant leadership.</p>
-        <div class="expand-content">
-          <div class="info-grid">
-            <div>
-              <span class="inner-section-title">What to Reflect On:</span>
-              <div class="reflection-sub-box">
-                <div class="reflection-item"><b>Service as Worship:</b><p>Admin is ibadah. Use your degree as Sadaqah Jariyah.</p></div>
-                <div class="reflection-item"><b>Accountability:</b><p>Reflect daily: "Did I serve with sincerity today?"</p></div>
-                <div class="reflection-item"><b>Community:</b><p>Seek opportunities to serve through FOSIS or student projects.</p></div>
-              </div>
-            </div>
-            <div class="focus-box">
-              <h4>The Implementation</h4>
-              <div class="detail-item"><span>✓</span><div><strong>Skills as Sadaqah</strong><p>Using your university degree to serve.</p></div></div>
-              <div class="detail-item"><span>✓</span><div><strong>Trackers</strong><p>Weekly habit trackers for Ibadah to maintain health.</p></div></div>
-              <div class="detail-item"><span>✓</span><div><strong>Servant Leadership</strong><p>Managing conflict with Shura (consultation).</p></div></div>
-            </div>
-          </div>
+        <div class="click-instruction">
+            Click the boxes below to learn more
         </div>
-      </div>
 
-      <div class="hub-divider middle spaced">
-        <div class="hub-divider-line"></div>
-        <div class="hub-divider-node"></div>
-      </div>
-
-      <div class="gov-container">
-        <h3 style="text-align: center; font-family: 'Montserrat'; margin-bottom: 20px; letter-spacing: 1px; font-size: 1.1rem; color: var(--fosis-navy);">COMMITTEE GOVERNANCE</h3>
-        <div class="gov-grid">
-          <div class="gov-column">
-            <h4>Conduct</h4>
-            <p style="font-size: 13px; color: #475569; line-height: 1.5;">Modesty in gender interactions and polite language are required. Professionalism is its own form of Da'wah.</p>
-            <div class="najwa-box">
-              <strong style="color: var(--fosis-red); font-size: 11px; display: block;">WARNING: NAJWA</strong>
-              <p style="font-size: 11px; margin: 3px 0 0 0; color: var(--soft-grey);">Secret cliques breed suspicion. Transparency is non-negotiable.</p>
+        <div class="expandable-card" onclick="toggleCard(this)" tabindex="0" role="button" aria-expanded="false">
+            <svg class="card-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <span class="level-tag">Level 01</span>
+            <h3 class="card-title">Seeking Knowledge (Ilm)</h3>
+            <p class="card-intro">The first step of tarbiyyah is seeking knowledge that nourishes the soul and transforms how we think and act.</p>
+            <div class="expand-content">
+                <div class="info-grid">
+                    <div>
+                        <span class="inner-section-title">What to Reflect On:</span>
+                        <div class="reflection-sub-box">
+                            <div class="reflection-item"><b>The Pillars:</b><p>Revisit the foundations of belief and action — the 5 pillars of Islam and 6 pillars of Imaan.</p></div>
+                            <div class="reflection-item"><b>Time as an Amanah:</b><p>Reflect on Surah Al-ʿAsr. Every minute is a trust. Avoid procrastination.</p></div>
+                            <div class="reflection-item"><b>Prophetic Leadership:</b><p>Study the empathy and humility of the Prophet ﷺ — essential for responsibility.</p></div>
+                        </div>
+                    </div>
+                    <div class="focus-box">
+                        <h4>Foundation Snapshots</h4>
+                        <div class="detail-item"><span>•</span><div><strong>Creed & Purpose</strong><p>Surah al-Asr: Time as an Amanat and the cure for procrastination.</p></div></div>
+                        <div class="detail-item"><span>•</span><div><strong>Daily Practise</strong><p>Refining the fundamentals: Wudhu, Salah, and the 5 Pillars.</p></div></div>
+                        <div class="detail-item"><span>•</span><div><strong>Prophetic Character</strong><p>Empathy, Honesty (integrity in ISoc), and Justice (fair feedback).</p></div></div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="gov-column">
-            <h4>Barakah</h4>
-            <ul style="padding-left: 18px; font-size: 13px; color: #475569; line-height: 1.6; margin-top: 5px;">
-              <li>Start with Qur'an and Du'a.</li>
-              <li>Maintain minutes and agendas.</li>
-              <li>Rotate Jumu'ah reminders.</li>
-              <li>Wellbeing Officers.</li>
-            </ul>
-          </div>
-          <div class="gov-column">
-            <h4>Sustainability</h4>
-            <p style="font-size: 13px; color: #475569; line-height: 1.5;">When service harms your relationship with Allah, it is a warning. Delegation is a form of Tawakkul.</p>
-            <div class="salah-banner">SALAH OVER MEETINGS — NO EXCEPTIONS</div>
-          </div>
         </div>
-      </div>
+
+        <div class="expandable-card" onclick="toggleCard(this)" tabindex="0" role="button" aria-expanded="false">
+            <svg class="card-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <span class="level-tag">Level 02</span>
+            <h3 class="card-title">The Heart (Tazkiyah)</h3>
+            <p class="card-intro">Character is built by aligning intentions to please Allah, allowing hearts to find true rest.</p>
+            <div class="expand-content">
+                <div class="info-grid">
+                    <div>
+                        <span class="inner-section-title">What to Reflect On:</span>
+                        <div class="reflection-sub-box">
+                            <div class="reflection-item"><b>Tawakkul:</b><p>True trust is taking courageous action while accepting Allah’s decree.</p></div>
+                            <div class="reflection-item"><b>Ihsaan:</b><p>Strive for excellence (worshipping Allah as though you see Him) without falling into guilt.</p></div>
+                            <div class="reflection-item"><b>Niyyah (Intention):</b><p>Every email or event is an act of worship if done solely for Allah’s sake.</p></div>
+                        </div>
+                    </div>
+                    <div class="focus-box">
+                        <h4>Purification Principles</h4>
+                        <div class="detail-item"><span>•</span><div><strong>Antidote to Anxiety</strong><p>Practising Tawakkul: Reliance on Allah is courageous action.</p></div></div>
+                        <div class="detail-item"><span>•</span><div><strong>Combating Perfectionism</strong><p>Pursuing Ihsan while avoiding Arrogance and guilt.</p></div></div>
+                        <div class="detail-item"><span>•</span><div><strong>Intention Setting</strong><p>Renewing Niyyah: "My intention is for the sake of Allah".</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="expandable-card" onclick="toggleCard(this)" tabindex="0" role="button" aria-expanded="false">
+            <svg class="card-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <span class="level-tag">Level 03</span>
+            <h3 class="card-title">Practice (Khidmah)</h3>
+            <p class="card-intro">Putting knowledge into sincere action. Leading through compassion and servant leadership.</p>
+            <div class="expand-content">
+                <div class="info-grid">
+                    <div>
+                        <span class="inner-section-title">What to Reflect On:</span>
+                        <div class="reflection-sub-box">
+                            <div class="reflection-item"><b>Service as Worship:</b><p>Admin is ibadah. Use your degree as Sadaqah Jariyah.</p></div>
+                            <div class="reflection-item"><b>Accountability:</b><p>Reflect daily: "Did I serve with sincerity today?"</p></div>
+                            <div class="reflection-item"><b>Community:</b><p>Seek opportunities to serve through FOSIS or student projects.</p></div>
+                        </div>
+                    </div>
+                    <div class="focus-box">
+                        <h4>The Implementation</h4>
+                        <div class="detail-item"><span>✓</span><div><strong>Skills as Sadaqah</strong><p>Using your university degree to serve.</p></div></div>
+                        <div class="detail-item"><span>✓</span><div><strong>Trackers</strong><p>Weekly habit trackers for Ibadah to maintain health.</p></div></div>
+                        <div class="detail-item"><span>✓</span><div><strong>Servant Leadership</strong><p>Managing conflict with Shura (consultation).</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hub-divider middle spaced">
+            <div class="hub-divider-line"></div>
+            <div class="hub-divider-node"></div>
+        </div>
+
+        <div class="gov-container">
+            <h3 style="text-align: center; font-family: 'Montserrat'; margin-bottom: 20px; letter-spacing: 1px; font-size: 1.1rem; color: var(--fosis-navy);">COMMITTEE GOVERNANCE</h3>
+            <div class="gov-grid">
+                <div class="gov-column">
+                    <h4>Conduct</h4>
+                    <p style="font-size: 13px; color: #475569; line-height: 1.5;">Modesty in gender interactions and polite language are required. Professionalism is its own form of Da'wah.</p>
+                    <div class="najwa-box">
+                        <strong style="color: var(--fosis-red); font-size: 11px; display: block;">WARNING: NAJWA</strong>
+                        <p style="font-size: 11px; margin: 3px 0 0 0; color: var(--soft-grey);">Secret cliques breed suspicion. Transparency is non-negotiable.</p>
+                    </div>
+                </div>
+                <div class="gov-column">
+                    <h4>Barakah</h4>
+                    <ul style="padding-left: 18px; font-size: 13px; color: #475569; line-height: 1.6; margin-top: 5px;">
+                        <li>Start with Qur'an and Du'a.</li>
+                        <li>Maintain minutes and agendas.</li>
+                        <li>Rotate Jumu'ah reminders.</li>
+                        <li>Wellbeing Officers.</li>
+                    </ul>
+                </div>
+                <div class="gov-column">
+                    <h4>Sustainability</h4>
+                    <p style="font-size: 13px; color: #475569; line-height: 1.5;">When service harms your relationship with Allah, it is a warning. Delegation is a form of Tawakkul.</p>
+                    <div class="salah-banner">SALAH OVER MEETINGS — NO EXCEPTIONS</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="tarbiyyah-wellness-gallery-wrapper">
         <div class="tarbiyyah-wellness-gallery">
-          <div class="gallery-header">
-            <h2>The Leadership Studio</h2>
-            <p><span>▶</span> Expert Guidance for Your Journey</p>
-          </div>
-
-          <div class="video-grid">
-            <div class="video-card">
-              <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/hg4xH9QAQDA" allowfullscreen loading="lazy"></iframe>
-              </div>
-              <div class="card-content">
-                <span class="card-tag">Barakah & Worship</span>
-                <h3 class="card-title">Feeding the Volunteer's Soul</h3>
-                <p class="card-text">Practical strategies to ensure your activism becomes a source of spiritual growth rather than burnout.</p>
-                <button class="focus-btn" onclick="zoomVideo('https://www.youtube.com/embed/hg4xH9QAQDA')">
-                    <span>⛶ OPEN FOCUS MODE</span>
-                </button>
-              </div>
+            <div class="gallery-header">
+                <h2>The Leadership Studio</h2>
+                <p><span>▶</span> Expert Guidance for Your Journey</p>
             </div>
 
-            <div class="video-card">
-              <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/dxoGQLzK7jQ" allowfullscreen loading="lazy"></iframe>
-              </div>
-              <div class="card-content">
-                <span class="card-tag">Character & Ethics</span>
-                <h3 class="card-title">Leadership Adab</h3>
-                <p class="card-text">An essential deep-dive into the manners required for those serving the community and guarding the heart.</p>
-                <button class="focus-btn" onclick="zoomVideo('https://www.youtube.com/embed/dxoGQLzK7jQ')">
-                    <span>⛶ OPEN FOCUS MODE</span>
-                </button>
-              </div>
-            </div>
-          </div>
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/hg4xH9QAQDA" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Barakah & Worship</span>
+                        <h3 class="card-title">Feeding the Volunteer's Soul</h3>
+                        <p class="card-text">Practical strategies to ensure your activism becomes a source of spiritual growth rather than burnout.</p>
+                        <button class="focus-btn" onclick="zoomVideo('https://www.youtube.com/embed/hg4xH9QAQDA')">
+                            <span>⛶ OPEN FOCUS MODE</span>
+                        </button>
+                    </div>
+                </div>
 
-          <div id="videoLightbox">
-            <div class="lightbox-container">
-                <button class="close-btn" onclick="closeZoom()">✕</button>
-                <iframe id="zoomFrame" style="width:100%; height:100%; border:0; border-radius:12px;" src="" allow="autoplay; fullscreen"></iframe>
-                <div class="cinema-hint">Cinematic Focus Mode</div>
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/dxoGQLzK7jQ" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Character & Ethics</span>
+                        <h3 class="card-title">Leadership Adab</h3>
+                        <p class="card-text">An essential deep-dive into the manners required for those serving the community and guarding the heart.</p>
+                        <button class="focus-btn" onclick="zoomVideo('https://www.youtube.com/embed/dxoGQLzK7jQ')">
+                            <span>⛶ OPEN FOCUS MODE</span>
+                        </button>
+                    </div>
+                </div>
             </div>
-          </div>
+
+            <div id="videoLightbox">
+                <div class="lightbox-container">
+                    <button class="close-btn" onclick="closeZoom()">✕</button>
+                    <iframe id="zoomFrame" style="width:100%; height:100%; border:0; border-radius:12px;" src="" allow="autoplay; fullscreen"></iframe>
+                    <div class="cinema-hint">Cinematic Focus Mode</div>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="burnout-section-wrapper" id="burnout-container">
-      <div class="title-area">
-        <div class="pill-tag">Empathetic Leadership</div>
-        <h1>Navigating Burnout</h1>
-      </div>
-
-      <div class="content-grid">
-        <div class="sidebar-col">
-          <nav class="tab-nav">
-            <div class="nav-item burnout-nav active" onclick="switchBurnoutPane(this, 'diagnosis', 0)">
-              1. Spiritual Diagnosis <span>→</span>
-            </div>
-            <div class="nav-item burnout-nav" onclick="switchBurnoutPane(this, 'strategy', 1)">
-              2. The Mindset Shift <span>→</span>
-            </div>
-            <div class="nav-item burnout-nav" onclick="switchBurnoutPane(this, 'stories', 2)">
-              3. Seerah Context <span>→</span>
-            </div>
-            <div class="nav-item burnout-nav" onclick="switchBurnoutPane(this, 'toolkit', 3)">
-              4. Practical Habits <span>→</span>
-            </div>
-          </nav>
-
-          <div class="sidebar-image-box">
-            <img src="https://i.ibb.co/M3SJnwF/Screenshot-2026-02-15-171932.png" id="burnout-img-0" class="sidebar-img active" alt="">
-            <img src="https://i.ibb.co/7JrrmtRZ/8f495812-4c44-4b89-aa25-d54fe195dab7.jpg" id="burnout-img-1" class="sidebar-img" alt="">
-            <img src="https://i.ibb.co/BV3csQGR/Screenshot-2026-02-15-171223.png" id="burnout-img-2" class="sidebar-img" alt="">
-            <img src="https://i.ibb.co/prf7bW8m/IMG-20250728-WA0049.jpg" id="burnout-img-3" class="sidebar-img" alt="">
-          </div>
+        <div class="title-area">
+            <div class="pill-tag">Empathetic Leadership</div>
+            <h1>Navigating Burnout</h1>
         </div>
 
-        <main class="display-panel">
-          <div id="diagnosis" class="pane" style="display: block;">
-            <h2 class="pane-header">The Internal Battle</h2>
-            <p>Procrastination is often used as a <b>maladaptive coping mechanism</b> to avoid difficult feelings. It is the result of a structural conflict between the Limbic System (Emotional Hub) and the Prefrontal Cortex (Rational Planner).</p>
-            <div class="callout-box">
-              <b>The Shaytan's Tactic:</b> Procrastination is viewed as a spiritual trial—a way to induce <i>Ghafla</i> (heedlessness) and detach us from our purpose through self-guilt.
-            </div>
-            <p><b>Roots of Avoidance:</b></p>
-            <ul style="color: var(--soft-grey); font-weight: 600;">
-              <li><b>Tul al-Amal:</b> The delusion that we have many years to live.</li>
-              <li><b>Perfectionism:</b> The fear that "imperfect" work is a failure.</li>
-              <li><b>Fatigue:</b> Being tired is the #1 biological accelerator of delay.</li>
-            </ul>
-          </div>
+        <div class="content-grid">
+            <div class="sidebar-col">
+                <nav class="tab-nav">
+                    <div class="nav-item burnout-nav active" onclick="switchBurnoutPane(this, 'diagnosis', 0)">
+                        1. Spiritual Diagnosis <span>→</span>
+                    </div>
+                    <div class="nav-item burnout-nav" onclick="switchBurnoutPane(this, 'strategy', 1)">
+                        2. The Mindset Shift <span>→</span>
+                    </div>
+                    <div class="nav-item burnout-nav" onclick="switchBurnoutPane(this, 'stories', 2)">
+                        3. Seerah Context <span>→</span>
+                    </div>
+                    <div class="nav-item burnout-nav" onclick="switchBurnoutPane(this, 'toolkit', 3)">
+                        4. Practical Habits <span>→</span>
+                    </div>
+                </nav>
 
-          <div id="strategy" class="pane">
-            <h2 class="pane-header">Reframing the Load</h2>
-            <p>Overwhelming stress is often caused by trying to control an uncertain future. The solution is <b>Tawakkul</b> (complete reliance) combined with intentional effort.</p>
-            <div class="wow-moment">"Your faith is proven by your effort, not your perfect outcome."</div>
-            <p><b>The Mindset Shift:</b></p>
-            <ul style="line-height: 1.8;">
-              <li><b>Amanah:</b> Recognize your time, health, and youth as sacred trusts.</li>
-              <li><b>Ihsaan:</b> Striving with excellence in the <i>present moment</i>, not just the finish line.</li>
-              <li><b>Halal Leisure:</b> Rest is not a waste; it is a tool to make the soul stronger for the truth.</li>
-            </ul>
-          </div>
+                <div class="sidebar-image-box">
+                    <img src="https://i.ibb.co/M3SJnwF/Screenshot-2026-02-15-171932.png" id="burnout-img-0" class="sidebar-img active" alt="">
+                    <img src="https://i.ibb.co/7JrrmtRZ/8f495812-4c44-4b89-aa25-d54fe195dab7.jpg" id="burnout-img-1" class="sidebar-img" alt="">
+                    <img src="https://i.ibb.co/BV3csQGR/Screenshot-2026-02-15-171223.png" id="burnout-img-2" class="sidebar-img" alt="">
+                    <img src="https://i.ibb.co/prf7bW8m/IMG-20250728-WA0049.jpg" id="burnout-img-3" class="sidebar-img" alt="">
+                </div>
+            </div>
 
-          <div id="stories" class="pane">
-            <h2 class="pane-header">Lessons from the Seerah</h2>
-            <div class="seerah-card">
-              <b style="color: var(--fosis-gold); text-transform: uppercase; font-size: 11px;">Ka’b ibn Malik (RA)</b>
-              <p style="font-size: 14px; margin-bottom: 0;">The profound danger of "just one more day." His story teaches us the weight of procrastination in the face of duty, but more importantly, the power of sincere return and action.</p>
-            </div>
-            <div class="seerah-card">
-              <b style="color: var(--fosis-gold); text-transform: uppercase; font-size: 11px;">Post-Uhud Resilience</b>
-              <p style="font-size: 14px; margin-bottom: 0;">The Prophet ﷺ and the Sahaba faced extreme emotional and physical fatigue. Their ability to move forward despite trauma was rooted in <b>Tawakkul</b> and a collective sense of purpose.</p>
-            </div>
-            <div class="spiritual-quote">"I give my soul some relaxation with permissible enjoyment, so that it may be stronger upon the truth." — Abu Darda (RA)</div>
-          </div>
+            <main class="display-panel">
+                <div id="diagnosis" class="pane" style="display: block;">
+                    <h2 class="pane-header">The Internal Battle</h2>
+                    <p>Procrastination is often used as a <b>maladaptive coping mechanism</b> to avoid difficult feelings. It is the result of a structural conflict between the Limbic System (Emotional Hub) and the Prefrontal Cortex (Rational Planner).</p>
+                    <div class="callout-box">
+                        <b>The Shaytan's Tactic:</b> Procrastination is viewed as a spiritual trial—a way to induce <i>Ghafla</i> (heedlessness) and detach us from our purpose through self-guilt.
+                    </div>
+                    <p><b>Roots of Avoidance:</b></p>
+                    <ul style="color: var(--soft-grey); font-weight: 600;">
+                        <li><b>Tul al-Amal:</b> The delusion that we have many years to live.</li>
+                        <li><b>Perfectionism:</b> The fear that "imperfect" work is a failure.</li>
+                        <li><b>Fatigue:</b> Being tired is the #1 biological accelerator of delay.</li>
+                    </ul>
+                </div>
 
-          <div id="toolkit" class="pane">
-            <h2 class="pane-header">Practical Action</h2>
-            <p>Move from a state of delay to one of action with these "Micro-habits":</p>
-            <ul style="color: var(--soft-grey); font-size: 14px; line-height: 1.8;">
-              <li><b>The 5-Minute Rule:</b> Commit for 5 minutes just to build momentum.</li>
-              <li><b>The Life Audit:</b> Write down 3 habits causing your biggest blocks.</li>
-              <li><b>Salah-Centric Planning:</b> Schedule deep work blocks centering around prayer times.</li>
-              <li><b>IF-THEN Planning:</b> "If I have my coffee, then I start the task."</li>
-              <li><b>Digital Fasting:</b> Eliminate one specific distraction for a week as a spiritual exercise.</li>
-            </ul>
-            <div class="callout-box" style="background: #124A7A; border-left-color: var(--fosis-gold);">
-              <b>Reflective Moment:</b> Always start with <i>Bismillah</i>. Seek refuge from laziness daily using the Prophetic Du'a.
-            </div>
-          </div>
-        </main>
-      </div>
+                <div id="strategy" class="pane">
+                    <h2 class="pane-header">Reframing the Load</h2>
+                    <p>Overwhelming stress is often caused by trying to control an uncertain future. The solution is <b>Tawakkul</b> (complete reliance) combined with intentional effort.</p>
+                    <div class="wow-moment">"Your faith is proven by your effort, not your perfect outcome."</div>
+                    <p><b>The Mindset Shift:</b></p>
+                    <ul style="line-height: 1.8;">
+                        <li><b>Amanah:</b> Recognize your time, health, and youth as sacred trusts.</li>
+                        <li><b>Ihsaan:</b> Striving with excellence in the <i>present moment</i>, not just the finish line.</li>
+                        <li><b>Halal Leisure:</b> Rest is not a waste; it is a tool to make the soul stronger for the truth.</li>
+                    </ul>
+                </div>
+
+                <div id="stories" class="pane">
+                    <h2 class="pane-header">Lessons from the Seerah</h2>
+                    <div class="seerah-card">
+                        <b style="color: var(--fosis-gold); text-transform: uppercase; font-size: 11px;">Ka’b ibn Malik (RA)</b>
+                        <p style="font-size: 14px; margin-bottom: 0;">The profound danger of "just one more day." His story teaches us the weight of procrastination in the face of duty, but more importantly, the power of sincere return and action.</p>
+                    </div>
+                    <div class="seerah-card">
+                        <b style="color: var(--fosis-gold); text-transform: uppercase; font-size: 11px;">Post-Uhud Resilience</b>
+                        <p style="font-size: 14px; margin-bottom: 0;">The Prophet ﷺ and the Sahaba faced extreme emotional and physical fatigue. Their ability to move forward despite trauma was rooted in <b>Tawakkul</b> and a collective sense of purpose.</p>
+                    </div>
+                    <div class="spiritual-quote">"I give my soul some relaxation with permissible enjoyment, so that it may be stronger upon the truth." — Abu Darda (RA)</div>
+                </div>
+
+                <div id="toolkit" class="pane">
+                    <h2 class="pane-header">Practical Action</h2>
+                    <p>Move from a state of delay to one of action with these "Micro-habits":</p>
+                    <ul style="color: var(--soft-grey); font-size: 14px; line-height: 1.8;">
+                        <li><b>The 5-Minute Rule:</b> Commit for 5 minutes just to build momentum.</li>
+                        <li><b>The Life Audit:</b> Write down 3 habits causing your biggest blocks.</li>
+                        <li><b>Salah-Centric Planning:</b> Schedule deep work blocks centering around prayer times.</li>
+                        <li><b>IF-THEN Planning:</b> "If I have my coffee, then I start the task."</li>
+                        <li><b>Digital Fasting:</b> Eliminate one specific distraction for a week as a spiritual exercise.</li>
+                    </ul>
+                    <div class="callout-box" style="background: #124A7A; border-left-color: var(--fosis-gold);">
+                        <b>Reflective Moment:</b> Always start with <i>Bismillah</i>. Seek refuge from laziness daily using the Prophetic Du'a.
+                    </div>
+                </div>
+            </main>
+        </div>
     </div>
 
     <div class="prod-wrapper" id="prod-master-root">
@@ -1289,32 +3011,45 @@
 
         // --- RAMADAN HUB LOGIC ---
         let dateOffset = 0;
-        function adjustDate(amt) { dateOffset += amt; updDate(); }
+        function adjustDate(amt) { 
+            dateOffset += amt; 
+            updDate(); 
+        }
         
         function switchPane(e, id) {
             document.querySelectorAll('.view-pane').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
             document.getElementById(id).classList.add('active');
-            if(e) e.currentTarget.classList.add('active');
+            
+            if(e) {
+                e.currentTarget.classList.add('active');
+            }
+            
             setTimeout(syncEmbedHeight, 100);
         }
 
         function updDate() {
-            const d = new Date(); d.setDate(d.getDate() + dateOffset);
+            const d = new Date(); 
+            d.setDate(d.getDate() + dateOffset);
             const mArr = ["Muharram", "Safar", "Rabi' al-Awwal", "Rabi' al-Thani", "Jumada al-Ula", "Jumada al-Akhirah", "Rajab", "Sha'ban", "Ramadan", "Shawwal", "Dhu al-Qi'dah", "Dhu al-Hijjah"];
+            
             try {
                 const parts = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura-nu-latn', {day:'numeric', month:'numeric', year:'numeric'}).formatToParts(d);
                 const day = parts.find(p => p.type === 'day').value;
                 const mIdx = parseInt(parts.find(p => p.type === 'month').value) - 1;
                 const year = parts.find(p => p.type === 'year').value;
                 document.getElementById('hijri-display').innerText = `${day} ${mArr[mIdx]} ${year}`;
-            } catch(e) { document.getElementById('hijri-display').innerText = "Ramadan 1447"; }
+            } catch(e) { 
+                document.getElementById('hijri-display').innerText = "Ramadan 1447"; 
+            }
+            
             document.getElementById('greg-display').innerText = d.toDateString();
         }
 
         function copyDate() {
             const dateText = document.getElementById('hijri-display').innerText;
             const btn = document.getElementById('copy-btn');
+            
             const showSuccess = () => {
                 const oldText = btn.innerText;
                 btn.innerText = "COPIED!";
@@ -1326,19 +3061,26 @@
                     btn.style.color = "var(--fosis-navy)";
                 }, 2000);
             };
+            
             const el = document.createElement('textarea');
             el.value = dateText;
             el.setAttribute('readonly', '');
             el.style.position = 'absolute';
             el.style.left = '-9999px';
             document.body.appendChild(el);
+            
             const selected = document.getSelection().rangeCount > 0 ? document.getSelection().getRangeAt(0) : false;
             el.select();
+            
             try {
                 const successful = document.execCommand('copy');
                 if (successful) showSuccess();
-            } catch (err) { console.error('Copying failed', err); }
+            } catch (err) { 
+                console.error('Copying failed', err); 
+            }
+            
             document.body.removeChild(el);
+            
             if (selected) {
                 document.getSelection().removeAllRanges();
                 document.getSelection().addRange(selected);
@@ -1387,9 +3129,11 @@
         function showPane(idx, btn) {
             document.querySelectorAll('.pillar-nav .nav-card').forEach(c => c.classList.remove('active'));
             btn.classList.add('active');
+            
             const panes = document.querySelectorAll('.focus-stage .pane');
             panes.forEach(p => p.classList.remove('active'));
             panes[idx].classList.add('active');
+            
             setTimeout(syncEmbedHeight, 100); 
         }
 
@@ -1407,6 +3151,7 @@
                 card.classList.add('is-open');
                 card.setAttribute('aria-expanded', 'true');
             }
+            
             setTimeout(syncEmbedHeight, 100);
         }
 
@@ -1427,14 +3172,17 @@
         function switchBurnoutPane(btn, paneId, imgIndex) {
             const wrapper = document.getElementById('burnout-container');
             const panes = wrapper.getElementsByClassName("pane");
+            
             for (let i = 0; i < panes.length; i++) { 
                 panes[i].style.display = "none"; 
                 panes[i].classList.remove("active");
             }
+            
             const navs = wrapper.getElementsByClassName("burnout-nav");
             for (let i = 0; i < navs.length; i++) { 
                 navs[i].classList.remove("active"); 
             }
+            
             const imgs = wrapper.getElementsByClassName("sidebar-img");
             for (let i = 0; i < imgs.length; i++) { 
                 imgs[i].classList.remove("active"); 
@@ -1446,6 +3194,7 @@
             
             btn.classList.add("active");
             document.getElementById("burnout-img-" + imgIndex).classList.add("active");
+            
             setTimeout(syncEmbedHeight, 100);
         }
 
