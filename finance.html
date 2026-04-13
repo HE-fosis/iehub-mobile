@@ -384,6 +384,12 @@
     font-family: 'Outfit', sans-serif !important;
   }
 
+  @media (max-width: 600px) {
+    body { padding: 8px; }
+    .pulse-wrapper { padding: 25px 18px; border-radius: 18px; }
+    .expand-btn { font-size: 12px; padding: 16px 15px; letter-spacing: 0.8px; }
+  }
+
   .pulse-wrapper {
     background-color: #00203F; 
     padding: 40px 30px;
@@ -527,6 +533,9 @@
   @media (max-width: 600px) {
     .panel-flex-container { flex-direction: column; align-items: center; }
     .panel-image-small { max-width: 100px; margin-top: 10px; }
+    .ramadan-layout { flex-direction: column; gap: 20px; }
+    .image-container { text-align: center; }
+    .image-container img { max-width: 180px; }
   }
 </style>
 
@@ -536,7 +545,7 @@
   <div class="ramadan-layout">
     <div class="text-content">
       <p>Ramadan 2026 is approaching. Here are some initiatives to raise money for your ISoc, whether it is for free Iftar and Suhoor, or for charity.</p>
-      <p>Ramadan is when your university's Muslim community comes together. The Prophet (saw) said, <i>‘Whoever feeds a person breaking his fast will earn the same reward as him, without anything being lessened from the reward of the fasting person.’ [Tirmidhi]</i></p>
+      <p>Ramadan is when your university's Muslim community comes together. The Prophet (saw) said, <i>'Whoever feeds a person breaking his fast will earn the same reward as him, without anything being lessened from the reward of the fasting person.' [Tirmidhi]</i></p>
     </div>
     
     <div class="image-container">
@@ -929,6 +938,7 @@
   @media (max-width: 768px) {
     .focus-container { flex-direction: column; }
     .focus-container:hover .column { opacity: 1; filter: none; }
+    .focus-container .column:hover { opacity: 1; filter: none; background-color: transparent; }
     .right-column { justify-content: flex-start; }
   }
 </style>
@@ -985,7 +995,7 @@
 
     <div class="item-card">
       <div class="line-indicator"></div>
-      <div class="content-box">Joining conversations and group chats with your events planning team will mean you won’t need to find funding at the last-minute.</div>
+      <div class="content-box">Joining conversations and group chats with your events planning team will mean you won't need to find funding at the last-minute.</div>
     </div>
 
     <div class="item-card">
@@ -1488,7 +1498,15 @@
 
   @media (max-width: 768px) {
     .fundraising-container { flex-direction: column; padding-bottom: 40px; }
-    .section-box { width: 100%; min-height: 440px; }
+    .section-box { width: 100%; min-height: 0; }
+    /* On mobile, disable hover and rely on tap/active only */
+    .section-box:hover .expanded-info { opacity: 0; visibility: hidden; }
+    .section-box.active .expanded-info { opacity: 1; visibility: visible; }
+    .section-box:hover { border-top-color: var(--brand-blue); transform: none; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+    .section-box.active { border-top-color: var(--brand-orange); transform: none; box-shadow: 0 20px 40px rgba(0, 32, 63, 0.1); }
+    .expanded-info { position: relative; top: auto; left: auto; width: auto; height: auto; opacity: 0; visibility: hidden; border-radius: 0; padding: 25px 20px; }
+    .section-box.active .expanded-info { position: relative; }
+    .preview-image { height: 140px; }
   }
 </style>
 </head>
@@ -1557,6 +1575,15 @@
     window.onload = sync;
     window.onresize = sync;
     setInterval(sync, 1500);
+    
+    // Ensure cards work on touch devices
+    document.querySelectorAll('.section-box').forEach(function(card) {
+      card.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        this.classList.toggle('active');
+        setTimeout(sync, 350);
+      });
+    });
   </script>
 </body>
 </html>
@@ -1722,7 +1749,7 @@
             لَّيۡسَ عَلَيۡكَ هُدَىٰهُمۡ وَلَٰكِنَّ ٱللَّهَ يَهۡدِي مَن يَشَآءُۗ وَمَا تُنفِقُواْ مِنۡ خَيۡرٖ فَلِأَنفُسِكُمۡۚ...
         </div>
 
-        <div class="quote-marks">“</div>
+        <div class="quote-marks">"</div>
 
         <blockquote class="verse-translation">
             "Whatever good you spend is for yourselves... and whatever you spend of good – it will be fully repaid to you, and you will not be wronged."
@@ -1970,7 +1997,7 @@
               <li><b>Membership Fees:</b> Incentivise with perks and future discounts.</li>
               <li><b>University Grants:</b> Keep a list of potential grants and their open/ close dates.</li>
               <li><b>Retail and Hospitality Discounts:</b> Restaurants, takeaways, dessert shops, clothes shops, halal butchers. Use the Discount Card Script as a template for the contract.</li>
-              <li><b>Jumu’ah donations:</b> Take cash and card donations, explore potential for standing orders.</li>
+              <li><b>Jumu'ah donations:</b> Take cash and card donations, explore potential for standing orders.</li>
               <li><b>Dowah/ Donation Stalls:</b> Increase the visibility of ISoc in your local community whilst collecting donations.</li>
               <li><b>Merchandise:</b> Making merchandise available only to those who are registered members of ISoc is a good way to quantify an average number of active members.</li>
               <li><b>Alumni Contacts:</b> Start and maintain your Alumni network! From lecturers to members of the local community.</li>
@@ -2239,11 +2266,13 @@
 
   @media (max-width: 600px) {
     .advice-card { 
-      flex: 0 0 85vw;
-      height: 400px; 
+      flex: 0 0 88vw;
+      height: auto;
+      min-height: 300px;
       padding: 45px 25px;
     }
     .advice-hero::before { font-size: 5rem; letter-spacing: 8px; }
+    .testimonial-scroll-area { height: auto; overflow-y: visible; }
   }
 </style>
 </head>
@@ -2265,47 +2294,47 @@
     <div class="carousel-viewport" id="slider">
       
       <div class="advice-card">
-        <span class="quote-icon">“</span>
+        <span class="quote-icon">"</span>
         <div class="card-counter">01/05</div>
         <div class="testimonial-scroll-area">
           <div class="testimonial-text">
-            The nature of the role is that sometimes you have to be the <b>“villain”</b>. Check yourself. On the flip side, you have a hand in every bit of <b>khair</b> that the ISoc will achieve in your year inshallah. Make sure your <b>intentions</b> are right to maximise the benefit.
+            The nature of the role is that sometimes you have to be the <b>"villain"</b>. Check yourself. On the flip side, you have a hand in every bit of <b>khair</b> that the ISoc will achieve in your year inshallah. Make sure your <b>intentions</b> are right to maximise the benefit.
           </div>
         </div>
       </div>
 
       <div class="advice-card">
-        <span class="quote-icon">“</span>
+        <span class="quote-icon">"</span>
         <div class="card-counter">02/05</div>
         <div class="testimonial-scroll-area">
           <div class="testimonial-text">
-            No one will really understand the <b>burden you carry</b>; it may stress you out at times when you have no idea where the money will come from but trust me when you do things for the <b>sake of Allah</b>, He will pave ways for you that you couldn’t imagine.
+            No one will really understand the <b>burden you carry</b>; it may stress you out at times when you have no idea where the money will come from but trust me when you do things for the <b>sake of Allah</b>, He will pave ways for you that you couldn't imagine.
           </div>
         </div>
       </div>
 
       <div class="advice-card">
-        <span class="quote-icon">“</span>
+        <span class="quote-icon">"</span>
         <div class="card-counter">03/05</div>
         <div class="testimonial-scroll-area">
           <div class="testimonial-text">
-            Keep track of finances. <b>Budget often and re-evaluate</b> finances. If things are going well, don’t feel bad for spending a bit more and vice versa.
+            Keep track of finances. <b>Budget often and re-evaluate</b> finances. If things are going well, don't feel bad for spending a bit more and vice versa.
           </div>
         </div>
       </div>
 
       <div class="advice-card">
-        <span class="quote-icon">“</span>
+        <span class="quote-icon">"</span>
         <div class="card-counter">04/05</div>
         <div class="testimonial-scroll-area">
           <div class="testimonial-text">
-            Be <b>fair and ethical</b> when dealing with local businesses, act as though you’re in their shoes and don’t attempt to pressure local businesses as it creates <b>bitterness</b>.
+            Be <b>fair and ethical</b> when dealing with local businesses, act as though you're in their shoes and don't attempt to pressure local businesses as it creates <b>bitterness</b>.
           </div>
         </div>
       </div>
 
       <div class="advice-card">
-        <span class="quote-icon">“</span>
+        <span class="quote-icon">"</span>
         <div class="card-counter">05/05</div>
         <div class="testimonial-scroll-area">
           <div class="testimonial-text">
@@ -2348,6 +2377,18 @@
     const walk = (x - startX) * 2;
     slider.scrollLeft = scrollLeft - walk;
   });
+
+  // Touch support for the carousel
+  let touchStartX = 0;
+  let touchScrollLeft = 0;
+  slider.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].pageX;
+    touchScrollLeft = slider.scrollLeft;
+  }, { passive: true });
+  slider.addEventListener('touchmove', (e) => {
+    const x = e.touches[0].pageX;
+    slider.scrollLeft = touchScrollLeft - (x - touchStartX);
+  }, { passive: true });
 
   window.onload = sync;
   window.onresize = sync;
@@ -2467,6 +2508,7 @@
     .cta-wrapper { padding: 40px 20px 20px 20px; }
     .cta-card { padding: 35px 20px; }
     .cta-card h2 { font-size: 1.3rem; }
+    .button-link { padding: 15px 25px; font-size: 11px; }
   }
 </style>
 
