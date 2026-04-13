@@ -371,3 +371,2128 @@
   window.onresize = sendHeight;
   setInterval(sendHeight, 2000);
 </script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  ::-webkit-scrollbar { display: none !important; }
+  * { -ms-overflow-style: none !important; scrollbar-width: none !important; box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 10px; /* Reduced padding */
+    background-color: transparent;
+    font-family: 'Outfit', sans-serif !important;
+  }
+
+  .pulse-wrapper {
+    background-color: #00203F; 
+    padding: 40px 30px;
+    border-radius: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    color: white;
+    position: relative;
+    border-top: 4px solid #ECA400; 
+    box-shadow: 0 0 20px rgba(236, 164, 0, 0.2);
+    animation: spiritual-glow 4s infinite ease-in-out;
+    display: flow-root; /* Prevents margin leaking */
+  }
+
+  @keyframes spiritual-glow {
+    0%, 100% { 
+      box-shadow: 0 0 20px rgba(236, 164, 0, 0.2), 0 0 40px rgba(236, 164, 0, 0.05); 
+    }
+    50% { 
+      box-shadow: 0 0 35px rgba(236, 164, 0, 0.4), 0 0 60px rgba(236, 164, 0, 0.15); 
+    }
+  }
+
+  .pulse-wrapper h1 { 
+    font-family: 'Montserrat', sans-serif !important;
+    color: #ECA400; 
+    margin-top: 0;
+    margin-bottom: 25px; 
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .ramadan-layout {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 30px;
+  }
+
+  .text-content { flex: 3; }
+  .text-content p { 
+    color: rgba(255, 255, 255, 0.9); 
+    line-height: 1.7; 
+    margin-bottom: 18px; 
+    font-size: 15px; 
+    font-weight: 400;
+  }
+
+  .image-container { flex: 1.2; text-align: right; }
+  .image-container img {
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    border: 1px solid rgba(236, 164, 0, 0.4);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  }
+
+  .panel-flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; 
+    gap: 20px;
+  }
+
+  .panel-text { flex: 1; }
+
+  .panel-image-small {
+    max-width: 130px; 
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid rgba(236, 164, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    margin-bottom: 5px;
+    flex-shrink: 0;
+  }
+
+  .expand-btn {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-left: 4px solid #ECA400;
+    color: white;
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    margin-top: 12px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  .expand-btn:hover { 
+    background-color: rgba(236, 164, 0, 0.1); 
+    border-color: #ECA400;
+  }
+
+  .content-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 8px 8px;
+    margin-top: -5px;
+  }
+
+  .content-panel.active {
+    max-height: 1200px;
+    padding: 25px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-top: none;
+    margin-bottom: 10px; /* Minor spacing for visual clarity before the edge */
+  }
+
+  .content-panel ul { margin: 0; padding-left: 20px; }
+  .content-panel li { margin-bottom: 15px; font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.8); }
+  
+  .content-panel p { 
+    font-family: 'Montserrat', sans-serif !important;
+    margin-top: 0; 
+    font-weight: 800; 
+    color: #ECA400; 
+    font-size: 12px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+  }
+
+  .arrow { transition: transform 0.3s ease; font-size: 16px; color: #ECA400; }
+  .active-arrow { transform: rotate(90deg); }
+
+  @media (max-width: 600px) {
+    .panel-flex-container { flex-direction: column; align-items: center; }
+    .panel-image-small { max-width: 100px; margin-top: 10px; }
+  }
+</style>
+
+<div id="ramadan-master-container" class="pulse-wrapper">
+  <h1>Fundraising for Ramadan</h1>
+
+  <div class="ramadan-layout">
+    <div class="text-content">
+      <p>Ramadan 2026 is approaching. Here are some initiatives to raise money for your ISoc, whether it is for free Iftar and Suhoor, or for charity.</p>
+      <p>Ramadan is when your university's Muslim community comes together. The Prophet (saw) said, <i>‘Whoever feeds a person breaking his fast will earn the same reward as him, without anything being lessened from the reward of the fasting person.’ [Tirmidhi]</i></p>
+    </div>
+    
+    <div class="image-container">
+      <img src="https://snipboard.io/EXBKAW.jpg" alt="Ramadan Illustration">
+    </div>
+  </div>
+
+  <button class="expand-btn" onclick="toggleSection('small', this)">
+    Small Scale Fundraising <span class="arrow">➜</span>
+  </button>
+  <div id="small" class="content-panel">
+    <div class="panel-flex-container">
+      <div class="panel-text">
+        <ul>
+          <li>Setting up smaller fundraising schemes is a good way to raise money while increasing the exposure of your ISoc.</li>
+          <li>Speak to your events team to set up some fundraising events before Ramadan starts.</li>
+          <li>See the Fundraising at events section for more details.</li>
+        </ul>
+      </div>
+      <a href="https://ibb.co/7N0cGpx9">
+        <img src="https://i.ibb.co/VpkyvC0K/IMG-20250728-WA0046.jpg" alt="Small Scale" border="0" class="panel-image-small">
+      </a>
+    </div>
+  </div>
+
+  <button class="expand-btn" onclick="toggleSection('large', this)">
+    Large Scale Fundraising <span class="arrow">➜</span>
+  </button>
+  <div id="large" class="content-panel">
+    <div class="panel-flex-container">
+      <div class="panel-text">
+        <p>Large scale initiatives usually require more planning:</p>
+        <ul>
+          <li>Identify what you want to achieve during Ramadan. Does your ISoc want to provide free Iftar and Suhoor? If so, how often do you want to provide this service? This will give you an estimate of the amount of money you need to raise for Ramadan.</li>
+          <li>Contact the relevant departments in your university about what you want to achieve this Ramadan—see if they will provide sponsorship. It is important to let them know how much you want to raise and how many meals you want to provide, for transparency. (Student Union, diversity/equality department and individual colleges if applicable, charity sponsors)</li>
+          <li>Speak to your local Muslim community/ Masjid. They may have Ramadan initiatives in place already, and could provide funding, meals and guidance for this time period.</li>
+        </ul>
+      </div>
+      <a href="https://ibb.co/DP40Xqgt">
+        <img src="https://i.ibb.co/zWsqckHr/Whats-App-Image-2025-07-07-at-13-05-52-e178a057.jpg" alt="Large Scale" border="0" class="panel-image-small">
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function sendHeight() {
+    const container = document.getElementById('ramadan-master-container');
+    if(container) {
+      // offsetHeight is more accurate for static layout changes
+      const height = container.offsetHeight;
+      // Reduced buffer to 10px for a tighter fit
+      window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height + 10 }, '*');
+    }
+  }
+
+  function toggleSection(id, btn) {
+    const panel = document.getElementById(id);
+    const arrow = btn.querySelector('.arrow');
+    
+    document.querySelectorAll('.content-panel').forEach(p => {
+      if(p.id !== id) p.classList.remove('active');
+    });
+    document.querySelectorAll('.arrow').forEach(a => {
+      if(a !== arrow) a.classList.remove('active-arrow');
+    });
+
+    panel.classList.toggle('active');
+    arrow.classList.toggle('active-arrow');
+    
+    setTimeout(sendHeight, 300);
+  }
+
+  window.onload = sendHeight;
+  window.onresize = sendHeight;
+  setInterval(sendHeight, 2000);
+</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  ::-webkit-scrollbar { display: none !important; }
+  * { -ms-overflow-style: none !important; scrollbar-width: none !important; box-sizing: border-box; }
+
+  :root {
+    --fosis-navy: #00203F;
+    --fosis-gold: #ECA400;
+    --fosis-grey: #F3F3F3;
+    --white: #FFFFFF;
+    --slate: #475569;
+  }
+
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--fosis-grey);
+  }
+
+  /* SEAMLESS TOP TRANSITION */
+  .spine-top {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--fosis-grey);
+  }
+
+  .spine-line {
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--fosis-navy));
+    opacity: 0.15;
+  }
+
+  .spine-node {
+    width: 10px;
+    height: 10px;
+    background: var(--fosis-navy);
+    border: 2px solid var(--fosis-gold);
+    border-radius: 50%;
+    margin-top: -5px;
+    z-index: 10;
+    box-shadow: 0 0 8px rgba(236, 164, 0, 0.3);
+    animation: beaconPulse 3s infinite ease-in-out;
+  }
+
+  .hero-banner {
+    background-color: var(--fosis-grey);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px 20px 20px 20px;
+    color: var(--fosis-navy);
+  }
+
+  .hero-banner h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.4rem, 6vw, 2rem);
+    font-weight: 900;
+    margin: 5px 0 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+
+  .section-list-container {
+    max-width: 650px;
+    width: 100%;
+    text-align: left;
+  }
+
+  .guide-tag {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--fosis-gold);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+    border-bottom: 2px solid var(--fosis-gold);
+    padding-bottom: 4px;
+  }
+
+  .intro-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+    font-weight: 400;
+    color: var(--slate);
+  }
+
+  .link-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .link-item {
+    color: var(--fosis-navy);
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 32, 63, 0.06); 
+  }
+
+  .link-item::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: var(--fosis-gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .link-item:last-child { border-bottom: none; }
+
+  /* SEAMLESS BOTTOM TRANSITION */
+  .spine-bottom {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--fosis-grey);
+  }
+
+  @keyframes beaconPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-banner { padding: 5px 15px 20px 15px; }
+    .link-item { font-size: 0.9rem; }
+  }
+</style>
+</head>
+<body>
+
+<div id="guide-root">
+  <div class="spine-top">
+    <div class="spine-line"></div>
+    <div class="spine-node"></div>
+  </div>
+
+  <section class="hero-banner">
+    <h1>This Section Includes:</h1>
+
+    <div class="section-list-container">
+      <div class="guide-tag">A Treasurer's Guide</div>
+      <p class="intro-text">
+        Providing professional answers to frequently asked questions on sponsorships, fundraising, and administrative best practices.
+      </p>
+
+      <div class="link-list">
+        <div class="link-item">Where To Start</div>
+        <div class="link-item">Top Tips</div>
+        <div class="link-item">Fundraising: Events & Jumu'ah</div>
+        <div class="link-item">Sponsorships</div>
+        <div class="link-item">Useful Tools & SU Advice</div>
+        <div class="link-item">Advice From Ex-Treasurers</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="spine-bottom">
+    <div class="spine-node"></div>
+  </div>
+</div>
+
+<script>
+  function sync() {
+    const height = document.getElementById('guide-root').scrollHeight;
+    window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height }, '*');
+  }
+  window.onload = sync;
+  window.onresize = sync;
+  setInterval(sync, 2000);
+</script>
+
+</body>
+</html>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+  :root {
+    --brand-blue: #124A7A;
+    --brand-orange: #ECA400;
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #fff;
+  }
+
+  /* Container for the whole section */
+  .focus-container {
+    display: flex;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    transition: all 0.4s ease;
+  }
+
+  /* Column Styling */
+  .column {
+    flex: 1;
+    transition: all 0.4s ease;
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* HOVER LOGIC */
+  .focus-container:hover .column {
+    opacity: 0.3; 
+    filter: grayscale(80%); 
+  }
+
+  .focus-container .column:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+    background-color: #fcfcfc; 
+  }
+
+  /* Header Styling */
+  .col-header {
+    margin-bottom: 30px;
+    border-bottom: 2px dashed #eee;
+    padding-bottom: 15px;
+    min-height: 80px; /* Ensures headers align */
+  }
+
+  .col-header h2 { color: var(--brand-blue); margin: 0; font-size: 24px; }
+  .col-header p { color: #666; font-size: 14px; margin: 5px 0 0 0; }
+
+  /* Timeline/Card Styling */
+  .item-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px; /* Spacing for left side */
+    gap: 15px;
+  }
+
+  /* SPECIFIC FIX: Spread out the right side items to match left height */
+  .right-column {
+    justify-content: space-between;
+  }
+  
+  .right-column .item-card {
+    margin-bottom: 0;
+    padding: 15px 0; /* Adds internal padding to stretch the column */
+  }
+
+  /* The Orange Timeline Line/Dot */
+  .line-indicator {
+    min-width: 14px;
+    height: 14px;
+    border: 3px solid var(--brand-orange);
+    border-radius: 50%;
+    background: white;
+    position: relative;
+  }
+
+  .line-indicator::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: var(--brand-orange);
+    height: 150px; /* Longer line to accommodate stretching */
+    top: 14px;
+    left: 3px;
+    z-index: -1;
+  }
+
+  .item-card:last-child .line-indicator::before { display: none; }
+
+  .content-box {
+    background: white;
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    color: var(--brand-blue);
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 1.5;
+    width: 100%;
+  }
+
+  .content-box i { font-weight: normal; font-style: italic; color: #777; font-size: 12px; }
+
+  @media (max-width: 768px) {
+    .focus-container { flex-direction: column; }
+    .focus-container:hover .column { opacity: 1; filter: none; }
+    .right-column { justify-content: flex-start; }
+  }
+</style>
+
+<div class="focus-container">
+  
+  <div class="column">
+    <div class="col-header">
+      <h2>Where To Start</h2>
+      <p>A recommended timeline to ease you into the role.</p>
+    </div>
+
+    <div class="item-card">
+      <div class="line-indicator"></div>
+      <div class="content-box">Create a bank account (or contact your SU if they manage society finances).</div>
+    </div>
+
+    <div class="item-card">
+      <div class="line-indicator"></div>
+      <div class="content-box">On your ISoc's shared Drive (or equivalent) create a finances folder to keep your spreadsheets and financial documents in.</div>
+    </div>
+
+    <div class="item-card">
+      <div class="line-indicator"></div>
+      <div class="content-box">Reach out to your SU for any treasurer training that they provide.</div>
+    </div>
+
+    <div class="item-card">
+      <div class="line-indicator"></div>
+      <div class="content-box">Reach out to the previous treasurer to transfer ISoc's remaining finances. <i>This is a good time to ask how your ISoc specifically manages its finances!</i></div>
+    </div>
+
+    <div class="item-card">
+      <div class="line-indicator"></div>
+      <div class="content-box">Review the grants your university offers and note the open and close dates.</div>
+    </div>
+
+    <div class="item-card">
+      <div class="line-indicator"></div>
+      <div class="content-box">Discuss with leadership the possibility of working with a sponsor. <i>More information in the sponsorship section.</i></div>
+    </div>
+
+    <div class="item-card">
+      <div class="line-indicator"></div>
+      <div class="content-box">Record these transactions in a spreadsheet on your shared Drive (or equivalent).</div>
+    </div>
+  </div>
+
+  <div class="column right-column">
+    <div class="col-header">
+      <h2>Top Tips</h2>
+      <p>Avoid getting overwhelmed with these simple habits!</p>
+    </div>
+
+    <div class="item-card">
+      <div class="line-indicator"></div>
+      <div class="content-box">Joining conversations and group chats with your events planning team will mean you won’t need to find funding at the last-minute.</div>
+    </div>
+
+    <div class="item-card">
+      <div class="line-indicator"></div>
+      <div class="content-box">Termly or monthly run-downs of expenses (including receipts) on Excel or Sheets allow instant access to recent transactions.</div>
+    </div>
+
+    <div class="item-card">
+      <div class="line-indicator"></div>
+      <div class="content-box">Keep a list of grants/bursaries your university provides, with the date they open.</div>
+    </div>
+
+    <div class="item-card">
+      <div class="line-indicator"></div>
+      <div class="content-box">Having a charity sponsor your society will remove the pressure of trying to find last minute funds. See the Sponsorship section for more details.</div>
+    </div>
+
+    <div class="item-card">
+      <div class="line-indicator"></div>
+      <div class="content-box">When handling reimbursements, keep a copy of the receipt or invoice before sending the refund.</div>
+    </div>
+  </div>
+
+</div>
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Outfit:wght@400;500;600&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  /* GLOBAL CLEANUP */
+  ::-webkit-scrollbar { display: none !important; }
+  * { -ms-overflow-style: none !important; scrollbar-width: none !important; box-sizing: border-box; }
+
+  :root {
+    --fosis-navy: #00203F;
+    --fosis-gold: #ECA400;
+    --fosis-blue: #124A7A;
+    --slate: #475569;
+    --white: #FFFFFF;
+  }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--white);
+    color: var(--fosis-navy);
+    overflow-x: hidden;
+  }
+
+  /* TOP BEACON BRIDGE */
+  .sponsor-bridge {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+    background: var(--white);
+  }
+
+  .beacon-node {
+    width: 14px;
+    height: 14px;
+    background: var(--fosis-navy);
+    border: 3px solid var(--fosis-gold);
+    border-radius: 50%;
+    z-index: 20;
+    box-shadow: 0 0 15px rgba(236, 164, 0, 0.4);
+    animation: beaconPulse 3s infinite ease-in-out;
+  }
+
+  @keyframes beaconPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(236, 164, 0, 0.4); }
+    50% { transform: scale(1.15); box-shadow: 0 0 20px rgba(236, 164, 0, 0.7); }
+  }
+
+  /* CINEMATIC NAVY HEADER */
+  .sponsor-hero {
+    background: var(--fosis-navy);
+    color: var(--white);
+    padding: 35px 15px 45px 15px; 
+    text-align: center;
+    position: relative;
+    border-bottom: 6px solid var(--fosis-gold);
+  }
+
+  .sponsor-hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.8rem, 8vw, 3.5rem); 
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.1;
+  }
+
+  .hero-tag {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--fosis-gold);
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .scroll-indicator {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    opacity: 0.35;
+    animation: arrowBounce 2s infinite;
+  }
+
+  .scroll-indicator svg {
+    fill: var(--fosis-gold);
+    width: 18px;
+    height: 18px;
+  }
+
+  @keyframes arrowBounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(5px); }
+    60% { transform: translateY(2px); }
+  }
+
+  /* PILL-STRIP NAVIGATION */
+  .sponsor-nav-container {
+    max-width: 1000px;
+    margin: -25px auto 0 auto;
+    display: flex;
+    justify-content: center;
+    padding: 0 10px;
+    z-index: 100;
+    position: relative;
+  }
+
+  .nav-strip {
+    background: var(--white);
+    display: flex;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(0,32,63,0.15);
+    padding: 5px;
+    border: 1px solid #f1f5f9;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+  }
+
+  @media (min-width: 800px) {
+    .nav-strip { justify-content: center; width: auto; }
+  }
+
+  .nav-strip::-webkit-scrollbar { display: none; }
+
+  .nav-btn {
+    padding: 10px 20px;
+    border: none;
+    background: transparent;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--slate);
+    cursor: pointer;
+    border-radius: 40px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .nav-btn.active {
+    background: var(--fosis-navy);
+    color: var(--white);
+  }
+
+  /* CONTENT PANES */
+  .display-area {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    min-height: 450px;
+  }
+
+  .content-pane {
+    display: none;
+    animation: contentReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes contentReveal {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .content-label {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--fosis-gold);
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .pane-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.4rem, 6vw, 2.2rem); 
+    text-transform: uppercase;
+    margin: 0 0 20px 0;
+    line-height: 1.1;
+    color: var(--fosis-navy);
+    border-left: 6px solid var(--fosis-gold);
+    padding-left: 20px;
+  }
+
+  .pane-body {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.05rem; 
+    line-height: 1.7;
+    color: var(--slate);
+    font-weight: 400;
+  }
+
+  .pane-body b { color: var(--fosis-navy); font-weight: 600; }
+  .pane-body ul { padding-left: 20px; margin-top: 15px; }
+  .pane-body li { margin-bottom: 12px; }
+
+  .resource-link {
+    font-family: 'Montserrat', sans-serif;
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--fosis-blue);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 2px solid rgba(18, 74, 122, 0.2);
+    transition: 0.3s;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .sponsor-hero { padding: 35px 10px 55px 10px; }
+    .display-area { padding: 35px 15px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="sponsor-bridge">
+    <div class="beacon-node"></div>
+  </div>
+
+  <div id="sponsor-master-root">
+    <header class="sponsor-hero">
+      <span class="hero-tag">Institutional Relationships</span>
+      <h1>Sponsorships</h1>
+      <div class="scroll-indicator">
+        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+      </div>
+    </header>
+
+    <nav class="sponsor-nav-container">
+      <div class="nav-strip">
+        <button id="defaultBtn" class="nav-btn" onclick="showPane(this, 'choosing')">Choosing</button>
+        <button class="nav-btn" onclick="showPane(this, 'reaching')">Reaching Out</button>
+        <button class="nav-btn" onclick="showPane(this, 'receiving')">Return Value</button>
+        <button class="nav-btn" onclick="showPane(this, 'expectations')">Expectations</button>
+      </div>
+    </nav>
+
+    <main class="display-area">
+      <div id="choosing" class="content-pane">
+        <span class="content-label">Things To Consider</span>
+        <h2 class="pane-title">Choosing A Sponsor</h2>
+        <div class="pane-body">
+          When looking for charities to sponsor your ISoc you should consider the following:
+          <ul>
+            <li><b>Sustainability of their projects:</b> Will the money raised by your society be used beneficially long term by the charity? What percentage of money donated goes towards the charity itself?</li>
+            <li><b>How long they have operated in this country:</b> The charity should be suitably developed so that you know it won't dissolve in the near future. Asking other ISocs for their recommendations on which charity to work with is a good way to find a stable sponsorship.</li>
+            <li><b>Transparency:</b> When asking the charity questions, do they share minimal information? As you are dealing with large amounts of money, transparency is key from both parties.</li>
+            <li><b>Annual reports:</b> This should be available on their website.</li>
+          </ul>
+          <a href="https://docs.google.com/document/d/1kUOkdSv9QxMwZQl4qrflLKoJQRhPnlBKHVTYdbph43M/edit" target="_blank" class="resource-link">Guidance on Charity Contracts ➔</a>
+        </div>
+      </div>
+
+      <div id="reaching" class="content-pane">
+        <span class="content-label">Initial Contact</span>
+        <h2 class="pane-title">Reaching Out To The Sponsor</h2>
+        <div class="pane-body">
+          <ul>
+            <li><b>Initial contact:</b> Meeting with a member of your chosen sponsor will allow you to ask in-depth questions regarding your relationship with the charity. If you have the facilities, assigning a sponsorship officer or equivalent in your ISoc means that there is one main point of contact with the sponsor.</li>
+            <li><b>When to ask for financial aid:</b> Sponsors prefer to cover larger costs, such as charity events and Ramadan. They may prefer for smaller event costs such as weekly gatherings to be paid for by your ISoc. It's important to communicate clearly with the charity about what they are willing to cover.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="receiving" class="content-pane">
+        <span class="content-label">Mutual Value</span>
+        <h2 class="pane-title">What the Sponsor Receives</h2>
+        <div class="pane-body">
+          Usually, all donations from your event will be returned to your charity sponsor. As before, it is important to clarify this with the sponsor.
+          <ul>
+            <li><b>Brand Awareness:</b> Crediting the charity on social media when they are funding the event is also expected.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="expectations" class="content-pane">
+        <span class="content-label">Collaboration</span>
+        <h2 class="pane-title">Event Expectations From The Sponsor</h2>
+        <div class="pane-body">
+          This depends on the charity you choose to partner with. Usually, the charity allows your society to have full control of what events you choose to host.
+          <ul>
+            <li><b>Speakers:</b> They may present speakers who collaborate with their charity for talks which can provide an insightful opportunity for your society!</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </div>
+
+<script>
+  function showPane(btn, paneId) {
+    document.querySelectorAll('.content-pane').forEach(p => p.style.display = 'none');
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(paneId).style.display = 'block';
+    btn.classList.add('active');
+    syncHeight();
+  }
+
+  function syncHeight() {
+    const el = document.getElementById('sponsor-master-root');
+    if (el) {
+      const height = el.offsetHeight;
+      window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height }, '*');
+    }
+  }
+
+  window.onload = () => { 
+    document.getElementById('defaultBtn').click(); 
+    syncHeight();
+  };
+  window.onresize = syncHeight;
+  setInterval(syncHeight, 1000);
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* HIDE SCROLLBARS */
+  ::-webkit-scrollbar { display: none !important; }
+  * { -ms-overflow-style: none !important; scrollbar-width: none !important; box-sizing: border-box; }
+
+  :root {
+    --brand-blue: #124A7A;
+    --brand-navy: #00203F;
+    --brand-orange: #ECA400;
+    --light-grey: #f8fafc;
+  }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    margin: 0; padding: 0;
+    background-color: #ffffff;
+    color: #333;
+    overflow-x: hidden;
+  }
+
+  /* 2. BRIDGE CONNECTOR */
+  .fund-bridge {
+    width: 100%;
+    background-color: var(--light-grey);
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    z-index: 10;
+  }
+
+  .connector-line {
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, #cbd5e1, var(--brand-orange));
+    opacity: 0.6;
+  }
+
+  /* 3. MINIMALIST TYPOGRAPHY HEADER */
+  .fund-minimal-header {
+    background-color: var(--light-grey);
+    text-align: center;
+    padding: 20px 20px 40px 20px;
+    margin: 0;
+  }
+
+  .fund-minimal-header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    color: var(--brand-navy);
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin: 0;
+    line-height: 0.9;
+  }
+
+  .fund-minimal-header .sub-text {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--brand-orange);
+    font-weight: 800;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .fund-scroll-indicator {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    opacity: 0.5;
+  }
+
+  .fund-scroll-indicator svg {
+    fill: var(--brand-orange);
+    width: 22px;
+    height: 22px;
+  }
+
+  /* 4. CONTENT LAYOUT */
+  .fundraising-container {
+    display: flex;
+    gap: 25px;
+    max-width: 1100px;
+    margin: -20px auto 0; 
+    padding: 0 20px 60px 20px;
+    position: relative;
+    z-index: 5;
+  }
+
+  .section-box {
+    flex: 1;
+    background: #ffffff;
+    border: 1px solid #f1f5f9;
+    border-top: 6px solid var(--brand-blue);
+    border-radius: 20px;
+    padding: 30px 25px;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  }
+
+  .preview-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 20px 0;
+    border: 1px solid #f1f5f9;
+  }
+
+  .expanded-info {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: white;
+    padding: 35px 30px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    overflow-y: auto;
+    text-align: left;
+    border-radius: 18px;
+    z-index: 10;
+  }
+
+  .section-box:hover .expanded-info, .section-box.active .expanded-info { opacity: 1; visibility: visible; }
+  .section-box:hover, .section-box.active { border-top-color: var(--brand-orange); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 32, 63, 0.1); }
+
+  h2 { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--brand-navy); margin: 0; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+  h3 { font-family: 'Montserrat', sans-serif; font-size: 1rem; color: var(--brand-blue); border-bottom: 2px solid var(--brand-orange); display: inline-block; margin-bottom: 15px; text-transform: uppercase; font-weight: 800; }
+  p.description { font-size: 1rem; margin: 15px 0; line-height: 1.5; color: #475569; font-weight: 500; }
+  ul { padding-left: 20px; margin: 0; }
+  li { font-size: 0.95rem; margin-bottom: 12px; line-height: 1.6; color: #334155; }
+  .hover-hint { font-family: 'Montserrat', sans-serif; margin-top: auto; font-size: 0.8rem; color: var(--brand-orange); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
+
+  @media (max-width: 768px) {
+    .fundraising-container { flex-direction: column; padding-bottom: 40px; }
+    .section-box { width: 100%; min-height: 440px; }
+  }
+</style>
+</head>
+<body>
+
+  <div id="fund-root">
+    <header class="fund-minimal-header">
+      <div class="fund-bridge">
+        <div class="connector-line"></div>
+      </div>
+      <span class="sub-text">Barakah through Sincerity</span>
+      <h1>Fundraising</h1>
+      <div class="fund-scroll-indicator">
+        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+      </div>
+    </header>
+
+    <div class="fundraising-container">
+      <div class="section-box" onclick="this.classList.toggle('active')">
+        <h2>Fundraising at events</h2>
+        <img src="https://image2url.com/r2/default/images/1768755770106-0eabd69d-1708-46a6-aedb-c8339b315546.jpg" class="preview-image" alt="Events">
+        <p class="description">Advice on transactions, card machines, and auctions.</p>
+        <div class="hover-hint">Tap for details →</div>
+        <div class="expanded-info">
+          <h3>Payments & Card Machines</h3>
+          <ul>
+            <li><b>The Student Union:</b> However, they take a small fee, so coordinate with your SU beforehand and consider whether you are raising money for your ISoc or for charity.</li> 
+            <li><b>Your sponsor:</b> This is beneficial when all the money for the event is going directly to the charity.</li> 
+            <li>At events, it is time-efficient for most committee members to take payments. Using transaction apps which committee members can download onto their phones means the funds raised at the event will be in one account. Be careful, most apps take a percentage!</li>
+          </ul>
+          <br>
+          <h3>Selling Items</h3>
+          <ul><li><b>Charity auction events:</b> Auctioning items at a dinner or event is a good way to raise money for charity.</li></ul>
+        </div>
+      </div>
+
+      <div class="section-box" onclick="this.classList.toggle('active')">
+        <h2>Fundraising at Jumu'ah</h2>
+        <img src="https://image2url.com/r2/default/images/1769949247237-a3a99343-e0b2-477d-8649-aa17eb402063.jpg" class="preview-image" alt="Jumu'ah">
+        <p class="description">Guidelines for collecting donations during Friday prayers.</p>
+        <div class="hover-hint">Tap for details →</div>
+        <div class="expanded-info">
+          <h3>University Students Only</h3>
+          <ul>
+            <li>Usually the case for universities in larger cities where there are Masjids available for the general public.</li> 
+            <li>ISoc committee members can stand outside collecting donations with collection boxes or card machines.</li> 
+            <li>Post QR codes connected to your fundraising account. Speak to your Prayer Room Head about posters.</li>
+            <li>Promote fundraising events ISoc is hosting after Jumu'ah.</li>
+          </ul>
+          <br>
+          <h3>Wider Muslim Community</h3>
+          <ul><li>Connect with committee members from your local Masjid. They may provide sponsorship for Ramadan or throughout the academic year.</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function sync() {
+      const root = document.getElementById('fund-root');
+      if (root) {
+          const totalHeight = root.scrollHeight;
+          window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: totalHeight + 10 }, '*');
+      }
+    }
+    window.onload = sync;
+    window.onresize = sync;
+    setInterval(sync, 1500);
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Outfit:wght@400;700&family=Amiri&display=swap" rel="stylesheet">
+
+<style>
+  /* GLOBAL CLEANUP */
+  ::-webkit-scrollbar { display: none !important; }
+  * { -ms-overflow-style: none !important; scrollbar-width: none !important; box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+  }
+
+  #quran-mini-root {
+    width: 100%;
+    background: transparent;
+    text-align: center;
+    overflow: hidden;
+    padding: 0; /* Removed bottom padding entirely */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Removed fixed min-height to allow collapse */
+  }
+
+  /* TOP VERTICAL DIVIDE */
+  .top-divide-bridge {
+    width: 100%;
+    height: 40px; 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    z-index: 2;
+  }
+
+  .vertical-line-grey {
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, #e2e8f0, #cbd5e1);
+    opacity: 0.8;
+  }
+
+  /* BACKGROUND IMAGES */
+  .global-bg-img {
+    position: absolute;
+    width: clamp(120px, 15vw, 200px);
+    height: auto;
+    opacity: 0.12;
+    filter: grayscale(100%);
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .global-left {
+    left: 5%;
+    top: 20%;
+    transform: rotate(-10deg);
+  }
+
+  .global-right {
+    right: 5%;
+    bottom: 5%; /* Adjusted for tighter bottom */
+    transform: rotate(10deg);
+  }
+
+  /* THE BUBBLE / ISLAND */
+  .verse-island {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    width: 90%;
+    background: #F3F3F3; 
+    padding: 40px 6%; 
+    border-radius: 40px; 
+    border: 1px solid rgba(0, 32, 63, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    margin-top: -10px;
+    margin-bottom: 20px; /* Provides a small clean gap before the end of the frame */
+  }
+
+  /* ARABIC SHIMMER EFFECT */
+  .arabic-shimmer {
+    font-family: 'Amiri', serif;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    line-height: 1.6;
+    margin-bottom: 15px;
+    direction: rtl;
+    color: #00203F;
+    animation: softShimmer 6s infinite ease-in-out;
+  }
+
+  @keyframes softShimmer {
+    0%, 100% { opacity: 0.85; color: #00203F; } 
+    50% { opacity: 1; color: #ECA400; text-shadow: 0 0 8px rgba(236, 164, 0, 0.3); } 
+  }
+
+  .quote-marks {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    color: #ECA400;
+    line-height: 0;
+    margin-bottom: 10px;
+    opacity: 0.35;
+  }
+
+  .verse-translation {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+    font-weight: 700;
+    color: #00203F;
+    line-height: 1.5;
+    max-width: 480px;
+    margin: 0 auto;
+    letter-spacing: 0.1px;
+    font-style: normal;
+  }
+
+  .verse-citation {
+    margin-top: 20px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    color: #124A7A;
+    font-size: 9px;
+    letter-spacing: 2px;
+    opacity: 0.5;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 600px) {
+    .global-bg-img { display: none; }
+    .verse-island { 
+        padding: 35px 20px;
+        border-radius: 30px; 
+        width: 88%;
+        margin-bottom: 15px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div id="quran-mini-root">
+
+    <img src="https://i.ibb.co/J1qq2JK/Screenshot-2026-02-13-204123.png" class="global-bg-img global-left">
+    <img src="https://i.ibb.co/J1qq2JK/Screenshot-2026-02-13-204123.png" class="global-bg-img global-right">
+
+    <div class="top-divide-bridge">
+        <div class="vertical-line-grey"></div>
+    </div>
+
+    <div class="verse-island">
+        <div class="arabic-shimmer">
+            لَّيۡسَ عَلَيۡكَ هُدَىٰهُمۡ وَلَٰكِنَّ ٱللَّهَ يَهۡدِي مَن يَشَآءُۗ وَمَا تُنفِقُواْ مِنۡ خَيۡرٖ فَلِأَنفُسِكُمۡۚ...
+        </div>
+
+        <div class="quote-marks">“</div>
+
+        <blockquote class="verse-translation">
+            "Whatever good you spend is for yourselves... and whatever you spend of good – it will be fully repaid to you, and you will not be wronged."
+        </blockquote>
+
+        <div class="verse-citation">
+            — Surah Al-Baqarah 2:272 —
+        </div>
+    </div>
+
+</div>
+
+<script>
+  function sync() {
+    const el = document.getElementById('quran-mini-root');
+    if (el) {
+        // getBoundingClientRect().height is more accurate for fractional pixels
+        const height = el.getBoundingClientRect().height;
+        window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height }, '*');
+    }
+  }
+  window.onload = sync;
+  window.onresize = sync;
+  // Interval helps handle dynamic font loading shifts
+  setInterval(sync, 1000);
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* HIDE SCROLLBARS */
+  ::-webkit-scrollbar { display: none !important; }
+  * { -ms-overflow-style: none !important; scrollbar-width: none !important; box-sizing: border-box; }
+
+  :root {
+    --navy: #00203F;
+    --gold: #ECA400;
+    --blue: #124A7A;
+    --white: #FFFFFF;
+    --soft-grey: #F8FAFC;
+    --slate: #475569;
+  }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--white);
+    color: var(--navy);
+  }
+
+  /* HEADER AREA */
+  .faq-title-area {
+    text-align: center;
+    max-width: 1100px;
+    margin: 30px auto 5px auto;
+    padding: 0 15px;
+  }
+
+  .faq-pill {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--white);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .faq-title-area h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.6rem, 7vw, 2.8rem);
+    margin: 0;
+    text-transform: uppercase;
+    line-height: 1.0;
+  }
+
+  /* HIGH-VISIBILITY BOUNCING ARROW */
+  .faq-scroll-indicator {
+    margin: 2px 0 10px 0;
+    display: flex;
+    justify-content: center;
+    opacity: 0.8;
+    animation: arrowBounceHigh 1.5s infinite;
+  }
+
+  .faq-scroll-indicator svg {
+    fill: var(--gold);
+    width: 24px;
+    height: 24px;
+    filter: drop-shadow(0 0 5px rgba(236, 164, 0, 0.4));
+  }
+
+  @keyframes arrowBounceHigh {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50% { transform: translateY(8px); opacity: 1; }
+  }
+
+  /* MAIN LAYOUT */
+  .faq-grid {
+    display: flex;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 30px;
+    padding: 0 20px 60px 20px;
+  }
+
+  /* NAVIGATION PANEL */
+  .faq-nav {
+    flex: 0 0 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-card {
+    background: var(--white);
+    border: 1px solid #e2e8f0;
+    padding: 16px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--blue);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-card.active {
+    background: var(--navy);
+    color: var(--white);
+    border-color: var(--navy);
+    box-shadow: 0 8px 15px rgba(0,32,63,0.1);
+  }
+
+  /* CONTENT PANEL */
+  .faq-display {
+    flex: 1;
+    background: var(--soft-grey);
+    border-radius: 20px;
+    padding: 35px;
+    min-height: 400px;
+    border: 1px solid #f1f5f9;
+  }
+
+  .content-pane {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .pane-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1.4rem;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    border-bottom: 3px solid var(--gold);
+    display: inline-block;
+    padding-bottom: 4px;
+    color: var(--navy);
+  }
+
+  .pane-body { font-size: 1.05rem; line-height: 1.7; color: var(--slate); font-weight: 400; }
+  .pane-body ul { padding-left: 20px; margin-top: 15px; }
+  .pane-body li { margin-bottom: 10px; }
+  .pane-body b { color: var(--navy); font-weight: 600; }
+
+  @media (max-width: 850px) {
+    .faq-grid { flex-direction: column; padding: 0 10px 40px 10px; gap: 20px; }
+    .faq-nav { flex: none; flex-direction: row; overflow-x: auto; padding: 5px 5px 15px 5px; gap: 10px; -webkit-overflow-scrolling: touch; border-bottom: 1px solid #f1f5f9; }
+    .nav-card { flex: 0 0 auto; min-width: 140px; padding: 12px 15px; font-size: 9px; justify-content: center; }
+    .nav-card .arrow { display: none; }
+    .faq-display { padding: 25px 20px; border-radius: 15px; }
+  }
+</style>
+</head>
+<body>
+
+  <div id="faq-master">
+    <div class="faq-title-area">
+      <div class="faq-pill">Common Queries</div>
+      <h1>Frequently Asked Questions</h1>
+      <div class="faq-scroll-indicator">
+        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+      </div>
+    </div>
+
+    <div class="faq-grid">
+      <nav class="faq-nav" id="nav-container">
+        <div id="defaultTab" class="nav-card active" onclick="openPane(this, 'tools')">
+          Tools & Apps <span class="arrow">→</span>
+        </div>
+        <div class="nav-card" onclick="openPane(this, 'income')">
+          Income <span class="arrow">→</span>
+        </div>
+        <div class="nav-card" onclick="openPane(this, 'coordinate')">
+          Coordination <span class="arrow">→</span>
+        </div>
+        <div class="nav-card" onclick="openPane(this, 'benefits')">
+          Benefits <span class="arrow">→</span>
+        </div>
+      </nav>
+
+      <main class="faq-display">
+        <div id="tools" class="content-pane" style="display: block;">
+          <h2 class="pane-title">What Tools And Apps Are Useful?</h2>
+          <div class="pane-body">
+            Spreadsheets to track finances and reimbursements.
+            <ul>
+              <li><b>Google Sheets:</b> Upskill here/ Proton</li>
+              <li><b>Excel Spreadsheets:</b> Keep track of income, profits and losses. Check our Event Budget Template at the top of the page.</li>
+              <li><b>Google Forms, Typeform or direct messaging for committee reimbursements:</b> For any reimbursement to go through, an invoice or receipt must be provided beforehand!</li>
+              <li><b>Collecting card payments:</b> SumUp and SquareSpace. See Fundraising at Events on advice for handling online payments.</li>
+              <li><b>Selling tickets for events:</b> Eventbrite, Luma or your Student Union.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="income" class="content-pane">
+          <h2 class="pane-title">how can i recieve an income</h2>
+          <div class="pane-body">
+            <ul>
+              <li><b>Membership Fees:</b> Incentivise with perks and future discounts.</li>
+              <li><b>University Grants:</b> Keep a list of potential grants and their open/ close dates.</li>
+              <li><b>Retail and Hospitality Discounts:</b> Restaurants, takeaways, dessert shops, clothes shops, halal butchers. Use the Discount Card Script as a template for the contract.</li>
+              <li><b>Jumu’ah donations:</b> Take cash and card donations, explore potential for standing orders.</li>
+              <li><b>Dowah/ Donation Stalls:</b> Increase the visibility of ISoc in your local community whilst collecting donations.</li>
+              <li><b>Merchandise:</b> Making merchandise available only to those who are registered members of ISoc is a good way to quantify an average number of active members.</li>
+              <li><b>Alumni Contacts:</b> Start and maintain your Alumni network! From lecturers to members of the local community.</li>
+              <li><b>Event Ticket Sales:</b> Reduce cost for max profit- use early bird pricing, group tickets and competitions.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="coordinate" class="content-pane">
+          <h2 class="pane-title">What Should I Coordinate With My SU?</h2>
+          <div class="pane-body">
+            <ul>
+              <li>Check with your SU if either a bank account monitored by the SU or a personal bank account is better for your ISoc. Your university may have specific guidelines on where transactions must take place, so clarifying this with your SU in the beginning removes any uncertainty.</li>
+              <li>As the SU deals with a large number of societies, it is important to give them time to respond to reimbursements or queries. Work around bank holidays or closures when planning events in advance. The Budget Tracker Template at the top of the Finances page is a good way to keep on top of this!</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="benefits" class="content-pane">
+          <h2 class="pane-title">How Does The SU Benefit My ISoc?</h2>
+          <div class="pane-body">
+            <ul>
+              <li>With an account run by the SU, it means they know exactly where your transactions are going, which can benefit you when asking for grants/ bursaries.</li>
+              <li>The SU account can provide run downs of your expenses instantaneously, so that you have instant access to the amount in the account without having to be responsible for the account itself.</li>
+            </ul>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+<script>
+  function openPane(btn, paneId) {
+    var panes = document.getElementsByClassName("content-pane");
+    for (var i = 0; i < panes.length; i++) { panes[i].style.display = "none"; }
+    var navs = document.getElementsByClassName("nav-card");
+    for (var i = 0; i < navs.length; i++) { navs[i].classList.remove("active"); }
+    document.getElementById(paneId).style.display = "block";
+    btn.classList.add("active");
+    if (window.innerWidth < 850) {
+      btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+    sync();
+  }
+
+  function sync() {
+    const el = document.getElementById('faq-master');
+    if (el) {
+      const height = el.scrollHeight + 20;
+      window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height }, '*');
+    }
+  }
+
+  window.onload = sync;
+  window.onresize = sync;
+  setInterval(sync, 1000);
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* HIDE MAIN SCROLLBARS */
+  ::-webkit-scrollbar { display: none !important; }
+  * { -ms-overflow-style: none !important; scrollbar-width: none !important; box-sizing: border-box; }
+
+  :root {
+    --navy: #00203F;
+    --gold: #ECA400;
+    --white: #FFFFFF;
+    --slate: #475569;
+    --fosis-gray: #f8fafc;
+  }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--white);
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  #advice-root {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* --- SPOTLIGHT HERO FOR TESTIMONIALS --- */
+  .advice-hero {
+    position: relative;
+    width: 100%;
+    background: var(--fosis-gray);
+    padding: 50px 20px 20px; /* Increased top padding since arc is gone */
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .advice-hero::before {
+    content: "WISDOM";
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: rgba(0, 32, 63, 0.03);
+    letter-spacing: 15px;
+    z-index: 1;
+    pointer-events: none;
+    white-space: nowrap;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 700px;
+  }
+
+  .hero-content h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.6rem, 8vw, 2.5rem);
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .accent-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 15px;
+  }
+
+  .line {
+    width: 30px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 2px;
+  }
+
+  .hero-subtitle {
+    color: var(--gold);
+    font-weight: 800;
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  /* --- CAROUSEL SECTION --- */
+  .advice-wrapper {
+    width: 100%;
+    background-color: var(--fosis-gray);
+    padding: 20px 0 60px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .carousel-viewport {
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+    gap: 20px;
+    padding: 20px 0 40px 0;
+    scroll-snap-type: x mandatory;
+    cursor: grab;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding: 0 6vw;
+  }
+
+  .advice-card {
+    flex: 0 0 360px;
+    height: 380px; 
+    background: var(--white);
+    border-radius: 28px;
+    padding: 40px 30px;
+    scroll-snap-align: center;
+    border: 1px solid #eef2f6;
+    box-shadow: 0 12px 30px rgba(0, 32, 63, 0.05);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .advice-card:first-child { margin-left: 6vw; }
+  .advice-card:last-child { margin-right: 6vw; }
+
+  .quote-icon {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 60px;
+    color: var(--gold);
+    opacity: 0.15;
+    line-height: 0;
+  }
+
+  .card-counter {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+    color: var(--gold);
+    opacity: 0.6;
+  }
+
+  .testimonial-scroll-area {
+    overflow-y: auto;
+    padding-right: 12px;
+    height: 100%;
+    margin-top: 25px;
+  }
+
+  .testimonial-scroll-area::-webkit-scrollbar {
+    display: block !important;
+    width: 3px !important;
+  }
+  .testimonial-scroll-area::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 10px;
+  }
+
+  .testimonial-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--slate);
+    font-weight: 500;
+  }
+
+  .testimonial-text b {
+    color: var(--navy);
+    font-weight: 800;
+  }
+
+  .drag-hint {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--navy);
+    opacity: 0.3;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 600px) {
+    .advice-card { 
+      flex: 0 0 85vw;
+      height: 400px; 
+      padding: 45px 25px;
+    }
+    .advice-hero::before { font-size: 5rem; letter-spacing: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="advice-root">
+  <div class="advice-hero">
+    <div class="hero-content">
+      <h1>Advice from<br>Ex-Treasurers</h1>
+      <div class="accent-wrapper">
+        <div class="line"></div>
+        <div class="hero-subtitle">Shared Experience</div>
+        <div class="line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="advice-wrapper">
+    <div class="carousel-viewport" id="slider">
+      
+      <div class="advice-card">
+        <span class="quote-icon">“</span>
+        <div class="card-counter">01/05</div>
+        <div class="testimonial-scroll-area">
+          <div class="testimonial-text">
+            The nature of the role is that sometimes you have to be the <b>“villain”</b>. Check yourself. On the flip side, you have a hand in every bit of <b>khair</b> that the ISoc will achieve in your year inshallah. Make sure your <b>intentions</b> are right to maximise the benefit.
+          </div>
+        </div>
+      </div>
+
+      <div class="advice-card">
+        <span class="quote-icon">“</span>
+        <div class="card-counter">02/05</div>
+        <div class="testimonial-scroll-area">
+          <div class="testimonial-text">
+            No one will really understand the <b>burden you carry</b>; it may stress you out at times when you have no idea where the money will come from but trust me when you do things for the <b>sake of Allah</b>, He will pave ways for you that you couldn’t imagine.
+          </div>
+        </div>
+      </div>
+
+      <div class="advice-card">
+        <span class="quote-icon">“</span>
+        <div class="card-counter">03/05</div>
+        <div class="testimonial-scroll-area">
+          <div class="testimonial-text">
+            Keep track of finances. <b>Budget often and re-evaluate</b> finances. If things are going well, don’t feel bad for spending a bit more and vice versa.
+          </div>
+        </div>
+      </div>
+
+      <div class="advice-card">
+        <span class="quote-icon">“</span>
+        <div class="card-counter">04/05</div>
+        <div class="testimonial-scroll-area">
+          <div class="testimonial-text">
+            Be <b>fair and ethical</b> when dealing with local businesses, act as though you’re in their shoes and don’t attempt to pressure local businesses as it creates <b>bitterness</b>.
+          </div>
+        </div>
+      </div>
+
+      <div class="advice-card">
+        <span class="quote-icon">“</span>
+        <div class="card-counter">05/05</div>
+        <div class="testimonial-scroll-area">
+          <div class="testimonial-text">
+            You will find the role is more focused on <b>keeping stakeholders satisfied</b> rather than the monetary management aspect.
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="drag-hint">Scroll Left/Right ➔</div>
+  </div>
+</div>
+
+<script>
+  function sync() {
+    const root = document.getElementById('advice-root');
+    if (root) {
+        const height = root.scrollHeight;
+        window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height + 20 }, '*');
+    }
+  }
+
+  const slider = document.getElementById('slider');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.style.cursor = 'grabbing';
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+  slider.addEventListener('mouseleave', () => { isDown = false; slider.style.cursor = 'grab'; });
+  slider.addEventListener('mouseup', () => { isDown = false; slider.style.cursor = 'grab'; });
+  slider.addEventListener('mousemove', (e) => {
+    if(!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 2;
+    slider.scrollLeft = scrollLeft - walk;
+  });
+
+  window.onload = sync;
+  window.onresize = sync;
+  setInterval(sync, 1500);
+</script>
+</body>
+</html>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  /* HIDE SCROLLBARS */
+  ::-webkit-scrollbar { display: none !important; }
+  * { -ms-overflow-style: none !important; scrollbar-width: none !important; box-sizing: border-box; }
+
+  :root {
+    --navy: #00203F;
+    --gold: #ECA400;
+    --white: #FFFFFF;
+  }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--white);
+  }
+
+  .cta-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Reduced bottom padding to remove white space */
+    padding: 60px 40px 40px 40px;
+    background: var(--white);
+  }
+
+  .cta-card {
+    max-width: 500px;
+    width: 100%;
+    background: var(--white);
+    padding: 40px;
+    border-radius: 24px;
+    text-align: center;
+    border: 1px solid rgba(0, 32, 63, 0.05);
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+    
+    /* BREATHING GOLD GLOW */
+    box-shadow: 0 0 20px rgba(236, 164, 0, 0.15);
+    animation: cta-glow 4s infinite ease-in-out;
+  }
+
+  @keyframes cta-glow {
+    0%, 100% { 
+      box-shadow: 0 0 30px rgba(236, 164, 0, 0.2), 0 15px 35px rgba(0, 32, 63, 0.05); 
+    }
+    50% { 
+      box-shadow: 0 0 50px rgba(236, 164, 0, 0.4), 0 15px 45px rgba(236, 164, 0, 0.1); 
+    }
+  }
+
+  .cta-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .cta-card h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin: 0 0 15px 0;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .cta-card p {
+    color: #64748b;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  .button-link {
+    background-color: var(--gold); 
+    color: var(--navy); 
+    padding: 18px 35px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-radius: 12px;
+    display: inline-block;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 10px 20px rgba(236, 164, 0, 0.2);
+  }
+
+  .button-link:hover {
+    background-color: var(--navy);
+    color: var(--gold);
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 32, 63, 0.2);
+  }
+
+  .footer-line {
+    width: 40px;
+    height: 3px;
+    background: var(--gold);
+    margin: 40px auto 0 auto;
+    border-radius: 10px;
+    opacity: 0.5;
+  }
+
+  @media (max-width: 480px) {
+    .cta-wrapper { padding: 40px 20px 20px 20px; }
+    .cta-card { padding: 35px 20px; }
+    .cta-card h2 { font-size: 1.3rem; }
+  }
+</style>
+
+<div id="cta-root" class="cta-wrapper">
+  <div class="cta-card">
+    <h2>Does your ISoc have something to add?</h2>
+    <p>Help build the collective legacy. Fill out the form below to see your advice featured on the Hub!</p>
+    
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-qQmK4UP4isCw3XEvAWC8J_siYzTYHG-TS4XiUdp45oj3Jg/viewform?usp=header" target="_blank" class="button-link">
+      Treasurer Advice Form →
+    </a>
+
+    <div class="footer-line"></div>
+  </div>
+</div>
+
+<script>
+  function sync() {
+    const root = document.getElementById('cta-root');
+    if (root) {
+      // offsetHeight provides the exact layout height including padding
+      const height = root.offsetHeight;
+      window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: height }, '*');
+    }
+  }
+  window.onload = sync;
+  window.onresize = sync;
+  setInterval(sync, 1500);
+</script>
