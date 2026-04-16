@@ -3,24 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <style>
-    :root {
-        --brand-orange: #ECA400; 
-        --brand-white: #FFFFFF; 
-    }
-
     body, html { 
         margin: 0; padding: 0; 
         width: 100%; height: 100vh;
         overflow: hidden;
-        background-color: #000;
+        background-color: #001021; /* Deepest Navy */
         font-family: 'Montserrat', sans-serif;
     }
 
-    /* THE HD ENGINE */
-    .carousel-container {
+    /* THE CAROUSEL */
+    .carousel {
         position: absolute;
         width: 100%; height: 100%;
         z-index: 1;
@@ -30,25 +25,29 @@
         position: absolute;
         width: 100%; height: 100%;
         background-size: cover;
-        background-position: center center;
+        background-position: center 20%; /* Adjusted to show the best part of screenshots */
         opacity: 0;
-        /* Much slower, smoother transition */
-        transition: opacity 3s ease-in-out; 
-        /* Forces HD Rendering */
-        image-rendering: -webkit-optimize-contrast; 
+        transition: opacity 2.5s ease-in-out;
     }
 
     .slide.active { opacity: 1; }
 
-    /* DARK OVERLAY (Replaces the "Blurry" Filter) */
-    .overlay-tint {
+    /* THE DRAMATIC GRADIENT (Keeps the middle HD) */
+    .gradient-overlay {
         position: absolute;
         top: 0; left: 0;
         width: 100%; height: 100%;
-        background: rgba(0, 0, 0, 0.4); /* Just enough to see text, but images stay HD */
+        background: linear-gradient(
+            to bottom, 
+            rgba(0, 16, 33, 0.7) 0%, 
+            transparent 40%, 
+            transparent 60%, 
+            rgba(0, 16, 33, 0.8) 100%
+        );
         z-index: 5;
     }
 
+    /* TEXT BOX */
     .content {
         position: relative;
         z-index: 10;
@@ -58,8 +57,7 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        color: var(--brand-white);
-        text-shadow: 0px 2px 15px rgba(0,0,0,0.8);
+        color: #FFFFFF;
     }
 
     .eyebrow {
@@ -67,55 +65,62 @@
         font-size: 0.7rem;
         text-transform: uppercase;
         letter-spacing: 12px;
-        color: var(--brand-orange);
-        margin-bottom: 20px;
+        color: #ECA400;
+        margin-bottom: 25px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
 
     .title-top {
         display: block;
         font-weight: 900;
-        font-size: 4rem;
-        letter-spacing: 8px;
+        font-size: clamp(3rem, 7vw, 4.5rem);
+        letter-spacing: 10px;
+        line-height: 1;
+        text-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
     .title-bottom {
         display: block;
         font-weight: 400;
-        font-size: 2.8rem;
-        letter-spacing: 28px;
-        color: var(--brand-orange);
-        text-indent: 28px;
-        margin-top: 5px;
+        font-size: clamp(2rem, 5vw, 3rem);
+        letter-spacing: 25px;
+        color: #ECA400;
+        text-indent: 25px;
+        margin-top: 10px;
+        text-shadow: 0 5px 15px rgba(0,0,0,0.5);
     }
 
     .quote {
         font-family: 'Playfair Display', serif;
         font-style: italic;
-        font-size: 1.5rem;
-        max-width: 800px;
-        margin: 30px 0;
+        font-size: 1.4rem;
+        max-width: 750px;
+        margin: 40px 0;
+        opacity: 0.9;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.8);
     }
 
-    .footer-bar {
-        margin-top: 50px;
+    .footer-line {
+        margin-top: 30px;
         padding-top: 20px;
-        width: 40%;
-        border-top: 2px solid var(--brand-orange);
-        color: var(--brand-orange);
+        width: 300px;
+        border-top: 1px solid rgba(236, 164, 0, 0.5);
+        color: #ECA400;
         font-family: 'Playfair Display', serif;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
     }
 </style>
 </head>
 <body>
 
-<div class="carousel-container">
+<div class="carousel">
     <div class="slide active" style="background-image: url('https://i.ibb.co/GvkFc1vh/Screenshot-2026-04-16-at-15-49-11.jpg');"></div>
     <div class="slide" style="background-image: url('https://i.ibb.co/nNZdh9BP/image.jpg');"></div>
     <div class="slide" style="background-image: url('https://i.ibb.co/KxgyCNrh/image.jpg');"></div>
 </div>
 
-<div class="overlay-tint"></div>
+<div class="gradient-overlay"></div>
 
 <div class="content">
     <span class="eyebrow">The National Standard</span>
@@ -124,7 +129,7 @@
         <span class="title-bottom">HUB</span>
     </h1>
     <p class="quote">&ldquo;To serve the Muslim students is to serve the future of the Ummah&rdquo;</p>
-    <div class="footer-bar">Built for the next generation of leadership</div>
+    <div class="footer-line">Built for the next generation</div>
 </div>
 
 <script>
@@ -133,9 +138,9 @@
     function cycle() {
         slides[i].classList.remove('active');
         i = (i + 1) % slides.length;
-        slides[index = i].classList.add('active');
+        slides[i].classList.add('active');
     }
-    setInterval(cycle, 8000); // 8 seconds per image
+    setInterval(cycle, 10000); // 10 seconds for a calm, professional feel
 </script>
 
 </body>
