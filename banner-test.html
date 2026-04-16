@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iHub Banner Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<style>
+    :root {
+        --brand-orange: #ECA400; 
+        --brand-white: #FFFFFF; 
+    }
+
+    body, html { 
+        margin: 0; padding: 0; 
+        width: 100%; height: 100vh;
+        overflow: hidden;
+        background-color: #000;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    /* THE HD CAROUSEL */
+    .carousel-container {
+        position: absolute;
+        width: 100%; height: 100%;
+        z-index: 1;
+    }
+
+    .slide {
+        position: absolute;
+        width: 100%; height: 100%;
+        background-size: cover;
+        background-position: center center;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        /* Slight dimming only to ensure text contrast */
+        filter: brightness(65%); 
+    }
+
+    .slide.active { opacity: 1; }
+
+    /* OVERLAY LAYER */
+    .overlay {
+        position: relative;
+        z-index: 10;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: var(--brand-white);
+        padding: 20px;
+        /* Strategic shadow for HD backgrounds */
+        text-shadow: 0px 4px 15px rgba(0,0,0,0.9);
+    }
+
+    .eyebrow {
+        font-weight: 700;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 12px;
+        color: var(--brand-orange);
+        margin-bottom: 1.5rem;
+    }
+
+    .main-title {
+        text-transform: uppercase;
+        margin: 0;
+    }
+
+    .title-top {
+        display: block;
+        font-weight: 900;
+        font-size: clamp(2.5rem, 8vw, 5rem);
+        letter-spacing: 10px;
+        line-height: 1;
+    }
+
+    .title-bottom {
+        display: block;
+        font-weight: 400;
+        font-size: clamp(1.8rem, 5vw, 3.5rem);
+        letter-spacing: 32px;
+        color: var(--brand-orange);
+        text-indent: 32px;
+        margin-top: 10px;
+    }
+
+    .tagline {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 6px;
+        margin-top: 3rem;
+        font-weight: 700;
+    }
+
+    .quote {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: clamp(1.2rem, 3vw, 1.8rem);
+        max-width: 900px;
+        margin: 2rem auto;
+        line-height: 1.5;
+    }
+
+    .socials {
+        display: flex;
+        gap: 40px;
+        margin-top: 1rem;
+    }
+
+    .socials a {
+        color: var(--brand-white);
+        font-size: 1.5rem;
+        transition: transform 0.3s;
+    }
+
+    .socials a:hover { transform: scale(1.2); color: var(--brand-orange); }
+
+    .footer-bar {
+        margin-top: 4rem;
+        padding-top: 2rem;
+        width: 40%;
+        border-top: 2px solid var(--brand-orange);
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: 1.3rem;
+        color: var(--brand-orange);
+        text-shadow: none;
+    }
+</style>
+</head>
+<body>
+
+<div class="carousel-container">
+    <div class="slide active" style="background-image: url('https://i.ibb.co/GvkFc1vh/Screenshot-2026-04-16-at-15-49-11.jpg');"></div>
+    <div class="slide" style="background-image: url('https://i.ibb.co/nNZdh9BP/image.jpg');"></div>
+    <div class="slide" style="background-image: url('https://i.ibb.co/KxgyCNrh/image.jpg');"></div>
+</div>
+
+<div class="overlay">
+    <span class="eyebrow">The National Standard</span>
+    
+    <h1 class="main-title">
+        <span class="title-top">ISoc Essentials</span>
+        <span class="title-bottom">HUB</span>
+    </h1>
+
+    <span class="tagline">Providing 60 years of institutional knowledge</span>
+
+    <p class="quote">
+        &ldquo;To serve the Muslim students is to serve the future of the Ummah&rdquo;
+    </p>
+
+    <div class="socials">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <div class="footer-bar">
+        Built for the next generation of leadership
+    </div>
+</div>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    let i = 0;
+
+    function cycle() {
+        slides[i].classList.remove('active');
+        i = (i + 1) % slides.length;
+        slides[i].classList.add('active');
+    }
+
+    setInterval(cycle, 5000);
+</script>
+
+</body>
+</html>
