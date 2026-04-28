@@ -21,6 +21,7 @@
             /* Accents */
             --fosis-gold: #ECA400; 
             --fosis-red: #ef4444;
+            --fosis-green: #143336;
             --accent-gold-soft: #fffdf5;
             
             /* Greys & Whites */
@@ -1094,7 +1095,8 @@
         }
 
         .gov-container { 
-            background: var(--white); 
+            background: var(--fosis-green); 
+            color: var(--white);
             border: 1.5px solid var(--fosis-navy); 
             border-radius: 16px; 
             padding: 20px; 
@@ -1106,13 +1108,18 @@
             flex-direction: column; 
             gap: 20px; 
         }
+        
+        .gov-column { 
+            color: #a8d5d5;
+        }
 
         .gov-column h4 { 
             font-family: 'Montserrat'; 
             border-bottom: 2px solid var(--fosis-gold); 
             padding-bottom: 8px; 
             margin: 0 0 10px 0; 
-            font-size: 0.9rem; 
+            font-size: 0.9rem;
+            color: var(--white);
         }
 
         .najwa-box { 
@@ -2711,11 +2718,11 @@
         </div>
 
         <div class="gov-container">
-            <h3 style="text-align: center; font-family: 'Montserrat'; margin-bottom: 20px; letter-spacing: 1px; font-size: 1.1rem; color: var(--fosis-navy);">COMMITTEE GOVERNANCE</h3>
+            <h3 style="text-align: center; font-family: 'Montserrat'; margin-bottom: 20px; letter-spacing: 1px; font-size: 1.1rem; color: var(--fosis-gold);">COMMITTEE GOVERNANCE</h3>
             <div class="gov-grid">
                 <div class="gov-column">
                     <h4>Conduct</h4>
-                    <p style="font-size: 13px; color: #475569; line-height: 1.5;">Modesty in gender interactions and polite language are required. Professionalism is its own form of Da'wah.</p>
+                    <p style="font-size: 13px; color: #E8EAED; line-height: 1.5;">Modesty in gender interactions and polite language are required. Professionalism is its own form of Da'wah.</p>
                     <div class="najwa-box">
                         <strong style="color: var(--fosis-red); font-size: 11px; display: block;">WARNING: NAJWA</strong>
                         <p style="font-size: 11px; margin: 3px 0 0 0; color: var(--soft-grey);">Secret cliques breed suspicion. Transparency is non-negotiable.</p>
@@ -2723,7 +2730,7 @@
                 </div>
                 <div class="gov-column">
                     <h4>Barakah</h4>
-                    <ul style="padding-left: 18px; font-size: 13px; color: #475569; line-height: 1.6; margin-top: 5px;">
+                    <ul style="padding-left: 18px; font-size: 13px; color: #E8EAED; line-height: 1.6; margin-top: 5px;">
                         <li>Start with Qur'an and Du'a.</li>
                         <li>Maintain minutes and agendas.</li>
                         <li>Rotate Jumu'ah reminders.</li>
@@ -2732,7 +2739,7 @@
                 </div>
                 <div class="gov-column">
                     <h4>Sustainability</h4>
-                    <p style="font-size: 13px; color: #475569; line-height: 1.5;">When service harms your relationship with Allah, it is a warning. Delegation is a form of Tawakkul.</p>
+                    <p style="font-size: 13px; color: #E8EAED; line-height: 1.5;">When service harms your relationship with Allah, it is a warning. Delegation is a form of Tawakkul.</p>
                     <div class="salah-banner">SALAH OVER MEETINGS — NO EXCEPTIONS</div>
                 </div>
             </div>
