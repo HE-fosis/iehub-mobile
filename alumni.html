@@ -418,7 +418,7 @@
         }
 
         /* =========================================
-           4. TABBED GUIDES (NEW, DEV, DISENGAGED, EST)
+           4. TABBED GUIDELINES (NEW, DEV, DISENGAGED, EST)
            ========================================= */
         .guide-container {
             width: 100%;
@@ -617,15 +617,8 @@
             font-family: 'Nunito', sans-serif; font-weight: 600;
             font-size: 1.1rem; max-width: 700px; line-height: 1.6;
             background-color: var(--placeholder-grey); padding: 20px; border-radius: 6px;
-            color: #718096; border: 2px dashed var(--fosis-grey); margin-bottom: 30px;
+            color: #718096; border: 2px dashed var(--fosis-grey); margin-bottom: 10px; /* Reduced margin since button is removed */
         }
-        .btn-retreat-cta {
-            background-color: var(--fosis-navy); color: var(--white); padding: 18px 45px;
-            border-radius: 6px; text-decoration: none; font-weight: 800; font-size: 1.1rem;
-            display: inline-block; transition: 0.3s ease; text-transform: uppercase;
-            letter-spacing: 1px; border: 2px solid var(--fosis-navy);
-        }
-        .btn-retreat-cta:hover { background-color: var(--white); color: var(--fosis-navy); }
 
         /* =========================================
            MOBILE RESPONSIVE BREAKPOINTS
@@ -1034,11 +1027,10 @@
                     <div class="retreats-highlight-card">
                         <div class="retreats-icon-placeholder">RETREAT ICON</div>
                         <h3>FOSIS ISoc Alumni Retreats</h3>
-                        <div class="retreats-desc-placeholder">
+                        <div class="retreats-desc-placeholder" style="margin-bottom: 0;">
                             [CONTENT PLACEHOLDER]<br>
-                            Describe the purpose of the retreats (spiritual reflection, safe space for mature discussions, national networking) and provide guidance on upcoming regional dates or registration processes here.
+                            Describe the purpose of the retreats (spiritual reflection, safe space for mature discussions, national networking) and showcase highlights or imagery from previous regional events.
                         </div>
-                        <a href="#" target="_blank" class="btn-retreat-cta">Register Interest →</a>
                     </div>
                 </div>
             </div>
