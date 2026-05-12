@@ -1,197 +1,1090 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Nunito:wght@500;700&display=swap" rel="stylesheet">
-<style>
-  * { box-sizing: border-box; }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ISoc Alumni Network - Full Page</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================================
+           GLOBAL RESETS & VARIABLES
+           ========================================= */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100vh; /* Ensures it covers the screen */
-    background-color: #00203F; /* FOSIS Navy Background */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centers content vertically */
-    align-items: center;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden; 
-    overflow-y: auto; /* FIX: Allows scrolling if the screen is small! */
-  }
+        :root {
+            --fosis-navy: #00203F;
+            --fosis-blue: #124A7A;
+            --fosis-gold: #ECA400;
+            --fosis-grey: #C7CBC8;
+            --white: #FFFFFF;
+            --placeholder-grey: #E2E8F0;
+        }
 
-  /* Background Icons Layer */
-  .icon-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
-  }
+        html, body {
+            width: 100%;
+            background-color: transparent; /* Blends into your white Google Site */
+            font-family: 'Montserrat', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            color: var(--fosis-navy);
+            /* FIX: Allow scrolling while preventing double-vision bugs */
+            overflow-x: hidden;
+            overflow-y: auto; 
+        }
 
-  .floating-icon {
-    position: absolute;
-    fill: #ECA400; /* FOSIS Gold */
-    opacity: 0.08; /* Slightly more visible against the dark blue */
-    will-change: transform;
-    animation: slowDrift 20s infinite ease-in-out alternate;
-  }
+        /* Master wrapper for the resize script to measure */
+        #main-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-  /* Optimized sizing and placement */
-  .i1 { width: 100px; top: 8%; left: 7%; } /* Brotherhood */
-  .i2 { width: 70px; top: 12%; right: 12%; animation-delay: -3.5s; } /* Grad Cap */
-  .i3 { width: 110px; bottom: 12%; left: 10%; animation-delay: -7s; } /* Network */
+        /* Section Spacing Container */
+        .page-section {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 50px 15px;
+        }
 
-  @keyframes slowDrift {
-    0% { transform: translate3d(0, 0, 0) rotate(0deg); }
-    100% { transform: translate3d(15px, -20px, 0) rotate(5deg); }
-  }
+        /* =========================================
+           1. HERO BANNER SECTION (DARK BLUE)
+           ========================================= */
+        .hero-section {
+            width: 100%;
+            min-height: 100vh; /* Takes up the full initial screen */
+            background-color: var(--fosis-navy); /* Dark Blue Background */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-  .hero-container {
-    width: 95%;
-    max-width: 1300px;
-    padding: 40px 15px; 
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 10;
-    position: relative;
-  }
+        .icon-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
 
-  h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    color: #ffffff;
-    text-transform: uppercase;
-    font-size: clamp(2.5rem, 10vw, 5.5rem); 
-    line-height: 0.95; 
-    margin: 0 0 15px 0;
-    letter-spacing: -2px;
-    text-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    width: 100%;
-  }
+        .floating-icon {
+            position: absolute;
+            fill: var(--fosis-gold);
+            opacity: 0.08;
+            will-change: transform;
+            animation: slowDrift 20s infinite ease-in-out alternate;
+        }
 
-  h1 span {
-    display: block;
-  }
+        .i1 { width: 100px; top: 8%; left: 7%; } 
+        .i2 { width: 70px; top: 12%; right: 12%; animation-delay: -3.5s; } 
+        .i3 { width: 110px; bottom: 12%; left: 10%; animation-delay: -7s; } 
 
-  .swipe-zone {
-    margin: 15px 0 25px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+        @keyframes slowDrift {
+            0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+            100% { transform: translate3d(15px, -20px, 0) rotate(5deg); }
+        }
 
-  .chevron {
-    width: 12px; 
-    height: 12px; 
-    border-right: 3px solid #ECA400; /* FOSIS Gold */
-    border-bottom: 3px solid #ECA400; /* FOSIS Gold */
-    transform: rotate(45deg);
-    animation: pulse 2s infinite;
-  }
+        .hero-container {
+            width: 95%;
+            max-width: 1300px;
+            text-align: center;
+            z-index: 10;
+        }
 
-  @keyframes pulse {
-    0% { transform: rotate(45deg) translate(-3px, -3px); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: rotate(45deg) translate(3px, 3px); opacity: 0; }
-  }
+        .hero-container h1 {
+            font-weight: 800;
+            color: var(--white);
+            text-transform: uppercase;
+            font-size: clamp(2.5rem, 10vw, 5.5rem); 
+            line-height: 0.95; 
+            margin: 0 0 15px 0;
+            letter-spacing: -2px;
+            text-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
 
-  .swipe-text {
-    color: #ECA400; /* FOSIS Gold */
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px; 
-    font-weight: 800;
-    letter-spacing: 2px;
-    margin-top: 6px;
-    text-transform: uppercase;
-  }
+        .hero-container h1 span { display: block; }
 
-  .verse-content {
-    width: 100%;
-    max-width: 850px;
-  }
+        .swipe-zone {
+            margin: 15px 0 25px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-  .arabic {
-    font-size: clamp(1.2rem, 4vw, 1.8rem);
-    color: #ECA400; /* FOSIS Gold */
-    margin-bottom: 15px;
-    display: block;
-    line-height: 1.8;
-    direction: rtl; 
-  }
+        .chevron {
+            width: 12px; height: 12px; 
+            border-right: 3px solid var(--fosis-gold);
+            border-bottom: 3px solid var(--fosis-gold);
+            transform: rotate(45deg);
+            animation: pulse 2s infinite;
+        }
 
-  .translation {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 600;
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1.6;
-    margin: 0 auto 15px auto;
-  }
+        @keyframes pulse {
+            0% { transform: rotate(45deg) translate(-3px, -3px); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: rotate(45deg) translate(3px, 3px); opacity: 0; }
+        }
 
-  .citation {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 0.8rem;
-    color: rgba(236, 164, 0, 0.7); /* Muted FOSIS Gold */
-    text-transform: uppercase;
-    letter-spacing: 4px;
-  }
+        .swipe-text {
+            color: var(--fosis-gold);
+            font-size: 10px; 
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-top: 6px;
+            text-transform: uppercase;
+        }
 
-  @media (min-width: 1024px) {
-    h1 { line-height: 0.9; margin-bottom: 20px; }
-  }
+        .verse-content {
+            width: 100%;
+            max-width: 850px;
+            margin: 0 auto;
+        }
 
-  @media (max-width: 480px) {
-    .floating-icon { display: none; }
-    h1 { letter-spacing: -1px; }
-  }
-</style>
+        .hero-arabic {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            color: var(--fosis-gold);
+            margin-bottom: 15px;
+            display: block;
+            line-height: 1.8;
+            direction: rtl; 
+        }
+
+        .hero-translation {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin: 0 auto 15px auto;
+        }
+
+        .hero-citation {
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: rgba(236, 164, 0, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        /* =========================================
+           2. INTRO MODULE & CTA
+           ========================================= */
+        .alumni-intro-wrapper {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .intro-header { text-align: center; }
+
+        .intro-header h1 {
+            font-weight: 800;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .intro-header h2 {
+            font-weight: 800;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: var(--fosis-blue);
+            line-height: 1.4;
+        }
+
+        .quote-block {
+            background-color: #FAFAFA;
+            border-left: 6px solid var(--fosis-gold);
+            padding: 30px;
+            margin: 0 auto;
+            max-width: 800px;
+            text-align: center;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .quote-block p {
+            font-weight: 500;
+            font-style: italic;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            line-height: 1.7;
+        }
+
+        .quote-block .citation {
+            display: block;
+            margin-top: 15px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            color: var(--fosis-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 10px 0;
+        }
+
+        .pillar-card {
+            padding: 25px;
+            border: 1px solid var(--fosis-grey);
+            border-radius: 8px;
+            background-color: var(--white);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--fosis-blue);
+        }
+
+        .pillar-icon { margin-bottom: 20px; }
+        .pillar-icon svg { width: 40px; height: 40px; fill: var(--fosis-gold); }
+
+        .pillar-card h3 {
+            font-weight: 800;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .pillar-card p {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #4A4A4A;
+            line-height: 1.6;
+        }
+
+        /* HIGHLIGHTED CTA CARD */
+        .cta-highlight-card {
+            background-color: var(--white);
+            padding: 45px 20px;
+            border-radius: 12px;
+            max-width: 850px;
+            margin: 10px auto 30px;
+            border: 2px solid var(--fosis-navy);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            text-align: center;
+        }
+
+        .cta-eyebrow {
+            font-weight: 800;
+            color: var(--fosis-gold);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .cta-highlight-card h3 {
+            font-weight: 800;
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+        .cta-highlight-card h3 span { color: var(--fosis-gold); }
+
+        .cta-desc {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            color: var(--fosis-blue);
+            font-size: 1.05rem;
+            max-width: 650px;
+            margin: 0 auto 25px;
+            line-height: 1.5;
+        }
+
+        .cta-features {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+            font-weight: 800;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+        }
+        .cta-features span { display: flex; align-items: center; gap: 6px; }
+        .cta-features svg { width: 16px; height: 16px; fill: var(--fosis-gold); }
+
+        .btn-register {
+            background-color: var(--fosis-navy);
+            color: var(--white);
+            padding: 18px 45px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.05rem;
+            display: inline-block;
+            transition: 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--fosis-navy);
+        }
+        .btn-register:hover {
+            background-color: var(--white);
+            color: var(--fosis-navy);
+        }
+
+        /* =========================================
+           3. FRAMELESS INFOGRAPHIC
+           ========================================= */
+        .infographic-wrapper {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .infographic-header { text-align: center; }
+        .infographic-header h2 {
+            font-weight: 800;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+        .infographic-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--fosis-gold);
+            border-radius: 2px;
+        }
+
+        .infographic-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding-top: 10px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .icon-container {
+            width: 75px; height: 75px;
+            background-color: rgba(18, 74, 122, 0.06);
+            border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover .icon-container {
+            background-color: var(--fosis-gold);
+            transform: scale(1.08);
+            box-shadow: 0 8px 20px rgba(236, 164, 0, 0.3);
+        }
+
+        .icon-container svg { width: 35px; height: 35px; fill: var(--fosis-blue); transition: fill 0.3s ease; }
+        .info-item:hover .icon-container svg { fill: var(--fosis-navy); }
+
+        .info-item h3 {
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .info-item p {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #4A4A4A;
+            line-height: 1.6;
+            max-width: 250px;
+        }
+
+        /* =========================================
+           4. TABBED GUIDES (NEW, DEV, DISENGAGED, EST)
+           ========================================= */
+        .guide-container {
+            width: 100%;
+            max-width: 900px;
+            background: var(--white);
+        }
+
+        .guide-header { text-align: center; margin-bottom: 30px; }
+        .guide-header h2 {
+            font-weight: 800;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            margin-bottom: 10px;
+        }
+        .guide-header p {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            color: #5d6d7e;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .tab-nav {
+            display: flex; gap: 10px;
+            border-bottom: 3px solid var(--fosis-grey);
+            margin-bottom: 30px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tab-btn {
+            background: none; border: none;
+            padding: 15px 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--fosis-grey);
+            cursor: pointer;
+            white-space: nowrap;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .tab-btn::after {
+            content: ''; position: absolute;
+            bottom: -3px; left: 0; width: 100%; height: 3px;
+            background-color: transparent; transition: background-color 0.3s ease;
+        }
+        .tab-btn:hover { color: var(--fosis-blue); }
+        .tab-btn.active { color: var(--fosis-navy); }
+        .tab-btn.active::after { background-color: var(--fosis-gold); }
+
+        .tab-content { display: none; animation: fadeIn 0.4s ease-in-out; }
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .intro-box {
+            background-color: #f8f9fa;
+            border-left: 5px solid var(--fosis-blue);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 30px;
+        }
+        .intro-box p {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            color: var(--fosis-blue);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .step-list { display: flex; flex-direction: column; gap: 20px; }
+        .step-card {
+            background: var(--white);
+            border: 1px solid #e1e5e8;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            position: relative;
+            overflow: hidden;
+        }
+        .step-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%;
+            background-color: var(--fosis-navy);
+        }
+
+        .step-card h3 {
+            font-weight: 800;
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .step-number {
+            background-color: var(--fosis-gold);
+            color: var(--white);
+            width: 28px; height: 28px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; font-size: 0.9rem;
+        }
+
+        .step-card p, .step-card ul {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .step-card ul { margin-left: 20px; margin-top: 10px;}
+        .step-card li { margin-bottom: 6px; }
+
+        .action-highlight {
+            display: inline-block;
+            background-color: rgba(236, 164, 0, 0.1);
+            color: #b07a00;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+
+        /* =========================================
+           5. SPOTLIGHTS & RETREATS
+           ========================================= */
+        .alumni-extra-wrapper {
+            width: 100%;
+            max-width: 1100px;
+            display: flex; flex-direction: column; gap: 60px;
+        }
+
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-header h2 {
+            font-weight: 800; font-size: clamp(2rem, 5vw, 3rem);
+            line-height: 1.1; margin-bottom: 15px; letter-spacing: -1px; text-transform: uppercase;
+        }
+        .section-header p {
+            font-family: 'Nunito', sans-serif; font-weight: 600;
+            font-size: clamp(1rem, 2vw, 1.2rem); color: var(--fosis-blue);
+            max-width: 700px; margin: 0 auto;
+        }
+
+        .spotlight-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+        }
+        .spotlight-card {
+            background-color: var(--white); padding: 30px;
+            border: 1px solid var(--fosis-grey); border-radius: 8px;
+            text-align: center; position: relative; overflow: hidden;
+            transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+        .spotlight-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background-color: transparent; transition: background-color 0.3s ease;
+        }
+        .spotlight-card:hover {
+            transform: translateY(-5px); border-color: var(--fosis-blue);
+            box-shadow: 0 10px 25px rgba(0, 32, 63, 0.08);
+        }
+        .spotlight-card:hover::before { background-color: var(--fosis-gold); }
+
+        .isoc-logo-placeholder {
+            width: 90px; height: 90px; background-color: var(--placeholder-grey);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 25px; color: #718096; font-weight: 700; font-size: 0.7rem;
+            text-transform: uppercase; border: 2px dashed var(--fosis-grey);
+        }
+
+        .spotlight-card h3 { font-weight: 800; font-size: 1.4rem; margin-bottom: 15px; text-transform: uppercase; }
+        .spotlight-card p { font-family: 'Nunito', sans-serif; font-weight: 600; color: #4A4A4A;}
+
+        .quick-wins {
+            display: flex; flex-direction: column; gap: 10px; text-align: left;
+            margin-top: 20px; border-top: 1px solid var(--fosis-grey); padding-top: 20px;
+        }
+        .quick-win-item { display: flex; align-items: center; gap: 8px; color: var(--fosis-blue); font-weight: 600; font-size: 0.95rem; }
+        .quick-win-item svg { width: 18px; height: 18px; fill: var(--fosis-gold); flex-shrink: 0; }
+
+        .retreats-highlight-card {
+            background-color: var(--white); padding: 50px 20px; border-radius: 12px;
+            max-width: 900px; margin: 0 auto; border: 2px solid var(--fosis-navy);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06); text-align: center;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .retreats-icon-placeholder {
+            width: 70px; height: 70px; background-color: var(--placeholder-grey);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 25px; color: #718096; font-weight: 700; border: 2px dashed var(--fosis-grey);
+        }
+        .retreats-highlight-card h3 {
+            font-weight: 800; font-size: clamp(2rem, 5vw, 2.6rem); line-height: 1.1;
+            margin-bottom: 20px; letter-spacing: -0.5px; text-transform: uppercase;
+        }
+        .retreats-desc-placeholder {
+            font-family: 'Nunito', sans-serif; font-weight: 600;
+            font-size: 1.1rem; max-width: 700px; line-height: 1.6;
+            background-color: var(--placeholder-grey); padding: 20px; border-radius: 6px;
+            color: #718096; border: 2px dashed var(--fosis-grey); margin-bottom: 30px;
+        }
+        .btn-retreat-cta {
+            background-color: var(--fosis-navy); color: var(--white); padding: 18px 45px;
+            border-radius: 6px; text-decoration: none; font-weight: 800; font-size: 1.1rem;
+            display: inline-block; transition: 0.3s ease; text-transform: uppercase;
+            letter-spacing: 1px; border: 2px solid var(--fosis-navy);
+        }
+        .btn-retreat-cta:hover { background-color: var(--white); color: var(--fosis-navy); }
+
+        /* =========================================
+           MOBILE RESPONSIVE BREAKPOINTS
+           ========================================= */
+        @media (max-width: 900px) {
+            .infographic-grid { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
+        }
+        @media (max-width: 600px) {
+            .hero-container h1 { letter-spacing: -1px; }
+            .quote-block { padding: 20px; border-left-width: 4px; }
+            .pillar-card { padding: 20px; }
+            .cta-highlight-card { padding: 35px 15px; border-width: 1.5px; }
+            .cta-features { flex-direction: column; align-items: center; gap: 12px; }
+            .infographic-grid { grid-template-columns: 1fr; row-gap: 40px; }
+            .tab-btn { padding: 12px 15px; font-size: 0.85rem; }
+            .step-card { padding: 20px; }
+            .alumni-extra-wrapper { gap: 50px; }
+            .section-header { margin-bottom: 30px; }
+            .spotlight-card { padding: 25px; }
+            .retreats-highlight-card { padding: 40px 15px; border-width: 1.5px; }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="icon-canvas">
-    <svg class="floating-icon i1" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 3-1.34 3-3S9.66 5 8 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-    <svg class="floating-icon i2" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
-    <svg class="floating-icon i3" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-  </div>
+    <div id="main-wrapper">
 
-  <div class="hero-container" id="fosis-alumni-banner">
-    <h1>
-      <span>Alumni</span>
-      <span>& Community</span>
-    </h1>
-    
-    <div class="swipe-zone">
-      <div class="chevron"></div>
-      <div class="swipe-text">SCROLL</div>
-    </div>
+        <section class="hero-section">
+            <div class="icon-canvas">
+                <svg class="floating-icon i1" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 3-1.34 3-3S9.66 5 8 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                <svg class="floating-icon i2" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+                <svg class="floating-icon i3" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            </div>
+            <div class="hero-container">
+                <h1><span>Alumni</span><span>& Community</span></h1>
+                <div class="swipe-zone">
+                    <div class="chevron"></div>
+                    <div class="swipe-text">SCROLL</div>
+                </div>
+                <div class="verse-content">
+                    <span class="hero-arabic">إِنَّمَا ٱلْمُؤْمِنُونَ إِخْوَةٌ فَأَصْلِحُوا بَيْنَ أَخَوَيْكُمْ ۚ وَٱتَّقُوا ٱللَّهَ لَعَلَّكُمْ تُرْحَمُونَ</span>
+                    <p class="hero-translation">"The believers are but one brotherhood, so make peace between your brothers. And be mindful of Allah so you may be shown mercy."</p>
+                    <div class="hero-citation">Surah Al-Hujurat 49:10</div>
+                </div>
+            </div>
+        </section>
 
-    <div class="verse-content">
-      <span class="arabic">إِنَّمَا ٱلْمُؤْمِنُونَ إِخْوَةٌ فَأَصْلِحُوا بَيْنَ أَخَوَيْكُمْ ۚ وَٱتَّقُوا ٱللَّهَ لَعَلَّكُمْ تُرْحَمُونَ</span>
-      <p class="translation">"The believers are but one brotherhood, so make peace between your brothers. And be mindful of Allah so you may be shown mercy."</p>
-      <div class="citation">Surah Al-Hujurat 49:10</div>
-    </div>
-  </div>
+        <section class="page-section">
+            <div class="alumni-intro-wrapper">
+                <div class="intro-header">
+                    <h1>ISoc Alumni</h1>
+                    <h2>Start, Sustain & Stay Connected</h2>
+                </div>
+                <div class="quote-block">
+                    <p>“The believers are but one brotherhood, so make peace between your brothers. And be mindful of Allah so you may be shown mercy.”</p>
+                    <span class="citation">Qur’an, 49:10</span>
+                </div>
+                <div class="pillars-grid">
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.64-2.25 1.64-1.74 0-2.26-1.05-2.32-1.93H7.83c.09 1.65 1.14 2.82 2.97 3.23V19h2.32v-1.73c1.69-.34 2.82-1.38 2.82-2.93 0-2.02-1.56-2.76-3.63-3.2z"/></svg>
+                        </div>
+                        <h3>Our Legacy</h3>
+                        <p>Since 1963, FOSIS has supported Muslim students across the UK and Ireland. Alumni engagement extends this legacy, connecting generations to ensure continuity of service and support.</p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 9h-2V7h-2v5H6v-2h2V7c0-1.1.9-2 2-2h2v2h-2v3h2v2zm5-2h-2v2h2v2h-2v2h-2v-2h2v-2h-2v-2h2V7h-2V5h2v2h2v3z"/></svg>
+                        </div>
+                        <h3>The Framework</h3>
+                        <p>This guide serves as a practical roadmap for ISocs to build, sustain, and strengthen alumni connections, complete with communication strategies and ethical best practices.</p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 3-1.34 3-3S9.66 5 8 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                        </div>
+                        <h3>The Impact</h3>
+                        <p>A thriving network allows Alumni to offer invaluable mentorship, career guidance, and practical advice, helping current students navigate their journey more effectively.</p>
+                    </div>
+                </div>
+                
+                <div class="cta-highlight-card">
+                    <div class="cta-eyebrow">Legacy Beyond the Degree</div>
+                    <h3>Join the <span>National</span> Alumni Network</h3>
+                    <p class="cta-desc">Building a bridge between generations of Muslim students to ensure continuity, mentorship, and support across the UK and Ireland.</p>
+                    <div class="cta-features">
+                        <span><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> START</span>
+                        <span><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> SUSTAIN</span>
+                        <span><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> STAY CONNECTED</span>
+                    </div>
+                    <a href="https://fosis.uk/alumni" target="_blank" class="btn-register">Register Now →</a>
+                </div>
+            </div>
+        </section>
 
-  <script>
-    function sendHeight() {
-      const unit = document.getElementById('fosis-alumni-banner');
-      if (unit) {
-        window.parent.postMessage({ sentinel: 'amp', type: 'embed-size', height: unit.offsetHeight + 60 }, '*');
-      }
-    }
-    window.onload = sendHeight;
-    window.onresize = sendHeight;
-    setTimeout(sendHeight, 500);
-    setTimeout(sendHeight, 1500);
-  </script>
+        <section class="page-section">
+            <div class="infographic-wrapper">
+                <div class="infographic-header">
+                    <h2>Why Alumni Network Matters</h2>
+                </div>
+                <div class="infographic-grid">
+                    <div class="info-item">
+                        <div class="icon-container"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 3-1.34 3-3S9.66 5 8 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+                        <h3>Mentorship</h3>
+                        <p>Leadership and spiritual guidance from those who’ve successfully navigated the path before you.</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon-container"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></div>
+                        <h3>Sustainability</h3>
+                        <p>Ensuring smoother handovers, retaining institutional memory, and building long-term strategies.</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon-container"><svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg></div>
+                        <h3>Opportunities</h3>
+                        <p>Direct access to valuable internships, career development, and expansive professional circles.</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon-container"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+                        <h3>Resources</h3>
+                        <p>Crucial financial support for campaigns, community iftars, and vital campus facilities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section">
+            <div class="guide-container">
+                <div class="guide-header">
+                    <h2>Select Your ISoc Stage</h2>
+                    <p>Every ISoc is at a different point in their alumni journey. Select the stage that best describes your society to view your tailored roadmap.</p>
+                </div>
+
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="openTab(event, 'new')">New ISocs</button>
+                    <button class="tab-btn" onclick="openTab(event, 'developing')">Developing</button>
+                    <button class="tab-btn" onclick="openTab(event, 'disengaged')">Disengaged</button>
+                    <button class="tab-btn" onclick="openTab(event, 'established')">Established</button>
+                </div>
+
+                <div id="new" class="tab-content active">
+                    <div class="intro-box">
+                        <p>Many ISocs do not have an established alumni network, and that’s completely normal. What matters most is taking simple, intentional steps to reconnect with past members and create a foundation future committees can build upon.</p>
+                    </div>
+                    <div class="step-list">
+                        <div class="step-card">
+                            <h3><span class="step-number">1</span> Identify the Alumni Landscape</h3>
+                            <p>Before reaching out, understand who your alumni are and where they might be. Build a basic picture, even if the list starts small.</p>
+                            <ul>
+                                <li>Create a simple database (Google Sheets/Notion) of previous committee members.</li>
+                                <li>Search for former members on LinkedIn who reference the university.</li>
+                                <li>Ask current and older students for contacts—word of mouth is highly effective.</li>
+                            </ul>
+                            <span class="action-highlight">Aim for 5-10 solid contacts to start.</span>
+                        </div>
+                        <div class="step-card">
+                            <h3><span class="step-number">2</span> Make Initial Contact</h3>
+                            <p>The first message sets the tone. Keep it short, simple, and welcoming without applying pressure.</p>
+                            <ul>
+                                <li>Draft a personalised message thanking them for their past contribution.</li>
+                                <li>Create a simple online form for them to register interest. Ensure you include a GDPR data consent statement.</li>
+                                <li>Set up a stall at graduation events to catch people in person.</li>
+                            </ul>
+                        </div>
+                        <div class="step-card">
+                            <h3><span class="step-number">3</span> Build the Alumni Group</h3>
+                            <p>Once alumni respond, focus on connection rather than heavy structure.</p>
+                            <ul>
+                                <li>Create a central communication channel (e.g., a WhatsApp group).</li>
+                                <li>Nominate one or two "Alumni Liaisons" from the ISoc committee to maintain contact.</li>
+                                <li>Organise an informal first gathering to rebuild familiarity and trust.</li>
+                            </ul>
+                        </div>
+                        <div class="step-card">
+                            <h3><span class="step-number">4</span> Establish Purpose and Light Structure</h3>
+                            <p>Consistency matters more than intensity.</p>
+                            <ul>
+                                <li>Ask alumni what they want from the relationship (social, spiritual, networking).</li>
+                                <li>Identify shared goals (mentorship, sustaining the ISoc).</li>
+                                <li>Propose a loose structure like occasional mentoring sessions or termly socials.</li>
+                            </ul>
+                        </div>
+                        <div class="step-card">
+                            <h3><span class="step-number">5</span> Sustain and Grow the Network</h3>
+                            <p>Each year should strengthen the network rather than starting from zero.</p>
+                            <ul>
+                                <li>Share regular, short newsletters highlighting ISoc activities.</li>
+                                <li>Invite them to annual dinners, Ramadan iftars, and major conferences.</li>
+                                <li>Document contacts and lessons learned for a smooth handover.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="developing" class="tab-content">
+                    <div class="intro-box">
+                        <p>You already have some contact with old members. Now is the time to consolidate those connections and turn individual contacts into a structured, connected group.</p>
+                    </div>
+                    <div class="step-list">
+                        <div class="step-card">
+                            <h3><span class="step-number">1</span> Consolidate Contact Information</h3>
+                            <p>Bring all separate group chats and contacts into one central list.</p>
+                            <ul>
+                                <li>Check if any informal alumni groups already exist locally.</li>
+                                <li>Leverage current connections by asking your committee for access to previous years' group chats.</li>
+                                <li>Engage with the university alumni team to obtain contacts.</li>
+                            </ul>
+                        </div>
+                        <div class="step-card">
+                            <h3><span class="step-number">2</span> Appoint an Alumni Liaison</h3>
+                            <p>Dedicated communication is key to maintaining the relationship.</p>
+                            <ul>
+                                <li>Choose someone dedicated to fully focus on the network.</li>
+                                <li>Keep communications exclusively through this liaison.</li>
+                            </ul>
+                        </div>
+                        <div class="step-card">
+                            <h3><span class="step-number">3</span> Create Structured Communication</h3>
+                            <p>Turn individuals into a connected community by giving them a dedicated space.</p>
+                            <ul>
+                                <li>Send a recruitment message to your consolidated list.</li>
+                                <li>Create a WhatsApp Community with sub-groups (Brothers, Sisters, Medicine, Engineering).</li>
+                                <li>Use an Announcements channel for updates.</li>
+                                <li>Maintain a mailing list for those who prefer email.</li>
+                            </ul>
+                        </div>
+                        <div class="step-card">
+                            <h3><span class="step-number">4</span> Invite Alumni Back</h3>
+                            <p>Integrate them back into the campus ecosystem.</p>
+                            <ul>
+                                <li>Ensure other Muslim societies are aware of the network for speaker events.</li>
+                                <li>Invite alumni to ISoc dinners, treks, and key socials.</li>
+                            </ul>
+                            <span class="action-highlight">Commitment is optional; consistency is key.</span>
+                        </div>
+                        <div class="step-card">
+                            <h3><span class="step-number">5</span> Sustain with Newsletters & Quick Wins</h3>
+                            <p>Keep the momentum going with regular, low-pressure touchpoints.</p>
+                            <ul>
+                                <li>Send a quarterly newsletter highlighting "Quick Wins".</li>
+                                <li>Subtly include donation links.</li>
+                                <li>Ensure a proper handover of all databases to the next committee.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="disengaged" class="tab-content">
+                    <div class="intro-box">
+                        <p>Recognising a lack of engagement is usually due to lost contact, not a lack of interest. This stage requires a warm, patient approach to rebuild trust and relationships.</p>
+                    </div>
+                    <div class="step-list">
+                        <div class="step-card">
+                            <h3><span class="step-number">1</span> Audit Old Chats & Archives</h3>
+                            <p>Start digging to build a basic picture of who your alumni are.</p>
+                            <ul>
+                                <li>Try to gain access to old WhatsApp chats or mailing lists.</li>
+                                <li>Recruit a dedicated team to help review social media archives.</li>
+                                <li>Review past alumni events to see what worked well historically.</li>
+                            </ul>
+                        </div>
+                        <div class="step-card">
+                            <h3><span class="step-number">2</span> Send a Personalised Warm Message</h3>
+                            <p>Reach out with a focus on reconnection, not requests.</p>
+                            <ul>
+                                <li>Draft a message acknowledging the gap in communication and expressing a sincere desire to rebuild ties.</li>
+                                <li>Ensure they feel welcomed back without feeling obligated to commit immediately.</li>
+                            </ul>
+                        </div>
+                        <div class="step-card">
+                            <h3><span class="step-number">3</span> Organise a "Reconnection Event"</h3>
+                            <p>Focus purely on relationship building and familiarity.</p>
+                            <ul>
+                                <li>Host an informal alumni mingle with food and games.</li>
+                                <li>Consider relaxed environments like a cricket match watch party or casual dinner.</li>
+                            </ul>
+                        </div>
+                        <div class="step-card">
+                            <h3><span class="step-number">4</span> Document Everything</h3>
+                            <p>Restarting a network is hard work; make sure it isn't lost again.</p>
+                            <ul>
+                                <li>Keep track of what communication styles and events worked.</li>
+                                <li>Create a robust handover document for future committees.</li>
+                            </ul>
+                        </div>
+                        <div class="step-card">
+                            <h3><span class="step-number">5</span> Low-Pressure Mailing List</h3>
+                            <p>Allow them to observe the ISoc's progress from a distance.</p>
+                            <ul>
+                                <li>Add interested individuals to a low-pressure mailing list for future updates.</li>
+                                <li>Send short termly updates highlighting ISoc activities.</li>
+                                <li>Slowly begin inviting them to major events like annual dinners.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="established" class="tab-content">
+                    <div class="intro-box">
+                        <p>For established ISocs, maintaining and growing an alumni network is just as important as starting one, but it requires a more formal structure and professional execution.</p>
+                    </div>
+                    <div class="step-list">
+                        <div class="step-card">
+                            <h3><span class="step-number">1</span> Create an Alumni Executive Group</h3>
+                            <p>Unless dedicated roles exist, alumni work will fall to the bottom of the priority list.</p>
+                            <ul>
+                                <li>Recruit a dedicated team strictly to maintain and grow the alumni network.</li>
+                                <li>Ensure you have a method to build the database year-on-year.</li>
+                            </ul>
+                        </div>
+                        <div class="step-card">
+                            <h3><span class="step-number">2</span> Formalise Roles & Vision</h3>
+                            <p>Split the workload efficiently based on the network's goals.</p>
+                            <ul>
+                                <li>Establish a clear vision for the year (events, newsletters, fundraising).</li>
+                                <li>Create specific roles: Mentorship Lead, Events Lead, Finance Lead.</li>
+                            </ul>
+                        </div>
+                        <div class="step-card">
+                            <h3><span class="step-number">3</span> Host a High-Level Annual Dinner</h3>
+                            <p>Provide a premier event for alumni to reconnect and contribute.</p>
+                            <ul>
+                                <li>Sort a venue months in advance.</li>
+                                <li>Keep the focus on alumni. Avoid opening it to all students initially.</li>
+                                <li>Subtly fundraise by having QR codes for donations on tables.</li>
+                                <li>Use committee alumni to promote the event.</li>
+                            </ul>
+                        </div>
+                        <div class="step-card">
+                            <h3><span class="step-number">4</span> Launch Structured Career Networking</h3>
+                            <p>Provide tangible, professional value to the community.</p>
+                            <ul>
+                                <li>Establish a strong LinkedIn presence to find alumni.</li>
+                                <li>Pair alumni with current students studying the same course.</li>
+                                <li>Maintain a regular, professional newsletter.</li>
+                            </ul>
+                        </div>
+                        <div class="step-card">
+                            <h3><span class="step-number">5</span> Connect to the National FOSIS Body</h3>
+                            <p>Expand the horizons of your local network.</p>
+                            <ul>
+                                <li>Reach out to FOSIS to link your individual alumni network to the national body.</li>
+                                <li>Invite alumni to act as Khateebs or speakers for major campaigns.</li>
+                            </ul>
+                            <span class="action-highlight">Link up with FOSIS for national impact.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section">
+            <div class="alumni-extra-wrapper">
+                <div id="spotlights-section">
+                    <div class="section-header">
+                        <h2>Network Success Spotlights</h2>
+                        <p>Generations of service: celebrating established ISoc Alumni bodies and their impact on the wider Muslim student development.</p>
+                    </div>
+                    <div class="spotlight-grid">
+                        <div class="spotlight-card">
+                            <div class="isoc-logo-placeholder">Birmingham Logo</div>
+                            <h3>Birmingham ISoc</h3>
+                            <p><strong>[PLACEHOLDER]</strong> Briefly outline the ISoc’s history and the specific context of their alumni network (e.g., years of operation, key motivation).</p>
+                            <div class="quick-wins">
+                                <div class="quick-win-item">
+                                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> [QUICK WIN / STAT]
+                                </div>
+                                <div class="quick-win-item">
+                                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> [QUICK WIN / STAT]
+                                </div>
+                            </div>
+                        </div>
+                        <div class="spotlight-card">
+                            <div class="isoc-logo-placeholder">Warwick Logo</div>
+                            <h3>Warwick ISoc</h3>
+                            <p><strong>[PLACEHOLDER]</strong> Describe how Warwick ISoc leveraged specific tools (LinkedIn, dinners, mentorship) to grow and sustain their alumni connections.</p>
+                            <div class="quick-wins">
+                                <div class="quick-win-item">
+                                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> [QUICK WIN / STAT]
+                                </div>
+                                <div class="quick-win-item">
+                                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> [QUICK WIN / STAT]
+                                </div>
+                            </div>
+                        </div>
+                        <div class="spotlight-card">
+                            <div class="isoc-logo-placeholder">Manchester Logo</div>
+                            <h3>Manchester ISoc</h3>
+                            <p><strong>[PLACEHOLDER]</strong> Highlight Manchester ISoc's approach to local mentorship or their successful annual collaborative events.</p>
+                            <div class="quick-wins">
+                                <div class="quick-win-item">
+                                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> [QUICK WIN / STAT]
+                                </div>
+                                <div class="quick-win-item">
+                                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> [QUICK WIN / STAT]
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="retreats-section">
+                    <div class="section-header">
+                        <h2>Alumni Retreats</h2>
+                        <p>Reconnecting, rejuvenating, and reflecting: regional retreats designed for the continued spiritual and leadership development of mature alumni.</p>
+                    </div>
+                    <div class="retreats-highlight-card">
+                        <div class="retreats-icon-placeholder">RETREAT ICON</div>
+                        <h3>FOSIS ISoc Alumni Retreats</h3>
+                        <div class="retreats-desc-placeholder">
+                            [CONTENT PLACEHOLDER]<br>
+                            Describe the purpose of the retreats (spiritual reflection, safe space for mature discussions, national networking) and provide guidance on upcoming regional dates or registration processes here.
+                        </div>
+                        <a href="#" target="_blank" class="btn-retreat-cta">Register Interest →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div> <script>
+        // Tab switching logic
+        function openTab(evt, stageName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(stageName).style.display = "block";
+            
+            setTimeout(() => {
+                document.getElementById(stageName).classList.add("active");
+                sendHeight(); // Recalculate height when tab changes!
+            }, 10);
+            
+            evt.currentTarget.classList.add("active");
+        }
+
+        // GitHub -> Google Sites Height Resizer
+        function sendHeight() {
+            // Measures the main wrapper containing ALL sections
+            const container = document.getElementById('main-wrapper');
+            if (container) {
+                window.parent.postMessage({ 
+                    sentinel: 'amp', 
+                    type: 'embed-size', 
+                    height: container.scrollHeight // scrollHeight ensures the full scrolling length is captured
+                }, '*');
+            }
+        }
+        
+        window.onload = sendHeight;
+        window.onresize = sendHeight;
+        setTimeout(sendHeight, 500);
+        setTimeout(sendHeight, 1500);
+    </script>
 
 </body>
 </html>
